@@ -26,3 +26,9 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+# icon-store
+custom
+mi
+material-design-icons
+!**/svgs/**
