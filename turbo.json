@@ -4,11 +4,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {
-      "outputs": []
-    },
     "dev": {
       "cache": true
+    },
+    "test":{
     }
   }
 }
