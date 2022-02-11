@@ -1,0 +1,41 @@
+{
+  "name": "@groww-tech/tsconfig",
+  "version": "1.0.0",
+  "description": "Shared TypeScript config for Groww projects",
+  "main": "tsconfig.json",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/tsconfig.git"
+  },
+  "keywords": [
+    "tsconfig",
+    "typescript",
+    "ts",
+    "groww",
+    "config",
+    "configuration"
+  ],
+  "files": [
+    "tsconfig.json"
+  ],
+  "author": "Rishabh Tripathi <ristripathi97@gmail.com> (https://twitter.com/ristripathi)",
+  "contributors": [
+    {
+      "name": "Ankit Chouhan",
+      "url": "https://twitter.com/ankit__chouhan"
+    },
+    {
+      "name": "Rishav",
+      "url": "https://twitter.com/st_tronn"
+    },
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Groww/tsconfig/issues"
+  },
+  "homepage": "https://github.com/Groww/tsconfig#readme"
+}
