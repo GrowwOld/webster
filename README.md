@@ -8,6 +8,7 @@ This monorepo contains the following packages:
 ### Packages
 
 - `tsconfig`: Shared TypeScript config for Groww projects.
+- `stylint-config`: Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.
 
 ### Build
 
