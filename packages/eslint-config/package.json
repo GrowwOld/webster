@@ -1,0 +1,57 @@
+{
+  "name": "@groww-tech/eslint-config",
+  "version": "1.0.4",
+  "description": "Standard Eslint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/eslint-config.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "config",
+    "styleguide",
+    "javascript",
+    "groww",
+    "lint",
+    "react",
+    "jsx",
+    "standard"
+  ],
+  "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
+  "contributors": [
+    {
+      "name": "Ankit Chouhan",
+      "url": "https://twitter.com/ankit__chouhan"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://twitter.com/ristripathi"
+    },
+    {
+      "name": "Rishav Thakur",
+      "url": "https://twitter.com/st_tronn"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Groww/eslint-config/issues"
+  },
+  "homepage": "https://github.com/Groww/eslint-config#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1"
+  },
+  "peerDependencies": {
+    "@groww-tech/eslint-plugin-internal": "*",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1"
+  }
+}
