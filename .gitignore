@@ -11,6 +11,12 @@ coverage
 # misc
 .DS_Store
 *.pem
+tsconfig.types.tsbuildinfo
+tsconfig.tsbuildinfo
+dist
+es
+types
+.rollup.cache
 
 # debug
 npm-debug.log*
