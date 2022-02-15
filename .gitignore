@@ -38,3 +38,16 @@ custom
 mi
 material-design-icons
 !**/svgs/**
+
+#misc
+.idea
+.vscode
+es
+lib
+build
+coverage
+node_modules
+cspreport.txt
+.history/
+tsconfig.tsbuildinfo
+.eslintcache

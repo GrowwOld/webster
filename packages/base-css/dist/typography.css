@@ -1,0 +1,195 @@
+/* font size classes */
+
+/*
+  1rem = 16px or 100% default implementation of browsers
+  0.01em = 1% of the font-size of the element for 12px 0.01em will be = 0.12px;
+*/
+
+.fs12 {
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs14 {
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs16 {
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs18 {
+  font-size: 1.125rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs20 {
+  font-size: 1.25rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs24 {
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs28 {
+  font-size: 1.75rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs40 {
+  font-size: 2.5rem;
+  letter-spacing: 0.01em;
+  line-height: 160%;
+}
+
+.fs48 {
+  font-size: 3rem;
+  letter-spacing: 0.01em;
+  line-height: 120%;
+}
+
+/*
+don't use these font classes, this classes will be depricated in future,
+we are keeping these classes in code base to support legacy code
+*/
+
+.fs10 {
+  font-size: 10px;
+}
+
+.fs11 {
+  font-size: 11px;
+}
+
+.fs13 {
+  font-size: 13px;
+}
+
+.fs15 {
+  font-size: 15px;
+}
+
+.fs17 {
+  font-size: 17px;
+}
+
+.fs19 {
+  font-size: 19px;
+}
+
+.fs21 {
+  font-size: 21px;
+}
+
+.fs22 {
+  font-size: 22px;
+}
+
+.fs23 {
+  font-size: 23px;
+}
+
+.fs25 {
+  font-size: 25px;
+}
+
+.fs26 {
+  font-size: 26px;
+}
+
+.fs27 {
+  font-size: 27px;
+}
+
+.fs29 {
+  font-size: 29px;
+}
+
+.fs30 {
+  font-size: 30px;
+}
+
+.fs31 {
+  font-size: 31px;
+}
+
+.fs32 {
+  font-size: 32px;
+}
+
+/* color classes */
+
+.growwRed {
+  color: var(--growwRed);
+}
+
+.clrRed {
+  color: var(--growwRed);
+}
+
+.primaryClr {
+  color: var(--primaryClr);
+}
+
+.clrGreen {
+  color: var(--primaryClr);
+}
+
+.clrYellow {
+  color: var(--growwYellow);
+}
+
+.growwYellow {
+  color: var(--growwYellow);
+}
+
+
+.clrText {
+  color: var(--text);
+}
+
+.clrSubText {
+  color: var(--subText);
+}
+
+.clrText130 {
+  color: var(--text130);
+}
+
+.secondaryClr130 {
+  color: var(--secondaryClr130);
+}
+
+/* bg-color classes */
+
+.bgClrLightGreen{
+  background-color: var(--primaryClr10);
+}
+
+/* font weight */
+
+.fw500 {
+  font-weight: 500;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+
+/* font-smoothing */
+
+.fsAuto {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
