@@ -1,0 +1,42 @@
+{
+  "name": "@groww-tech/base-css",
+  "version": "0.0.4",
+  "description": "Base CSS classes used by all Groww Web Projects",
+  "main": "dist/index.css",
+  "files": [
+    "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/base-css.git"
+  },
+  "scripts": {
+    "pushTags" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/base-css-v$PACKAGE_VERSION\" && git push --tags"
+  },
+  "keywords": [
+    "base-css",
+    "groww",
+    "css",
+    "style"
+  ],
+  "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
+  "contributors": [
+    {
+      "name": "Ankit Chouhan",
+      "url": "https://twitter.com/ankit__chouhan"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://twitter.com/ristripathi"
+    },
+    {
+      "name": "Rishav Thakur",
+      "url": "https://twitter.com/st_tronn"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Groww/base-css/issues"
+  },
+  "homepage": "https://github.com/Groww/base-css#readme"
+}

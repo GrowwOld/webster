@@ -1,0 +1,4 @@
+{
+  "extends": "@groww-tech/tsconfig",
+  "include": ["./src"]
+}

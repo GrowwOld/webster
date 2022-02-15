@@ -1,0 +1,23 @@
+.lg43Opacity3 {
+  opacity: 0.3;
+}
+
+.lg430LastPointBlinking {
+  opacity: 1;
+  animation: blinkingPoint 2s infinite;
+}
+
+@keyframes blinkingPoint {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

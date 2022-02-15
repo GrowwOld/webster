@@ -1,0 +1,13 @@
+.bar21animation {
+  stroke-dasharray: 1000px;
+  stroke-dashoffset: 1000px;
+  animation: move 2.5s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes move {
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

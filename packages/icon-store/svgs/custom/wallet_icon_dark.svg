@@ -1,0 +1,11 @@
+<svg width="30px" height="28px" viewBox="0 0 30 28" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+      <g id="Artboard" transform="translate(-185.000000, -184.000000)">
+        <g id="Group-2" transform="translate(186.000000, 185.000000)">
+          <rect id="wallet" stroke="#44475B" strokeLinecap="round" strokeLinejoin="round" x="0" y="6.58068321" width="28" height="19" rx="2" />
+          <path d="M4,6.58068321 L4,2 C4,0.8954305 4.8954305,0 6,0 C6.12622683,0 6.25217021,0.0119498497 6.37614454,0.0356896162 L25.9304926,3.78013925 C26.84833,3.95589535 27.5221047,4.74382507 27.5532379,5.67781997 L28,8.5" id="wallet" stroke="#44475B" strokeLinecap="round" stroke-Linejoin="round" />
+          <circle id="wallet" fill="#44475B" cx="4.5" cy="16.5" r="1.5" />
+        </g>
+      </g>
+    </g>
+  </svg>

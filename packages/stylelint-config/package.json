@@ -1,0 +1,50 @@
+{
+  "name": "@groww-tech/stylelint-config",
+  "version": "2.0.0",
+  "description": "Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
+  "main": "index.js",
+  "scripts": {
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/stylelint-config-v$PACKAGE_VERSION\" && git push --tags",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/stylelint-config.git"
+  },
+  "keywords": [
+    "stylelint",
+    "stylelint-config",
+    "javascript",
+    "groww",
+    "css",
+    "lint"
+  ],
+  "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
+  "contributors": [
+    {
+      "name": "Ankit Chouhan",
+      "url": "https://twitter.com/ankit__chouhan"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://twitter.com/ristripathi"
+    },
+    {
+      "name": "Rishav ",
+      "url": "https://twitter.com/st_tronn"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Groww/stylelint-config/issues"
+  },
+  "homepage": "https://github.com/Groww/stylelint-config#readme",
+  "dependencies": {
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-declaration-strict-value": "^1.8.0",
+    "stylelint-no-unsupported-browser-features": "^5.0.2"
+  },
+  "peerDependencies": {
+    "stylelint": "^14.2.0"
+  }
+}

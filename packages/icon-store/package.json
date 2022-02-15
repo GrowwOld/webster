@@ -1,0 +1,66 @@
+{
+  "name": "@groww-tech/icon-store",
+  "version": "1.0.4",
+  "description": "Icon Library customized for use in Groww",
+  "files": [
+    "mi",
+    "custom",
+    "index.js",
+    "types.d.ts"
+  ],
+  "types": "types.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "generate": "run-p generate:*",
+    "generate:mi": "rm -rf mi && mkdir mi && svgr -d mi svgs/mi",
+    "generate:custom": "rm -rf custom && mkdir custom && svgr -d custom svgs/custom",
+    "transform": "node scripts/compileComponent.js && node scripts/generateTypes.js",
+    "clean-mi-icons": "rm -rf svgs/mi && mkdir svgs/mi",
+    "clean-custom-icons": "rm -rf svgs/custom && mkdir svgs/custom",
+    "build": "npm run generate && npm run transform",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/icon-store-v$PACKAGE_VERSION\" && git push --tags"
+  },
+  "keywords": [
+    "icon-store",
+    "groww",
+    "icons",
+    "material-icons"
+  ],
+  "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
+  "contributors": [
+    {
+      "name": "Ankit Chouhan",
+      "url": "https://twitter.com/ankit__chouhan"
+    },
+    {
+      "name": "Rishabh Tripathi",
+      "url": "https://twitter.com/ristripathi"
+    },
+    {
+      "name": "Rishav Thakur",
+      "url": "https://twitter.com/st_tronn"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Groww/icon-store/issues"
+  },
+  "homepage": "https://github.com/Groww/icon-store#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@svgr/cli": "^5.5.0",
+    "chalk": "^4.1.2",
+    "npm-run-all": "^4.1.5",
+    "react": "^16.12.0",
+    "terser": "^5.9.0"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  }
+}
