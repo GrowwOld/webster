@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "@groww-tech/base-css": "0.0.3",
+    "@groww-tech/base-css": "*",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
