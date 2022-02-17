@@ -1,4 +1,7 @@
 {
   "extends": "@groww-tech/tsconfig",
+  "compilerOptions": {
+    "target": "es5",
+  },
   "include": ["./src"]
 }
