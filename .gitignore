@@ -13,19 +13,12 @@ coverage
 *.pem
 tsconfig.types.tsbuildinfo
 tsconfig.tsbuildinfo
-dist
-es
-types
-lib
-build
-coverage
 .eslintcache
 .rollup.cache
 .idea
 .vscode
 cspreport.txt
 .history/
-tsconfig.tsbuildinfo
 
 
 # debug
@@ -43,9 +36,4 @@ yarn-error.log*
 # turbo
 .turbo
 
-# icon-store
-custom
-mi
-material-design-icons
-!**/svgs/**
 
