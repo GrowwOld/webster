@@ -19,6 +19,7 @@ tsconfig.tsbuildinfo
 .vscode
 cspreport.txt
 .history/
+packages/**/package-lock.json
 
 
 # debug
