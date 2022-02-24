@@ -4,7 +4,7 @@
   "description": "Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
   "main": "index.js",
   "scripts": {
-    "pushTags": "PACKAGE_VERSION=$(cat packages/stylelint-config/package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a stylint-config-v$PACKAGE_VERSION -m \"@groww-tech/stylelint-config-v$PACKAGE_VERSION\" && git push --tags",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a stylint-config-v$PACKAGE_VERSION -m \"@groww-tech/stylelint-config-v$PACKAGE_VERSION\" && git push --tags",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
