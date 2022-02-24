@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/react-charts",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React charts library tailored as per Groww needs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -34,7 +34,7 @@
       "now-build": "npm i && npm run build",
       "start": "npm run watch",
       "stats": "open ./stats.html",
-      "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/react-charts-v$PACKAGE_VERSION\" && git push --tags"
+      "pushTags": "PACKAGE_VERSION=$(cat packages/react-charts/package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a react-charts-v$PACKAGE_VERSION -m \"@groww-tech/react-charts-v$PACKAGE_VERSION\" && git push --tags"
   },
   "publishConfig": {
     "access": "public"

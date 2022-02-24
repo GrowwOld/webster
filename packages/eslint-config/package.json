@@ -8,7 +8,7 @@
     "url": "git+https://github.com/Groww/eslint-config.git"
   },
   "scripts": {
-    "pushTags" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/eslint-config-v$PACKAGE_VERSION\" && git push --tags"
+    "pushTags" : "PACKAGE_VERSION=$(cat packages/eslint-config/package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a eslint-config-v$PACKAGE_VERSION -m \"@groww-tech/eslint-config-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
     "eslint",
