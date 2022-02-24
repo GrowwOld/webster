@@ -44,8 +44,9 @@ jobs:
           git config --global user.name "github-bot"
         
       - if: steps.cpv.outputs.is-new-version == 'true'
-        uses: ./.github/workflows/actions/npm_publish
-        with:
-          github_token: ${{secrets.GITHUB_TOKEN}} 
-          npm_token: '{{secrets.NPM_TOKEN}}'
-          path: './${{env.package_dir}}/${{env.package_name}}'
+        run : |
+          npm publish --access public --ignore-scripts
+          npm run pushTags
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
