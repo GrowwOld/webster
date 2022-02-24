@@ -32,7 +32,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive",
-    "pushTags" : "PACKAGE_VERSION=$(cat packages/eslint-plugin-internal/package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a eslint-plugin-internal-v$PACKAGE_VERSION -m \"@groww-tech/eslint-plugin-internal-v$PACKAGE_VERSION\" && git push --tags"
+    "pushTags" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a eslint-plugin-internal-v$PACKAGE_VERSION -m \"@groww-tech/eslint-plugin-internal-v$PACKAGE_VERSION\" && git push --tags"
   },
   "dependencies": {
     "requireindex": "~1.1.0"
