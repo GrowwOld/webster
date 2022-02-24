@@ -44,9 +44,11 @@ jobs:
           git config --global user.name "github-bot"
         
       - if: steps.cpv.outputs.is-new-version == 'true'
-        run : |
-          npm publish --access public --ignore-scripts
-          npm run pushTags
+        run : npm publish --access public --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - if: steps.cpv.outputs.is-new-version == 'true'
+        run : npm run pushTags
+        env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
