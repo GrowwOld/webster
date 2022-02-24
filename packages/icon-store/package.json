@@ -18,7 +18,7 @@
     "clean-mi-icons": "rm -rf svgs/mi && mkdir svgs/mi",
     "clean-custom-icons": "rm -rf svgs/custom && mkdir svgs/custom",
     "build": "npm run generate && npm run transform",
-    "pushTags": "PACKAGE_VERSION=$(cat packages/icon-store/package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a icon-store-v$PACKAGE_VERSION -m \"@groww-tech/icon-store-v$PACKAGE_VERSION\" && git push --tags"
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a icon-store-v$PACKAGE_VERSION -m \"@groww-tech/icon-store-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
     "icon-store",
