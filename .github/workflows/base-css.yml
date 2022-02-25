@@ -48,5 +48,5 @@ jobs:
         uses: ./.github/workflows/actions/npm_publish
         with:
           github_token: ${{secrets.GITHUB_TOKEN}} 
-          npm_token: '{{secrets.NPM_TOKEN}}'
+          npm_token: ${{secrets.NPM_TOKEN}}
           path: './${{env.package_dir}}/${{env.package_name}}'
