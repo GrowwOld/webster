@@ -1,0 +1,75 @@
+{
+  "name": "@groww-tech/ella",
+  "version": "0.0.5",
+  "description": "Ella is a utility-belt library for JavaScript that provides general purpose methods used in day to day programming.",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf dist && rimraf docs",
+    "generate-doc": "typedoc",
+    "push-doc": "gh-pages -d docs",
+    "prebuild": "npm run clean",
+    "build": "tsup --env.NODE_ENV production",
+    "postbuild": "npm run generate-doc",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/icon-store-v$PACKAGE_VERSION\" && git push --tags"
+  },
+  "keywords": [
+    "functions",
+    "groww",
+    "methods",
+    "general",
+    "common",
+    "utility methods",
+    "utils"
+  ],
+  "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
+  "contributors": [
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Groww/ella/issues"
+  },
+  "homepage": "https://github.com/Groww/ella#readme",
+  "devDependencies": {
+    "@groww-tech/eslint-config": "^1.0.4",
+    "@groww-tech/eslint-plugin-internal": "1.0.2",
+    "@groww-tech/tsconfig": "^1.0.0",
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/lodash.isequal": "^4.5.5",
+    "@types/react": "^17.0.38",
+    "@types/react-helmet": "^6.1.5",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
+    "esbuild-plugin-glob": "^1.0.5",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1",
+    "gh-pages": "^3.2.3",
+    "react": "^16.12.0",
+    "rimraf": "^3.0.2",
+    "tsup": "^5.11.11",
+    "typedoc": "^0.22.11",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.7",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.isequal": "^4.5.0",
+    "react-helmet": "^6.1.0"
+  }
+}
