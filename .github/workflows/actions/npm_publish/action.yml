@@ -22,4 +22,4 @@ runs:
     working-directory: ${{ inputs.path }}
     shell: bash
     env:
-      github-token: ${{ inputs.github_token }}
+      GITHUB_TOKEN: ${{ inputs.github_token }}
