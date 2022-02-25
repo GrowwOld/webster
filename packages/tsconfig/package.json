@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/tsconfig",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared TypeScript config for Groww projects",
   "main": "tsconfig.json",
   "repository": {
