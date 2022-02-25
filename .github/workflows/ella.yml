@@ -2,7 +2,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'packages/react-charts/**'
+      - 'packages/ella/**'
 env:
   package_dir: 'packages'
   package_name: 'ella'
@@ -43,7 +43,7 @@ jobs:
           npm ci
           npm run build -- --scope="@groww-tech/${{env.package_name}}"
 
-      - if: steps.cpv.outputs.is-new-version == 'false'
+      - if: steps.cpv.outputs.is-new-version == 'true'
         name: Deploy the documents on github pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
