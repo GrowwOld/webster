@@ -18,7 +18,7 @@ import { toTitleCase } from '@groww-tech/ella';
 console.log(toTitleCase('Enter SIP amount')); // Ouput - Enter Sip Amount
 ```
 
-📚[Complete API Documentation](https://groww.github.io/ella/)
+📚[Complete API Documentation](https://groww.github.io/webster/)
 
 ## License
 
