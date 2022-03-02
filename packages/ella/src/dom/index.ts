@@ -535,8 +535,8 @@ export function isUtilKeyPressed(keyValue:string) {
 export function postWindowMessage(action: string = 'WINDOW_ACTION', params: Object = {}, eventIdentifier: string = 'CUSTOM_MESSAGE', targetWindow?: Window | undefined) {
   try {
 
-    if (isEmpty(window)) {
-      throw new Error('window is undefined');
+    if (typeof window === 'undefined') {
+      return;
     }
 
     const message: {
@@ -549,7 +549,7 @@ export function postWindowMessage(action: string = 'WINDOW_ACTION', params: Obje
       identifier: eventIdentifier
     };
 
-    const windowObj = isEmpty(targetWindow) ? window : targetWindow;
+    const windowObj = typeof targetWindow === 'undefined' ? window : targetWindow;
 
     windowObj?.postMessage(message, window?.location?.origin ?? '*');
 
