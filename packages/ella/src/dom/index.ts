@@ -669,7 +669,7 @@ function reloadOnBackForward(event: PageTransitionEvent) {
  * @param {string} dataURI base64/URLEncoded data component
  *
  * @remarks
- * This method is only used is places where we are using canvas to get an esign.
+ * This method is only used in places where we are using canvas to get an esign.
  * stackoverflow thread for context: https://stackoverflow.com/questions/12168909/blob-from-dataurl
  *
  * @returns {Blob} raw binary data blob
