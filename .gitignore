@@ -21,6 +21,10 @@ cspreport.txt
 .history/
 packages/**/package-lock.json
 
+#yalc
+.yalc
+yalc.lock
+
 
 # debug
 npm-debug.log*
