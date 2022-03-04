@@ -41,7 +41,7 @@ export function getMonthAbbrByIndex(monthNumber: number): string {
  * @remarks
  * Link for dayjs format method - https://day.js.org/docs/en/display/format
  *
- * @param {Date} longDateValue - Date input to be converted to another format. This generally comes from backend and is
+ * @param {Date | string} longDateValue - Date input to be converted to another format. This generally comes from backend and is
  * in long format. For example '2022-02-01T12:16:13'
  * @param {string} dateFormat - Format in which the date needs to be converted to.
  *
@@ -55,7 +55,7 @@ export function getMonthAbbrByIndex(monthNumber: number): string {
  * getDateInRequiredFormat('Fri Feb 04 2022 15:24:28 GMT+0530 (India Standard Time)', 'YYYY-MM-DD');  // Output will be '2022-02-04'
  * ```
  */
-export function getDateInRequiredFormat(longDateValue: Date, dateFormat: string = 'DD MMM YYYY') {
+export function getDateInRequiredFormat(longDateValue: Date | string, dateFormat: string = 'DD MMM YYYY') {
   try {
     if (!isEmpty(dateFormat)) {
       const str = dayjs(longDateValue).format(dateFormat);
@@ -77,7 +77,7 @@ export function getDateInRequiredFormat(longDateValue: Date, dateFormat: string 
 /**
  * This function returns age as a number from the date of birth as an input
  *
- * @param {Date} birthDate - birth date of a person in Date format
+ * @param {Date | string} birthDate - birth date of a person in Date format
  *
  * @example
  * ```
@@ -87,7 +87,7 @@ export function getDateInRequiredFormat(longDateValue: Date, dateFormat: string 
  * getAgeFromDateOfBirth();  // Output is ''
  * ```
  */
-export function getAgeFromDateOfBirth(birthDate: Date) {
+export function getAgeFromDateOfBirth(birthDate: Date | string) {
   try {
     const today = new Date();
 
@@ -118,7 +118,7 @@ export function getAgeFromDateOfBirth(birthDate: Date) {
  * This method is used for getting previous month with same date to the date provided through argument.
  * Not doing with dayjs as no specific methods for this use case are there.
  *
- * @param {Date} date - Date in valid Date format
+ * @param {Date | string} date - Date in valid Date format
  * @param {number} monthCount - Number of months we want to go back to
  *
  * @example
@@ -134,7 +134,7 @@ export function getAgeFromDateOfBirth(birthDate: Date) {
  * it now date will be different.
  * ```
  */
-export function getPreviousMonthDate(date: Date, monthCount: number = 1) {
+export function getPreviousMonthDate(date: Date | string, monthCount: number = 1) {
   try {
     const newDate = new Date(date);
 
@@ -153,7 +153,7 @@ export function getPreviousMonthDate(date: Date, monthCount: number = 1) {
  * only new Date()
  * Not doing with dayjs as no specific methods for this use case are there.
  *
- * @param {Date} date - Date as only new Date()
+ * @param {Date | string} date - Date as only new Date()
  * @param {number} date - number of days we want to go back to
  *
  * @example
@@ -161,7 +161,7 @@ export function getPreviousMonthDate(date: Date, monthCount: number = 1) {
  * getPreviousDayDate(new Date());  // Output will be 'Thu Feb 03 2022 03:28:49 GMT+0530 (India Standard Time)'
  * ```
  */
-export function getPreviousDayDate(date: Date, daysCount: number = 1) {
+export function getPreviousDayDate(date: Date | string, daysCount: number = 1) {
   try {
     const newDate = new Date(date);
 
