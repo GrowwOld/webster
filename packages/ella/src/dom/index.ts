@@ -271,9 +271,9 @@ export function getOSName() {
   if (!isEmpty(window) && !isEmpty(navigator)) {
     const userAgent = window.navigator.userAgent,
       platform = window.navigator.platform,
-      macosPlatforms = [ 'Macintosh', 'MacIntel', 'MacPPC', 'Mac68K' ],
-      windowsPlatforms = [ 'Win32', 'Win64', 'Windows', 'WinCE' ],
-      iosPlatforms = [ 'iPhone', 'iPad', 'iPod' ];
+      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+      iosPlatforms = ['iPhone', 'iPad', 'iPod'];
 
     let os = '';
 
@@ -420,7 +420,7 @@ export function smoothScrollToElementWithId(elementId: string, offset: number = 
  * />
  * ```
  */
-export function allowedDecimalPointInput(eventObject: React.KeyboardEvent<HTMLInputElement>, currentValue: number | string, toFixed:number = 2) {
+export function allowedDecimalPointInput(eventObject: React.KeyboardEvent<HTMLInputElement>, currentValue: number | string, toFixed: number = 2) {
   if (isUtilKeyPressed(eventObject.key)) {
     return; // dont do anything, it's a valid key, let it get pressed
   }
@@ -487,7 +487,7 @@ export function allowOnlyNumberKeys(eventObject: React.KeyboardEvent<HTMLInputEl
  * />
  * ```
  */
-export function allowNumbersAndDecimal(eventObject:React.KeyboardEvent<HTMLInputElement>) {
+export function allowNumbersAndDecimal(eventObject: React.KeyboardEvent<HTMLInputElement>) {
   if (isUtilKeyPressed(eventObject.key)) {
     return; // dont do anything, it's a valid key, let it get pressed
   }
@@ -509,8 +509,8 @@ export function allowNumbersAndDecimal(eventObject:React.KeyboardEvent<HTMLInput
  * @remarks
  * It's strongly recommended to use this method on onKeyDown event to prevent the key from registering
  */
-export function isUtilKeyPressed(keyValue:string) {
-  const isUtilsKey = [ 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete' ].includes(keyValue);
+export function isUtilKeyPressed(keyValue: string) {
+  const isUtilsKey = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(keyValue);
 
   return isUtilsKey;
 }
@@ -551,7 +551,7 @@ export function postWindowMessage(action: string = 'WINDOW_ACTION', params: Obje
 
     const windowObj = typeof targetWindow === 'undefined' ? window : targetWindow;
 
-    windowObj?.postMessage(message, window?.location?.origin ?? '*');
+    windowObj?.postMessage(JSON.stringify(message), window?.location?.origin ?? '*');
 
   } catch (error) {
     console.error('Error while window.postMessage', error);
@@ -674,29 +674,29 @@ function reloadOnBackForward(event: PageTransitionEvent) {
  *
  * @returns {Blob} raw binary data blob
  */
- export function dataURIToBlob(dataURI: string) {
+export function dataURIToBlob(dataURI: string) {
   try {
     // convert base64/URLEncoded data component to raw binary data held in a string
     let byteString;
 
-    if (dataURI.split(',')[ 0 ].indexOf('base64') >= 0) {
-      byteString = window.atob(dataURI.split(',')[ 1 ]);
+    if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+      byteString = window.atob(dataURI.split(',')[1]);
 
     } else {
-      byteString = window.unescape(dataURI.split(',')[ 1 ]);
+      byteString = window.unescape(dataURI.split(',')[1]);
     }
 
     // separate out the mime component
-    const mimeString = dataURI.split(',')[ 0 ].split(':')[ 1 ].split(';')[ 0 ];
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
     // write the bytes of the string to a typed array
     const ia = new Uint8Array(byteString.length);
 
     for (let i = 0; i < byteString.length; i++) {
-      ia[ i ] = byteString.charCodeAt(i);
+      ia[i] = byteString.charCodeAt(i);
     }
 
-    return new Blob([ ia ], { type: mimeString });
+    return new Blob([ia], { type: mimeString });
 
   } catch (error) {
     return new Blob();
