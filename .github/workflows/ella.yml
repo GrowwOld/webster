@@ -1,3 +1,5 @@
+name: Ella_Build
+
 on:
   push:
     branches: [ main ]
