@@ -1,7 +1,6 @@
 # tsconfig
 
  [![npm version](https://img.shields.io/npm/v/@groww-tech/tsconfig?color=51C838)](https://www.npmjs.com/package/@groww-tech/tsconfig) 
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Tsconfig_Build?color=51C838)
 
 <br/>
 

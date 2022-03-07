@@ -1,6 +1,5 @@
 # eslint-plugin-internal
  [![npm version](https://img.shields.io/npm/v/@groww-tech/eslint-plugin-internal?color=51C838)](https://www.npmjs.com/package/@groww-tech/eslint-plugin-internal)
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Eslint_Plugin_Internal_Build?color=51C838)
 
 <br/>
 

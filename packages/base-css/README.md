@@ -1,6 +1,5 @@
 # base-css 
  [![npm version](https://img.shields.io/npm/v/@groww-tech/base-css?color=51C838)](https://www.npmjs.com/package/@groww-tech/base-css) 
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Base_Css_Build?color=51C838)
 
 <br/>
 
