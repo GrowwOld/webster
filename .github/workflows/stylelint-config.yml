@@ -1,3 +1,5 @@
+name: Stylelint_Config_Build
+
 on:
   push:
     branches: [ main ]

@@ -1,5 +1,10 @@
 # stylelint-config
 
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/stylelint-config?color=51C838)](https://www.npmjs.com/package/@groww-tech/stylelint-config) 
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Stylelint_Config_Build?color=51C838)
+
+<br/>
+
 Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.
 ## Install
 for **npm >=5**

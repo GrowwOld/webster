@@ -1,4 +1,8 @@
-# eslint-config
+# eslint-config 
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/eslint-config?color=51C838)](https://www.npmjs.com/package/@groww-tech/eslint-config) 
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Eslint_Config_Build?color=51C838)
+
+<br/>
 
 Standard Eslint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.
 

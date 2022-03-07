@@ -1,5 +1,10 @@
 ## IconStore
 
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/icon-store?color=51C838)](https://www.npmjs.com/package/@groww-tech/icon-store) 
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Icon_Store_Build?color=51C838)
+
+<br/>
+
 ### Publish
 
 For publishing new version, merge new svgs to main branch and increase the version.<br>
