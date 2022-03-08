@@ -505,15 +505,15 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
 export function debounce(func: GenericFunction, delay: number = 200) {
   let timeout: ReturnType<typeof setTimeout>;
 
-  return function(...args: GenericArguments) {
 
+  const newFunc = (...args: GenericArguments) => {
     clearTimeout(timeout);
 
-    timeout = setTimeout(() => {
+    timeout = setTimeout(() => func(...args), delay);
+  };
 
-      func(...args);
-
-    }, delay);
+  newFunc.clear = () => {
+    clearTimeout(timeout);
   };
 }
 
