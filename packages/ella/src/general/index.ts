@@ -512,7 +512,7 @@ export function debounce(func: GenericFunction, delay: number = 200) {
     timeout = setTimeout(() => func(...args), delay);
   };
 
-  debouncedFunction.clear = () => {
+  debouncedFunction.cancel = () => {
     clearTimeout(timeout);
   };
 
