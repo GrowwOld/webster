@@ -506,15 +506,17 @@ export function debounce(func: GenericFunction, delay: number = 200) {
   let timeout: ReturnType<typeof setTimeout>;
 
 
-  const newFunc = (...args: GenericArguments) => {
+  const debouncedFunction = (...args: GenericArguments) => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => func(...args), delay);
   };
 
-  newFunc.clear = () => {
+  debouncedFunction.clear = () => {
     clearTimeout(timeout);
   };
+
+  return debouncedFunction;
 }
 
 
