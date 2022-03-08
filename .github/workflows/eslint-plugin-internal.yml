@@ -1,3 +1,5 @@
+name: Eslint_Plugin_Internal_Build
+
 on:
   push:
     branches: [ main ]
