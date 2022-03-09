@@ -521,31 +521,30 @@ export function isUtilKeyPressed(keyValue: string) {
  * Must be used in conjuction with listenToWindowMessage method above.
  *
  * @param {Window} targetWindow - Target window that needs to listen to the message. Defaults to current window.
- * @param {string} action - Action type
- * @param {Object} params - POJO - Any payload to be passed along with the action
+ * @param {Object} postObj -This method contains different fields like action, payload, screen etc.
+ * @example
+ *       postObj = {
+ *            action -> Action type
+ *            payload - Any payload to be passed along with the action
+ *            screen -> Screen name to navigate for webview 
+ *                 }
  * @param {string} eventIdentifier - Unique identifier for your event. Defaults to CUSTOM_MESSAGE
  *
  * @example
  * ```
- * const newWindow = window.open("https://groww.in/random-route", "_blank");
- *
- * postWindowMessage(newWindow, 'CHANGE_THEME', { theme: 'dark' }, 'MY_EVENT');
+ * const postObj = { 'CHANGE_THEME', { theme: 'dark' } }
+ * postWindowMessage(postObj, 'MY_EVENT');
  * ```
  */
-export function postWindowMessage(action: string = 'WINDOW_ACTION', params: Object = {}, eventIdentifier: string = 'CUSTOM_MESSAGE', targetWindow?: Window | undefined) {
+ export function postWindowMessage(postObj: Object = {}, eventIdentifier: string = 'CUSTOM_MESSAGE', targetWindow?: Window | undefined) {
   try {
 
     if (typeof window === 'undefined') {
       return;
     }
 
-    const message: {
-      action: string;
-      params: Object;
-      identifier: string;
-    } = {
-      action,
-      params,
+    const message = {
+      ...postObj,
       identifier: eventIdentifier
     };
 
