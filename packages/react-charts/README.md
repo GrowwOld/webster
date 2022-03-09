@@ -1,4 +1,9 @@
 # Groww React Charts
+
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/react-charts?color=51C838)](https://www.npmjs.com/package/@groww-tech/react-charts) 
+ [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/react-charts)](https://bundlephobia.com/package/@groww-tech/react-charts)
+ ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/React_Charts_Build?color=51C838)
+
 This library covers charting needs of Groww.
 
 ## Installation

@@ -486,9 +486,17 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  *          debouncedSearchQuery();
  *      }
  *
+ *      const handleKeyDown = (event) => {
+ *          // to clear the interval when enter key is pressed, only useful for specific usecases
+ *          if(event.key === 'enter'){
+ *              debouncedSearchQuery.cance();
+ *          }
+ *      }
+ *
  *      return (
  *          <input
  *              {...props}
+ *              handleKeyDown={handleKeyDown}
  *              onChange={onQueryInput}
  *          />
  *      )
@@ -501,20 +509,25 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  * // With debounce => 'abcde' => 1 call for abcde
  * ```
  *
+ * @remarks
+ * the returned callback will have a property named "cancel" to cancel the recurring debounce
+ *
  */
 export function debounce(func: GenericFunction, delay: number = 200) {
   let timeout: ReturnType<typeof setTimeout>;
 
-  return function(...args: GenericArguments) {
 
+  const debouncedFunction = (...args: GenericArguments) => {
     clearTimeout(timeout);
 
-    timeout = setTimeout(() => {
-
-      func(...args);
-
-    }, delay);
+    timeout = setTimeout(() => func(...args), delay);
   };
+
+  debouncedFunction.cancel = () => {
+    clearTimeout(timeout);
+  };
+
+  return debouncedFunction;
 }
 
 

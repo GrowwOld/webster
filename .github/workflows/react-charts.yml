@@ -1,3 +1,5 @@
+name: React_Charts_Build
+
 on:
   push:
     branches: [ main ]
