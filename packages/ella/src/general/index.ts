@@ -486,9 +486,16 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  *          debouncedSearchQuery();
  *      }
  *
+ *      const handleKeyDown = (event) => {
+ *          if(event.key === 'enter'){
+ *              debouncedSearchQuery.cance();
+ *          }
+ *      }
+ *
  *      return (
  *          <input
  *              {...props}
+ *              handleKeyDown={handleKeyDown}
  *              onChange={onQueryInput}
  *          />
  *      )
@@ -500,6 +507,9 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  * // Without debounce => 'abcde' => 5 calls individually for a, ab, abc, abcd, abcde
  * // With debounce => 'abcde' => 1 call for abcde
  * ```
+ *
+ * @remarks
+ * the returned callback will have a property named "cancel" to cancel the recurring debounce
  *
  */
 export function debounce(func: GenericFunction, delay: number = 200) {
