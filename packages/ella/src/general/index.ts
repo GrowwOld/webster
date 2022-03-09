@@ -487,6 +487,7 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  *      }
  *
  *      const handleKeyDown = (event) => {
+ *          // to clear the interval when enter key is pressed, only useful for specific usecases
  *          if(event.key === 'enter'){
  *              debouncedSearchQuery.cance();
  *          }
