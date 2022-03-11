@@ -20,8 +20,11 @@ import { isEmpty } from '../general';
  */
 export function listenToCustomEvent(eventName: string, callback: Function) {
   try {
-    if (!isEmpty(document)) {
+    if (typeof document !== 'undefined') {
       document.documentElement.addEventListener(eventName, callback as EventListener);
+
+    } else {
+      throw new Error('window is undefined');
     }
 
   } catch (error) {
@@ -46,10 +49,18 @@ export function listenToCustomEvent(eventName: string, callback: Function) {
  * ```
  */
 export function dispatchCustomEvent(eventName: string, eventDetails: object = {}) {
-  if (!isEmpty(document)) {
-    const temp = document.documentElement;
+  try {
+    if (typeof document !== 'undefined') {
+      const temp = document.documentElement;
 
-    temp.dispatchEvent(new CustomEvent(eventName, { detail: eventDetails }));
+      temp.dispatchEvent(new CustomEvent(eventName, { detail: eventDetails }));
+
+    } else {
+      throw new Error('window is undefined');
+    }
+
+  } catch (err) {
+    console.error(`Error in dispatching custom event ${eventName} and details ${eventDetails} ${err}`);
   }
 }
 
@@ -70,8 +81,11 @@ export function dispatchCustomEvent(eventName: string, eventDetails: object = {}
  */
 export function unlistenToCustomEvent(eventName: string, methodToUnlisten: Function) {
   try {
-    if (!isEmpty(document)) {
+    if (typeof document !== 'undefined') {
       document.documentElement.removeEventListener(eventName, methodToUnlisten as EventListener);
+
+    } else {
+      throw new Error('window is undefined');
     }
 
   } catch (error) {
@@ -89,8 +103,16 @@ export function unlistenToCustomEvent(eventName: string, methodToUnlisten: Funct
  * ```
  */
 export function scrollPageToTop() {
-  if (!isEmpty(window)) {
-    window.scrollTo(0, 0);
+  try {
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+
+    } else {
+      throw new Error('window is undefined');
+    }
+
+  } catch (err) {
+    console.error(`Error while scrolling page to top ${err}`);
   }
 }
 
@@ -226,7 +248,11 @@ export function encodeURLParams(queryParam: string) {
  * ```
  */
 export function getBrowserName(): string {
-  if (!isEmpty(window) && !isEmpty(navigator)) {
+  try {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+      throw new Error('window or navigator is undefined');
+    }
+
     if ((navigator.userAgent.indexOf('Opera') || navigator.userAgent.indexOf('OPR')) !== -1) {
       return 'Opera';
 
@@ -250,9 +276,11 @@ export function getBrowserName(): string {
       return 'unknown';
     }
 
-  } else {
-    return '';
+  } catch (err) {
+    console.error(`Error with getBrowserName ${err}`);
   }
+
+  return '';
 }
 
 
@@ -268,12 +296,16 @@ export function getBrowserName(): string {
  * ```
  */
 export function getOSName() {
-  if (!isEmpty(window) && !isEmpty(navigator)) {
+  try {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+      throw new Error('window or navigator is undefined');
+    }
+
     const userAgent = window.navigator.userAgent,
       platform = window.navigator.platform,
-      macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-      windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-      iosPlatforms = ['iPhone', 'iPad', 'iPod'];
+      macosPlatforms = [ 'Macintosh', 'MacIntel', 'MacPPC', 'Mac68K' ],
+      windowsPlatforms = [ 'Win32', 'Win64', 'Windows', 'WinCE' ],
+      iosPlatforms = [ 'iPhone', 'iPad', 'iPod' ];
 
     let os = '';
 
@@ -294,6 +326,9 @@ export function getOSName() {
     }
 
     return os;
+
+  } catch (e) {
+    console.error(`Error with getOSName ${e}`);
   }
 
   return '';
@@ -313,16 +348,24 @@ export function getOSName() {
  * ```
  */
 export function smoothScrollToTop() {
-  if (!isEmpty(window)) {
-    try {
-      window.scroll({
-        top: 0,
-        behavior: 'smooth'
-      });
+  try {
+    if (typeof window !== 'undefined') {
+      try {
+        window.scroll({
+          top: 0,
+          behavior: 'smooth'
+        });
 
-    } catch (err) {
-      window.scrollTo(0, 0);
+      } catch (err) {
+        window.scrollTo(0, 0);
+      }
+
+    } else {
+      throw new Error('window is undefined');
     }
+
+  } catch (err) {
+    console.error(`Error with smoothScrollToTop ${err}`);
   }
 }
 
@@ -347,7 +390,7 @@ export function smoothScrollToTop() {
  */
 export function smoothScrollToElementWithId(elementId: string, offset: number = 0) {
   try {
-    if (!isEmpty(window)) {
+    if (typeof window !== 'undefined') {
       const element = document.getElementById(elementId);
 
       if (element) {
@@ -362,6 +405,9 @@ export function smoothScrollToElementWithId(elementId: string, offset: number = 
           behavior: 'smooth'
         });
       }
+
+    } else {
+      throw new Error('window is undefined');
     }
 
   } catch (error) {
@@ -510,7 +556,7 @@ export function allowNumbersAndDecimal(eventObject: React.KeyboardEvent<HTMLInpu
  * It's strongly recommended to use this method on onKeyDown event to prevent the key from registering
  */
 export function isUtilKeyPressed(keyValue: string) {
-  const isUtilsKey = ['ArrowLeft', 'ArrowRight', 'Backspace', 'Delete'].includes(keyValue);
+  const isUtilsKey = [ 'ArrowLeft', 'ArrowRight', 'Backspace', 'Delete' ].includes(keyValue);
 
   return isUtilsKey;
 }
@@ -574,8 +620,7 @@ export function isUtilKeyPressed(keyValue: string) {
  */
 export function listenToWindowMessage(eventCallback: Function, eventIdentifier: string = 'CUSTOM_MESSAGE') {
   try {
-
-    if (isEmpty(window)) {
+    if (typeof window === 'undefined') {
       throw new Error('window is undefined');
     }
 
@@ -695,7 +740,7 @@ export function dataURIToBlob(dataURI: string) {
       ia[i] = byteString.charCodeAt(i);
     }
 
-    return new Blob([ia], { type: mimeString });
+    return new Blob([ ia ], { type: mimeString });
 
   } catch (error) {
     return new Blob();
