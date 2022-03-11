@@ -22,6 +22,9 @@ export function listenToCustomEvent(eventName: string, callback: Function) {
   try {
     if (typeof document !== 'undefined') {
       document.documentElement.addEventListener(eventName, callback as EventListener);
+
+    } else {
+      throw new Error('window is undefined');
     }
 
   } catch (error) {
