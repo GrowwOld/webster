@@ -332,7 +332,7 @@ export function getData(obj: any, path: string, def: null | unknown = null): any
     const newPathArray = String(sanitzePath(path)).split('.');
 
     for (const path of newPathArray) {
-      obj = obj[path] as any;
+      obj = obj?.[path] as any;
     }
 
     return typeof obj === 'undefined' ? def : obj;
