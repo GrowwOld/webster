@@ -532,6 +532,65 @@ export function debounce(func: GenericFunction, delay: number = 200) {
 
 
 /**
+ *
+ * This method is used to throttle async functions, and therefore is modified version of the normal throttle
+ *
+ * @param callback function to throttle
+ * @param intervalInMs time interval in microseconds after which the callback is required
+ * @returns the original callback but throttled with given interval
+ *
+ * @example
+ * ```
+ * // function which gets a resource
+ * async function getSomeResource() {
+ *    // a resource which takes time
+ *    return await new Promise((resolve)=>setTimeout(resolve("your resource"),2000))
+ * }
+ *
+ * // enhancing the function via throttle
+ * const throttledFunction = throttle(getSomeResource,5000);
+ *
+ * // trying to access the resource
+ * const printResource = async () => {
+ *    const result = throttledFunction();
+ *    console.log(result);
+ * }
+ *
+ * printResource() // calling it multiple times to see the behaviour
+ *
+ * // result: "your resource"
+ * ```
+ *
+ * @remarks
+ * this function is specifically designed to handle asynchronous functions
+ *
+ */
+export function asyncThrottle(callback:GenericFunction, intervalInMs: number) {
+  let lastRun = 0;
+
+
+  const throttled = async (...args: GenericArguments) => {
+    const currentWait = lastRun + intervalInMs - Date.now();
+    const shouldRun = currentWait <= 0;
+
+    if (shouldRun) {
+      lastRun = Date.now();
+      return await callback(args);
+
+    } else {
+      return await new Promise(function(resolve) {
+        setTimeout(function() {
+          resolve(throttled(args));
+        }, currentWait);
+      });
+    }
+  };
+
+  return throttled;
+}
+
+
+/**
  * This method is like `uniq` except that it accepts `iteratee` which is
  * invoked for each element in `array` to generate the criterion by which
  * uniqueness is computed. The order of result values is determined by the
