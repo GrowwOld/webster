@@ -3,6 +3,7 @@
  */
 
 import { isEmpty } from '../general';
+import { OS_TYPES } from '../utils/constants';
 
 /**
  * This method can be used to listen any custom event.
@@ -572,7 +573,7 @@ export function isUtilKeyPressed(keyValue: string) {
  *       postObj = {
  *            action -> Action type
  *            payload - Any payload to be passed along with the action
- *            screen -> Screen name to navigate for webview 
+ *            screen -> Screen name to navigate for webview
  *                 }
  * @param {string} eventIdentifier - Unique identifier for your event. Defaults to CUSTOM_MESSAGE
  *
@@ -582,7 +583,7 @@ export function isUtilKeyPressed(keyValue: string) {
  * postWindowMessage(postObj, 'MY_EVENT');
  * ```
  */
- export function postWindowMessage(postObj: Object = {}, eventIdentifier: string = 'CUSTOM_MESSAGE', targetWindow?: Window | undefined) {
+export function postWindowMessage(postObj: Object = {}, eventIdentifier: string = 'CUSTOM_MESSAGE', targetWindow?: Window | undefined) {
   try {
 
     if (typeof window === 'undefined') {
@@ -744,5 +745,70 @@ export function dataURIToBlob(dataURI: string) {
 
   } catch (error) {
     return new Blob();
+  }
+}
+
+/**
+ *
+ * @param element element/input on which we want the focus
+ * @param timeout time after which the elment will be focused
+ *
+ * @example
+ *
+ * const elem = document.getElementById("searchInput");
+ * const delayDuration = 500;
+ *
+ * forceFocusAndOpenKeyboard(elem, delayDuration);
+ *
+ * @remarks
+ * this function has a usecase for mobile devices (especially webview)
+ *
+ * iOS requires user interaction to open keyboard. Therefore, to open a keyboard at intialization of page, we're using this approach
+ * To read more on this: https://stackoverflow.com/questions/54424729/ios-show-keyboard-on-input-focus
+ *
+ */
+export function forceFocusAndOpenKeyboard(element:HTMLElement, timeout = 0) {
+  try {
+    const platformType = getOSName();
+
+    if (platformType === OS_TYPES.IOS) {
+      if (!timeout) {
+        timeout = 100;
+      }
+
+      if (element) {
+        // Align temp input element approximately where the input element is
+        // so the cursor doesn't jump around
+        const tempElement = document.createElement('input');
+
+        tempElement.style.position = 'absolute';
+        tempElement.style.top = (element.offsetTop) + 'px';
+        tempElement.style.left = element.offsetLeft + 'px';
+        tempElement.style.height = '0';
+        tempElement.style.opacity = '0';
+
+        // Put this temp element as a child of the page <body> and focus on it
+        document.body.appendChild(tempElement);
+        tempElement.focus();
+
+        // The keyboard is open. Now do a delayed focus on the target element
+        setTimeout(function() {
+          element.focus();
+          element.click();
+
+          // Remove the temp element
+          document.body.removeChild(tempElement);
+        }, timeout);
+      }
+
+    } else {
+      setTimeout(() => {
+        element?.focus();
+
+      }, timeout);
+    }
+
+  } catch (err) {
+    console.error('Unable to force focus input', err);
   }
 }
