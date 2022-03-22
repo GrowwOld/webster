@@ -8,3 +8,11 @@ export const COMMON_URLS = {
   LINKEDIN_PAGE: 'https://in.linkedin.com/company/groww.in',
   YOUTUBE_MAIN_CHANNEL: 'https://www.youtube.com/channel/UCw5TLrz3qADabwezTEcOmgQ'
 };
+
+export const OS_TYPES = {
+  IOS: 'iOS',
+  ANDROID: 'Android',
+  MAC_OS: 'Mac OS',
+  WINDOWS: 'Windows',
+  LINUX: 'Linux'
+};
