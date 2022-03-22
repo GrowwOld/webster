@@ -750,12 +750,19 @@ export function dataURIToBlob(dataURI: string) {
 
 /**
  *
- * @param element
- * element/input on which we want the focus
- * @param timeout
+ * @param element element/input on which we want the focus
+ * @param timeout time after which the elment will be focused
  *
+ * @example
+ *
+ * const elem = document.getElementById("searchInput");
+ * const delayDuration = 500;
+ *
+ * forceFocusAndOpenKeyboard(elem, delayDuration);
  *
  * @remarks
+ * this function has a usecase for mobile devices (especially webview)
+ *
  * iOS requires user interaction to open keyboard. Therefore, to open a keyboard at intialization of page, we're using this approach
  * To read more on this: https://stackoverflow.com/questions/54424729/ios-show-keyboard-on-input-focus
  *
