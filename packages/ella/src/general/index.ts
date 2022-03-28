@@ -7,7 +7,7 @@ import {
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData
+  TabsData,
 } from '../utils/types';
 
 export { default as cloneDeep } from 'lodash.clonedeep';
@@ -467,8 +467,8 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  *
  * @param {GenericFunction} func - Method that needs to be debounced
  * @param {number} delay - Amount of delay in miliseconds
- *
- * @example
+ * @param {boolean} leading - 
+ * * @example
  * ```
  * export function Input() {
  *      const [ query, setQuery ] = useState('');
@@ -479,7 +479,7 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  *          setResult(resp.data);
  *      }
  *
- *      const debouncedSearchQuery = debounce(searchQuery, 500);
+ *      const debouncedSearchQuery = debounce(searchQuery, 500, true);
  *
  *      const onQueryInput = (event) => {
  *          setQuery(event.target.value);
@@ -513,11 +513,14 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  * the returned callback will have a property named "cancel" to cancel the recurring debounce
  *
  */
-export function debounce(func: GenericFunction, delay: number = 200) {
+export function debounce(func: GenericFunction, delay: number = 200, leading: boolean = false) {
   let timeout: ReturnType<typeof setTimeout>;
 
-
   const debouncedFunction = (...args: GenericArguments) => {
+    if(!timeout && leading) {
+      func(...args);
+    } 
+
     clearTimeout(timeout);
 
     timeout = setTimeout(() => func(...args), delay);
