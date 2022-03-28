@@ -468,7 +468,7 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  * @param {GenericFunction} func - Method that needs to be debounced
  * @param {number} delay - Amount of delay in miliseconds
  * @param {boolean} leading - A boolean value for if the debounce functions is leading
- * * @example
+ * @example
  * ```
  * export function Input() {
  *      const [ query, setQuery ] = useState('');
