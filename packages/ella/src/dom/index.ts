@@ -3,7 +3,10 @@
  */
 
 import { isEmpty } from '../general';
-import { CUSTOM_EVENTS, OS_TYPES } from '../utils/constants';
+import {
+  CUSTOM_EVENTS,
+  OS_TYPES,
+} from '../utils/constants';
 
 /**
  * This method can be used to listen any custom event.
@@ -29,6 +32,11 @@ export function listenToCustomEvent(eventName: string, callback: Function) {
     }
 
   } catch (error) {
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'listenToCustomEvent',
+      error: error
+    });
+
     console.error(`Error in listening to ${eventName} custom event: `, error);
   }
 }
@@ -246,6 +254,11 @@ export function encodeURLParams(queryParam: string) {
 
   } catch (e) {
     decodedURL = queryParam;
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'encodeURLParams',
+      error: e
+    });
   }
 
   return encodeURIComponent(decodedURL);
@@ -349,6 +362,12 @@ export function getOSName() {
     return os;
 
   } catch (e) {
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getOSName',
+      error: e
+    });
+
     console.error(`Error with getOSName ${e}`);
   }
 
@@ -621,6 +640,12 @@ export function postWindowMessage(postObj: Object = {}, eventIdentifier: string 
 
   } catch (error) {
     console.error('Error while window.postMessage', error);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'postWindowMessage',
+      error
+    });
+    
     throw error;
   }
 }

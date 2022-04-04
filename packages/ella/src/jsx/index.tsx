@@ -6,7 +6,11 @@ import React from 'react';
 
 import { Helmet } from 'react-helmet';
 
-import { COMMON_URLS } from '../utils/constants';
+import { dispatchCustomEvent } from '../dom';
+import {
+  COMMON_URLS,
+  CUSTOM_EVENTS,
+} from '../utils/constants';
 import JsonLd from '../utils/JsonLd';
 import {
   ArticleSchema,
@@ -14,7 +18,7 @@ import {
   FaqSchema,
   MetatagsData,
   ProductSchema,
-  WebpageSchema
+  WebpageSchema,
 } from '../utils/types';
 
 /**
@@ -465,5 +469,10 @@ export function getHighlightedText(text: string, higlightText: string, index = 0
 
   } catch (err) {
     console.error('Error in getting highlighted text: ', err);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getHighlightedText',
+      error: err
+    });
   }
 }

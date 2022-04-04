@@ -163,6 +163,12 @@ export function capitalizeFirstLetter(str: string) {
 
   } catch (e) {
     console.error('capitalize letter', e);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'capitalizeFirstLetter',
+      error: e
+    });
+
     return str;
   }
 }
@@ -186,6 +192,12 @@ export function toTitleCase(str: string) {
     return str.replace(/\w\S*/g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase(); });
 
   } catch (e) {
+    
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'toTitleCase',
+      error: e
+    });
+
     console.error('title case error', e);
   }
 }
