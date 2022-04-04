@@ -3,8 +3,10 @@
  */
 
 import dayjs from 'dayjs';
+import { dispatchCustomEvent } from '../dom';
 
 import { isEmpty } from '../general';
+import { CUSTOM_EVENTS } from '../utils/constants';
 
 /**
  * This method can be used to get month name abbreviation from month number.
@@ -70,7 +72,18 @@ export function getDateInRequiredFormat(longDateValue: Date | string, dateFormat
 
   } catch (error) {
     console.error('Error in getDateInRequiredFormat: ', error);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getDateInRequiredFormat',
+      params: {
+        longDateValue,
+        dateFormat
+      },
+      error
+    });
   }
+
+  return '';
 }
 
 

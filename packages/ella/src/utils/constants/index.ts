@@ -16,3 +16,11 @@ export const OS_TYPES = {
   WINDOWS: 'Windows',
   LINUX: 'Linux'
 };
+
+export const CUSTOM_EVENTS = {
+  THEME_CHANGE: 'themeChange',
+  RC_LOADED: 'rcLoaded',
+  FIREBASE_AUTHENTICATE: 'firebaseAuth',
+  TABLE_CLOSE: 'tableClose',
+  TRACK_LOG: 'trackLog'
+};
