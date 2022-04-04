@@ -2,12 +2,14 @@
  * @module General
  */
 
+import { dispatchCustomEvent } from '../dom';
+import { CUSTOM_EVENTS } from '../utils/constants';
 import {
   GenericArguments,
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData,
+  TabsData
 } from '../utils/types';
 
 export { default as cloneDeep } from 'lodash.clonedeep';
@@ -65,6 +67,15 @@ export function isEmpty(data: any) {
     }
 
   } catch (e) {
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'isEmpty',
+      params: {
+        data
+      },
+      error: e
+    });
+
     return true;
   }
 }
@@ -339,6 +350,17 @@ export function getData(obj: any, path: string, def: null | unknown = null): any
 
   } catch (e) {
     console.error('Error while using getData', e);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getData',
+      params: {
+        obj,
+        path,
+        def
+      },
+      error: e
+    });
+
     return def;
   }
 }
@@ -456,6 +478,15 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
   } catch (error) {
     console.error('Unable to get path variable - ', error);
 
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getPathVariableFromUrlIndex',
+      params: {
+        url,
+        indexFromLast
+      },
+      error
+    });
+
     return '';
   }
 }
@@ -516,10 +547,11 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
 export function debounce(func: GenericFunction, delay: number = 200, leading: boolean = false) {
   let timeout: ReturnType<typeof setTimeout>;
 
+
   const debouncedFunction = (...args: GenericArguments) => {
-    if(!timeout && leading) {
+    if (!timeout && leading) {
       func(...args);
-    } 
+    }
 
     clearTimeout(timeout);
 
