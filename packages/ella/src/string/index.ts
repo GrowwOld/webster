@@ -2,7 +2,9 @@
  * @module String
  */
 
+import { dispatchCustomEvent } from '../dom';
 import { isEmpty } from '../general';
+import { CUSTOM_EVENTS } from '../utils/constants';
 
 /**
  * This method can be used to validate email id given in string.
@@ -432,6 +434,15 @@ export function normalizeTickerString(latestPrice: number, lastPrice: number) {
 
   } catch (error) {
     console.error('Error in normalizeTickerString: ', error);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'normalizeTickerString',
+      params: {
+        latestPrice,
+        lastPrice
+      },
+      error
+    });
 
     return '';
   }

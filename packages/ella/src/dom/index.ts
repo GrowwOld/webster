@@ -3,7 +3,7 @@
  */
 
 import { isEmpty } from '../general';
-import { OS_TYPES } from '../utils/constants';
+import { CUSTOM_EVENTS, OS_TYPES } from '../utils/constants';
 
 /**
  * This method can be used to listen any custom event.
@@ -91,6 +91,16 @@ export function unlistenToCustomEvent(eventName: string, methodToUnlisten: Funct
 
   } catch (error) {
     console.error(` Error in unListening to ${eventName} custom event: `, error);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'unlistenToCustomEvent',
+      params: {
+        eventName,
+        methodToUnListen: methodToUnlisten?.toString()
+      },
+      error
+    });
+
   }
 }
 
@@ -114,6 +124,11 @@ export function scrollPageToTop() {
 
   } catch (err) {
     console.error(`Error while scrolling page to top ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'scrollPageToTop',
+      error: err
+    });
   }
 }
 
@@ -279,6 +294,11 @@ export function getBrowserName(): string {
 
   } catch (err) {
     console.error(`Error with getBrowserName ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getBrowserName',
+      error: err
+    });
   }
 
   return '';
