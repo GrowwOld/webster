@@ -326,11 +326,23 @@ export function sortObjectByValue(obj: SingleLevelObject, isDescending?: boolean
  */
 export function getData(obj: any, path: string, def: null | unknown = null): any {
 
+  function replaceAll(originalString:string, search:string, replace:string) {
+    return originalString?.split(search)?.join(replace);
+  }
+
+
   const sanitzePath = (currPath: string) => {
 
-    // 'a.[0].b.c' => 'a.0.b.c'
+    const stringsToReplace = [ '[', ']', '..' ];
 
-    let sanitizedPath = String(currPath).replaceAll('[', '.').replaceAll(']', '.').replaceAll('..', '.');
+    // 'a.[0].b.c' => 'a.0.b.c'
+    const currPathString = String(currPath);
+
+    let sanitizedPath = currPathString;
+
+    for (const index in stringsToReplace) {
+      sanitizedPath = replaceAll(sanitizedPath, stringsToReplace[index], '.');
+    }
 
     const isLastIndexDot = sanitizedPath.lastIndexOf('.') === sanitizedPath.length - 1;
 
