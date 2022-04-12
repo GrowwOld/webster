@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/eslint-config",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Standard Eslint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
   "main": "index.js",
   "repository": {
