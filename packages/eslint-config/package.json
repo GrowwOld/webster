@@ -47,7 +47,8 @@
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-react": "^7.23.1"
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.4.0"
   },
   "peerDependencies": {
     "@groww-tech/eslint-plugin-internal": "*",
