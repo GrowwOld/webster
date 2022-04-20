@@ -19,7 +19,7 @@
  
          const components = getDirContent(componentFolderPath);
          
-         const allComponentTypeLines = [`import {ReactIconComponentType} from "../types"`];
+         const allComponentTypeLines = [`import { ReactIconComponentType } from "../types"`];
          
          const declarationPath = `${componentFolderPath}/index.d.ts`;
  
