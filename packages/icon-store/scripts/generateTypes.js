@@ -25,8 +25,9 @@
  
          components.forEach(component => {
  
-             if(component.includes('.js')){
+             if(component.includes('.js') && component !== 'index.js'){
                  
+                 console.log(component);
                  const componentName = component.slice(0 , -3);
                  const contentForComponent = `export var ${componentName}: ReactIconComponentType;`
                  
