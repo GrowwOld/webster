@@ -15,7 +15,7 @@
      const componentFolderPaths = ['mi', 'custom'];
  
      componentFolderPaths.forEach(componentFolderPath => {
-         console.log(chalk.green('Generating single index.d.ts: ') + chalk.yellow(componentFolderPath));
+         console.log(chalk.green('Generating types for: ') + chalk.yellow(componentFolderPath));
  
          const components = getDirContent(componentFolderPath);
          
@@ -31,6 +31,15 @@
                  const contentForComponent = `export var ${componentName}: ReactIconComponentType;`
                  
                  allComponentTypeLines.push(contentForComponent);
+
+                const content = `import { ReactIconComponentType } from '../types';
+
+declare const ${componentName}: ReactIconComponentType;
+export default ${componentName};
+                `
+
+                const componentDeclarationFilePath = `${componentFolderPath}/${componentName}.d.ts`;
+                writeContentToFile(componentDeclarationFilePath, content);
              }
              
          });
