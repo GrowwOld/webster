@@ -9,7 +9,7 @@ function defaultIndexTemplate(filePaths) {
     const exportEntries = uniqueFilePaths.map((filePath) => {
         const basename = path.basename(filePath, path.extname(filePath))
         const exportName = /^\d/.test(basename) ? `Material${basename}` : basename
-        return `export { default as ${exportName} } from './${basename}'`
+        return `exports.${exportName} = require('./${exportName}').default;`
     })
     return exportEntries.join('\n')
 }
