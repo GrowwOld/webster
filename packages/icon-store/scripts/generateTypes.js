@@ -6,41 +6,48 @@
  */
 
 
-const { getDirContent, writeContentToFile } = require('./helpers/utils');
+ const { getDirContent, writeContentToFile } = require('./helpers/utils');
 
-const chalk = require('chalk');
-const { copyFileSync } = require('fs');
+ const chalk = require('chalk');
+ 
 
-
-function generateTypesForIconComponent() {
-    const componentFolderPaths = ['mi', 'custom'];
-
-    componentFolderPaths.forEach(componentFolderPath => {
-        console.log(chalk.green('Generating types for: ') + chalk.yellow(componentFolderPath));
-
-        const components = getDirContent(componentFolderPath);
-
-        components.forEach(component => {
-            if (component.includes('index.js')) {
-                copyFileSync(`${componentFolderPath}/index.js`, `${componentFolderPath}/index.d.ts`);
-                return;
-            }
-            if (component.endsWith('.js')) {
-                const componentName = component.slice(0, -3);
+ function generateTypesForIconComponent() {
+     const componentFolderPaths = ['mi', 'custom'];
+ 
+     componentFolderPaths.forEach(componentFolderPath => {
+         console.log(chalk.green('Generating types for: ') + chalk.yellow(componentFolderPath));
+ 
+         const components = getDirContent(componentFolderPath);
+         
+         const allComponentTypeLines = [`import { ReactIconComponentType } from "../types"`];
+         
+         const declarationPath = `${componentFolderPath}/index.d.ts`;
+ 
+         components.forEach(component => {
+ 
+             if(component.includes('.js') && component !== 'index.js'){
+                 
+                 const componentName = component.slice(0 , -3);
+                 const contentForComponent = `export var ${componentName}: ReactIconComponentType;`
+                 
+                 allComponentTypeLines.push(contentForComponent);
 
                 const content = `import { ReactIconComponentType } from '../types';
 
 declare const ${componentName}: ReactIconComponentType;
 export default ${componentName};
-            `
+                `
 
-                const filePath = `${componentFolderPath}/${componentName}.d.ts`;
-                writeContentToFile(filePath, content);
-            }
-        });
-
-        console.log(chalk.gray('Finished.\n\n'));
-    });
-}
-
-generateTypesForIconComponent();
+                const componentDeclarationFilePath = `${componentFolderPath}/${componentName}.d.ts`;
+                writeContentToFile(componentDeclarationFilePath, content);
+             }
+             
+         });
+ 
+         writeContentToFile(declarationPath , allComponentTypeLines.join('\n'));
+ 
+         console.log(chalk.gray('Finished.\n\n'));
+     });
+ }
+ 
+ generateTypesForIconComponent();
