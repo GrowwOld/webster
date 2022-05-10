@@ -108,14 +108,8 @@ export function isValidMobileNumber(mobNumber: number | string) {
  * convertPaisaToRupee(100)); // 1
  * ```
  */
-export function convertPaisaToRupee(value: number) {
-  if (Number.isInteger(value)) { // Paisa cannot be in decimal
-    return parseFloat(value as any as string) / 100;
-
-  } else {
-    console.error('Paisa cannot be in decimal');
-    return value;
-  }
+export function convertPaisaToRupee(value: number | string) {
+   return parseFloat(value as string) / 100;
 }
 
 /**
