@@ -132,15 +132,18 @@ export function isValidName(name: string): boolean {
  * ```
  */
 export function convertToSentenceCase(str: string) {
-  try {
-    const newString = str.toLowerCase().replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function(c) { return c.toUpperCase(); });
+  let sentenceCasedStr = "";
 
-    return newString;
+  try {
+    const result = str.replace(/([A-Z])/g, ' $1');
+    sentenceCasedStr = result.charAt(0).toUpperCase() + result.slice(1);
 
   } catch (e) {
-    console.error('Error in converting string, original string returned ', e);
-    return str;
+    console.log('Error in converting string, original string returned', e);
+    sentenceCasedStr = str;
   }
+
+  return sentenceCasedStr;
 }
 
 
