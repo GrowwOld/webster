@@ -408,20 +408,14 @@ export function toFixedWithoutRounding(num: number | string, toFixedDecimal: num
 }
 
 /**
- * This function rounds off `value` to the nearest `step`.
+ * This function checks for isFinite and converts to number otherwise
+ * returns 0.
  *
+ * @param {number | string} num - number entered in input element
  *
- * @param {number} value - number entered in input element
- * @param {number} step - price multiplier
- *
- * @example
- * ```
- * In idea stock on NSE price step will be 0.05 and for BSE it is 0.01
- * roundToNearest(2.4,0.5) => 2.5
- * ```
  */
-export function toNumber(num:number) {
-  if (isFinite(num)) {
+export function toNumber(num:number | string) {
+  if (isFinite(num as number)) {
     return Number(num);
 
   } else {
