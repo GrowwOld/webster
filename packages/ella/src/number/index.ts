@@ -4,9 +4,7 @@
 
 import { isEmpty } from '../general';
 
-export {
-  NumberFormatter
-} from './NumberFormatter';
+export { NumberFormatter } from './NumberFormatter';
 
 /**
  * This method can be used to add commas as per Indian system to any valid number of type string or number.
@@ -408,3 +406,39 @@ export function toFixedWithoutRounding(num: number | string, toFixedDecimal: num
     return num;
   }
 }
+
+/**
+ * This function checks for isFinite and converts to number otherwise
+ * returns 0.
+ *
+ * @param {number | string} num - number entered in input element
+ *
+ */
+export function toNumber(num:number | string) {
+  if (isFinite(num as number)) {
+    return Number(num);
+
+  } else {
+    return 0;
+  }
+}
+
+
+/**
+ * This function rounds off `value` to the nearest `step`.
+ *
+ *
+ * @param {number} value - number entered in input element
+ * @param {number} step - price multiplier
+ *
+ * @example
+ * ```
+ * In idea stock on NSE price step will be 0.05 and for BSE it is 0.01
+ * roundToNearest(2.4,0.5) => 2.5
+ * ```
+ */
+export const roundToNearest = (value:number, step:number = 1.0) => {
+  const inv = 1.0 / step;
+
+  return Math.round(value * inv) / inv;
+};
