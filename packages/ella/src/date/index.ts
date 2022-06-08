@@ -443,7 +443,8 @@ export function getISTDateTime(timeOffset = 0) {
   const systemTime = new Date();
   const currentTime = new Date(systemTime.getTime() + timeOffset);
 
-  const ISTVal = dayjs.tz(currentTime, 'Asia/Kolkata');
+  // using any for now, github issue link: https://github.com/iamkun/dayjs/issues/1617
+  const ISTVal = (dayjs as any).tz(currentTime, 'Asia/Kolkata');
 
   const ISTDate = ISTVal.format('YYYY-MM-DD');
   const ISTTime = ISTVal.format('HH:mm:ss');
