@@ -9,7 +9,7 @@ import {
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData
+  TabsData,
 } from '../utils/types';
 
 export { default as cloneDeep } from 'lodash.clonedeep';
@@ -780,3 +780,58 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
     return object;
   }
 }
+
+
+/**
+ * Returns object or array by parsing the string passed based on the parsed type
+ *
+ * @param {string} filter - source string
+ * @param {string[]} defaultValue - [] or {}
+ *
+ * @example
+ *
+ * getEntityFiltersFromJSONString('['age', 'title']',[]);
+ * // ['age', 'title']
+ *
+ * @returns {Object | Array} - parsed object or array from the string passed
+ */
+ export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Object | [] = []) => {
+  try {
+    const parsedFilters = JSON.parse(filter);
+    const isObject = typeof parsedFilters === 'object' && parsedFilters !== null;
+
+    if (isObject || Array.isArray(parsedFilters)) {
+      return parsedFilters;
+    }
+
+    return defaultValue;
+
+  } catch (e) {
+    return defaultValue;
+  }
+};
+
+
+/**
+ * This method is a wrapper over JSON.parse which catches any exceptions if comes
+ *
+ * @param {string} parameter - source string
+ * @param {string} fallback - default value is ''
+ * @param {(this: any, key: string, value: any) => any} reviver - this is the reviver method of JSON.parse.
+ * Read MDN docs for more on the reviver method: 
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter
+ * 
+ * @example
+ *
+ * parseJSON('{a:'b'}')
+ *
+ * @returns {Object | Array} - parsed object or array from the string passed
+ */
+export const parseJSON = (parameter:string, fallback='', reviver?: (this: any, key: string, value: any) => any) => {
+  try {
+    return JSON.parse(parameter, reviver);
+
+  } catch (exception) {
+    return fallback;
+  }
+};
