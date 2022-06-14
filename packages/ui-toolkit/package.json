@@ -11,7 +11,7 @@
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Groww/ui-toolkit.git"
+    "url": "git+https://github.com/Groww/webster"
   },
   "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
   "contributors": [
@@ -50,9 +50,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Groww/ui-toolkit/issues"
+    "url": "https://github.com/Groww/webster/issues"
   },
-  "homepage": "https://github.com/Groww/ui-toolkit#readme",
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/ui-toolkit#readme",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "concurrently npm:build:*",
