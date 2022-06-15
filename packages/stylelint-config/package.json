@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Groww/stylelint-config.git"
+    "url": "git+https://github.com/Groww/webster"
   },
   "keywords": [
     "stylelint",
@@ -36,9 +36,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Groww/stylelint-config/issues"
+    "url": "https://github.com/Groww/webster/issues"
   },
-  "homepage": "https://github.com/Groww/stylelint-config#readme",
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/stylelint-config#readme",
   "dependencies": {
     "stylelint-config-standard": "^25.0.0",
     "stylelint-declaration-strict-value": "^1.8.0",
