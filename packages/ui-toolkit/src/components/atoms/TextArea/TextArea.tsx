@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { TextareaHTMLAttributes, useState } from 'react';
 import cn from 'classnames';
 
 import './textArea.css';
@@ -13,6 +13,8 @@ const TextArea = (props: Props) => {
     errorStyle,
     textAreaStyle,
     parentDivClass,
+    value,
+    onChange,
     ...restProps
   } = props;
 
@@ -21,6 +23,7 @@ const TextArea = (props: Props) => {
     'txta37Normal': error?.length === 0,
     'txta37Error': error && error.length !== 0
   });
+
 
   return (
     <div className={`txta37Div ${parentDivClass}`}>
@@ -37,6 +40,8 @@ const TextArea = (props: Props) => {
       <textarea
         {...restProps}
         className={textAreaClassName}
+        value={value}
+        onChange={onChange}
         style={textAreaStyle}
         onCopy={disableCopyPaste ? (e) => onCopy(e) : () => { }}
         onPaste={disableCopyPaste ? (e) => onPaste(e) : () => { }}
@@ -77,6 +82,8 @@ const defaultProps: DefaultProps = {
 
 type RequiredProps = {
   label?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
