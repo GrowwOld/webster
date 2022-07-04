@@ -45,14 +45,6 @@ jobs:
           npm ci
           npm run build -- --scope="@groww-tech/${{env.package_name}}"
 
-      - if: steps.cpv.outputs.is-new-version == 'true'
-        name: Deploy the documents on github pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run push-doc -- -u "github-actions-bot <support+actions@github.com>"
-        working-directory: './${{env.package_dir}}/${{env.package_name}}'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/npm_publish
