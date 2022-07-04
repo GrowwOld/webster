@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 
 import './textArea.css';
@@ -22,6 +22,8 @@ const TextArea = (props: Props) => {
     'txta37Error': error && error.length !== 0
   });
 
+  const [ value, setValue ] = useState('');
+
   return (
     <div className={`txta37Div ${parentDivClass}`}>
 
@@ -37,6 +39,8 @@ const TextArea = (props: Props) => {
       <textarea
         {...restProps}
         className={textAreaClassName}
+        value={value}
+        onChange={(e) => { setValue(e.target.value); }}
         style={textAreaStyle}
         onCopy={disableCopyPaste ? (e) => onCopy(e) : () => { }}
         onPaste={disableCopyPaste ? (e) => onPaste(e) : () => { }}
