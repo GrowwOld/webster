@@ -79,7 +79,7 @@ class TextInput extends React.PureComponent<TextInputProps> {
             name={name}
             type={inputType}
             inputMode={inputMode}
-            onInput={onInput}
+            onChange={onInput}
             value={value}
             pattern={pattern}
             maxLength={maxTextLimit}

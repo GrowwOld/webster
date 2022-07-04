@@ -36,6 +36,13 @@ class Select extends React.PureComponent<Props> {
   }
 
 
+  _onChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const { onChange } = this.props;
+
+    onChange(e);
+  }
+
+
   render() {
     const { data: options } = this.props;
 
@@ -82,6 +89,7 @@ class Select extends React.PureComponent<Props> {
                   value={selectedOption?.value}
                   onKeyUp={this.onKeyUp}
                   onKeyDown={this.onKeyDown}
+                  onChange={this._onChange}
                   aria-hidden="true"
                   tabIndex={-1}
                   className="se55Input"
@@ -184,7 +192,8 @@ Select.defaultProps = {
   placeholder: 'Select',
   optionClass: '',
   optionsParentClass: '',
-  activeOptionBoxClass: ''
+  activeOptionBoxClass: '',
+  onChange: () => {}
 } as DefaultProps;
 
 
@@ -206,6 +215,7 @@ type DefaultProps = {
   optionsParentClass: string;
   /* class for a box in which selected values is shown */
   activeOptionBoxClass: string;
+  onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void;
 }
 
 export type Props = RequiredProps & DefaultProps;
