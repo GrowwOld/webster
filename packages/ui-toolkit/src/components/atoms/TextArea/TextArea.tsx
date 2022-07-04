@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { TextareaHTMLAttributes, useState } from 'react';
 import cn from 'classnames';
 
 import './textArea.css';
@@ -84,6 +84,8 @@ const defaultProps: DefaultProps = {
 
 type RequiredProps = {
   label?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 
