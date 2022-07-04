@@ -97,8 +97,6 @@ type DefaultProps = {
   errorStyle: React.CSSProperties;
   textAreaStyle: React.CSSProperties;
   parentDivClass: string;
-  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  value: string;
 
   /**  bools for utility*/
   disableCopyPaste: boolean;
