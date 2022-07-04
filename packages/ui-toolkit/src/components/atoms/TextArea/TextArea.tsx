@@ -13,6 +13,8 @@ const TextArea = (props: Props) => {
     errorStyle,
     textAreaStyle,
     parentDivClass,
+    value,
+    onChange,
     ...restProps
   } = props;
 
@@ -22,7 +24,6 @@ const TextArea = (props: Props) => {
     'txta37Error': error && error.length !== 0
   });
 
-  const [ value, setValue ] = useState('');
 
   return (
     <div className={`txta37Div ${parentDivClass}`}>
@@ -40,7 +41,7 @@ const TextArea = (props: Props) => {
         {...restProps}
         className={textAreaClassName}
         value={value}
-        onChange={(e) => { setValue(e.target.value); }}
+        onChange={onChange}
         style={textAreaStyle}
         onCopy={disableCopyPaste ? (e) => onCopy(e) : () => { }}
         onPaste={disableCopyPaste ? (e) => onPaste(e) : () => { }}
@@ -75,7 +76,9 @@ const defaultProps: DefaultProps = {
   textAreaStyle: {},
   parentDivClass: '',
   disableCopyPaste: false,
-  error: ''
+  error: '',
+  value: '',
+  onChange: () => { }
 };
 
 
@@ -92,6 +95,8 @@ type DefaultProps = {
   errorStyle: React.CSSProperties;
   textAreaStyle: React.CSSProperties;
   parentDivClass: string;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
 
   /**  bools for utility*/
   disableCopyPaste: boolean;
