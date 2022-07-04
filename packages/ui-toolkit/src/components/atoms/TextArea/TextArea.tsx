@@ -76,9 +76,7 @@ const defaultProps: DefaultProps = {
   textAreaStyle: {},
   parentDivClass: '',
   disableCopyPaste: false,
-  error: '',
-  value: '',
-  onChange: () => { }
+  error: ''
 };
 
 
