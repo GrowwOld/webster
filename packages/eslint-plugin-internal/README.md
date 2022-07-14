@@ -14,10 +14,10 @@ You'll first need to install [ESLint](http://eslint.org):
 $ npm i eslint @typescript-eslint/parser --save-dev 
 ```
 
-Next, install `eslint-plugin-internal`:
+Next, install `@groww-tech/eslint-plugin-internal`:
 
 ```
-$ npm install eslint-plugin-internal --save-dev
+$ npm install @groww-tech/eslint-plugin-internal --save-dev
 ```
 
 
