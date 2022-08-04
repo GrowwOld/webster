@@ -835,3 +835,38 @@ export const parseJSON = (parameter:string, fallback='', reviver?: (this: any, k
     return fallback;
   }
 };
+
+
+/*
+ * Strictly check if all values in an object is 0.
+ *
+ * @param object
+ * @returns boolean
+ *
+ * @example
+ * ```
+ * isAllObjectValuesZero({ key1: 0, key2: 0, key3: 0 }) // true
+ * isAllObjectValuesZero({ key1: '0', key2: 0, key3: 0 }) // false
+ * isAllObjectValuesZero({ key1: 'some value', key2: 0, key3: 0 }) // false
+ * isAllObjectValuesZero(null) // true
+ * isAllObjectValuesZero(undefined) // true
+ * isAllObjectValuesZero({}) // true
+ *
+ * Behavior with Array(Not expected in the args) -
+ * isAllObjectValuesZero([]) // true
+ * isAllObjectValuesZero([9, 0, 0]) // false
+ * isAllObjectValuesZero([0, 0, 0]) // true
+ * ```
+ */
+export const isAllObjectValuesZero = (obj: object) => {
+  try {
+    if (obj === null || typeof obj === 'undefined') {
+      return true;
+    }
+
+    return Object.values(obj).every(val => val === 0);
+
+  } catch (e) {
+    console.error('Failed with: ', e);
+  }
+};
