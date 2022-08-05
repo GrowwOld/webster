@@ -845,7 +845,7 @@ export const parseJSON = (parameter: string, fallback = '', reviver?: (this: any
  * @param object
  * @returns boolean
  * @remarks
- * Currently do not support nested objects.
+ * Currently the function does not support nested objects.
  *
  * @example
  * ```
