@@ -795,7 +795,7 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
  *
  * @returns {Object | Array} - parsed object or array from the string passed
  */
- export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Object | [] = []) => {
+export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Object | [] = []) => {
   try {
     const parsedFilters = JSON.parse(filter);
     const isObject = typeof parsedFilters === 'object' && parsedFilters !== null;
@@ -818,16 +818,16 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
  * @param {string} parameter - source string
  * @param {string} fallback - default value is ''
  * @param {(this: any, key: string, value: any) => any} reviver - this is the reviver method of JSON.parse.
- * Read MDN docs for more on the reviver method: 
+ * Read MDN docs for more on the reviver method:
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter
- * 
+ *
  * @example
  *
  * parseJSON('{a:'b'}')
  *
  * @returns {Object | Array} - parsed object or array from the string passed
  */
-export const parseJSON = (parameter:string, fallback='', reviver?: (this: any, key: string, value: any) => any) => {
+export const parseJSON = (parameter: string, fallback = '', reviver?: (this: any, key: string, value: any) => any) => {
   try {
     return JSON.parse(parameter, reviver);
 
@@ -840,8 +840,12 @@ export const parseJSON = (parameter:string, fallback='', reviver?: (this: any, k
 /*
  * Strictly check if all values in an object is 0.
  *
+ * @function
+ * @since ella:0.2.0
  * @param object
  * @returns boolean
+ * @remarks
+ * Currently do not support nested objects.
  *
  * @example
  * ```
@@ -851,11 +855,8 @@ export const parseJSON = (parameter:string, fallback='', reviver?: (this: any, k
  * isAllObjectValuesZero(null) // true
  * isAllObjectValuesZero(undefined) // true
  * isAllObjectValuesZero({}) // true
+ * isAllObjectValuesZero({ key1: 0, key2: 0, key3: { key4: 0 } }) // false
  *
- * Behavior with Array(Not expected in the args) -
- * isAllObjectValuesZero([]) // true
- * isAllObjectValuesZero([9, 0, 0]) // false
- * isAllObjectValuesZero([0, 0, 0]) // true
  * ```
  */
 export const isAllObjectValuesZero = (obj: object) => {
