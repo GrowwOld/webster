@@ -1,4 +1,4 @@
-import { styled } from '@stitches/react';
+import { styled } from '../../../theme';
 
 export const Container = styled('div', {
   borderBottom: '2px solid var(--subText70)',
