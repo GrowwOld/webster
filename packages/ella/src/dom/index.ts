@@ -234,6 +234,7 @@ export function performanceMeasure(markStart: string, markEnd: string) {
 
 
 /**
+ * @deprecated since version 0.2.0
  * This method can be used to encode path variables & query params in the URL.
  *
  * @param {string} queryParam - Param that you want to encode
@@ -318,7 +319,18 @@ export function getBrowserName(): string {
 }
 
 
-export function getBrowser():{name:string; version:string} {
+/**
+ * This method can be used to get the browser name & version.
+ *
+ * @remarks
+ * This method depends on userAgent sniffing and therefore susciptible to spoofing. Avoid detecting browsers in business impacting code
+ *
+ * @example
+ * ```
+ * console.log('Browser Name - ',getBrowserName());
+ * ```
+ */
+export function getBrowserVersion():{name:string; version:string} {
   const userAgent = navigator.userAgent;
   let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
   let tem:any = [];
