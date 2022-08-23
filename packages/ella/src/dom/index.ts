@@ -333,23 +333,23 @@ export function getBrowserName(): string {
 export function getBrowserVersion():{name:string; version:string} {
   const userAgent = navigator.userAgent;
   let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-  let tem:any = [];
+  let browserObjMatch:any = [];
 
   if (/trident/i.test(match[1])) {
-    tem = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+    browserObjMatch = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
 
-    return { name: 'IE', version: (tem[1] || '') };
+    return { name: 'IE', version: (browserObjMatch[1] || '') };
   }
 
   if (match[1] === 'Chrome') {
-    tem = userAgent.match(/\bOPR|Edge\/(\d+)/);
+    browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/);
 
-    if (tem != null) { return { name: 'Opera', version: tem[1] }; }
+    if (browserObjMatch != null) { return { name: 'Opera', version: browserObjMatch[1] }; }
   }
 
   match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
 
-  if ((tem = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, tem[1]); }
+  if ((browserObjMatch = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, browserObjMatch[1]); }
 
   return {
     name: match[0],
