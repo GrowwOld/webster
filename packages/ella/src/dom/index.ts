@@ -5,7 +5,7 @@
 import { isEmpty } from '../general';
 import {
   CUSTOM_EVENTS,
-  OS_TYPES,
+  OS_TYPES
 } from '../utils/constants';
 
 /**
@@ -315,6 +315,34 @@ export function getBrowserName(): string {
   }
 
   return '';
+}
+
+
+export function getBrowser():{name:string; version:string} {
+  const userAgent = navigator.userAgent;
+  let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+  let tem:any = [];
+
+  if (/trident/i.test(match[1])) {
+    tem = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+
+    return { name: 'IE', version: (tem[1] || '') };
+  }
+
+  if (match[1] === 'Chrome') {
+    tem = userAgent.match(/\bOPR|Edge\/(\d+)/);
+
+    if (tem != null) { return { name: 'Opera', version: tem[1] }; }
+  }
+
+  match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
+
+  if ((tem = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, tem[1]); }
+
+  return {
+    name: match[0],
+    version: match[1]
+  };
 }
 
 
@@ -645,7 +673,7 @@ export function postWindowMessage(postObj: Object = {}, eventIdentifier: string 
       function: 'postWindowMessage',
       error
     });
-    
+
     throw error;
   }
 }
