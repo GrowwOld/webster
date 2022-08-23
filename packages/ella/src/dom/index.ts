@@ -331,30 +331,45 @@ export function getBrowserName(): string {
  * ```
  */
 export function getBrowserVersion():{name:string; version:string} {
-  const userAgent = navigator.userAgent;
-  let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-  let browserObjMatch:any = [];
 
-  if (/trident/i.test(match[1])) {
-    browserObjMatch = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+  try {
+    const userAgent = navigator.userAgent;
+    let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    let browserObjMatch:any = [];
 
-    return { name: 'IE', version: (browserObjMatch[1] || '') };
+    if (/trident/i.test(match[1])) {
+      browserObjMatch = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+
+      return { name: 'IE', version: (browserObjMatch[1] || '') };
+    }
+
+    if (match[1] === 'Chrome') {
+      browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/);
+
+      if (browserObjMatch != null) { return { name: 'Opera', version: browserObjMatch[1] }; }
+    }
+
+    match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
+
+    if ((browserObjMatch = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, browserObjMatch[1]); }
+
+    return {
+      name: match[0],
+      version: match[1]
+    };
+
+  } catch (err) {
+    console.error(`Error with getBrowserName ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getBrowserName',
+      error: err
+    });
+    return {
+      name: '',
+      version: ''
+    };
   }
-
-  if (match[1] === 'Chrome') {
-    browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/);
-
-    if (browserObjMatch != null) { return { name: 'Opera', version: browserObjMatch[1] }; }
-  }
-
-  match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
-
-  if ((browserObjMatch = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, browserObjMatch[1]); }
-
-  return {
-    name: match[0],
-    version: match[1]
-  };
 }
 
 
