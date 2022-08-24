@@ -330,12 +330,12 @@ export function getBrowserName(): string {
  * console.log('Browser Name - ',getBrowserName());
  * ```
  */
-export function getBrowserVersion():{name:string; version:string} {
+export function getBrowserVersion() {
 
   try {
     const userAgent = navigator.userAgent;
     let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-    let browserObjMatch:any = [];
+    let browserObjMatch = [];
 
     if (/trident/i.test(match[1])) {
       browserObjMatch = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
@@ -344,18 +344,19 @@ export function getBrowserVersion():{name:string; version:string} {
     }
 
     if (match[1] === 'Chrome') {
-      browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/);
+      browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/) ?? [];
 
       if (browserObjMatch != null) { return { name: 'Opera', version: browserObjMatch[1] }; }
     }
 
     match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
 
-    if ((browserObjMatch = userAgent.match(/version\/(\d+)/i)) != null) { match.splice(1, 1, browserObjMatch[1]); }
+    browserObjMatch = userAgent.match(/version\/(\d+)/i) ?? [];
+    if (browserObjMatch.length) { match.splice(1, 1, browserObjMatch[1]); }
 
     return {
       name: match[0],
-      version: match[1]
+      version: match[1] as string
     };
 
   } catch (err) {
@@ -366,8 +367,8 @@ export function getBrowserVersion():{name:string; version:string} {
       error: err
     });
     return {
-      name: '',
-      version: ''
+      name: null,
+      version: null
     };
   }
 }
