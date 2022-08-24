@@ -234,7 +234,6 @@ export function performanceMeasure(markStart: string, markEnd: string) {
 
 
 /**
- * @deprecated since version 0.2.0
  * This method can be used to encode path variables & query params in the URL.
  *
  * @param {string} queryParam - Param that you want to encode
@@ -267,6 +266,7 @@ export function encodeURLParams(queryParam: string) {
 
 
 /**
+ * @deprecated since version 0.2.0
  * This method can be used to get the browser name.
  *
  * @remarks
