@@ -346,7 +346,7 @@ export function getBrowserVersion() {
     if (match[1] === 'Chrome') {
       browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/) ?? [];
 
-      if (browserObjMatch != null) { return { name: 'Opera', version: browserObjMatch[1] }; }
+      if (browserObjMatch.length) { return { name: 'Opera', version: browserObjMatch[1] }; }
     }
 
     match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
@@ -356,7 +356,7 @@ export function getBrowserVersion() {
 
     return {
       name: match[0],
-      version: match[1] as string
+      version: match[1]
     };
 
   } catch (err) {
