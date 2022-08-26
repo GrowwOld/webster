@@ -1,4 +1,4 @@
-import { styled } from '../../../theme/index';
+import { styled, theme } from '../../../theme/index';
 
 
 export const Container = styled('div', {
