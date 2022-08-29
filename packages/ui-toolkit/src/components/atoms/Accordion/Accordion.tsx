@@ -35,6 +35,7 @@ const MutableAccordion = (props: Props) => {
   } = props;
 
   const [ isOpen, toggleAccordion ] = useState(onMountOpen);
+  const [ isRevealComplete, setIsRevealComplete ] = useState(false);
 
   const childRef = useRef<HTMLDivElement>(null);
   const isFirstRender = useRef(true);
@@ -49,6 +50,10 @@ const MutableAccordion = (props: Props) => {
     if (onToggleCallback) {
       onToggleCallback(isOpen);
     }
+
+    if (!isOpen && isRevealComplete) {
+      setIsRevealComplete(false);
+    }
   }, [ isOpen ]);
 
 
@@ -57,7 +62,14 @@ const MutableAccordion = (props: Props) => {
   }, []);
 
 
-  const childClass = isOpen ? 'ac11Show' : 'ac11Hidden';
+  const onRevealComplete = () => {
+    if (isOpen) {
+      setIsRevealComplete(true);
+    }
+  };
+
+
+  const childClass = isOpen ? isRevealComplete ? 'ac11RevealComplete ac11Show' : 'ac11Show' : 'ac11Hidden';
 
   let childStyle = {};
 
@@ -106,6 +118,7 @@ const MutableAccordion = (props: Props) => {
         : <div className={childClass}
           style={childStyle}
           ref={childRef}
+          onTransitionEnd={onRevealComplete}
         >
           {children}
         </div>
