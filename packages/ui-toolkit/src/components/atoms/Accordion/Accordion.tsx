@@ -69,7 +69,20 @@ const MutableAccordion = (props: Props) => {
   };
 
 
-  const childClass = isOpen ? isRevealComplete ? 'ac11RevealComplete ac11Show' : 'ac11Show' : 'ac11Hidden';
+  const getChildClass = () => {
+
+    if (isOpen) {
+      if (isRevealComplete) {
+        return 'ac11RevealComplete ac11Show';
+      }
+
+      return 'ac11Show';
+    }
+
+    return 'ac11Hidden';
+  };
+
+  const childClass = getChildClass();
 
   let childStyle = {};
 
