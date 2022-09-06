@@ -157,7 +157,17 @@ class LaserBeam extends React.Component<Props, State> {
 
   render() {
     const { style } = this.state;
-    const { show, width, background, zIndex, noShadow, ccStyle, addon, ...props } = this.props;
+    const { show,
+      width,
+      background,
+      zIndex,
+      noShadow,
+      ccStyle,
+      addon,
+      nextTransitionWidth,
+      nextTransitionDuration,
+      currentTransitionDuration,
+      ...props } = this.props;
 
     return (
       <div
