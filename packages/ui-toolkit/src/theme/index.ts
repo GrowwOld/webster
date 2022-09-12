@@ -31,6 +31,35 @@ export const { styled, globalCss, theme } = createStitches({
   }
 });
 
+export const darkTheme = createTheme('dark-theme', {
+  colors: {
+    black: '#121212',
+    white: '#ffffff',
+    gray900: '#f8f8f8',
+    gray800: '#d1d1d1',
+    gray700: '#b8b8b8',
+    gray600: '#a0a0a0',
+    gray500: '#888888',
+    gray400: '#717171',
+    gray300: '#595959',
+    gray200: '#414141',
+    gray150: '#2e2e2e',
+    gray100: '#252525',
+    gray50: '#1b1b1b',
+    green500: '#0abb92',
+    green300: '#0b5e49',
+    green100: '#10362d',
+    purple500: '#98a4ff',
+    purple300: '#323c89',
+    purple100: '#181a2a',
+    yellow500: '#e7a61a',
+    yellow100: '#46391d',
+    red500: '#d55438',
+    red100: '#411d16'
+  }
+});
+
+
 // export const darkTheme = createTheme({
 //   colors: {
 //     hiContrast: "white",

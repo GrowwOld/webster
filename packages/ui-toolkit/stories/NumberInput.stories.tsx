@@ -5,6 +5,7 @@ import { Story } from '@storybook/react';
 
 import { NumberInput } from '../src/components/atoms';
 import { NumberInputProps } from '../src/components/atoms/NumberInput/NumberInput';
+import ColourModeProvider from '../src/theme/ThemeProvider';
 
 
 export default {
@@ -22,13 +23,11 @@ const Template: Story<NumberInputProps> = (args) => {
   };
 
   return (
-    <>
-      <NumberInput
-        {...args}
-        value={value}
-        onChange={onChange}
-      />
-    </>
+    <NumberInput
+      {...args}
+      value={value}
+      onChange={onChange}
+    />
   );
 };
 

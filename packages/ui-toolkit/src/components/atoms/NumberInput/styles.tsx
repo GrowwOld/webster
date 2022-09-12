@@ -4,7 +4,7 @@ import { styled, theme } from '../../../theme/index';
 export const Container = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  background: 'var(--primaryClr10)',
+  background: '$purple500',
   width: 'fit-content',
   height: '30px',
   color: 'var(--primaryClr)',
