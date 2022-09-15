@@ -83,7 +83,7 @@
 .btn51DisabledPrimary {
   background-color: var(--subText50);
   pointer-events: none;
-  color: var(--primaryBg);
+  color: var(--constantWhite);
 }
 
 .btn51DisabledSecondary {
