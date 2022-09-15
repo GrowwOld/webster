@@ -61,7 +61,7 @@
 
 .btn51Primary {
   background: var(--primaryClr);
-  color: var(--primaryBg);
+  color: var(--constantWhite);
 }
 
 .btn51Secondary {
