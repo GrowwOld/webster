@@ -874,7 +874,7 @@ export const isAllObjectValuesZero = (obj: object) => {
 
 
 /**
- * Returns object by removing all the null values from an object or a deeply nested object also
+ * Returns object by removing all the null values from an object or a deeply nested object also without mutating the current object
  *
  * @param {MultiLevelObject} obj - source object
  *
@@ -891,31 +891,30 @@ export const isAllObjectValuesZero = (obj: object) => {
  *
  * removeNullProperties(obj)
  * O/P -
- * obj = {
+ * newObj = {
  *      two: 2,
  *      four: {}
  *    }
  *
  * ```
  *
- * @returns { Object } - Returns an object without null values
+ * @returns { Object } - Returns a new object without null values
  */
 export function removeNullProperties(obj: MultiLevelObject) {
 
   try {
-    Object.keys(obj).forEach(key => {
-      const value : any = obj[key];
-      const hasProperties = value && Object.keys(value).length > 0;
+    const newObj: MultiLevelObject = {};
 
-      if (value === null) {
-        delete obj[key];
+    getObjectEntries(obj).forEach(([ key, value ]) => {
+      if (value === Object(value)) {
+        newObj[key] = removeNullProperties(value);
 
-      } else if ((typeof value !== 'string') && hasProperties) {
-        removeNullProperties(value);
+      } else if (value != null) {
+        newObj[key] = obj[key];
       }
     });
 
-    return obj;
+    return newObj;
 
   } catch (error) {
 
