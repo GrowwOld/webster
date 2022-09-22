@@ -8,7 +8,7 @@ import { LIGHT_THM } from '../../../../../utils/constants';
 
 const colors:{[key:string]: string} = {
   success: LIGHT_THM.primaryClr,
-  info: LIGHT_THM.secondaryClr,
+  info: LIGHT_THM.constantText,
   warn: LIGHT_THM.growwYellow,
   error: LIGHT_THM.growwRed,
   loading: LIGHT_THM.secondaryClr
