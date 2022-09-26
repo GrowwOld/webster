@@ -6,4 +6,5 @@
 
 .infbd45InfoIcon {
   margin-right: 8px;
+  flex-shrink: 0;
 }
