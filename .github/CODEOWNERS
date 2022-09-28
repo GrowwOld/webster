@@ -1,0 +1,6 @@
+* @Groww/web-core-codeowners
+
+# Packages
+
+packages/ @Groww/web-core-codeowners
+packages/react-charts/ @Groww/web-stocks-data-codeowners
