@@ -1,0 +1,21 @@
+# Basic set up for three package managers
+
+version: 2
+updates:
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "npm"
+    open-pull-requests-limit: 0
+    target-branch: "develop"
+    pull-request-branch-name:
+      # Separate sections of the branch name with a hyphen
+      # for example, `dependabot-npm_and_yarn-next_js-acorn-6.4.1`
+      separator: "-"
+    # Disable rebasing for npm pull requests
+    rebase-strategy: "disabled"
+    versioning-strategy: increase
