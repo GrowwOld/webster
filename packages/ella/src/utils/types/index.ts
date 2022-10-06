@@ -66,3 +66,21 @@ export type TabsData = {
   searchId: string;
   [key:string]: unknown;
 };
+
+
+// isEmpty function
+
+export type AllowedValueType = string | number | Array<any> | object | null | undefined | Symbol;
+
+export type Empty =
+  | never[]
+  | Record<keyof any, never>
+  | ''
+  | null
+  | undefined
+  | never;
+
+export type PickEmptyType<T> =
+      T extends AllowedValueType
+        ? Empty
+        : T;

@@ -5,9 +5,11 @@
 import { dispatchCustomEvent } from '../dom';
 import { CUSTOM_EVENTS } from '../utils/constants';
 import {
+  Empty,
   GenericArguments,
   GenericFunction,
   MultiLevelObject,
+  PickEmptyType,
   SingleLevelObject,
   TabsData
 } from '../utils/types';
@@ -27,7 +29,8 @@ export { default as isEqual } from 'lodash.isequal';
  * }
  * ```
  */
-export function isEmpty(data: any) {
+export function isEmpty<T extends any>(data: T | Empty): data is PickEmptyType<T> {
+
   try {
     if (data === null || data === undefined || typeof data === 'undefined') {
       return true;
@@ -38,7 +41,7 @@ export function isEmpty(data: any) {
     switch (dataType) {
 
       case 'string':
-        if (data.trim() === '' || data === 'null' || data === null) {
+        if ((data as string).trim() === '' || (data as string) === 'null' || data === null) {
           return true;
         }
 
