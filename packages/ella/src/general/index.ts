@@ -5,6 +5,7 @@
 import { dispatchCustomEvent } from '../dom';
 import { CUSTOM_EVENTS } from '../utils/constants';
 import {
+  AllowedValueType,
   Empty,
   GenericArguments,
   GenericFunction,
@@ -29,7 +30,7 @@ export { default as isEqual } from 'lodash.isequal';
  * }
  * ```
  */
-export function isEmpty<T extends any>(data: T | Empty): data is PickEmptyType<T> {
+export function isEmpty<T extends AllowedValueType>(data: T | Empty): data is PickEmptyType<T> {
 
   try {
     if (data === null || data === undefined || typeof data === 'undefined') {
