@@ -1,7 +1,7 @@
-import React from 'react';
-import cn from 'classnames';
+import React from "react";
+import cn from "classnames";
 
-import './loader.css';
+import "./loader.css";
 
 /*
   Supported dimensions: (
@@ -15,21 +15,17 @@ import './loader.css';
 */
 
 export const LOADER_TYPE = {
-  CIRCULAR: 'circular',
-  CIRCULAR_BOLT: 'circularBolt',
-  CANDLE_STICK: 'candleStick',
-  LINEAR: 'linear'
+  CIRCULAR: "circular",
+  CIRCULAR_BOLT: "circularBolt",
+  CANDLE_STICK: "candleStick",
+  LINEAR: "linear",
 } as const;
-
 
 export class Loader extends React.PureComponent<DefaultProps, {}> {
   static defaultProps: DefaultProps;
 
-
   render() {
-    const {
-      loaderType: type
-    } = this.props;
+    const { loaderType: type } = this.props;
 
     if (type === LOADER_TYPE.CIRCULAR_BOLT) {
       return this.getCirularBoltLoaderUI();
@@ -44,33 +40,28 @@ export class Loader extends React.PureComponent<DefaultProps, {}> {
     }
 
     return this.getCircularLoaderUI();
-
   }
-
 
   getCircularLoaderUI = () => {
     const { borderWidth } = this.props;
 
     const containerClasses = this.getContainerClassName();
-    const loaderClassNames = this.getLoaderClassName('loader14Circular');
+    const loaderClassNames = this.getLoaderClassName("loader14Circular");
 
     return (
       <div className={containerClasses}>
-        <div className={loaderClassNames}
-          style={{ borderWidth }}
-        >
+        <div className={loaderClassNames} style={{ borderWidth }}>
           <div></div>
         </div>
       </div>
     );
-  }
-
+  };
 
   getCirularBoltLoaderUI = () => {
     const { borderWidth } = this.props;
 
     const containerClasses = this.getContainerClassName();
-    const loaderClassNames = this.getLoaderClassName('loader14CircularBolt');
+    const loaderClassNames = this.getLoaderClassName("loader14CircularBolt");
 
     return (
       <div className={containerClasses}>
@@ -80,12 +71,11 @@ export class Loader extends React.PureComponent<DefaultProps, {}> {
         </div>
       </div>
     );
-  }
-
+  };
 
   getCandleStickLoaderUI = () => {
     const containerClasses = this.getContainerClassName();
-    const loaderClassNames = this.getLoaderClassName('loader14CandleStick');
+    const loaderClassNames = this.getLoaderClassName("loader14CandleStick");
 
     return (
       <div className={containerClasses}>
@@ -97,50 +87,49 @@ export class Loader extends React.PureComponent<DefaultProps, {}> {
         </div>
       </div>
     );
-  }
-
+  };
 
   getLinearLoaderUI = () => {
-    const containerClasses = this.getContainerClassName('loader14Linear');
+    const containerClasses = this.getContainerClassName("loader14Linear");
 
     return (
       <div className={containerClasses}>
         <div className="loader14Indeterminate" />
       </div>
     );
-  }
+  };
 
-
-  getContainerClassName = (defaultClass = '') => {
+  getContainerClassName = (defaultClass = "") => {
     const { active } = this.props;
 
-    return cn({
-      'loader': true,
-      'loader14Active': active,
-      'loader14Hidden': !active
-    }, defaultClass);
-  }
+    return cn(
+      {
+        loader14Active: active,
+        loader14Hidden: !active,
+      },
+      defaultClass
+    );
+  };
 
-
-  getLoaderClassName = (defaultClass = '') => {
+  getLoaderClassName = (defaultClass = "") => {
     const { dimension, loaderClassName } = this.props;
 
-    return cn({
-      [ `loader14${dimension}` ]: !!dimension
-    }, [ 'loader14Inner', defaultClass, loaderClassName ]);
-  }
-
+    return cn(
+      {
+        [`loader14${dimension}`]: !!dimension,
+      },
+      ["loader14Inner", defaultClass, loaderClassName]
+    );
+  };
 }
 
-
 Loader.defaultProps = {
-  loaderType: 'circular',
-  loaderClassName: '',
+  loaderType: "circular",
+  loaderClassName: "",
   active: true,
-  dimension: 'BOLT_DEFAULT',
-  borderWidth: '2px'
+  dimension: "BOLT_DEFAULT",
+  borderWidth: "2px",
 };
-
 
 export type DefaultProps = {
   loaderType: ValueOf<typeof LOADER_TYPE>;
@@ -148,6 +137,6 @@ export type DefaultProps = {
   active: boolean;
   dimension: string;
   borderWidth: string | number;
-}
+};
 
 export default Loader;
