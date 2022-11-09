@@ -115,7 +115,6 @@ export class Loader extends React.PureComponent<DefaultProps, {}> {
     const { active } = this.props;
 
     return cn({
-      'loader': true,
       'loader14Active': active,
       'loader14Hidden': !active
     }, defaultClass);
