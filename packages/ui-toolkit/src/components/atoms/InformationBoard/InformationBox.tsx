@@ -38,7 +38,7 @@ const InformationBox = (props: Props) => {
 
   const parentDivClass = cn({
     'valign-wrapper infbd45ParentDiv fs14': true,
-    informationBoxClass: informationBoxClass !== ''
+    [`${informationBoxClass}`]: informationBoxClass !== ''
   });
 
   const parentDivStyle = {
