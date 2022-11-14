@@ -145,7 +145,7 @@ export type DefaultProps = {
   loaderType: ValueOf<typeof LOADER_TYPE>;
   loaderClassName: string;
   active: boolean;
-  dimension: string;
+  dimension: 'SMALL' | 'MEDIUM' | 'LARGE' | 'MEDIUM_LARGE' | 'EXTRA_LARGE' | 'BOLT_DEFAULT';
   borderWidth: string | number;
 }
 
