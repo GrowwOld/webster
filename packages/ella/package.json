@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ella",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Ella is a utility-belt library for JavaScript that provides general purpose methods used in day to day programming.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
