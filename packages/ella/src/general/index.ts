@@ -9,7 +9,7 @@ import {
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData,
+  TabsData
 } from '../utils/types';
 
 export { default as cloneDeep } from 'lodash.clonedeep';
@@ -871,3 +871,55 @@ export const isAllObjectValuesZero = (obj: object) => {
     console.error('Failed with: ', e);
   }
 };
+
+
+/**
+ * Returns object by removing all the null values from an object or a deeply nested object also without mutating the current object
+ *
+ * @param {MultiLevelObject} obj - source object
+ *
+ * @example
+ * ```
+ * const obj = {
+ *  one: null,
+ *  two: 2,
+ *  three: null,
+ *  four: {
+ *     five: null
+ *   }
+ * }
+ *
+ * removeNullProperties(obj)
+ * O/P -
+ * newObj = {
+ *      two: 2,
+ *      four: {}
+ *    }
+ *
+ * ```
+ *
+ * @returns { Object } - Returns a new object without null values
+ */
+export function removeNullProperties(obj: MultiLevelObject) {
+
+  try {
+    const newObj: MultiLevelObject = {};
+
+    getObjectEntries(obj).forEach(([ key, value ]) => {
+      if (value === Object(value)) {
+        newObj[key] = removeNullProperties(value);
+
+      } else if (value != null) {
+        newObj[key] = obj[key];
+      }
+    });
+
+    return newObj;
+
+  } catch (error) {
+
+    console.error(error);
+
+    throw error;
+  }
+}
