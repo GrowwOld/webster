@@ -86,7 +86,9 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
         min={min}
         onKeyDown={_onKeyDown}
         type="number"
-        {...rest}
+        disabled={rest.disabled}
+        value={rest.value}
+        variant={rest.variant}
         onChange={_onChange}
         ref={ref}
       />
