@@ -321,7 +321,6 @@ class AnimateHeight extends React.Component<Props, State> {
         className={componentClasses}
         style={componentStyle}
       >
-        {JSON.stringify(omit(this.props, ...PROPS_TO_OMIT))}
         <div
           className={contentClassName}
           style={contentStyle}
