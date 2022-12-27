@@ -19,7 +19,8 @@ class Button extends React.PureComponent<Props> {
       isDisabled,
       iconPosition,
       showLoader,
-      loadingText
+      loadingText,
+      dataTestId
     } = this.props;
 
     const classname = cn({
@@ -34,7 +35,10 @@ class Button extends React.PureComponent<Props> {
     });
 
     return (
-      <div className={fixToBottom ? 'btn51BottomFixed' : ''}>
+      <div
+        className={fixToBottom ? 'btn51BottomFixed' : ''}
+        data-testid={dataTestId}
+      >
         <div
           className={classname}
           onClick={this.onButtonClick}
@@ -121,7 +125,8 @@ class Button extends React.PureComponent<Props> {
     loadingText: 'Loading...',
     fontSize: '',
     textColor: '',
-    backgroundColor: ''
+    backgroundColor: '',
+    dataTestId: ''
   }
 }
 
@@ -150,6 +155,7 @@ type DefaultProps = {
   loadingText: string;
   fontSize: string | number;
   textColor: string;
+  dataTestId: string;
   /**
   * What background color to use
   */

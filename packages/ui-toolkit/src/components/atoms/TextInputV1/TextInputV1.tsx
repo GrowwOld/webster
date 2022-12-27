@@ -45,6 +45,8 @@ type _TextInputProps = {
   onChange: React.FormEventHandler<HTMLInputElement>;
   clearable?: boolean;
   size?: 'small' | 'medium'| 'large';
+  inputDataTestId?: string;
+  errorDataTestId?: string;
 };
 
 export default TextInputV1;

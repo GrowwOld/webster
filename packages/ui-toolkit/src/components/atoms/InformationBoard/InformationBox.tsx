@@ -33,7 +33,8 @@ const InformationBox = (props: Props) => {
     iconComponent,
     outlined,
     informationBoxClass,
-    informationBoxStyle
+    informationBoxStyle,
+    dataTestId
   } = props;
 
   const parentDivClass = cn({
@@ -60,6 +61,7 @@ const InformationBox = (props: Props) => {
   return (
     <div style={parentDivStyle}
       className={parentDivClass}
+      data-testid={dataTestId}
     >
       {
         showIcon
@@ -82,7 +84,8 @@ const defaultProps: DefaultProps = {
   outlined: false,
   type: 'DEFAULT',
   informationBoxClass: '',
-  informationBoxStyle: {}
+  informationBoxStyle: {},
+  dataTestId: ''
 };
 
 
@@ -102,6 +105,7 @@ type DefaultProps = {
   height: number | 'auto';
   informationBoxClass: string;
   informationBoxStyle: React.CSSProperties;
+  dataTestId: string;
   type: 'DEFAULT' | 'POSITIVE' | 'NEUTRAL' | 'ERROR' | 'WARNING';
 }
 

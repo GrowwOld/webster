@@ -20,7 +20,8 @@ const RadioButton = (props: Props) => {
     labelClassName,
     parentClassName,
     iconClassName,
-    radioDirection
+    radioDirection,
+    dataTestId
   } = props;
 
   const labelParentClassName = cn({
@@ -33,6 +34,7 @@ const RadioButton = (props: Props) => {
   return (
     <div
       onClick={onSelect}
+      data-testid={dataTestId}
       className={`radioCo11Box ${parentClassName} ${radioDirection === RADIO_DIRECTION.RIGHT ? 'radioCo11BoxReverse' : ''}`}
     >
       {
@@ -62,6 +64,7 @@ const defaultProps: DefaultProps = {
   iconClassName: '',
   labelClassName: '',
   parentClassName: 'bas11RadioParent',
+  dataTestId: '',
   radioDirection: RADIO_DIRECTION.LEFT
 };
 
@@ -71,6 +74,7 @@ type DefaultProps = {
   parentClassName: string;
   radioDirection: ValueOf<typeof RADIO_DIRECTION>;
   iconClassName: string;
+  dataTestId: string;
 }
 
 
