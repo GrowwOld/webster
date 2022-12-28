@@ -126,7 +126,7 @@ class Button extends React.PureComponent<Props> {
     fontSize: '',
     textColor: '',
     backgroundColor: '',
-    dataTestId: ''
+    dataTestId: 'button-id'
   }
 }
 

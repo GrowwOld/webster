@@ -104,7 +104,7 @@ Image.defaultProps = {
   handleBrokenImage: '',
   useLazyLoad: true,
   onClick: () => { },
-  dataTestId: ''
+  dataTestId: 'image-id'
 } as DefaultProps;
 
 

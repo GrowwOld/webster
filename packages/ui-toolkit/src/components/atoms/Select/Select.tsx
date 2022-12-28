@@ -200,8 +200,8 @@ Select.defaultProps = {
   optionsParentClass: '',
   activeOptionBoxClass: '',
   onChange: () => {},
-  parentDataTestId: '',
-  optionDataTestId: ''
+  parentDataTestId: 'select-parent-id',
+  optionDataTestId: 'select-option-id'
 } as DefaultProps;
 
 

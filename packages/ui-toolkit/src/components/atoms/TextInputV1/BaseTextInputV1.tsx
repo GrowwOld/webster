@@ -15,8 +15,8 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
     variant = 'default',
     size = 'medium',
     label,
-    inputDataTestId,
-    errorDataTestId,
+    inputDataTestId = 'input-box-id',
+    errorDataTestId = 'error-text-id',
     PrefixComponent,
     SuffixComponent,
     ...rest

@@ -85,7 +85,7 @@ const defaultProps: DefaultProps = {
   type: 'DEFAULT',
   informationBoxClass: '',
   informationBoxStyle: {},
-  dataTestId: ''
+  dataTestId: 'information-box-id'
 };
 
 

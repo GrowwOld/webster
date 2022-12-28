@@ -110,7 +110,7 @@ CheckBox.defaultProps = {
   inActiveColor: 'var(--text)',
   labelComponent: () => null,
   checkBoxDirection: CHECKBOX_DIRECTION.LEFT,
-  dataTestId: ''
+  dataTestId: 'checkbox-id'
 } as DefaultProps;
 
 export type Props = DefaultProps & RequiredProps;

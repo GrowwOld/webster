@@ -64,7 +64,7 @@ const defaultProps: DefaultProps = {
   iconClassName: '',
   labelClassName: '',
   parentClassName: 'bas11RadioParent',
-  dataTestId: '',
+  dataTestId: 'radio-button-id',
   radioDirection: RADIO_DIRECTION.LEFT
 };
 
