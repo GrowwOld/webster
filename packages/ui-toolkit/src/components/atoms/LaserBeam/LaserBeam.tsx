@@ -41,7 +41,8 @@ class LaserBeam extends React.Component<Props, State> {
         width: '0',
         height: props.width,
         background: props.background,
-        transition: 'all 0ms',
+        transitionProperty: 'all',
+        transitionDuration: 0,
         boxShadow: props.noShadow ? 'none' : props.background + ' 0px 0px 10px'
       },
       addonStyle: {
@@ -112,7 +113,8 @@ class LaserBeam extends React.Component<Props, State> {
     if (!show) {
       changedStyle = assign({}, style, {
         width: '0',
-        transition: 'width 0ms'
+        transitionProperty: 'width',
+        transitionDuration: 0
       });
 
       changedAddonStyle = assign({}, addonStyle, {
