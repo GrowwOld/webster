@@ -7,7 +7,7 @@ const ToggleSwitch = (props: Props) => {
   const {
     switchCircleColor, activeBackgroundColor, width,
     inactiveBackgroundColor, onChange, height,
-    isActive, leftText, rightText
+    isActive, leftText, rightText, dataTestId
   } = props;
 
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
@@ -41,6 +41,7 @@ const ToggleSwitch = (props: Props) => {
       {leftText}
       <div style={switchDivStyle}
         className='sw348reactSwitchDivision'
+        data-test-id={dataTestId}
         onClick={(e) => onChange(e)}
       >
         <input
@@ -74,7 +75,8 @@ const defaultProps: DefaultProps = {
   rightText: '',
   inactiveBackgroundColor: 'var(--subText)',
   switchCircleColor: 'var(--constantWhite)',
-  activeBackgroundColor: 'var(--primaryClr)'
+  activeBackgroundColor: 'var(--primaryClr)',
+  dataTestId: ''
 };
 
 
@@ -92,6 +94,7 @@ type DefaultProps = {
   leftText: React.ReactNode;
   rightText: React.ReactNode;
   inactiveBackgroundColor: string;
+  dataTestId: string;
 }
 
 
