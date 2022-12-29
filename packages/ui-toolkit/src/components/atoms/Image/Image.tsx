@@ -6,7 +6,7 @@ import { Theme } from '../../../utils/types/theme';
 
 const Image = (props: Props) => {
   const { src, srcDark, offset, height, addClass, addClassDark,
-    width, alt, useLazyLoad, onClick, dataTestId } = props;
+    width, alt, useLazyLoad, onClick } = props;
 
   let activeSrc = src;
   let activeClass = addClass;
@@ -50,7 +50,6 @@ const Image = (props: Props) => {
           height={height}
           alt={alt}
           onClick={onClick}
-          data-test-id={dataTestId}
         />
       </LazyLoad>
     );
@@ -65,7 +64,6 @@ const Image = (props: Props) => {
         height={height}
         alt={alt}
         onClick={onClick}
-        data-test-id={dataTestId}
       />
     );
   }
@@ -89,7 +87,6 @@ type DefaultProps = {
   onClick: (e: React.MouseEvent<HTMLImageElement>) => void;
   /** prop to determine if we want to use lazyload on image or not, by default it is true*/
   useLazyLoad: boolean;
-  dataTestId: string;
 }
 
 
@@ -103,8 +100,7 @@ Image.defaultProps = {
   addClassDark: '',
   handleBrokenImage: '',
   useLazyLoad: true,
-  onClick: () => { },
-  dataTestId: 'test-id-image'
+  onClick: () => { }
 } as DefaultProps;
 
 

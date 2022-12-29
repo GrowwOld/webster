@@ -36,7 +36,7 @@ class Button extends React.PureComponent<Props> {
     return (
       <div
         className={fixToBottom ? 'btn51BottomFixed' : ''}
-        data-test-id={this.getButtonTestId()}
+        data-test-id={this.getDataTestId()}
       >
         <div
           className={classname}
@@ -85,7 +85,7 @@ class Button extends React.PureComponent<Props> {
   }
 
 
-  getButtonTestId = () => {
+  getDataTestId = () => {
     const { buttonText, dataTestId } = this.props;
     const buttonId = buttonText.toLowerCase().replace(/\s/g, '-') + '-button';
 

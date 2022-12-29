@@ -62,7 +62,7 @@ class Select extends React.PureComponent<Props> {
       optionsParentClass,
       activeOptionBoxClass,
       activeIndex,
-      parentDataTestId,
+      inputDataTestId,
       optionDataTestId
     } = this.props;
 
@@ -82,7 +82,7 @@ class Select extends React.PureComponent<Props> {
             <div className="width100 pos-rel">
               <div
                 className={`pos-rel valign-wrapper se55SelectBox clrText ${activeOptionBoxClass}`}
-                data-test-id={parentDataTestId}
+                data-test-id={inputDataTestId}
               >
                 <div>
                   {selectedOption ? selectedOption.label : placeholder}
@@ -200,7 +200,7 @@ Select.defaultProps = {
   optionsParentClass: '',
   activeOptionBoxClass: '',
   onChange: () => {},
-  parentDataTestId: 'test-id-parent-select',
+  inputDataTestId: '',
   optionDataTestId: 'test-id-option-select'
 } as DefaultProps;
 
@@ -224,7 +224,7 @@ type DefaultProps = {
   /* class for a box in which selected values is shown */
   activeOptionBoxClass: string;
   onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void;
-  parentDataTestId: string;
+  inputDataTestId: string;
   optionDataTestId: string;
 }
 

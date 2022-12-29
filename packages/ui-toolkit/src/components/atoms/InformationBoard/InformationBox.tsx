@@ -59,9 +59,15 @@ const InformationBox = (props: Props) => {
 
 
   const getDataTestId = () => {
-    const testId = type.toLowerCase() + '-information-box';
+    const { dataTestId } = props;
+    const testId = type.toLowerCase().replace(/\s/g, '-') + '-information-box';
 
-    return testId;
+    if (dataTestId) {
+      return dataTestId;
+
+    } else {
+      return testId;
+    }
   };
 
   return (
@@ -89,7 +95,8 @@ const defaultProps: DefaultProps = {
   outlined: false,
   type: 'DEFAULT',
   informationBoxClass: '',
-  informationBoxStyle: {}
+  informationBoxStyle: {},
+  dataTestId: ''
 };
 
 
@@ -109,6 +116,7 @@ type DefaultProps = {
   height: number | 'auto';
   informationBoxClass: string;
   informationBoxStyle: React.CSSProperties;
+  dataTestId: string;
   type: 'DEFAULT' | 'POSITIVE' | 'NEUTRAL' | 'ERROR' | 'WARNING';
 }
 
