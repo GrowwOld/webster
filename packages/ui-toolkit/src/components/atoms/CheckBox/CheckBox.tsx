@@ -69,7 +69,7 @@ const CheckBox = (props: Props) => {
   return (
     <div
       onClick={checkBoxClick}
-      data-testid={dataTestId}
+      data-test-id={dataTestId}
       className={`c11AlignCenter c11Pointer ${addParentClass} ${checkBoxDirection === CHECKBOX_DIRECTION.RIGHT ? 'c11checkOnRight' : ''}`}
     >
       {isChecked ? active_svg : inactive_svg}
@@ -110,7 +110,7 @@ CheckBox.defaultProps = {
   inActiveColor: 'var(--text)',
   labelComponent: () => null,
   checkBoxDirection: CHECKBOX_DIRECTION.LEFT,
-  dataTestId: 'checkbox-id'
+  dataTestId: 'test-id-checkbox'
 } as DefaultProps;
 
 export type Props = DefaultProps & RequiredProps;

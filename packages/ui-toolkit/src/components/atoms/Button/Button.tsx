@@ -19,8 +19,7 @@ class Button extends React.PureComponent<Props> {
       isDisabled,
       iconPosition,
       showLoader,
-      loadingText,
-      dataTestId
+      loadingText
     } = this.props;
 
     const classname = cn({
@@ -37,7 +36,7 @@ class Button extends React.PureComponent<Props> {
     return (
       <div
         className={fixToBottom ? 'btn51BottomFixed' : ''}
-        data-testid={dataTestId}
+        data-test-id={this.getButtonTestId()}
       >
         <div
           className={classname}
@@ -86,6 +85,19 @@ class Button extends React.PureComponent<Props> {
   }
 
 
+  getButtonTestId = () => {
+    const { buttonText, dataTestId } = this.props;
+    const buttonId = buttonText.toLowerCase().replace(/\s/g, '-') + '-button';
+
+    if (dataTestId) {
+      return dataTestId;
+
+    } else {
+      return buttonId;
+    }
+  }
+
+
   getComputedStyle = () => {
     const {
       width,
@@ -126,7 +138,7 @@ class Button extends React.PureComponent<Props> {
     fontSize: '',
     textColor: '',
     backgroundColor: '',
-    dataTestId: 'button-id'
+    dataTestId: ''
   }
 }
 

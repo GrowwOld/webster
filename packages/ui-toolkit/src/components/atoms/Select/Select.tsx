@@ -82,7 +82,7 @@ class Select extends React.PureComponent<Props> {
             <div className="width100 pos-rel">
               <div
                 className={`pos-rel valign-wrapper se55SelectBox clrText ${activeOptionBoxClass}`}
-                data-testid={parentDataTestId}
+                data-test-id={parentDataTestId}
               >
                 <div>
                   {selectedOption ? selectedOption.label : placeholder}
@@ -111,7 +111,7 @@ class Select extends React.PureComponent<Props> {
                       <div
                         key={`selectOption-${index}`}
                         ref={this.optionsRefArr[index]}
-                        data-testid={optionDataTestId}
+                        data-test-id={optionDataTestId}
                         className={
                           cn('se55DropdownPara', {
                             'se55DropdownParaHover': activeIndex === index,
@@ -200,8 +200,8 @@ Select.defaultProps = {
   optionsParentClass: '',
   activeOptionBoxClass: '',
   onChange: () => {},
-  parentDataTestId: 'select-parent-id',
-  optionDataTestId: 'select-option-id'
+  parentDataTestId: 'test-id-parent-select',
+  optionDataTestId: 'test-id-option-select'
 } as DefaultProps;
 
 

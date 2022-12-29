@@ -50,7 +50,7 @@ const Image = (props: Props) => {
           height={height}
           alt={alt}
           onClick={onClick}
-          data-testid={dataTestId}
+          data-test-id={dataTestId}
         />
       </LazyLoad>
     );
@@ -65,7 +65,7 @@ const Image = (props: Props) => {
         height={height}
         alt={alt}
         onClick={onClick}
-        data-testid={dataTestId}
+        data-test-id={dataTestId}
       />
     );
   }
@@ -104,7 +104,7 @@ Image.defaultProps = {
   handleBrokenImage: '',
   useLazyLoad: true,
   onClick: () => { },
-  dataTestId: 'image-id'
+  dataTestId: 'test-id-image'
 } as DefaultProps;
 
 

@@ -33,8 +33,7 @@ const InformationBox = (props: Props) => {
     iconComponent,
     outlined,
     informationBoxClass,
-    informationBoxStyle,
-    dataTestId
+    informationBoxStyle
   } = props;
 
   const parentDivClass = cn({
@@ -58,10 +57,17 @@ const InformationBox = (props: Props) => {
     className: 'clrText infbd45InfoIcon'
   };
 
+
+  const getDataTestId = () => {
+    const testId = type.toLowerCase() + '-information-box';
+
+    return testId;
+  };
+
   return (
     <div style={parentDivStyle}
       className={parentDivClass}
-      data-testid={dataTestId}
+      data-test-id={getDataTestId()}
     >
       {
         showIcon
@@ -75,7 +81,6 @@ const InformationBox = (props: Props) => {
   );
 };
 
-
 const defaultProps: DefaultProps = {
   showIcon: true,
   iconComponent: (props: ReactIconProps) => <Info {...props} />,
@@ -84,8 +89,7 @@ const defaultProps: DefaultProps = {
   outlined: false,
   type: 'DEFAULT',
   informationBoxClass: '',
-  informationBoxStyle: {},
-  dataTestId: 'information-box-id'
+  informationBoxStyle: {}
 };
 
 
@@ -105,7 +109,6 @@ type DefaultProps = {
   height: number | 'auto';
   informationBoxClass: string;
   informationBoxStyle: React.CSSProperties;
-  dataTestId: string;
   type: 'DEFAULT' | 'POSITIVE' | 'NEUTRAL' | 'ERROR' | 'WARNING';
 }
 

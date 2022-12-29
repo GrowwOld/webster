@@ -15,8 +15,8 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
     variant = 'default',
     size = 'medium',
     label,
-    inputDataTestId = 'input-box-id',
-    errorDataTestId = 'error-text-id',
+    inputDataTestId = 'test-id-input-box',
+    errorDataTestId = 'test-id-input-error-text',
     PrefixComponent,
     SuffixComponent,
     ...rest
@@ -36,7 +36,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
           {PrefixComponent && <TrailingVisContainer variant={variant}>{PrefixComponent()}</TrailingVisContainer>}
           <PrimaryInput
             ref={ref}
-            data-testid={inputDataTestId}
+            data-test-id={inputDataTestId}
             className={calculateInputClass(size)}
             onCopy={onCopy}
             onPaste={onPaste}
@@ -54,7 +54,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
 
         <ErrorLabel
           className='fs14 fw400'
-          data-testid={errorDataTestId}
+          data-test-id={errorDataTestId}
           error={error ? true : false}
         >
           {error}
@@ -65,7 +65,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
         <ErrorLabel
           className='fs14 fw400'
           error={error ? true : false}
-          data-testid={errorDataTestId}
+          data-test-id={errorDataTestId}
         >
           {error}
         </ErrorLabel>

@@ -104,6 +104,7 @@ class Rodal extends React.Component<Props, State> {
     } = this.props;
 
     const CloseButton = showCloseButton ? <span className="rodal-close"
+      data-test-id='rodal-close-icon'
       onClick={onClose}
     /> : null;
 
