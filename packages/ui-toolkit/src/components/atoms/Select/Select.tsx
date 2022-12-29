@@ -62,8 +62,7 @@ class Select extends React.PureComponent<Props> {
       optionsParentClass,
       activeOptionBoxClass,
       activeIndex,
-      inputDataTestId,
-      optionDataTestId
+      dataTestId
     } = this.props;
 
     let selectedOption = null;
@@ -82,7 +81,6 @@ class Select extends React.PureComponent<Props> {
             <div className="width100 pos-rel">
               <div
                 className={`pos-rel valign-wrapper se55SelectBox clrText ${activeOptionBoxClass}`}
-                data-test-id={inputDataTestId}
               >
                 <div>
                   {selectedOption ? selectedOption.label : placeholder}
@@ -98,6 +96,7 @@ class Select extends React.PureComponent<Props> {
                   aria-hidden="true"
                   tabIndex={-1}
                   className="se55Input"
+                  data-test-id={dataTestId}
                 />
               </div>
 
@@ -111,7 +110,7 @@ class Select extends React.PureComponent<Props> {
                       <div
                         key={`selectOption-${index}`}
                         ref={this.optionsRefArr[index]}
-                        data-test-id={optionDataTestId}
+                        data-test-id={index + '-' + dataTestId}
                         className={
                           cn('se55DropdownPara', {
                             'se55DropdownParaHover': activeIndex === index,
@@ -200,8 +199,7 @@ Select.defaultProps = {
   optionsParentClass: '',
   activeOptionBoxClass: '',
   onChange: () => {},
-  inputDataTestId: '',
-  optionDataTestId: 'test-id-option-select'
+  dataTestId: ''
 } as DefaultProps;
 
 
@@ -224,8 +222,7 @@ type DefaultProps = {
   /* class for a box in which selected values is shown */
   activeOptionBoxClass: string;
   onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void;
-  inputDataTestId: string;
-  optionDataTestId: string;
+  dataTestId: string;
 }
 
 export type Props = RequiredProps & DefaultProps;
