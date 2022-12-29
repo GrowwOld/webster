@@ -9,7 +9,6 @@
     "dist",
     "types"
   ],
-
   "sideEffects": false,
   "repository": {
     "type": "git",
@@ -25,16 +24,16 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/react-charts#readme",
   "scripts": {
-      "build": "npm run build:commonjs && npm run build:types",
-      "build:commonjs": "rimraf ./dist && rollup -c",
-      "build:types": "rimraf ./types && tsc --project ./tsconfig.types.json",
-      "watch": "npm run watch:commonjs && npm run watch:types",
-      "watch:commonjs": "rimraf ./dist && cross-env BABEL_ENV=commonjs babel --watch --extensions .ts,.tsx ./src --out-dir dist",
-      "watch:types": "rimraf ./types && tsc --watch --project ./tsconfig.types.json",
-      "now-build": "npm i && npm run build",
-      "start": "npm run watch",
-      "stats": "open ./stats.html",
-      "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a react-charts-v$PACKAGE_VERSION -m \"@groww-tech/react-charts-v$PACKAGE_VERSION\" && git push --tags"
+    "build": "npm run build:commonjs && npm run build:types",
+    "build:commonjs": "rimraf ./dist && rollup -c",
+    "build:types": "rimraf ./types && tsc --project ./tsconfig.types.json",
+    "watch": "npm run watch:commonjs && npm run watch:types",
+    "watch:commonjs": "rimraf ./dist && cross-env BABEL_ENV=commonjs babel --watch --extensions .ts,.tsx ./src --out-dir dist",
+    "watch:types": "rimraf ./types && tsc --watch --project ./tsconfig.types.json",
+    "now-build": "npm i && npm run build",
+    "start": "npm run watch",
+    "stats": "open ./stats.html",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a react-charts-v$PACKAGE_VERSION -m \"@groww-tech/react-charts-v$PACKAGE_VERSION\" && git push --tags"
   },
   "publishConfig": {
     "access": "public"

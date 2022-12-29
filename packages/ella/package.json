@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ella",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Ella is a utility-belt library for JavaScript that provides general purpose methods used in day to day programming.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -68,10 +68,10 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "react": "^16.12.0"
+    "react": "^16.12.0 || ^17.0.0"
   },
   "dependencies": {
-    "dayjs": "^1.10.7",
+    "dayjs": "1.10.7",
     "lodash.clonedeep": "^4.5.0",
     "lodash.isequal": "^4.5.0",
     "react-helmet": "^6.1.0"
