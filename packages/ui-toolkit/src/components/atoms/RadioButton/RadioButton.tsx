@@ -34,7 +34,7 @@ const RadioButton = (props: Props) => {
   return (
     <div
       onClick={onSelect}
-      data-test-id={dataTestId}
+      data-test-id={dataTestId.length ? dataTestId : null}
       className={`radioCo11Box ${parentClassName} ${radioDirection === RADIO_DIRECTION.RIGHT ? 'radioCo11BoxReverse' : ''}`}
     >
       {

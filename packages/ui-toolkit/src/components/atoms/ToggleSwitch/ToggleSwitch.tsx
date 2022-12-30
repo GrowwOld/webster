@@ -41,7 +41,7 @@ const ToggleSwitch = (props: Props) => {
       {leftText}
       <div style={switchDivStyle}
         className='sw348reactSwitchDivision'
-        data-test-id={dataTestId}
+        data-test-id={dataTestId.length ? dataTestId : null}
         onClick={(e) => onChange(e)}
       >
         <input

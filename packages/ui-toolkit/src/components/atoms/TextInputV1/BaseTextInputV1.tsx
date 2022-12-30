@@ -36,7 +36,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
           {PrefixComponent && <TrailingVisContainer variant={variant}>{PrefixComponent()}</TrailingVisContainer>}
           <PrimaryInput
             ref={ref}
-            data-test-id={inputDataTestId}
+            data-test-id={inputDataTestId.length ? inputDataTestId : null}
             className={calculateInputClass(size)}
             onCopy={onCopy}
             onPaste={onPaste}
@@ -54,7 +54,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
 
         <ErrorLabel
           className='fs14 fw400'
-          data-test-id={errorDataTestId}
+          data-test-id={errorDataTestId.length ? errorDataTestId : null}
           error={error ? true : false}
         >
           {error}
@@ -65,7 +65,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
         <ErrorLabel
           className='fs14 fw400'
           error={error ? true : false}
-          data-test-id={errorDataTestId}
+          data-test-id={errorDataTestId.length ? errorDataTestId : null}
         >
           {error}
         </ErrorLabel>

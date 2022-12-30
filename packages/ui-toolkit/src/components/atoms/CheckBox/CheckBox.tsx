@@ -69,7 +69,7 @@ const CheckBox = (props: Props) => {
   return (
     <div
       onClick={checkBoxClick}
-      data-test-id={dataTestId}
+      data-test-id={dataTestId.length ? dataTestId : null}
       className={`c11AlignCenter c11Pointer ${addParentClass} ${checkBoxDirection === CHECKBOX_DIRECTION.RIGHT ? 'c11checkOnRight' : ''}`}
     >
       {isChecked ? active_svg : inactive_svg}

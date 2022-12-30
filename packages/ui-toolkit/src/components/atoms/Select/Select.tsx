@@ -96,7 +96,7 @@ class Select extends React.PureComponent<Props> {
                   aria-hidden="true"
                   tabIndex={-1}
                   className="se55Input"
-                  data-test-id={dataTestId}
+                  data-test-id={dataTestId.length ? dataTestId : null}
                 />
               </div>
 
@@ -110,7 +110,7 @@ class Select extends React.PureComponent<Props> {
                       <div
                         key={`selectOption-${index}`}
                         ref={this.optionsRefArr[index]}
-                        data-test-id={index + '-' + dataTestId}
+                        data-test-id={dataTestId.length ? index + '-' + dataTestId : null}
                         className={
                           cn('se55DropdownPara', {
                             'se55DropdownParaHover': activeIndex === index,

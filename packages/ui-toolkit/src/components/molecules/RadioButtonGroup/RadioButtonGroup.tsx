@@ -28,7 +28,7 @@ const RadioButtonGroup = (props: Props) => {
                 labelClassName={item.labelClassName}
                 parentClassName={item.parentClassName}
                 radioDirection={item.radioDirection}
-                dataTestId={index + '-' + dataTestId + '-radio-button'}
+                dataTestId= {dataTestId ? index + '-' + dataTestId + '-radio-button' : ''}
               />
             </div>
           );

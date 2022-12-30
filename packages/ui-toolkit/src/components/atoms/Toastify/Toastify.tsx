@@ -50,7 +50,7 @@ class Toastify extends React.PureComponent<Props, State> {
 
     return (
       <div
-        data-test-id={dataTestId}
+        data-test-id={dataTestId?.length ? dataTestId : null}
         className={
           cn('sb10Toastify', {
             'sb10ToastifyShow': open,
