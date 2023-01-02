@@ -36,6 +36,7 @@ const PasswordTrailingVisual = ({ type, setType }:{type:string | undefined; setT
     return (
       <Visibility
         onClick={setType}
+        data-test-id='visibility-icon'
         size={18}
       />
     );
@@ -44,6 +45,7 @@ const PasswordTrailingVisual = ({ type, setType }:{type:string | undefined; setT
   return (
     <VisibilityOff
       onClick={setType}
+      data-test-id='visibility-off-icon'
       size={18}
     />
   );

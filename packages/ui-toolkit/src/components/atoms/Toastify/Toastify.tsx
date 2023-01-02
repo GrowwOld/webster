@@ -46,10 +46,11 @@ class Toastify extends React.PureComponent<Props, State> {
 
   render() {
     const { open, msg } = this.state;
-    const { msgType, position, showCloseBtn } = this.props;
+    const { msgType, position, showCloseBtn, dataTestId } = this.props;
 
     return (
       <div
+        data-test-id={dataTestId?.length ? dataTestId : null}
         className={
           cn('sb10Toastify', {
             'sb10ToastifyShow': open,
@@ -110,6 +111,7 @@ type Props = {
   position?: string;
   showCloseBtn?: boolean;
   autoClose?: boolean;
+  dataTestId?: string;
 };
 
 
@@ -124,7 +126,8 @@ Toastify.defaultProps = {
   msgType: TOASTIFY_TYPE.INFO,
   position: TOASTIFY_POSITION.BOTTOM,
   showCloseBtn: false,
-  autoClose: true
+  autoClose: true,
+  dataTestId: ''
 };
 
 export default Toastify;
