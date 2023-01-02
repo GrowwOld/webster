@@ -33,7 +33,8 @@ const InformationBox = (props: Props) => {
     iconComponent,
     outlined,
     informationBoxClass,
-    informationBoxStyle
+    informationBoxStyle,
+    dataTestId
   } = props;
 
   const parentDivClass = cn({
@@ -58,22 +59,10 @@ const InformationBox = (props: Props) => {
   };
 
 
-  const getDataTestId = () => {
-    const { dataTestId } = props;
-    const testId = type.toLowerCase().replace(/\s/g, '-') + '-information-box';
-
-    if (dataTestId) {
-      return dataTestId;
-
-    } else {
-      return testId;
-    }
-  };
-
   return (
     <div style={parentDivStyle}
       className={parentDivClass}
-      data-test-id={getDataTestId()}
+      data-test-id={dataTestId.length ? dataTestId : null}
     >
       {
         showIcon
