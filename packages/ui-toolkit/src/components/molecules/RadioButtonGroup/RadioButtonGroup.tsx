@@ -8,7 +8,8 @@ import './radioButtonGroup.css';
 
 const RadioButtonGroup = (props: Props) => {
 
-  const { radioButtons, containerClassName, onSelect, selected, ...restProps } = props;
+  const { radioButtons, containerClassName,
+    dataTestId, onSelect, selected, ...restProps } = props;
 
   return (
     <div id="container"
@@ -27,6 +28,7 @@ const RadioButtonGroup = (props: Props) => {
                 labelClassName={item.labelClassName}
                 parentClassName={item.parentClassName}
                 radioDirection={item.radioDirection}
+                dataTestId= {dataTestId ? index + '-' + dataTestId + '-radio-button' : ''}
               />
             </div>
           );
@@ -38,12 +40,14 @@ const RadioButtonGroup = (props: Props) => {
 
 
 const defaultProps: DefaultProps = {
-  containerClassName: ''
+  containerClassName: '',
+  dataTestId: ''
 };
 
 
 type DefaultProps = {
   containerClassName: string;
+  dataTestId: string;
 }
 
 
