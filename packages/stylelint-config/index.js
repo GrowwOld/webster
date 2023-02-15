@@ -7,7 +7,6 @@ module.exports = {
   "rules": {
     "declaration-no-important": [true, { "severity": "warning" }],
     "rule-empty-line-before": ["always", { "severity": "warning" }],
-    "selector-class-pattern": null,
     "selector-id-pattern": null,
     "custom-property-pattern": null,
     "keyframes-name-pattern": null,
