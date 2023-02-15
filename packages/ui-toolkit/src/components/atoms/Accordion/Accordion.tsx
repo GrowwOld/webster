@@ -156,7 +156,8 @@ const MutableAccordion = (props: Props) => {
         : <div style={
           {
             ...childStyle,
-            display: 'grid' // to ensure margin is included in the height of the parent container, flex has some issues.
+            display: 'grid', // to ensure margin is included in the height of the parent container, flex has some issues.,
+            gridTemplateColumns: '100%' // to ensure no overflow in x direction
           }
         }
         className={childClass}

@@ -22,7 +22,17 @@ export const PROPS_TO_OMIT = [
   'easing',
   'height',
   'onAnimationEnd',
-  'onAnimationStart'
+  'onAnimationStart',
+  'onMountOpen',
+  'showRightIcon',
+  'parentClass',
+  'headerClass',
+  'iconClass',
+  'titleClass',
+  'useAnimateHeight',
+  'mutable',
+  'onToggleCallback',
+  'maxHeight'
 ];
 
 
