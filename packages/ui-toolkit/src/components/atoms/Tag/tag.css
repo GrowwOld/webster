@@ -1,0 +1,25 @@
+.tg11Container {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  padding: 3px 10px;
+  overflow: hidden;
+  border-radius: 4px;
+  min-height: 30px;
+  -webkit-font-smoothing: auto;
+}
+
+.tg11Warning {
+  background-color: var(--growwYellow10);
+  color: var(--text);
+}
+
+.tg11Error {
+  background-color: var(--growwRed10);
+  color: var(--text);
+}
+
+.tg11Info {
+  background-color: var(--primaryClr10);
+  color: var(--text);
+}

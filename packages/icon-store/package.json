@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/icon-store",
-  "version": "1.3.0",
+  "version": "1.3.7",
   "description": "Icon Library customized for use in Groww",
   "files": [
     "mi",
@@ -10,6 +10,10 @@
   ],
   "types": "types.d.ts",
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
   "scripts": {
     "generate": "run-p generate:*",
     "generate:mi": "rm -rf mi && mkdir mi && svgr -d mi svgs/mi",
@@ -46,9 +50,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/Groww/icon-store/issues"
+    "url": "https://github.com/Groww/webster/issues"
   },
-  "homepage": "https://github.com/Groww/icon-store#readme",
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/icon-store#readme",
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-runtime": "^7.15.0",
@@ -61,6 +65,7 @@
     "terser": "^5.9.0"
   },
   "peerDependencies": {
-    "react": "^16.12.0"
+    "react": "^16.12.0 || ^17.0.0",
+    "react-dom": "^16.12.0 || ^17.0.0"
   }
 }

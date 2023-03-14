@@ -1,0 +1,45 @@
+.ac11Hidden {
+  /* max-height: 0; */
+  overflow: hidden;
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  transition: height 0.5s;
+
+
+  /* transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); */
+}
+
+.ac11Show {
+  overflow: hidden;
+  /* max-height: max-content; */
+  -webkit-transition: height 0.5s;
+  -moz-transition: height 0.5s;
+  transition: height 0.5s;
+
+  /* transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); */
+}
+
+.ac11RevealComplete {
+  overflow: visible;
+}
+
+.ac11collapsibleOpen {
+  transform: rotate(180deg);
+}
+
+.ac11collapsibleClose {
+  transform: rotate(0deg);
+}
+
+.ac11Icon {
+  width: 20px;
+  transition: transform 300ms linear;
+}
+
+.ac11Title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin: 0;
+}

@@ -62,7 +62,7 @@ body {
 }
 
 a {
-  color: var(--secondaryClr);
+  color: var(--primaryClr);
   text-decoration: none;
 }
 

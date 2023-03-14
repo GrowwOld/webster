@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/stylelint-config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Groww/stylelint-config.git"
+    "url": "git+https://github.com/Groww/webster"
   },
   "keywords": [
     "stylelint",
@@ -36,9 +36,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Groww/stylelint-config/issues"
+    "url": "https://github.com/Groww/webster/issues"
   },
-  "homepage": "https://github.com/Groww/stylelint-config#readme",
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/stylelint-config#readme",
   "dependencies": {
     "stylelint-config-standard": "^25.0.0",
     "stylelint-declaration-strict-value": "^1.8.0",

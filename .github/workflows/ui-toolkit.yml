@@ -1,0 +1,54 @@
+name: UI-TOOLKIT-BUILD
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/ui-toolkit/**'
+env:
+  package_dir: 'packages'
+  package_name: 'ui-toolkit'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.0
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/cache@v2
+        with:
+          path: '~/.npm'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Check package version
+        id: cpv
+        uses: PostHog/check-package-version@v2
+        with:
+          path: '${{env.package_dir}}/${{env.package_name}}'
+
+      - name: Echo output
+        run: |
+          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
+          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
+          echo "Is new version: ${{ steps.cpv.outputs.is-new-version }}"
+
+      - run: |
+          git config --global user.email "release-bot@groww.in"
+          git config --global user.name "github-bot"
+          
+      - run: |
+          npm ci
+          npm run build -- --scope="@groww-tech/${{env.package_name}}"
+
+
+      - if: steps.cpv.outputs.is-new-version == 'true'
+        uses: ./.github/workflows/actions/npm_publish
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}} 
+          npm_token: ${{secrets.NPM_TOKEN}}
+          path: './${{env.package_dir}}/${{env.package_name}}'

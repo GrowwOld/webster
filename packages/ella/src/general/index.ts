@@ -780,3 +780,146 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
     return object;
   }
 }
+
+
+/**
+ * Returns object or array by parsing the string passed based on the parsed type
+ *
+ * @param {string} filter - source string
+ * @param {string[]} defaultValue - [] or {}
+ *
+ * @example
+ *
+ * getEntityFiltersFromJSONString('['age', 'title']',[]);
+ * // ['age', 'title']
+ *
+ * @returns {Object | Array} - parsed object or array from the string passed
+ */
+export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Object | [] = []) => {
+  try {
+    const parsedFilters = JSON.parse(filter);
+    const isObject = typeof parsedFilters === 'object' && parsedFilters !== null;
+
+    if (isObject || Array.isArray(parsedFilters)) {
+      return parsedFilters;
+    }
+
+    return defaultValue;
+
+  } catch (e) {
+    return defaultValue;
+  }
+};
+
+
+/**
+ * This method is a wrapper over JSON.parse which catches any exceptions if comes
+ *
+ * @param {string} parameter - source string
+ * @param {string} fallback - default value is ''
+ * @param {(this: any, key: string, value: any) => any} reviver - this is the reviver method of JSON.parse.
+ * Read MDN docs for more on the reviver method:
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#using_the_reviver_parameter
+ *
+ * @example
+ *
+ * parseJSON('{a:'b'}')
+ *
+ * @returns {Object | Array} - parsed object or array from the string passed
+ */
+export const parseJSON = (parameter: string, fallback = '', reviver?: (this: any, key: string, value: any) => any) => {
+  try {
+    return JSON.parse(parameter, reviver);
+
+  } catch (exception) {
+    return fallback;
+  }
+};
+
+
+/*
+ * Strictly check if all values in an object is 0.
+ *
+ * @function
+ * @since ella:0.2.0
+ * @param object
+ * @returns boolean
+ * @remarks
+ * Currently the function does not support nested objects.
+ *
+ * @example
+ * ```
+ * isAllObjectValuesZero({ key1: 0, key2: 0, key3: 0 }) // true
+ * isAllObjectValuesZero({ key1: '0', key2: 0, key3: 0 }) // false
+ * isAllObjectValuesZero({ key1: 'some value', key2: 0, key3: 0 }) // false
+ * isAllObjectValuesZero(null) // true
+ * isAllObjectValuesZero(undefined) // true
+ * isAllObjectValuesZero({}) // true
+ * isAllObjectValuesZero({ key1: 0, key2: 0, key3: { key4: 0 } }) // false
+ *
+ * ```
+ */
+export const isAllObjectValuesZero = (obj: object) => {
+  try {
+    if (obj === null || typeof obj === 'undefined') {
+      return true;
+    }
+
+    return Object.values(obj).every(val => val === 0);
+
+  } catch (e) {
+    console.error('Failed with: ', e);
+  }
+};
+
+
+/**
+ * Returns object by removing all the null values from an object or a deeply nested object also without mutating the current object
+ *
+ * @param {MultiLevelObject} obj - source object
+ *
+ * @example
+ * ```
+ * const obj = {
+ *  one: null,
+ *  two: 2,
+ *  three: null,
+ *  four: {
+ *     five: null
+ *   }
+ * }
+ *
+ * removeNullProperties(obj)
+ * O/P -
+ * newObj = {
+ *      two: 2,
+ *      four: {}
+ *    }
+ *
+ * ```
+ *
+ * @returns { Object } - Returns a new object without null values
+ */
+export function removeNullProperties(obj: MultiLevelObject) {
+
+  try {
+    const newObj: MultiLevelObject = {};
+
+    getObjectEntries(obj).forEach(([ key, value ]) => {
+      if (value === Object(value)) {
+        newObj[key] = removeNullProperties(value);
+
+      } else if (value != null) {
+        newObj[key] = obj[key];
+      }
+    });
+
+    return newObj;
+
+  } catch (error) {
+
+    console.error(error);
+
+    throw error;
+  }
+}

@@ -3,8 +3,8 @@
  */
 
 import dayjs from 'dayjs';
-import { dispatchCustomEvent } from '../dom';
 
+import { dispatchCustomEvent } from '../dom';
 import { isEmpty } from '../general';
 import { CUSTOM_EVENTS } from '../utils/constants';
 
@@ -427,4 +427,30 @@ export function isAgeMinor(dob: string) {
   }
 
   return false;
+}
+
+
+/** This function return the current date and time in IST format
+ *
+ * @param {number} timeOffset - time to be added to current time
+ *
+ * @example
+ * ```
+ * getISTDateTime();  // Current IST time and date
+ * ```
+ * */
+export function getISTDateTime(timeOffset = 0) {
+  const systemTime = new Date();
+  const currentTime = new Date(systemTime.getTime() + timeOffset);
+
+  // using any for now, github issue link: https://github.com/iamkun/dayjs/issues/1617
+  const ISTVal = (dayjs as any).tz(currentTime, 'Asia/Kolkata');
+
+  const ISTDate = ISTVal.format('YYYY-MM-DD');
+  const ISTTime = ISTVal.format('HH:mm:ss');
+
+  return {
+    ISTDate,
+    ISTTime
+  };
 }

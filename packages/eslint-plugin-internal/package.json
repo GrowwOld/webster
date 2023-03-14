@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/eslint-plugin-internal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "ESLint Plugin with customized rules as per requirement and preferences of devs in Groww.",
   "keywords": [
     "eslint",
@@ -14,6 +14,10 @@
     "jsx",
     "standard"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
   "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
   "contributors": [
     {
@@ -40,7 +44,12 @@
   "devDependencies": {
     "@typescript-eslint/parser": "^4.24.0",
     "eslint": "^7.1.0",
-    "mocha": "^7.2.0"
+    "mocha": "^7.2.0",
+    "jsx-ast-utils": "^3.3.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Groww/webster/issues"
+  },
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/eslint-plugin-internal#readme"
 }
