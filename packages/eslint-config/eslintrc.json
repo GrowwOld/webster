@@ -24,6 +24,7 @@
     "es6": true
   },
   "rules": {
+    "import/no-duplicates":"warn",
     "react-hooks/exhaustive-deps": "warn",
     "@groww-tech/internal/padded-blocks-bottom-if-else-try-catch": "warn",
     "@groww-tech/internal/prefer-type-alias": "warn",
