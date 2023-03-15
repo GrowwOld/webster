@@ -29,6 +29,7 @@ This monorepo contains the following packages:
 - `eslint-plugin-internal`: ESLint Plugin with customized rules as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal.svg)](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal)
 - `stylelint-config`: Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fstylelint-config.svg)](https://badge.fury.io/js/@groww-tech%2Fstylelint-config)
 - `ui-toolkit`: Standard UI Library adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fui-toolkit.svg)](https://badge.fury.io/js/@groww-tech%2Fui-toolkit)
+- `web-storage`: Web Storage is a service used that exposes methods to get full control over storage mechanisms available via bucketing.
 
 
 ### Getting Started

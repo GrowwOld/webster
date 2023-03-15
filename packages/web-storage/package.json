@@ -1,0 +1,51 @@
+{
+  "name": "@groww-tech/web-storage",
+  "version": "0.1.1",
+  "description": "Web Storage is a service used that exposes methods to get full control over storage mechanisms available via bucketing.",
+  "main": "src/index.js",
+  "files": [
+    "/dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
+  "scripts": {
+  },
+  "keywords": [
+    "storage",
+    "local storage",
+    "bucketing",
+    "groww",
+    "web service"
+  ],
+  "author": "Groww Core Team <web-core@groww.in>",
+  "contributors": [
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    },{
+      "name": "Tushar",
+      "url": "https://www.linkedin.com/in/tusharsehwag/"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Groww/webster/issues"
+  },
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/web-storage#readme",
+  "devDependencies": {
+    "@groww-tech/eslint-config": "^1.0.4",
+    "@groww-tech/tsconfig": "^1.0.0",
+    "@types/js-cookie": "3.0.2",
+    "eslint": "7.26.0",
+    "typescript": "4.4.4"
+  },
+  "dependencies": {
+    "js-cookie": "2.2.1"
+  }
+}
