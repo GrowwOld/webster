@@ -18,6 +18,9 @@
  * @internal
  */
 
+import { clearBucketStorage } from './index';
+import { BUCKETS_AVAILABLE } from './constants';
+
 
 // Suffix for the key name on the expiration items in localStorage
 const CACHE_SUFFIX = '-exptime';
@@ -26,9 +29,8 @@ const CACHE_SUFFIX = '-exptime';
 const EXPIRY_RADIX = 10;
 
 // time resolution in milliseconds
-let expiryMilliseconds = 60 * 1000; // 1 minute
+const expiryMilliseconds = 60 * 1000; // 1 minute
 // ECMAScript max Date (epoch + 1e8 days)
-let maxDate = calculateMaxDate(expiryMilliseconds);
 
 let cachedJSON : any;
 const cacheBucket = '';
@@ -198,11 +200,6 @@ function warn(message: string, err: any) {
   if (err) window.console.warn('localStorageInstance - The error was: ' + err.message);
 }
 
-
-function calculateMaxDate(expiryMilliseconds: number) {
-  return Math.floor(8.64e15 / expiryMilliseconds);
-}
-
 const localStorageInstance = {
 
   /**
@@ -234,46 +231,13 @@ const localStorageInstance = {
 
     } catch (e) {
       if (isOutOfSpace(e)) {
-        // If we exceeded the quota, then we will sort
-        // by the expire time, and then remove the N oldest
-        const storedKeys:any = [];
-        let storedKey;
-
-        eachKey(function(key: string, exprKey: string) {
-          let expiration: string | number | null = getItem(exprKey);
-
-          if (expiration) {
-            expiration = parseInt(expiration, EXPIRY_RADIX);
-
-          } else {
-            // TODO: Store date added for non-expiring items for smarter removal
-            expiration = maxDate;
-          }
-
-          storedKeys.push({
-            key: key,
-            size: (getItem(key) || '').length,
-            expiration: expiration
-          });
-        });
-        // Sorts the keys with oldest expiration time last
-        storedKeys.sort(function(a: any, b: any) { return (b.expiration - a.expiration); });
-
-        let targetSize = (value || '').length;
-
-        while (storedKeys.length && targetSize > 0) {
-          storedKey = storedKeys.pop();
-          warn('Cache is full, removing item with key \'' + storedKey.key + '\'', '');
-          flushItem(storedKey.key);
-          targetSize -= storedKey.size;
-        }
-
+        clearBucketStorage(BUCKETS_AVAILABLE.OTHERS);
         try {
           setItem(key, value);
 
-        } catch (e) {
-          // value may be larger than total quota
-          warn('Could not add item with key \'' + key + '\', perhaps it\'s too big?', e);
+        } catch {
+          // Still not able to add probably becuase the object size is too big.
+          warn('Item size larger then LS \'' + key + '\'', e);
           return false;
         }
 
@@ -364,29 +328,6 @@ const localStorageInstance = {
     eachKey(function(key: string) {
       flushExpiredItem(key);
     });
-  },
-
-  /**
-  * @returns {number} The currently set number of milliseconds each time unit represents in
-  *   the set() function's "time" argument.
-  */
-  getExpiryMilliseconds: function() {
-    return expiryMilliseconds;
-  },
-
-  /**
-  * Sets the number of milliseconds each time unit represents in the set() function's
-  *   "time" argument.
-  * Sample values:
-  *  1: each time unit = 1 millisecond
-  *  1000: each time unit = 1 second
-  *  60000: each time unit = 1 minute (Default value)
-  *  360000: each time unit = 1 hour
-  * @param {number} milliseconds
-  */
-  setExpiryMilliseconds: function(milliseconds: number) {
-    expiryMilliseconds = milliseconds;
-    maxDate = calculateMaxDate(expiryMilliseconds);
   },
 
   /**

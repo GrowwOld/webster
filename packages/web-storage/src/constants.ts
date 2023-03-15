@@ -1,7 +1,6 @@
 export const BUCKETS_AVAILABLE = {
   PERSISTED: 'PERSISTED',
   AUTH: 'AUTH',
-  USER: 'USER',
   OTHERS: 'OTHERS'
 };
 
