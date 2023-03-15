@@ -83,9 +83,11 @@ function supportsStorage() {
 // Check to set if the error is us dealing with being out of space
 function isOutOfSpace(e: any) {
   return e && (
+    e.code === 22 || //everything apart from firefox
+    e.code === 1014 || //firefox
     e.name === 'QUOTA_EXCEEDED_ERR' ||
-        e.name === 'NS_ERROR_DOM_QUOTA_REACHED' ||
-        e.name === 'QuotaExceededError'
+    e.name === 'NS_ERROR_DOM_QUOTA_REACHED' ||
+    e.name === 'QuotaExceededError'
   );
 }
 
@@ -230,7 +232,7 @@ const localStorageInstance = {
       setItem(key, value);
 
     } catch (e) {
-      if (isOutOfSpace(e)) {
+      if (isOutOfSpace(e) && localStorage.length > 0) {
         clearBucketStorage(BUCKETS_AVAILABLE.OTHERS);
         try {
           setItem(key, value);
