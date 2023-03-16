@@ -19,7 +19,7 @@
  */
 
 import { clearBucketStorage } from './index';
-import { BUCKETS_AVAILABLE } from './constants';
+import { BUCKETS } from './constants';
 
 
 // Suffix for the key name on the expiration items in localStorage
@@ -233,7 +233,7 @@ const localStorageInstance = {
 
     } catch (e) {
       if (isOutOfSpace(e) && localStorage.length > 0) {
-        clearBucketStorage(BUCKETS_AVAILABLE.OTHERS);
+        clearBucketStorage(BUCKETS.OTHERS);
         try {
           setItem(key, value);
 

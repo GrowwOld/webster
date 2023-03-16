@@ -2,7 +2,7 @@ import cookie from 'js-cookie';
 
 import localStorageInstance from './core';
 
-import { BUCKETS_AVAILABLE, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
+import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
 
 import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from './helpers';
 
@@ -23,7 +23,7 @@ import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from
  *
  */
 
-export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS_AVAILABLE.OTHERS): string | null {
+export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): string | null {
   const bucketKey = getFullKeyForItem(key, bucket);
 
   if (checkForErrors() || !localStorageInstance.supported()) {
@@ -76,7 +76,7 @@ export function getDataFromStorage(key: string, storageType: string, bucket = BU
  *
  */
 
-export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin ?: number, bucket = BUCKETS_AVAILABLE.OTHERS) {
+export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin ?: number, bucket = BUCKETS.OTHERS) {
   if (typeof expiresInMin === 'undefined' || expiresInMin == null) {
     expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME;
   }
@@ -118,7 +118,7 @@ export function setDataToStorage(key : string, data : any, storageType: string, 
  *
  */
 
-export function clearKeyFromStorage(key: string, storageType: string, bucket = BUCKETS_AVAILABLE.OTHERS): void {
+export function clearKeyFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): void {
   const bucketKey = getFullKeyForItem(key, bucket);
 
   if (storageType === STORAGE_TYPE.COOKIE) {
@@ -179,8 +179,8 @@ export function clearStorage(storageType: string) {
  */
 
 function clearStorageLS() {
-  clearBucketStorage(BUCKETS_AVAILABLE.AUTH);
-  clearBucketStorage(BUCKETS_AVAILABLE.OTHERS);
+  clearBucketStorage(BUCKETS.AUTH);
+  clearBucketStorage(BUCKETS.OTHERS);
 }
 
 /**
@@ -237,3 +237,16 @@ export function clearBucketStorage(bucket: string) {
     }
   }
 }
+
+/**
+ * Reexports the constants from our constants file.
+ *
+ * @remarks
+ * These are a part of our Storage Library.
+ *
+ *
+ *
+ */
+
+export const BUCKETS_AVAILABLE = BUCKETS;
+export const STORAGE_TYPE_AVAILABLE = STORAGE_TYPE;

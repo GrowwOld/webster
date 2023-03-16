@@ -1,4 +1,4 @@
-export const BUCKETS_AVAILABLE = {
+export const BUCKETS = {
   PERSISTED: 'PERSISTED',
   AUTH: 'AUTH',
   OTHERS: 'OTHERS'
