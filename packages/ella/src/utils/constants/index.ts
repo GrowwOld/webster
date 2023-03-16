@@ -24,3 +24,9 @@ export const CUSTOM_EVENTS = {
   TABLE_CLOSE: 'tableClose',
   TRACK_LOG: 'trackLog'
 };
+
+
+export const BROWSER_ORIGIN = {
+  MOBILE: 'MSite',
+  DESKTOP: 'Desktop'
+};
