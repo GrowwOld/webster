@@ -250,3 +250,4 @@ export function clearBucketStorage(bucket: string) {
 
 export const BUCKETS_AVAILABLE = BUCKETS;
 export const STORAGE_TYPE_AVAILABLE = STORAGE_TYPE;
+export const errorInStorage = checkForErrors;
