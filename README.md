@@ -29,6 +29,7 @@ This monorepo contains the following packages:
 - `eslint-plugin-internal`: ESLint Plugin with customized rules as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal.svg)](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal)
 - `stylelint-config`: Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fstylelint-config.svg)](https://badge.fury.io/js/@groww-tech%2Fstylelint-config)
 - `ui-toolkit`: Standard UI Library adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fui-toolkit.svg)](https://badge.fury.io/js/@groww-tech%2Fui-toolkit)
+- `ella`: Utility-belt library for JavaScript that provides general purpose methods used in day to day programming. [![npm version](https://badge.fury.io/js/@groww-tech%2Fella.svg)](https://badge.fury.io/js/@groww-tech%2Fella)
 
 
 ### Getting Started
