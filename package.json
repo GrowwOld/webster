@@ -2,10 +2,8 @@
   "name": "webster",
   "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
+    "preinstall": "pnpm dlx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "test": "turbo run test"
@@ -14,8 +12,8 @@
     "turbo": "latest"
   },
   "engines": {
-    "npm": ">=7.0.0",
+    "pnpm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.1.4"
+  "packageManager": "pnpm@7.1.7"
 }
