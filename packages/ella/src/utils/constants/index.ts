@@ -26,7 +26,7 @@ export const CUSTOM_EVENTS = {
 };
 
 
-export const BROWSER_ORIGIN = {
+export const PLATFORM = {
   MOBILE: 'MSite',
   DESKTOP: 'Desktop'
 };

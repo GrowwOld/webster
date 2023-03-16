@@ -6,7 +6,7 @@ import { isEmpty } from '../general';
 import {
   CUSTOM_EVENTS,
   OS_TYPES,
-  BROWSER_ORIGIN
+  PLATFORM
 } from '../utils/constants';
 
 /**
@@ -939,10 +939,10 @@ export function getDeviceDetails() {
 
       //Checking here if any of these matches the given user agents then setting origin to mobile website else setting it to Desktop
       if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(nAgt)) {
-        origin = BROWSER_ORIGIN.MOBILE;
+        origin = PLATFORM.MOBILE;
 
       } else {
-        origin = BROWSER_ORIGIN.DESKTOP;
+        origin = PLATFORM.DESKTOP;
       }
 
 
