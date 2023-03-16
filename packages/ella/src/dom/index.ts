@@ -950,7 +950,7 @@ export function getDeviceDetails() {
         browserName: browserName,
         userAgent: navigator.userAgent,
         OSName: OSName,
-        origin: origin
+        origin: origin    //Origin in this is the platform instance like Desktop or Msite
       };
 
       return finalPayload;
