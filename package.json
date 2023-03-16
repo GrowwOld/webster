@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "preinstall": "pnpm dlx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "test": "turbo run test"

@@ -55,7 +55,7 @@ jobs:
           
       - run: |
           pnpm install
-          pnpm run build -- --scope="@groww-tech/${{env.package_name}}"
+          pnpm run build --filter="@groww-tech/${{env.package_name}}"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
         name: Deploy the documents on github pages
