@@ -1,0 +1,52 @@
+{
+  "name": "@groww-tech/encryption",
+  "version": "0.1.1",
+  "description": "Encryption is a service that can be used for encryption and decryption of data",
+  "main": "src/index.js",
+  "files": [
+    "/dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
+  "scripts": {},
+  "keywords": [
+    "groww",
+    "web service",
+    "encryption",
+    "decryption"
+  ],
+  "author": "Groww Core Team <web-core@groww.in>",
+  "contributors": [
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    },
+    {
+      "name": "Sandeep",
+      "url": "https://www.linkedin.com/in/sandeep-sharma2/"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Groww/webster/issues"
+  },
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/web-storage#readme",
+  "devDependencies": {
+    "@groww-tech/eslint-config": "^1.0.4",
+    "@groww-tech/tsconfig": "^1.0.0",
+    "@types/crypto-js": "^4.1.1",
+    "@types/js-cookie": "3.0.2",
+    "crypto-js": "^3.3.0",
+    "eslint": "7.26.0",
+    "typescript": "4.4.4"
+  },
+  "dependencies": {
+    "js-cookie": "2.2.1"
+  }
+}
