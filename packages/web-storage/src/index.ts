@@ -2,9 +2,9 @@ import cookie from 'js-cookie';
 
 import localStorageInstance from './core';
 
-import { BUCKETS_AVAILABLE, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
+import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
 
-import { checkForErrors, getBucketNameFromKey, isEmpty } from './helpers';
+import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from './helpers';
 
 
 /**
@@ -16,21 +16,22 @@ import { checkForErrors, getBucketNameFromKey, isEmpty } from './helpers';
  * @param key - The Key corresponding to which data is to be extracted.
  * @param storageType - `{ default: "localStorage" }` The type of storage you want to
  * extract data from.
+ * @param {string} [bucket='OTHERS'] - `{ default: "OTHERS" }` The bucket in which you want to store data.
+ * We have persisted, auth and others
  *
  * @returns The Data stored in Storage if any, else null.
  *
  */
 
-export function getDataFromStorage(key: string, storageType: string): string | null {
-
+export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): string | null {
+  const bucketKey = getFullKeyForItem(key, bucket);
 
   if (checkForErrors() || !localStorageInstance.supported()) {
     return null;
   }
 
-    // no both storage case will occur here as value is same.
   if (storageType === STORAGE_TYPE.LOCAL_STORAGE) {
-    const result = localStorageInstance.get(key);
+    const result = localStorageInstance.get(bucketKey);
 
     return result;
 
@@ -46,7 +47,7 @@ export function getDataFromStorage(key: string, storageType: string): string | n
     return result;
 
   } else if (storageType === STORAGE_TYPE.LOCAL_COOKIE_STORAGE) {
-    let result = localStorageInstance.get(key);
+    let result = localStorageInstance.get(bucketKey);
 
     if (isEmpty(result)) {
       result = cookie.get(key);
@@ -68,16 +69,19 @@ export function getDataFromStorage(key: string, storageType: string): string | n
  * @param data - The Key corresponding to which data is to be extracted.
  * @param storageType - `{ default: "localStorage" }` The type of storage you want to
  * store data to.
- * @param expiresInMin - For How long in minutes should we store data. Default is one week.
- *
+ * @param {string}[expiresInMin] - For How long in minutes should we store data. Default is one week.
+ * @param {string} [bucket='OTHERS'] - `{ default: "OTHERS" }` The bucket in which you want to store data.
+ * We have persisted, auth and others
  * @returns void.
  *
  */
 
-export function setDataFromStorage(key : string, data : any, storageType: string, expiresInMin ?: number) {
+export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin ?: number, bucket = BUCKETS.OTHERS) {
   if (typeof expiresInMin === 'undefined' || expiresInMin == null) {
     expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME;
   }
+
+  const bucketKey = getFullKeyForItem(key, bucket);
 
   const expiresInDay = ((expiresInMin / 60) / 24);
 
@@ -92,11 +96,11 @@ export function setDataFromStorage(key : string, data : any, storageType: string
     sessionStorage.setItem(key, data);
 
   } else if (STORAGE_TYPE.LOCAL_COOKIE_STORAGE === storageType) {
-    localStorageInstance.set(key, data, expiresInMin);
+    localStorageInstance.set(bucketKey, data, expiresInMin);
     cookie.set(key, data, { expires: expiresInDay, path: '/', secure: true });
 
   } else {
-    localStorageInstance.set(key, data, expiresInMin);
+    localStorageInstance.set(bucketKey, data, expiresInMin);
   }
 }
 
@@ -114,7 +118,9 @@ export function setDataFromStorage(key : string, data : any, storageType: string
  *
  */
 
-export function clearKeyFromStorage(key: string, storageType: string): void {
+export function clearKeyFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): void {
+  const bucketKey = getFullKeyForItem(key, bucket);
+
   if (storageType === STORAGE_TYPE.COOKIE) {
     cookie.remove(key, { path: '/' });
 
@@ -123,10 +129,10 @@ export function clearKeyFromStorage(key: string, storageType: string): void {
 
   } else if (storageType === STORAGE_TYPE.LOCAL_COOKIE_STORAGE) {
     cookie.remove(key, { path: '/' });
-    localStorageInstance.remove(key);
+    localStorageInstance.remove(bucketKey);
 
   } else {
-    localStorageInstance.remove(key);
+    localStorageInstance.remove(bucketKey);
   }
 }
 
@@ -173,9 +179,8 @@ export function clearStorage(storageType: string) {
  */
 
 function clearStorageLS() {
-  clearBucketStorage(BUCKETS_AVAILABLE.AUTH);
-  clearBucketStorage(BUCKETS_AVAILABLE.OTHERS);
-  clearBucketStorage(BUCKETS_AVAILABLE.USER);
+  clearBucketStorage(BUCKETS.AUTH);
+  clearBucketStorage(BUCKETS.OTHERS);
 }
 
 /**
@@ -220,11 +225,10 @@ function clearStorageCookies() {
  *
  * @returns void
  *
- * @internal
  *
  */
 
-function clearBucketStorage(bucket: string) {
+export function clearBucketStorage(bucket: string) {
   for (let index = 0; index < localStorage.length; index++) {
     const key = localStorage.key(index) || '';
 
@@ -233,3 +237,17 @@ function clearBucketStorage(bucket: string) {
     }
   }
 }
+
+/**
+ * Reexports the constants from our constants file.
+ *
+ * @remarks
+ * These are a part of our Storage Library.
+ *
+ *
+ *
+ */
+
+export const BUCKETS_AVAILABLE = BUCKETS;
+export const STORAGE_TYPE_AVAILABLE = STORAGE_TYPE;
+export const errorInStorage = checkForErrors;
