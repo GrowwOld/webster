@@ -15,9 +15,8 @@ import { ResponseType } from './types';
  * @returns The object with keys of data and error.
  *
  * @example
- * Here's an example how to encrypt api:
  * ```
- * console.log(encrypt('Data to encrypt','secret-key')); => Output will be 
+ * encrypt('Data to encrypt','secret-key')); => Output will be 
  * {
  *  data:'##Some random ciphered text',
  *  error:null
@@ -40,7 +39,7 @@ export const encrypt = (object:object, secretKey:string) => {
     return response;
 
   } catch (e: any) {
-
+    console.log("Here is typee",typeof e);
     response.error = e.message;
     return response;
   }
@@ -59,9 +58,9 @@ export const encrypt = (object:object, secretKey:string) => {
  * @returns The object with keys of data and error.
  * 
  *  @example
- * Here's an example how to decrypt api:
  * ```
- * console.log(decrypt('##Some randome ciphered data','secret-key')); => Output will be 
+ * decrypt('##Some randome ciphered data','secret-key'))
+ * Output will be 
  * {
  *  data:'The original data that was encrypted',
  *  error:null
@@ -77,7 +76,7 @@ export const encrypt = (object:object, secretKey:string) => {
  *
  */
 
-export const decrypt = (ciphertext: string, secretKey: string) => {
+export const decrypt = (ciphertext: string | null, secretKey: string) => {
 
   const response: ResponseType = {
     data: null,
@@ -85,7 +84,10 @@ export const decrypt = (ciphertext: string, secretKey: string) => {
   };
 
   try {
-
+    if (ciphertext === null) {
+      response.error = 'Cannot decrypt null object';
+      return response;
+    }
     const bytes = aes.decrypt(ciphertext.toString(), secretKey);
 
     const decryptedData = JSON.parse(bytes.toString(cryptoJS));
