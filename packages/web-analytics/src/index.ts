@@ -19,7 +19,7 @@ const dataLayer: any = null;
  *
  *  @example
  *  ```
- *  const eventproperties = {
+ *  const eventProperties = {
  *    userName: 'John Doe'
  *  }
  *
