@@ -24,3 +24,9 @@ export const CUSTOM_EVENTS = {
   TABLE_CLOSE: 'tableClose',
   TRACK_LOG: 'trackLog'
 };
+
+
+export const PLATFORM = {
+  MOBILE: 'MSite',
+  DESKTOP: 'Desktop'
+};

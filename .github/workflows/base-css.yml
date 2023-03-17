@@ -18,16 +18,29 @@ jobs:
         working-directory: './${{env.package_dir}}/${{env.package_name}}'
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 7
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          
       - uses: actions/setup-node@v2
         with:
           node-version: 16.14.0
           registry-url: https://registry.npmjs.org/
-      - uses: actions/cache@v2
+            
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
         with:
-          path: '~/.npm'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-pnpm-store-
 
       - name: Check package version
         id: cpv
