@@ -1,7 +1,8 @@
 import { getDeviceDetails } from '@groww-tech/ella';
+import { DeviceDetailsPayload } from './types';
 import { USER_ATTRIBUTES, MAX_COUNT_CHECK } from './constants';
 
-const browserDetailsObject: any = getDeviceDetails();
+const browserDetailsObject = getDeviceDetails() as DeviceDetailsPayload;
 let countWebengageLoad = 1;
 let countGtmLoad = 1;
 const webengage: any = null;
