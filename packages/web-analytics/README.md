@@ -1,6 +1,6 @@
 # web-analytics 
- [![npm version](https://img.shields.io/npm/v/@groww-tech/ella?color=51C838)](https://www.npmjs.com/package/@groww-tech/ella) 
- [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/ella)](https://bundlephobia.com/package/@groww-tech/ella)
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/web-analytics?color=51C838)](https://www.npmjs.com/package/@groww-tech/web-analytics) 
+ [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/web-analytics)](https://bundlephobia.com/package/@groww-tech/web-analytics)
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Ella_Build?color=51C838)
 
 <br/>
