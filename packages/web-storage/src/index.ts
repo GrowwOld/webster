@@ -23,7 +23,7 @@ import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from
  *
  */
 
-export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): string | null {
+export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): string | Object | null {
   const bucketKey = getFullKeyForItem(key, bucket);
 
   if (checkForErrors() || !localStorageInstance.supported()) {
