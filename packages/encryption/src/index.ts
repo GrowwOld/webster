@@ -16,7 +16,7 @@ import { ResponseType } from './types';
  *
  * @example
  * ```
- * encrypt('Data to encrypt','secret-key')); => Output will be 
+ * encrypt('Data to encrypt','secret-key')); => Output will be
  * {
  *  data:'##Some random ciphered text',
  *  error:null
@@ -39,7 +39,6 @@ export const encrypt = (object:object, secretKey:string) => {
     return response;
 
   } catch (e: any) {
-    console.log("Here is typee",typeof e);
     response.error = e.message;
     return response;
   }
@@ -56,17 +55,17 @@ export const encrypt = (object:object, secretKey:string) => {
  * @param secretKey - The key used for decrypting the data.
  *
  * @returns The object with keys of data and error.
- * 
+ *
  *  @example
  * ```
  * decrypt('##Some randome ciphered data','secret-key'))
- * Output will be 
+ * Output will be
  * {
  *  data:'The original data that was encrypted',
  *  error:null
  * }.
- * 
- * Note: if in any case there was error in encrytping/decrypting the error key will be populated and data key will be null 
+ *
+ * Note: if in any case there was error in encrytping/decrypting the error key will be populated and data key will be null
  * like
  * {
  *  data:null,
@@ -88,6 +87,7 @@ export const decrypt = (ciphertext: string | null, secretKey: string) => {
       response.error = 'Cannot decrypt null object';
       return response;
     }
+
     const bytes = aes.decrypt(ciphertext.toString(), secretKey);
 
     const decryptedData = JSON.parse(bytes.toString(cryptoJS));
