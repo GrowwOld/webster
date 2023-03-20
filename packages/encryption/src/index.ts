@@ -24,7 +24,7 @@ import { ResponseType } from './types';
  * ```
  */
 
-export const encrypt = (object:object, secretKey:string) => {
+export const encrypt = (dataToEncrypt: object | string, secretKey:string) => {
 
   const response:ResponseType = {
     data: null,
@@ -32,7 +32,7 @@ export const encrypt = (object:object, secretKey:string) => {
   };
 
   try {
-    const ciphertext = aes.encrypt(JSON.stringify(object), secretKey);
+    const ciphertext = aes.encrypt(JSON.stringify(dataToEncrypt), secretKey);
 
     response.data = ciphertext.toString();
 
