@@ -34,14 +34,18 @@ This monorepo contains the following packages:
 
 
 ### Getting Started
-Clone this repository and install all the dependencies by running  `npm install`  on root folder.
+
+This repository uses **pnpm** as the package manager. To install pnpm, please refer to the [official pnpm installation guide](https://pnpm.io/installation).
+
+
+Clone this repository and install all the dependencies by running  `pnpm install`  on root folder.
 
 ### Build
 
 To build all packages, run the following command:
 
 ```
-npm run build
+pnpm run build
 ```
 
 ### Develop
@@ -49,21 +53,21 @@ npm run build
 To develop all packages, run the following command:
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 <br/>
 
 To build or develop a specific package, change directory to the package folder and run those commands in that folder.
 
-Task execution can also be scoped by passing scope argument to the command.
+Workspaces can also be filtered by passing filter argument to the command.
 ```
-npm run build -- --scope="*icon-store"
+pnpm run build --filter="*icon-store"
 ```
 This command when executed on root folder will build only the `icon-store` package.
 
 
-Read more about scoped tasks in Turborepo [here](https://turborepo.org/docs/features/scopes).
+Read more about filtering workspaces in Turborepo [here](https://turbo.build/repo/docs/core-concepts/monorepos/filtering).
 
 <br>
 
