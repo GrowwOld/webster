@@ -64,8 +64,8 @@ importers:
 
   packages/encryption:
     specifiers:
-      '@groww-tech/eslint-config': ^1.0.4
-      '@groww-tech/tsconfig': ^1.0.0
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/tsconfig': workspace:*
       '@types/crypto-js': 4.1.1
       crypto-js: 4.1.1
       esbuild-plugin-glob: 1.0.5

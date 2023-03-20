@@ -24,9 +24,9 @@ import { ResponseType } from './types';
  * ```
  */
 
-export const encrypt = (dataToEncrypt: object | string, secretKey:string) => {
+export const encryptAes = (dataToEncrypt: object | string, secretKey: string) => {
 
-  const response:ResponseType = {
+  const response: ResponseType = {
     data: null,
     error: null
   };
@@ -75,7 +75,7 @@ export const encrypt = (dataToEncrypt: object | string, secretKey:string) => {
  *
  */
 
-export const decrypt = (ciphertext: string | null, secretKey: string) => {
+export const decryptAes = (ciphertext: string | null, secretKey: string) => {
 
   const response: ResponseType = {
     data: null,
