@@ -1,7 +1,5 @@
 import cookie from 'js-cookie';
 
-import localStorageInstance from './core';
-
 import { BUCKET_SEPERATOR, BUCKET_UNAVAILABLE_ERROR } from './constants';
 
 /**
@@ -72,62 +70,20 @@ export const getBucketNameFromKey = (key: string): string => {
  * @example
  * Here's an example how user key is returned
  * ```
- * console.log(getUserKeyFromStoredKey('PERSISTED$$%&kjsdfgkj')); => Output will be 'kjsdfgkj'
+ * console.log(getUserProvidedKeyFromStoredKey('PERSISTED$$%&kjsdfgkj')); => Output will be 'kjsdfgkj'
  * ```
  * ```
- * console.log(getUserKeyFromStoredKey('someKeyNotHavingOurSeperator')); => Output will be 'someKeyNotHavingOurSeperator'.
+ * console.log(getUserProvidedKeyFromStoredKey('someKeyNotHavingOurSeperator')); => Output will be 'someKeyNotHavingOurSeperator'.
  * ```
  * @internal
  */
 
-export const getUserKeyFromStoredKey = (key: string): string => {
+export const getUserProvidedKeyFromStoredKey = (key: string): string => {
   if (key.includes(BUCKET_SEPERATOR)) {
     return key.split(BUCKET_SEPERATOR)[1];
 
   } else {
     return key;
-  }
-};
-
-
-/**
- * Gets a Particular Bucket Size in Local Storage
- *
- * @remarks
- * This method is a part of our Storage Library.
- *
- * @param bucket - Bucket where data is to be stored.
- *
- * @returns Bucket Size in KB.
- * @example
- * Here's an example how user key is returned
- * ```
- * console.log(calculateBucketSizeInLocalStorage('PERSISTED')); => Output will be '40.00'
- * ```
- * @internal
- *
- */
-
-export const calculateBucketSizeInLocalStorage = (bucket: string) : string | null => {
-  if (typeof (Storage) !== 'undefined') {
-    let data = '';
-
-    for (let index = 0; index < localStorage.length; index++) {
-      const key = localStorage.key(index) || '';
-
-      if (getBucketNameFromKey(key) === bucket) {
-        const value = localStorageInstance.get(key);
-
-        data += (key + value);
-      }
-    }
-
-    const localStorageSpaceInKB = ((data.length * 16) / (8 * 1024)).toFixed(2);
-
-    return localStorageSpaceInKB;
-
-  } else {
-    return null;
   }
 };
 
@@ -138,11 +94,6 @@ export const calculateBucketSizeInLocalStorage = (bucket: string) : string | nul
  * This method is a part of our Storage Library.
  *
  * @returns {boolean} based on if there are errors or not.
- * @example
- * Here's an example how user key is returned
- * ```
- * console.log(calculateBucketSizeInLocalStorage('PERSISTED')); => Output will be '40.00'
- * ```
  * @internal
  *
  */

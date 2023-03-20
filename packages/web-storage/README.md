@@ -5,8 +5,7 @@
 
 <br/>
 
-Web Storage is a service used that exposes methods to get full control over storage mechanisms available via bucketing.
-
+Web storage is a storage service that provides simple APIs to get/set data to Local Storage and Cookies. Support for further browser storage is coming soon.
 
 ### Installation
 

@@ -1,6 +1,7 @@
 import cookie from 'js-cookie';
 
-import localStorageInstance from './core';
+import localStorageInstance from './instances/localStorage';
+import sessionStorageInstance from './instances/sessionStorage';
 
 import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
 
@@ -23,12 +24,17 @@ import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from
  *
  */
 
-export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): any {
-  const bucketKey = getFullKeyForItem(key, bucket);
+// we are exporting type as any becuase exported type can be null, object or string. If we dont specify
+// any then we have to handle too much on our client side.
 
+// Default bucket is others because we dont want to let anyone store data in persisted bucket or auth bucket
+// until explicitly specified.
+export function getDataFromStorage(key: string, storageType: string, bucket = BUCKETS.OTHERS): any {
   if (checkForErrors() || !localStorageInstance.supported()) {
     return null;
   }
+
+  const bucketKey = getFullKeyForItem(key, bucket);
 
   if (storageType === STORAGE_TYPE.LOCAL_STORAGE) {
     const result = localStorageInstance.get(bucketKey);
@@ -36,7 +42,7 @@ export function getDataFromStorage(key: string, storageType: string, bucket = BU
     return result;
 
   } else if (storageType === STORAGE_TYPE.SESSION_STORAGE) {
-    const result = sessionStorage.getItem(key);
+    const result = sessionStorageInstance.get(key);
 
     return result;
 
@@ -76,24 +82,21 @@ export function getDataFromStorage(key: string, storageType: string, bucket = BU
  *
  */
 
-export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin ?: number, bucket = BUCKETS.OTHERS) {
-  if (typeof expiresInMin === 'undefined' || expiresInMin == null) {
-    expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME;
+export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME, bucket = BUCKETS.OTHERS) {
+  if (checkForErrors() || !localStorageInstance.supported()) {
+    return '';
   }
 
   const bucketKey = getFullKeyForItem(key, bucket);
 
   const expiresInDay = ((expiresInMin / 60) / 24);
 
-  if (checkForErrors() || !localStorageInstance.supported()) {
-    return '';
-  }
 
   if (STORAGE_TYPE.COOKIE === storageType) {
     cookie.set(key, data, { expires: expiresInDay, path: '/', secure: true });
 
   } else if (STORAGE_TYPE.SESSION_STORAGE === storageType) {
-    sessionStorage.setItem(key, data);
+    sessionStorageInstance.set(key, data);
 
   } else if (STORAGE_TYPE.LOCAL_COOKIE_STORAGE === storageType) {
     localStorageInstance.set(bucketKey, data, expiresInMin);
@@ -125,7 +128,7 @@ export function clearKeyFromStorage(key: string, storageType: string, bucket = B
     cookie.remove(key, { path: '/' });
 
   } else if (storageType === STORAGE_TYPE.SESSION_STORAGE) {
-    sessionStorage.removeItem(key);
+    sessionStorageInstance.remove(key);
 
   } else if (storageType === STORAGE_TYPE.LOCAL_COOKIE_STORAGE) {
     cookie.remove(key, { path: '/' });
@@ -196,7 +199,7 @@ function clearStorageLS() {
  */
 
 function clearStorageSession() {
-  sessionStorage.clear();
+  sessionStorageInstance.clear();
 }
 
 /**
@@ -212,7 +215,13 @@ function clearStorageSession() {
  */
 
 function clearStorageCookies() {
-  sessionStorage.clear();
+  const cookies = document.cookie.split(';');
+
+  for (let i = 0; i < cookies.length; i++) {
+    const spcook = cookies[ i ].split('=');
+
+    clearKeyFromStorage(spcook[ 0 ].trim(), STORAGE_TYPE.COOKIE);
+  }
 }
 
 /**
@@ -239,6 +248,40 @@ export function clearBucketStorage(bucket: string) {
 }
 
 /**
+ * Enables or Disable Local Storage console.error messages
+ *
+ * @remarks
+ * This method is a part of our Storage Library.
+ *
+ * @param enable - whether we want to enable
+ *
+ * @returns void
+ *
+ *
+ */
+
+export function enableLocalStorageWarning(enable: boolean) {
+  localStorageInstance.enableWarnings(enable);
+}
+
+/**
+ * Enables or Disable Session Storage console.error messages
+ *
+ * @remarks
+ * This method is a part of our Storage Library.
+ *
+ * @param enable - whether we want to enable
+ *
+ * @returns void
+ *
+ *
+ */
+
+export function enableSessionStorageWarning(enable: boolean) {
+  sessionStorageInstance.enableWarnings(enable);
+}
+
+/**
  * Reexports the constants from our constants file.
  *
  * @remarks
@@ -250,4 +293,4 @@ export function clearBucketStorage(bucket: string) {
 
 export const BUCKETS_AVAILABLE = BUCKETS;
 export const STORAGE_TYPE_AVAILABLE = STORAGE_TYPE;
-export const errorInStorage = checkForErrors;
+export const errorInStorage = checkForErrors; //this is a healthcheck that we are exporting.

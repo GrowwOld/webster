@@ -18,8 +18,8 @@
  * @internal
  */
 
-import { clearBucketStorage } from './index';
-import { BUCKETS } from './constants';
+import { clearBucketStorage } from '../index';
+import { BUCKETS } from '../constants';
 
 
 // Suffix for the key name on the expiration items in localStorage
@@ -35,6 +35,7 @@ const expiryMilliseconds = 60 * 1000; // 1 minute
 let cachedJSON : any;
 const cacheBucket = '';
 let warnings = false;
+let isStorageSupported: boolean | undefined;
 
 // Determines if localStorage is supported in the browser;
 // result is cached for better performance instead of being run each time.
@@ -42,8 +43,6 @@ let warnings = false;
 // it's not straightforward due to FF4 issues.
 // It's not run at parse-time as it takes 200ms in Android.
 function supportsStorage() {
-  let isStorageSupported: boolean | undefined;
-
   const key = '__localStorageInstanceTest__';
   const value = key;
 
@@ -147,7 +146,7 @@ function removeItem(key: string) {
   localStorage.removeItem(key);
 }
 
-
+//this function is used to iterate over each of local storage.
 function eachKey(fn: any) {
   const prefixRegExp = new RegExp('^' + escapeRegExpSpecialCharacters(cacheBucket) + '(.*)');
   // We first identify which keys to process
@@ -197,9 +196,15 @@ function flushExpiredItem(key: string) {
 
 function warn(message: string, err: any) {
   if (!warnings) return;
-  if (!('console' in window) || typeof window.console.warn !== 'function') return;
+  if (!('console' in window) || typeof window.console.warn !== 'function') {
+    return;
+  }
+
+  if (err) {
+    window.console.warn('localStorageInstance - The error was: ' + err.message);
+  }
+
   window.console.warn('localStorageInstance - ' + message);
-  if (err) window.console.warn('localStorageInstance - The error was: ' + err.message);
 }
 
 const localStorageInstance = {
