@@ -1,7 +1,7 @@
 {
   "name": "@groww-tech/encryption",
-  "version": "0.1.1",
-  "description": "Encryption is a service that can be used for encryption and decryption of data",
+  "version": "1.0.0",
+  "description": "Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
