@@ -5,7 +5,8 @@
 import { isEmpty } from '../general';
 import {
   CUSTOM_EVENTS,
-  OS_TYPES
+  OS_TYPES,
+  PLATFORM
 } from '../utils/constants';
 
 /**
@@ -868,7 +869,7 @@ export function dataURIToBlob(dataURI: string) {
  * To read more on this: https://stackoverflow.com/questions/54424729/ios-show-keyboard-on-input-focus
  *
  */
-export function forceFocusAndOpenKeyboard(element:HTMLElement, timeout = 0) {
+export function forceFocusAndOpenKeyboard(element: HTMLElement, timeout = 0) {
   try {
     const platformType = getOSName();
 
@@ -912,4 +913,58 @@ export function forceFocusAndOpenKeyboard(element:HTMLElement, timeout = 0) {
   } catch (err) {
     console.error('Unable to force focus input', err);
   }
+}
+
+/**
+ * This method can be used to get the Device details like browser name, user agent, os name and origin i.e desktop or mobile website.
+ *
+ * @remarks
+ * This method depends on userAgent sniffing and therefore susciptible to spoofing. Avoid detecting browsers in business impacting code
+ *
+ * @example
+ * ```
+ * console.log('Get Device Details - ',getDeviceDetails());
+ * ```
+ */
+export function getDeviceDetails() {
+  try {
+    if (typeof window !== 'undefined' && navigator != null) {
+
+      const browserName = getBrowserName();
+
+      const OSName = getOSName();
+
+      let origin = null;
+      const nAgt = navigator.userAgent;
+
+      //Checking here if any of these matches the given user agents then setting origin to mobile website else setting it to Desktop
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(nAgt)) {
+        origin = PLATFORM.MOBILE;
+
+      } else {
+        origin = PLATFORM.DESKTOP;
+      }
+
+
+      const finalPayload = {
+        browserName: browserName,
+        userAgent: navigator.userAgent,
+        OSName: OSName,
+        origin: origin    //Origin in this is the platform instance like Desktop or Msite
+      };
+
+      return finalPayload;
+
+    }
+
+  } catch (err) {
+    console.error(`Error with getDeviceDetails ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getDeviceDetails',
+      error: err
+    });
+  }
+
+  return '';
 }
