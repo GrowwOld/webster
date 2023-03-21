@@ -16,7 +16,7 @@ import { ResponseType } from './types';
  *
  * @example
  * ```
- * encrypt('Data to encrypt','secret-key')); => Output will be
+ * encryptAes('Data to encrypt','secret-key')); => Output will be
  * {
  *  data:'##Some random ciphered text',
  *  error:null
@@ -58,7 +58,7 @@ export const encryptAes = (dataToEncrypt: object | string, secretKey: string) =>
  *
  *  @example
  * ```
- * decrypt('##Some randome ciphered data','secret-key'))
+ * decryptAes('##Some randome ciphered data','secret-key'))
  * Output will be
  * {
  *  data:'The original data that was encrypted',
