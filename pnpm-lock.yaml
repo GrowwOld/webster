@@ -326,21 +326,21 @@ importers:
 
   packages/web-analytics:
     specifiers:
-      '@groww-tech/ella': 0.2.4
+      '@groww-tech/ella': 0.2.5
       '@groww-tech/eslint-config': 1.0.5
       '@groww-tech/tsconfig': 1.0.2
-      esbuild-plugin-glob: ^1.0.5
+      esbuild-plugin-glob: 1.0.5
       eslint: 7.26.0
-      tsup: ^5.11.11
+      tsup: 5.11.11
       typescript: 4.4.4
     dependencies:
       '@groww-tech/ella': link:../ella
     devDependencies:
       '@groww-tech/eslint-config': link:../eslint-config
       '@groww-tech/tsconfig': link:../tsconfig
-      esbuild-plugin-glob: 1.1.1
+      esbuild-plugin-glob: 1.0.5
       eslint: 7.26.0
-      tsup: 5.12.0_typescript@4.4.4
+      tsup: 5.11.11_typescript@4.4.4
       typescript: 4.4.4
 
 packages:
@@ -5084,6 +5084,14 @@ packages:
     resolution: {integrity: sha512-uYBjakWipfaO/bXI7E8rq6kpwHRZK5cNYrUv2OzZSI/FvmdMyXJ2tG9dKcjEC5YHmHpUAwsargWIZNWdxb/bnQ==}
     dev: true
 
+  /bundle-require/2.3.0_esbuild@0.14.25:
+    resolution: {integrity: sha512-kH8vyERJv0Td4Odu2KQyooYyeXDx2FbhGwSfkEGdyHmkTCahvwVI8w/pE2stbsp6G/W5/3kIC7ErdBg/30OAkw==}
+    peerDependencies:
+      esbuild: '>=0.13'
+    dependencies:
+      esbuild: 0.14.25
+    dev: true
+
   /bundle-require/3.0.4_esbuild@0.14.25:
     resolution: {integrity: sha512-VXG6epB1yrLAvWVQpl92qF347/UXmncQj7J3U8kZEbdVZ1ZkQyr4hYeL/9RvcE8vVVdp53dY78Fd/3pqfRqI1A==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -6776,6 +6784,18 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /esbuild-plugin-glob/1.0.5:
+    resolution: {integrity: sha512-M0MoL2NyLuOdtrG82dDTAMCSym/aU8ziRwBmS21IsEHRkWECFaWu2O9kiqQ0RPioGB+NZRhwm9uDehm5EkvJ6A==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      esbuild: ^0.x.x
+    dependencies:
+      chokidar: 3.5.3
+      minimatch: 3.1.1
+      tiny-glob: 0.2.9
+      tiny-invariant: 1.2.0
+    dev: true
 
   /esbuild-plugin-glob/1.1.1:
     resolution: {integrity: sha512-kVF9uPxTaQ0bDoRJCSCRtbtIa/cg9S1zuEJpjZZn/83vBWLnNdztnli3yYkRmjIZBE1P9mPN47f2S8Z7zbVsIQ==}
@@ -13623,8 +13643,8 @@ packages:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
     dev: true
 
-  /tsup/5.12.0_typescript@4.4.4:
-    resolution: {integrity: sha512-FGZZNikQYGlEPtKEnz04hEniEO9ctP0rfWOdDeJCpFY4sqQe+TE90YNsv/1g0FshXoGYAOTFDYAVHg6Ovh003Q==}
+  /tsup/5.11.11_typescript@4.4.4:
+    resolution: {integrity: sha512-rgbTu+KhAI9PdGUS07rKohDXbRLTstBGJaxl75q7RZYRGF+n+kN8L4RlXY5pqYb9Hsq0gEB6nS39v7nSvVBS+g==}
     hasBin: true
     peerDependencies:
       typescript: ^4.1.0
@@ -13632,7 +13652,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      bundle-require: 3.0.4_esbuild@0.14.25
+      bundle-require: 2.3.0_esbuild@0.14.25
       cac: 6.7.12
       chokidar: 3.5.3
       debug: 4.3.3
