@@ -24,7 +24,7 @@ import { BUCKET_SEPERATOR, BUCKET_UNAVAILABLE_ERROR } from './constants';
 
 
 export const getFullKeyForItem = (key: string, bucket: string): string => {
-  return `${bucket} + ${BUCKET_SEPERATOR} + ${key}`;
+  return bucket + BUCKET_SEPERATOR + key;
 };
 
 /**

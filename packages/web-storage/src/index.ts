@@ -5,7 +5,7 @@ import sessionStorageInstance from './instances/sessionStorage';
 
 import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
 
-import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, isEmpty } from './helpers';
+import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, getUserProvidedKeyFromStoredKey, isEmpty } from './helpers';
 
 
 /**
@@ -240,9 +240,13 @@ function clearStorageCookies() {
 export function clearBucketStorage(bucket: string) {
   for (let index = 0; index < localStorage.length; index++) {
     const key = localStorage.key(index) || '';
+    const userKey = getUserProvidedKeyFromStoredKey(key);
 
-    if (getBucketNameFromKey(key) === bucket) {
-      clearKeyFromStorage(key, STORAGE_TYPE.LOCAL_STORAGE);
+    // we want to extract bucket name from original stored key.
+    // and remove the keys only that stores values not expiration time.
+    // they will automatically be cleared after the original key is removed.
+    if (getBucketNameFromKey(key) === bucket && !userKey.includes('-exptime')) {
+      clearKeyFromStorage(userKey, STORAGE_TYPE.LOCAL_STORAGE, bucket);
     }
   }
 }
