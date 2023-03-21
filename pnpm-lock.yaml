@@ -326,7 +326,7 @@ importers:
 
   packages/web-analytics:
     specifiers:
-      '@groww-tech/ella': 0.2.4
+      '@groww-tech/ella': workspace:*
       '@groww-tech/eslint-config': ^1.0.4
       '@groww-tech/tsconfig': ^1.0.0
       eslint: 7.26.0

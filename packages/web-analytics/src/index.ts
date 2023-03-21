@@ -16,8 +16,9 @@ const dataLayer: any = null;
  * @param eventName The name of the event that needs to be sent to either webengage or gtm
  * @param properties Additional properties that need to be sent for analytics
  *
+ * @returns void
  *
- *  @example
+ * @example
  *  ```
  *  const eventProperties = {
  *    userName: 'John Doe'
@@ -28,7 +29,7 @@ const dataLayer: any = null;
  *
  *  ```
  */
-export function trackEvent(category: string, eventName: string, properties?: object) {
+export function trackEvent(category: string, eventName: string, properties: object = {}) {
   // sending event to browsing history and webengage and gtm
   try {
     const newProperties = {
@@ -52,9 +53,13 @@ export function trackEvent(category: string, eventName: string, properties?: obj
  *
  * @param eventName The name of the event that needs to be sent to webengage
  * @param properties Additional properties that need to be sent for analytics
+ *
+ *
+ * @internal
+ *
  */
 function sendEventToWebengage(eventName: string, properties: object) {
-  if (typeof webengage !== 'undefined') {
+  if (isWebengageDefined()) {
     //This is the webengage API to send event name and properties
     webengage.track(eventName, properties);
 
@@ -73,6 +78,10 @@ function sendEventToWebengage(eventName: string, properties: object) {
  * @param eventName The name of the event that needs to be send to gtm
  * @param properties The name of the event that needs to be sent to gtm
  * @param category This is used to identify the category of the event
+ *
+ *
+ * @internal
+ *
  */
 function sendEventToGtm(eventName: string, properties: object, category: string) {
 
@@ -105,6 +114,8 @@ function sendEventToGtm(eventName: string, properties: object, category: string)
  * @param thirdPartyId This is the unique id which we send which maps it to a specific user
  * @param phoneNumber This is the phone number of the user
  *
+ * @returns void
+ *
  *
  * @example
  * ```
@@ -112,7 +123,18 @@ function sendEventToGtm(eventName: string, properties: object, category: string)
  * ```
  */
 export function identifyLoggedInUser(name: string, emailId: string, thirdPartyId = '', phoneNumber = '') {
-  if (typeof webengage !== 'undefined') {
+  identifyWebengageLoggedInUser(name, emailId, thirdPartyId, phoneNumber);
+}
+
+
+/**
+ *
+ * @returns void
+ *
+ * @internal
+ */
+function identifyWebengageLoggedInUser(name: string, emailId: string, thirdPartyId = '', phoneNumber = '') {
+  if (isWebengageDefined()) {
     if (webengage.user) {
 
       //By calling the webengage's login method all of this stored information is attributed to this identified user.
@@ -139,8 +161,9 @@ export function identifyLoggedInUser(name: string, emailId: string, thirdPartyId
  * @param attribute This is the string which sets the attribute that you want to set
  * @param value This is the string which sets the value against the attribute that you want to set
  *
+ * @returns void
  *
- *  * @example
+ * @example
  * ```
  * updateUserAttribute('first_name', 'John Doe');
  * ```
@@ -155,9 +178,11 @@ export function updateUserAttribute(attribute: string, value: string) {
  * @param attribute This is the string which sets the attribute that you want to set
  * @param value This is the string which sets the value against the attribute that you want to set
  *
+ * @internal
+ *
  */
 function updateAttributeInWebengage(attribute: string, value: string) {
-  if (typeof webengage !== 'undefined') {
+  if (isWebengageDefined()) {
     if (webengage.user) {
       //Webengage provides a setter for assigning values against each attribute for the users
       webengage.user.setAttribute(attribute, value);
@@ -169,4 +194,16 @@ function updateAttributeInWebengage(attribute: string, value: string) {
       setTimeout(() => updateAttributeInWebengage(attribute, value), 1000);
     }
   }
+}
+
+
+/**
+ *
+ * @returns This function checks and returns that webengage is not undefined
+ *
+ * @internal
+ *
+ */
+function isWebengageDefined() {
+  return typeof webengage !== 'undefined';
 }
