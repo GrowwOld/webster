@@ -29,7 +29,7 @@ const dataLayer: any = null;
  *
  *  ```
  */
-export function trackEvent(category: string, eventName: string, properties: object = {}) {
+export function trackEvent(category: string, eventName: string, properties = {}) {
   // sending event to browsing history and webengage and gtm
   try {
     const newProperties = {
@@ -50,6 +50,7 @@ export function trackEvent(category: string, eventName: string, properties: obje
 
 
 /**
+ * This function is sending event to webengage
  *
  * @param eventName The name of the event that needs to be sent to webengage
  * @param properties Additional properties that need to be sent for analytics
@@ -74,6 +75,7 @@ function sendEventToWebengage(eventName: string, properties: object) {
 
 
 /**
+ * This function is sending event to GTM
  *
  * @param eventName The name of the event that needs to be send to gtm
  * @param properties The name of the event that needs to be sent to gtm
@@ -128,6 +130,11 @@ export function identifyLoggedInUser(name: string, emailId: string, thirdPartyId
 
 
 /**
+ *
+ * @param name This is used to identify the name of the logged in user
+ * @param emailId This is the emailId which tells the emailId of the logged in user
+ * @param thirdPartyId This is the unique id which we send which maps it to a specific user
+ * @param phoneNumber This is the phone number of the user
  *
  * @returns void
  *
@@ -198,8 +205,9 @@ function updateAttributeInWebengage(attribute: string, value: string) {
 
 
 /**
+ * This function checks and returns that webengage is not undefined
  *
- * @returns This function checks and returns that webengage is not undefined
+ * @returns boolean
  *
  * @internal
  *

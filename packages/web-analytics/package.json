@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/web-analytics",
-  "version": "0.1.3",
+  "version": "0.1.1",
   "description": "Web Analytics is a service used that exposes methods to send events to 3rd party analytics tools like Webengage and Gtm.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -43,11 +43,9 @@
     "@groww-tech/eslint-config": "workspace:*",
     "@groww-tech/tsconfig": "workspace:*",
     "eslint": "7.26.0",
-    "typescript": "4.4.4",
-    "@groww-tech/ella": "workspace:*"
-
+    "typescript": "4.4.4"
   },
   "dependencies": {
-
+    "@groww-tech/ella": "workspace:*"
   }
 }
