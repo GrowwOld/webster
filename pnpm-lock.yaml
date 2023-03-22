@@ -349,6 +349,25 @@ importers:
       rollup-plugin-typescript: 1.0.1_typescript@4.5.5
       typescript: 4.5.5
 
+  packages/web-analytics:
+    specifiers:
+      '@groww-tech/ella': workspace:*
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/tsconfig': workspace:*
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11
+      typescript: 4.4.4
+    dependencies:
+      '@groww-tech/ella': link:../ella
+    devDependencies:
+      '@groww-tech/eslint-config': link:../eslint-config
+      '@groww-tech/tsconfig': link:../tsconfig
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11_typescript@4.4.4
+      typescript: 4.4.4
+
 packages:
 
   /@ampproject/remapping/2.1.1:

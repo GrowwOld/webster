@@ -1,0 +1,22 @@
+# OSX
+.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# npm
+package-lock.json
+
+# dev
+src
+tsup.config.js
+tsconfig.json
+.eslintrc
+
+#doc
+CONTRIBUTING.md
+docs
+
+#other
+.github
