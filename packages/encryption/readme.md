@@ -1,7 +1,7 @@
 # encryption 
  [![npm version](https://img.shields.io/npm/v/@groww-tech/encryption?color=51C838)](https://www.npmjs.com/package/@groww-tech/encryption) 
  [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/encryption)](https://bundlephobia.com/package/@groww-tech/encryption)
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/ENCRYPTION_BUILD?color=51C838)
+ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Groww/webster/encryption.yml?color=51C838)
 
 <br/>
 
