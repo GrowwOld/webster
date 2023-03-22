@@ -1,0 +1,20 @@
+export const BUCKETS = {
+  PERSISTED: 'PERSISTED',
+  AUTH: 'AUTH',
+  OTHERS: 'OTHERS'
+};
+
+export const STORAGE_TYPE = {
+  LOCAL_STORAGE: 'LOCAL_STORAGE',
+  SESSION_STORAGE: 'SESSION_STORAGE',
+  COOKIE: 'COOKIE',
+  LOCAL_COOKIE_STORAGE: 'LOCAL_COOKIE_STORAGE'
+};
+
+export const BUCKET_SEPERATOR = '$$%&';
+
+export const BUCKET_UNAVAILABLE_ERROR = 'No Bucket Associated!';
+
+export const DEFAULT_STORAGE_EXPIRY_TIME = 7 * 24 * 60; // 7 days
+
+export const MAXIMUM_EXPIRY_LIMIT = 14 * 24 * 60; //14 days
