@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/monitoring",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "description": "Web Monitoring is a service used to inject prometheus monitoring configuration",
   "main": "src/index.ts",
   "files": [
