@@ -59,10 +59,10 @@ jobs:
       - name: PNPM install
         run: pnpm install
 
-      - name: Test
+      - name: Run Tests
         run: pnpm test --filter="@groww-tech/${{env.package_name}}"
 
-      - name: Build
+      - name: Run Build
         run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
