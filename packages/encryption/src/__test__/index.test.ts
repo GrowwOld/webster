@@ -4,7 +4,7 @@ import { encryptAes, decryptAes } from '../index';
 
 //This secret key is just for testing purpose
 // eslint-disable-next-line
-const SECRET_KEY = 'TEST_SECRET_KEY';
+const testValue = 'TEST_VALUE';
 
 const stringToEncrypt = 'some random string';
 
@@ -27,13 +27,13 @@ We are then comparing the data from the response of decryptAes function with the
 We are also checking if the error key is null in both the response objects from encryptAes
 */
 test.each([
-  [ stringToEncrypt, encryptAes(stringToEncrypt, SECRET_KEY) ],
-  [ objectToEncrypt, encryptAes(objectToEncrypt, SECRET_KEY) ]
+  [ stringToEncrypt, encryptAes(stringToEncrypt, testValue) ],
+  [ objectToEncrypt, encryptAes(objectToEncrypt, testValue) ]
 
 
 ])('Check if decryption of the encrypted data is equal to the original data',
   (expected, encryptedApiResponse) => {
-    const decryptApiResponse = decryptAes(encryptedApiResponse.data, SECRET_KEY);
+    const decryptApiResponse = decryptAes(encryptedApiResponse.data, testValue);
 
     expect(decryptApiResponse.data).toEqual(expected);
     expect(decryptApiResponse.error).toBeNull();
