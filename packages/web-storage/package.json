@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/web-storage",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "description": "Web Storage is a service used that exposes methods to get full control over storage mechanisms available via bucketing.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "test" : "vitest"
+    "test" : "vitest run"
   },
   "keywords": [
     "storage",

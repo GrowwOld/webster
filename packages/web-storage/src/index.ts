@@ -3,7 +3,7 @@ import cookie from 'js-cookie';
 import localStorageInstance from './instances/localStorage';
 import sessionStorageInstance from './instances/sessionStorage';
 
-import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, STORAGE_TYPE } from './constants';
+import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, MAXIMUM_EXPIRY_LIMIT, STORAGE_TYPE } from './constants';
 
 import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, getUserProvidedKeyFromStoredKey, isEmpty } from './helpers';
 
@@ -85,6 +85,11 @@ export function getDataFromStorage(key: string, storageType: string, bucket = BU
 export function setDataToStorage(key : string, data : any, storageType: string, expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME, bucket = BUCKETS.OTHERS) {
   if (checkForErrors() || !localStorageInstance.supported()) {
     return '';
+  }
+
+  // we dont allow more than 14 days of storage for others bucket. If more than 14 days is stored, we make it to 14 days.
+  if ((expiresInMin > MAXIMUM_EXPIRY_LIMIT) && (bucket === BUCKETS.OTHERS)) {
+    expiresInMin = MAXIMUM_EXPIRY_LIMIT;
   }
 
   const bucketKey = getFullKeyForItem(key, bucket);
