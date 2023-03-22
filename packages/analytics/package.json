@@ -1,7 +1,7 @@
 {
-  "name": "@groww-tech/web-analytics",
-  "version": "0.1.1",
-  "description": "Web Analytics is a service used that exposes methods to send events to 3rd party analytics tools like Webengage and Gtm.",
+  "name": "@groww-tech/analytics",
+  "version": "0.0.1",
+  "description": "Web Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,8 @@
     "url": "git+https://github.com/Groww/webster"
   },
   "scripts": {
-    "build": "tsup --env.NODE_ENV production"
+    "build": "tsup --env.NODE_ENV production",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a analytics-v$PACKAGE_VERSION -m \"@groww-tech/analytics-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
     "analytics",
@@ -26,7 +27,8 @@
     {
       "name": "Vikas Singh",
       "url": "https://twitter.com/VikasSi25579022"
-    },{
+    },
+    {
       "name": "Harshit Pruthi",
       "url": "https://www.linkedin.com/in/harshit-pruthi"
     }
@@ -48,6 +50,6 @@
     "esbuild-plugin-glob": "1.0.5"
   },
   "dependencies": {
-    "@groww-tech/ella": "workspace:*" 
+    "@groww-tech/ella": "workspace:*"
   }
 }

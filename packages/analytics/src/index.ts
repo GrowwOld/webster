@@ -32,16 +32,16 @@ const dataLayer: any = null;
 export function trackEvent(category: string, eventName: string, properties = {}) {
   // sending event to browsing history and webengage and gtm
   try {
-    const newProperties = {
+    const updatedProperties = {
       ...properties,
       origin: browserDetailsObject.origin
     };
 
     // sending event to webengage
-    sendEventToWebengage(eventName, newProperties);
+    sendEventToWebengage(eventName, updatedProperties);
 
     // sending event to gtm
-    sendEventToGtm(eventName, newProperties, category);
+    sendEventToGtm(eventName, updatedProperties, category);
 
   } catch (e) {
     console.error('Exception trackEvent', e);
