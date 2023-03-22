@@ -71,7 +71,7 @@ class Button extends React.PureComponent<Props> {
       fill: 'currentColor'
     };
 
-    return iconComponent?.(buttonIconProps) || null;
+    return iconComponent?.(buttonIconProps as ReactIconProps) || null;
   }
 
 
