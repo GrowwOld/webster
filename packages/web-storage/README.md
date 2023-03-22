@@ -1,7 +1,7 @@
 # web-storage 
  [![npm version](https://img.shields.io/npm/v/@groww-tech/ella?color=51C838)](https://www.npmjs.com/package/@groww-tech/ella) 
  [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/ella)](https://bundlephobia.com/package/@groww-tech/ella)
- ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Ella_Build?color=51C838)
+ ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Groww/webster/web-storage.yml?color=51C838)
 
 <br/>
 
@@ -26,3 +26,11 @@ console.log(getDataFromStorage('sdjhfsjdgfd', STORAGE_TYPE.LOCAL_STORAGE)); // O
 ## License
 
 Web Storage is licensed under a [MIT License](./LICENSE).
+
+<br/>
+
+*This package is customized for use in Groww projects. Use at your own risk.*
+
+<br/>
+
+---
