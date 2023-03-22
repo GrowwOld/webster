@@ -57,7 +57,7 @@
     "prebuild": "rimraf dist",
     "build": "concurrently npm:build:*",
     "build:lib": "rollup -c",
-    "build:types": "tsc -v && tsc --emitDeclarationOnly",
+    "build:types": "tsc --emitDeclarationOnly",
     "lint": "concurrently npm:lint:*",
     "lint:src": "eslint src",
     "lint:types": "tsc --noEmit",
