@@ -3,7 +3,7 @@ import { globPlugin } from 'esbuild-plugin-glob';
 
 export default defineConfig({
   // entry: [ './src/index.ts' ],
-  entry: ['src/**/*.ts', 'src/**/*.tsx'],
+  entry: ['src/*.ts', 'src/*.tsx'],
   esbuildPlugins: [globPlugin()],
   splitting: true,
   sourcemap: false,

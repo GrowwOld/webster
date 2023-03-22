@@ -149,9 +149,9 @@ importers:
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
       '@babel/runtime': ^7.14.6
-      '@groww-tech/eslint-config': '*'
-      '@groww-tech/eslint-plugin-internal': '*'
-      '@groww-tech/tsconfig': '*'
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/eslint-plugin-internal': workspace:*
+      '@groww-tech/tsconfig': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
       '@rollup/plugin-typescript': ^8.3.0
@@ -253,10 +253,10 @@ importers:
       '@babel/plugin-proposal-private-methods': ^7.13.0
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
-      '@groww-tech/base-css': '*'
-      '@groww-tech/eslint-config': '*'
-      '@groww-tech/eslint-plugin-internal': '*'
-      '@groww-tech/icon-store': '*'
+      '@groww-tech/base-css': workspace:*
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/eslint-plugin-internal': workspace:*
+      '@groww-tech/icon-store': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
       '@stitches/react': ^1.2.7
@@ -265,6 +265,7 @@ importers:
       '@storybook/addon-links': ^6.2.8
       '@storybook/react': ^6.2.8
       '@types/object-assign': ^4.0.30
+      '@types/react': ^17.0.38
       '@types/react-dom': ^17.0.3
       '@types/react-lazyload': ^3.1.0
       '@typescript-eslint/eslint-plugin': ^4.22.0
@@ -318,6 +319,7 @@ importers:
       '@storybook/addon-links': 6.5.6_wcqkhtmu7mswc6yz4uyexck3ty
       '@storybook/react': 6.5.6_dov26e3jessczwqor7uk7nqtmi
       '@types/object-assign': 4.0.30
+      '@types/react': 17.0.39
       '@types/react-dom': 17.0.11
       '@types/react-lazyload': 3.2.0
       '@typescript-eslint/eslint-plugin': 4.33.0_swkqfqhkeqhinvgsxkfyyd7oiu
@@ -346,6 +348,25 @@ importers:
       rollup-plugin-terser: 7.0.2_rollup@2.67.2
       rollup-plugin-typescript: 1.0.1_typescript@4.5.5
       typescript: 4.5.5
+
+  packages/web-analytics:
+    specifiers:
+      '@groww-tech/ella': workspace:*
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/tsconfig': workspace:*
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11
+      typescript: 4.4.4
+    dependencies:
+      '@groww-tech/ella': link:../ella
+    devDependencies:
+      '@groww-tech/eslint-config': link:../eslint-config
+      '@groww-tech/tsconfig': link:../tsconfig
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11_typescript@4.4.4
+      typescript: 4.4.4
 
 packages:
 
@@ -407,11 +428,11 @@ packages:
       '@babel/traverse': 7.18.2
       '@babel/types': 7.18.4
       convert-source-map: 1.8.0
-      debug: 4.3.4
+      debug: 4.3.3
       gensync: 1.0.0-beta.2
       json5: 2.2.0
       lodash: 4.17.21
-      resolve: 1.22.1
+      resolve: 1.22.0
       semver: 5.7.1
       source-map: 0.5.7
     transitivePeerDependencies:
@@ -13939,7 +13960,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      acorn: 8.8.2
+      acorn: 8.7.1
       commander: 2.20.3
       source-map: 0.6.1
       source-map-support: 0.5.21
