@@ -56,9 +56,14 @@ jobs:
           git config --global user.email "release-bot@groww.in"
           git config --global user.name "github-bot"
 
-      - run: |
-          pnpm install
-          pnpm run build --filter="@groww-tech/${{env.package_name}}"
+      - name: PNPM install
+        run: pnpm install
+
+      - name: Test
+        run: pnpm test --filter="@groww-tech/${{env.package_name}}"
+
+      - name: Build
+        run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/npm_publish
