@@ -30,7 +30,7 @@ This monorepo contains the following packages:
 - `stylelint-config`: Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fstylelint-config.svg)](https://badge.fury.io/js/@groww-tech%2Fstylelint-config)
 - `ui-toolkit`: Standard UI Library adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fui-toolkit.svg)](https://badge.fury.io/js/@groww-tech%2Fui-toolkit)
 - `ella`: Utility-belt library for JavaScript that provides general purpose methods used in day to day programming. [![npm version](https://badge.fury.io/js/@groww-tech%2Fella.svg)](https://badge.fury.io/js/@groww-tech%2Fella)
-- `Analytics`: Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm. [![npm version](https://badge.fury.io/js/@groww-tech%2Fanalytics.svg)](https://badge.fury.io/js/@groww-tech%2Fanalytics)
+- `analytics`: Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm. [![npm version](https://badge.fury.io/js/@groww-tech%2Fanalytics.svg)](https://badge.fury.io/js/@groww-tech%2Fanalytics)
 
 
 ### Getting Started
