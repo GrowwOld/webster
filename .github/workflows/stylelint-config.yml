@@ -57,7 +57,7 @@ jobs:
           git config --global user.name "github-bot"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
-        uses: ./.github/workflows/actions/npm_publish
+        uses: ./.github/workflows/actions/pnpm_publish
         with:
           github_token: ${{secrets.GITHUB_TOKEN}} 
           npm_token: ${{secrets.NPM_TOKEN}}

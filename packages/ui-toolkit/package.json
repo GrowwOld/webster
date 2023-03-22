@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -78,9 +78,9 @@
     "@babel/plugin-proposal-private-methods": "^7.13.0",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
-    "@groww-tech/base-css": "*",
-    "@groww-tech/eslint-config": "*",
-    "@groww-tech/eslint-plugin-internal": "*",
+    "@groww-tech/base-css": "workspace:*",
+    "@groww-tech/eslint-config": "workspace:*",
+    "@groww-tech/eslint-plugin-internal": "workspace:*",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@stitches/react": "^1.2.7",
@@ -89,6 +89,7 @@
     "@storybook/addon-links": "^6.2.8",
     "@storybook/react": "^6.2.8",
     "@types/object-assign": "^4.0.30",
+    "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.3",
     "@types/react-lazyload": "^3.1.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -119,7 +120,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@groww-tech/icon-store": "*",
+    "@groww-tech/icon-store": "workspace:*",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
     "react-waypoint": "^10.1.0"

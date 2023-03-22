@@ -8,6 +8,25 @@ importers:
     devDependencies:
       turbo: 1.8.5
 
+  packages/analytics:
+    specifiers:
+      '@groww-tech/ella': workspace:*
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/tsconfig': workspace:*
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11
+      typescript: 4.4.4
+    dependencies:
+      '@groww-tech/ella': link:../ella
+    devDependencies:
+      '@groww-tech/eslint-config': link:../eslint-config
+      '@groww-tech/tsconfig': link:../tsconfig
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11_typescript@4.4.4
+      typescript: 4.4.4
+
   packages/base-css:
     specifiers: {}
 
@@ -61,6 +80,29 @@ importers:
       tsup: 5.12.0_typescript@4.5.5
       typedoc: 0.22.13_typescript@4.5.5
       typescript: 4.5.5
+
+  packages/encryption:
+    specifiers:
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/tsconfig': workspace:*
+      '@types/crypto-js': 4.1.1
+      crypto-js: 4.1.1
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11
+      typescript: 4.4.4
+      vitest: 0.29.7
+    dependencies:
+      crypto-js: 4.1.1
+    devDependencies:
+      '@groww-tech/eslint-config': link:../eslint-config
+      '@groww-tech/tsconfig': link:../tsconfig
+      '@types/crypto-js': 4.1.1
+      esbuild-plugin-glob: 1.0.5
+      eslint: 7.26.0
+      tsup: 5.11.11_typescript@4.4.4
+      typescript: 4.4.4
+      vitest: 0.29.7
 
   packages/eslint-config:
     specifiers:
@@ -126,9 +168,9 @@ importers:
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
       '@babel/runtime': ^7.14.6
-      '@groww-tech/eslint-config': '*'
-      '@groww-tech/eslint-plugin-internal': '*'
-      '@groww-tech/tsconfig': '*'
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/eslint-plugin-internal': workspace:*
+      '@groww-tech/tsconfig': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
       '@rollup/plugin-typescript': ^8.3.0
@@ -230,10 +272,10 @@ importers:
       '@babel/plugin-proposal-private-methods': ^7.13.0
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
-      '@groww-tech/base-css': '*'
-      '@groww-tech/eslint-config': '*'
-      '@groww-tech/eslint-plugin-internal': '*'
-      '@groww-tech/icon-store': '*'
+      '@groww-tech/base-css': workspace:*
+      '@groww-tech/eslint-config': workspace:*
+      '@groww-tech/eslint-plugin-internal': workspace:*
+      '@groww-tech/icon-store': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
       '@stitches/react': ^1.2.7
@@ -242,6 +284,7 @@ importers:
       '@storybook/addon-links': ^6.2.8
       '@storybook/react': ^6.2.8
       '@types/object-assign': ^4.0.30
+      '@types/react': ^17.0.38
       '@types/react-dom': ^17.0.3
       '@types/react-lazyload': ^3.1.0
       '@typescript-eslint/eslint-plugin': ^4.22.0
@@ -295,6 +338,7 @@ importers:
       '@storybook/addon-links': 6.5.6_wcqkhtmu7mswc6yz4uyexck3ty
       '@storybook/react': 6.5.6_dov26e3jessczwqor7uk7nqtmi
       '@types/object-assign': 4.0.30
+      '@types/react': 17.0.39
       '@types/react-dom': 17.0.11
       '@types/react-lazyload': 3.2.0
       '@typescript-eslint/eslint-plugin': 4.33.0_swkqfqhkeqhinvgsxkfyyd7oiu
@@ -413,7 +457,7 @@ packages:
       gensync: 1.0.0-beta.2
       json5: 2.2.0
       lodash: 4.17.21
-      resolve: 1.22.0
+      resolve: 1.22.1
       semver: 5.7.1
       source-map: 0.5.7
     transitivePeerDependencies:
@@ -521,7 +565,7 @@ packages:
       '@babel/traverse': 7.18.2
       debug: 4.3.4
       lodash.debounce: 4.0.8
-      resolve: 1.22.0
+      resolve: 1.22.1
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -539,7 +583,7 @@ packages:
       '@babel/traverse': 7.18.2
       debug: 4.3.4
       lodash.debounce: 4.0.8
-      resolve: 1.22.0
+      resolve: 1.22.1
       semver: 6.3.0
     transitivePeerDependencies:
       - supports-color
@@ -3736,6 +3780,10 @@ packages:
     resolution: {integrity: sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==}
     dev: true
 
+  /@types/crypto-js/4.1.1:
+    resolution: {integrity: sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==}
+    dev: true
+
   /@types/d3-array/3.0.2:
     resolution: {integrity: sha512-5mjGjz6XOXKOCdTajXTZ/pMsg236RdiwKPrRPWAEf/2S/+PzwY+LLYShUpeysWaMvsdS7LArh6GdUefoxpchsQ==}
     dev: true
@@ -5039,7 +5087,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.18.3
       cosmiconfig: 7.0.1
-      resolve: 1.22.0
+      resolve: 1.22.1
     dev: true
 
   /babel-plugin-polyfill-corejs2/0.3.1_@babel+core@7.17.2:
@@ -5913,7 +5961,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
   /concat-stream/1.6.2:
     resolution: {integrity: sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==}
@@ -6156,6 +6204,10 @@ packages:
       randombytes: 2.1.0
       randomfill: 1.0.4
     dev: true
+
+  /crypto-js/4.1.1:
+    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+    dev: false
 
   /css-color-names/0.0.4:
     resolution: {integrity: sha512-zj5D7X1U2h2zsXOAM8EyUREBnnts6H+Jm+d1M2DbiQQcUtnqgQsMrdo8JW9R80YFUmIdBZeMu5wvYM7hcgWP/Q==}
@@ -6719,7 +6771,7 @@ packages:
       duplexer2: 0.0.2
       ldjson-stream: 1.2.1
       multimatch: 5.0.0
-      postcss: 8.4.6
+      postcss: 8.4.21
       source-map: 0.7.3
       through2: 4.0.2
       yargs: 16.2.0
@@ -7474,7 +7526,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.3
+      debug: 4.3.4
       doctrine: 3.0.0
       enquirer: 2.3.6
       eslint-scope: 5.1.1
@@ -10715,7 +10767,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.0
+      resolve: 1.22.1
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: true
@@ -11974,7 +12026,6 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: true
 
   /postcss/8.4.6:
     resolution: {integrity: sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==}
@@ -14355,9 +14406,9 @@ packages:
         optional: true
     dependencies:
       bundle-require: 2.3.0_esbuild@0.14.25
-      cac: 6.7.12
+      cac: 6.7.14
       chokidar: 3.5.3
-      debug: 4.3.3
+      debug: 4.3.4
       esbuild: 0.14.25
       execa: 5.1.1
       globby: 11.1.0
@@ -14768,7 +14819,7 @@ packages:
   /uri-js/4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
-      punycode: 2.3.0
+      punycode: 2.1.1
     dev: true
 
   /urix/0.1.0:
@@ -14985,6 +15036,67 @@ packages:
       rollup: 3.20.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitest/0.29.7:
+    resolution: {integrity: sha512-aWinOSOu4jwTuZHkb+cCyrqQ116Q9TXaJrNKTHudKBknIpR0VplzeaOUuDF9jeZcrbtQKZQt6yrtd+eakbaxHg==}
+    engines: {node: '>=v14.16.0'}
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@vitest/browser': '*'
+      '@vitest/ui': '*'
+      happy-dom: '*'
+      jsdom: '*'
+      safaridriver: '*'
+      webdriverio: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+      safaridriver:
+        optional: true
+      webdriverio:
+        optional: true
+    dependencies:
+      '@types/chai': 4.3.4
+      '@types/chai-subset': 1.3.3
+      '@types/node': 17.0.17
+      '@vitest/expect': 0.29.7
+      '@vitest/runner': 0.29.7
+      '@vitest/spy': 0.29.7
+      '@vitest/utils': 0.29.7
+      acorn: 8.8.2
+      acorn-walk: 8.2.0
+      cac: 6.7.14
+      chai: 4.3.7
+      debug: 4.3.4
+      local-pkg: 0.4.3
+      pathe: 1.1.0
+      picocolors: 1.0.0
+      source-map: 0.6.1
+      std-env: 3.3.2
+      strip-literal: 1.0.1
+      tinybench: 2.4.0
+      tinypool: 0.4.0
+      tinyspy: 1.1.1
+      vite: 4.2.1_@types+node@17.0.17
+      vite-node: 0.29.7_@types+node@17.0.17
+      why-is-node-running: 2.2.2
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
     dev: true
 
   /vitest/0.29.7_jsdom@21.1.1:
