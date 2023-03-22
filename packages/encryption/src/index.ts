@@ -9,7 +9,7 @@ import { ResponseType } from './types';
  * @remarks
  * This method is a part of our Encryption Service.
  *
- * @param object - The data that needs to be encrypted
+ * @param object - The data that needs to be encrypted in AES
  * @param secretKey - The key used for encrytping the data.
  *
  * @returns The object with keys of data and error.
@@ -51,7 +51,7 @@ export const encryptAes = (dataToEncrypt: object | string, secretKey: string) =>
  * @remarks
  * This method is a part of our Encryption Service.
  *
- * @param object - The encrypted data that needs to be decrypted
+ * @param object - The encrypted data (in AES) that needs to be decrypted
  * @param secretKey - The key used for decrypting the data.
  *
  * @returns The object with keys of data and error.
