@@ -19,9 +19,9 @@ npm i @groww-tech/encryption
 Encryption has a pretty straight forward API usage.
 
 ```
-import { encrypt } from '@groww-tech/encryption';
+import { encryptAes } from '@groww-tech/encryption';
 
-console.log(encrypt('Data to encrypt','secret-key')); // Ouput - { data: 'random string', error:null }
+console.log(encryptAes('Data to encrypt','secret-key')); // Ouput - { data: 'random string', error:null }
 ```
 
 ## License
