@@ -1,17 +1,17 @@
-# web-analytics 
- [![npm version](https://img.shields.io/npm/v/@groww-tech/web-analytics?color=51C838)](https://www.npmjs.com/package/@groww-tech/web-analytics) 
- [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/web-analytics)](https://bundlephobia.com/package/@groww-tech/web-analytics)
+# analytics 
+ [![npm version](https://img.shields.io/npm/v/@groww-tech/analytics?color=51C838)](https://www.npmjs.com/package/@groww-tech/analytics) 
+ [![minzipped size](https://img.shields.io/bundlephobia/minzip/@groww-tech/analytics)](https://bundlephobia.com/package/@groww-tech/analytics)
  ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Groww/webster/Ella_Build?color=51C838)
 
 <br/>
 
-Web Analytics is a service used that exposes methods to send events to 3rd party analytics tools like Webengage and Gtm
+Analytics is a service used that exposes methods to send events to 3rd party analytics tools like Webengage and Gtm
 
 
 ### Installation
 
 ```
-npm i @groww-tech/web-analytics
+npm i @groww-tech/analytics
 ```
 
 ### API
@@ -19,7 +19,7 @@ npm i @groww-tech/web-analytics
 Analytics has a pretty straight forward API usage.
 
 ```
-import { trackEvent } from '@groww-tech/web-analytics';
+import { trackEvent } from '@groww-tech/analytics';
 
 trackEvent('Dev', 'PageView');      //PageView event with Dev category is sent to both webengage and gtm when this method is used
 ```
@@ -28,4 +28,4 @@ trackEvent('Dev', 'PageView');      //PageView event with Dev category is sent t
 
 ## License
 
-Web Analytics is licensed under a [MIT License](./LICENSE).
+Analytics is licensed under a [MIT License](./LICENSE).
