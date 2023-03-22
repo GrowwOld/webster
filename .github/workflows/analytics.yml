@@ -1,20 +1,20 @@
-name: Eslint_Plugin_Internal_Build
+name: ANALYTICS_BUILD
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'packages/eslint-plugin-internal/**'
+      - "packages/analytics/**"
 env:
-  package_dir: 'packages'
-  package_name: 'eslint-plugin-internal'
+  package_dir: "packages"
+  package_name: "analytics"
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: './${{env.package_dir}}/${{env.package_name}}'
+        working-directory: "./${{env.package_dir}}/${{env.package_name}}"
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
@@ -27,11 +27,12 @@ jobs:
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-          
+
       - uses: actions/setup-node@v2
         with:
           node-version: 16.14.0
           registry-url: https://registry.npmjs.org/
+
       - uses: actions/cache@v3
         name: Setup pnpm cache
         with:
@@ -44,7 +45,7 @@ jobs:
         id: cpv
         uses: PostHog/check-package-version@v2
         with:
-          path: '${{env.package_dir}}/${{env.package_name}}'
+          path: "${{env.package_dir}}/${{env.package_name}}"
 
       - name: Echo output
         run: |
@@ -56,9 +57,15 @@ jobs:
           git config --global user.email "release-bot@groww.in"
           git config --global user.name "github-bot"
 
+      - name: PNPM install
+        run: pnpm install
+
+      - name: Run Build
+        run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
+
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/pnpm_publish
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}} 
+          github_token: ${{secrets.GITHUB_TOKEN}}
           npm_token: ${{secrets.NPM_TOKEN}}
-          path: './${{env.package_dir}}/${{env.package_name}}'
+          path: "./${{env.package_dir}}/${{env.package_name}}"

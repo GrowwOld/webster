@@ -1,7 +1,7 @@
 {
-  "name": "@groww-tech/encryption",
-  "version": "1.0.0",
-  "description": "Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend.",
+  "name": "@groww-tech/analytics",
+  "version": "0.0.1",
+  "description": "Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -15,14 +15,12 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a encryption-v$PACKAGE_VERSION -m \"@groww-tech/encryption-v$PACKAGE_VERSION\" && git push --tags",
-    "test": "vitest"
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a analytics-v$PACKAGE_VERSION -m \"@groww-tech/analytics-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
+    "analytics",
     "groww",
-    "web service",
-    "encryption",
-    "decryption"
+    "web service"
   ],
   "author": "Groww Core Team <web-core@groww.in>",
   "contributors": [
@@ -31,8 +29,8 @@
       "url": "https://twitter.com/VikasSi25579022"
     },
     {
-      "name": "Sandeep",
-      "url": "https://www.linkedin.com/in/sandeep-sharma2/"
+      "name": "Harshit Pruthi",
+      "url": "https://www.linkedin.com/in/harshit-pruthi"
     }
   ],
   "license": "MIT",
@@ -42,18 +40,16 @@
   "bugs": {
     "url": "https://github.com/Groww/webster/issues"
   },
-  "homepage": "https://github.com/Groww/webster/tree/develop/packages/encryption#readme",
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/analytics#readme",
   "devDependencies": {
     "@groww-tech/eslint-config": "workspace:*",
     "@groww-tech/tsconfig": "workspace:*",
-    "@types/crypto-js": "4.1.1",
-    "esbuild-plugin-glob": "1.0.5",
     "eslint": "7.26.0",
-    "tsup": "5.11.11",
     "typescript": "4.4.4",
-    "vitest": "0.29.7"
+    "tsup": "5.11.11",
+    "esbuild-plugin-glob": "1.0.5"
   },
   "dependencies": {
-    "crypto-js": "4.1.1"
+    "@groww-tech/ella": "workspace:*"
   }
 }
