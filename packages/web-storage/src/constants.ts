@@ -16,3 +16,5 @@ export const BUCKET_SEPERATOR = '$$%&';
 export const BUCKET_UNAVAILABLE_ERROR = 'No Bucket Associated!';
 
 export const DEFAULT_STORAGE_EXPIRY_TIME = 7 * 24 * 60; // 7 days
+
+export const MAXIMUM_EXPIRY_LIMIT = 14 * 24 * 60; //14 days
