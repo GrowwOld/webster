@@ -87,6 +87,11 @@ export function setDataToStorage(key : string, data : any, storageType: string, 
     return '';
   }
 
+  // we dont allow more than 14 days of storage for others bucket. If more than 14 days is stored, we make it to 14 days.
+  if ((expiresInMin > 14 * 24 * 60) && (bucket === BUCKETS.OTHERS)) {
+    expiresInMin = 14 * 24 * 60;
+  }
+
   const bucketKey = getFullKeyForItem(key, bucket);
 
   const expiresInDay = ((expiresInMin / 60) / 24);
