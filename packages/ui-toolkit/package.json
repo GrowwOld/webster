@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -68,8 +68,8 @@
   "peerDependencies": {
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.12.0 || ^17.0.0",
+    "react-dom": "^16.12.0 || ^17.0.0",
     "react-lazyload": "^3.0.0"
   },
   "devDependencies": {

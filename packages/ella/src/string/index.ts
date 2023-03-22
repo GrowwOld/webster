@@ -241,7 +241,7 @@ export function maskInputString(inputString: string, maskStartIndex: number, mas
 
     if ((maskStartIndex >= 0) && (maskCharactersCount >= 0) && (maskCharactersCount <= inputLength)) {
       const stringBeforeMask = inputString.slice(0, maskStartIndex);
-      const maskedString = new Array(maskCharactersCount + 1).join('X');
+      const maskedString = new Array(maskCharactersCount + 1).join(maskCharacter);
       const stringAfterMask = inputString.slice(stringBeforeMask.length + maskedString.length, inputLength);
 
       return (stringBeforeMask + maskedString + stringAfterMask).substr(0, inputLength);

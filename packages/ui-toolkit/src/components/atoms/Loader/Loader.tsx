@@ -115,7 +115,6 @@ export class Loader extends React.PureComponent<DefaultProps, {}> {
     const { active } = this.props;
 
     return cn({
-      'loader': true,
       'loader14Active': active,
       'loader14Hidden': !active
     }, defaultClass);
@@ -146,7 +145,7 @@ export type DefaultProps = {
   loaderType: ValueOf<typeof LOADER_TYPE>;
   loaderClassName: string;
   active: boolean;
-  dimension: string;
+  dimension: 'SMALL' | 'MEDIUM' | 'LARGE' | 'MEDIUM_LARGE' | 'EXTRA_LARGE' | 'BOLT_DEFAULT';
   borderWidth: string | number;
 }
 
