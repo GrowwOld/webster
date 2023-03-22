@@ -27,3 +27,11 @@ console.log(encryptAes('Data to encrypt','secret-key')); // Ouput - { data: 'ran
 ## License
 
 Encryption is licensed under a [MIT License](./LICENSE).
+
+<br/>
+
+*This package is customized for use in Groww projects. Use at your own risk.*
+
+<br/>
+
+---
