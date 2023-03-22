@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ella",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Ella is a utility-belt library for JavaScript that provides general purpose methods used in day to day programming.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -17,9 +17,9 @@
     "clean": "rimraf dist && rimraf docs",
     "generate-doc": "typedoc",
     "push-doc": "gh-pages -d docs",
-    "prebuild": "npm run clean",
+    "prebuild": "pnpm clean",
     "build": "tsup --env.NODE_ENV production",
-    "postbuild": "npm run generate-doc",
+    "postbuild": "pnpm generate-doc",
     "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a ella-v$PACKAGE_VERSION -m \"@groww-tech/ella-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
