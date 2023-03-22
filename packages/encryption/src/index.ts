@@ -10,7 +10,7 @@ import { ResponseType } from './types';
  * This method is a part of our Encryption Service.
  *
  * @param object - The data that needs to be encrypted
- * @param ENCOLD_KEY - The key used for encrytping the data.
+ * @param ENCODE - The key used for encrytping the data.
  *
  * @returns The object with keys of data and error.
  *
@@ -24,7 +24,7 @@ import { ResponseType } from './types';
  * ```
  */
 
-export const encryptAes = (dataToEncrypt: object | string, ENCOLD_KEY: string) => {
+export const encryptAes = (dataToEncrypt: object | string, ENCODE: string) => {
 
   const response: ResponseType = {
     data: null,
@@ -32,7 +32,7 @@ export const encryptAes = (dataToEncrypt: object | string, ENCOLD_KEY: string) =
   };
 
   try {
-    const ciphertext = aes.encrypt(JSON.stringify(dataToEncrypt), ENCOLD_KEY);
+    const ciphertext = aes.encrypt(JSON.stringify(dataToEncrypt), ENCODE);
 
     response.data = ciphertext.toString();
 
@@ -52,7 +52,7 @@ export const encryptAes = (dataToEncrypt: object | string, ENCOLD_KEY: string) =
  * This method is a part of our Encryption Service.
  *
  * @param object - The encrypted data that needs to be decrypted
- * @param ENCOLD_KEY - The key used for decrypting the data.
+ * @param ENCODE - The key used for decrypting the data.
  *
  * @returns The object with keys of data and error.
  *
@@ -75,7 +75,7 @@ export const encryptAes = (dataToEncrypt: object | string, ENCOLD_KEY: string) =
  *
  */
 
-export const decryptAes = (ciphertext: string | null, ENCOLD_KEY: string) => {
+export const decryptAes = (ciphertext: string | null, ENCODE: string) => {
 
   const response: ResponseType = {
     data: null,
@@ -88,7 +88,7 @@ export const decryptAes = (ciphertext: string | null, ENCOLD_KEY: string) => {
       return response;
     }
 
-    const bytes = aes.decrypt(ciphertext.toString(), ENCOLD_KEY);
+    const bytes = aes.decrypt(ciphertext.toString(), ENCODE);
 
     const decryptedData = JSON.parse(bytes.toString(cryptoJS));
 
