@@ -5,6 +5,12 @@ const ImportBlock = class {
   }
 
 
+  /*
+    * @internal
+    * This function takes in ImportSpecifier and converts into equivalent import phrase 
+    * More specifically it returns the as import syntax format in case of alias imports or returns the name as it is otherwise
+    * @return string (import phrase)
+  */
   getNamedSpecifierString(specifier) {
     const imported = specifier.imported.name;
     const local = specifier.local.name;
@@ -17,6 +23,12 @@ const ImportBlock = class {
   }
 
 
+  /*
+    * @internal
+    * converts the ImportDeclaration object into proper import syntax text
+    * handles all case of named, default, named with alias and namespace imports
+    * @returns string (import syntax string)
+  */
   getCodeString() {
     const source = this.importStatement.source.value;
     const allSpecifiers = this.importStatement.specifiers;
@@ -52,6 +64,12 @@ const ImportBlock = class {
 };
 
 // rule/ImportSorter.ts
+/*
+  * @internal
+  * ImportSorter is the core of import sorting implemented in this plugin
+  * takes in a set of import statements and a custom order (if specified)
+  * and converts the same into proper formatted output
+*/
 const ImportSorter = class {
   constructor(allImportStatments, customImportOrder) {
     /*
@@ -82,6 +100,12 @@ const ImportSorter = class {
   }
 
 
+  /*
+    * @internal
+    * Used to merge userPassedImportOrder with some preset defaults
+    * @param userPassedImportOrder
+    * @returns array of import regex (final merged)
+  */
   getFinalImportOrder(userPassedImportOrder) {
     const finalImportOrder = [ ...userPassedImportOrder ];
 
@@ -102,7 +126,9 @@ const ImportSorter = class {
 
   /*
     * @returns the array of grouped imports sources which have no new lines between.
-    * Used for figuring out if the import order is correct or incorrect (code independent context reporting)
+    * It calculates difference in position where one import ends and other starts to decide whether to keep in one group
+    * or move into a new one
+    * Used for figuring out if the import order is correct or incorrect
   */
   generateImportStmntsFormat() {
     const calculatedImportArrangement = [];
@@ -131,6 +157,13 @@ const ImportSorter = class {
   }
 
 
+  /*
+    * @internal
+    * The user passes the regex import order as raw string
+    * This function initializes import groups from that order by converting it into suitable regex
+    * The order of import groups passed by the user is the final `sorted` order of imports
+    * @returns { matcher: regex, groupName: string, imports: array of imports that fall in this group (initialized empty) }
+  */
   createInitializedImportGroups() {
     return this.importOrder.reduce((initializedGroups, group) => {
       initializedGroups[group] = {
@@ -143,6 +176,16 @@ const ImportSorter = class {
   }
 
 
+  /*
+    * @internal
+    * @param source (source of the import)
+    * @param groups (array of group names)
+    * We match the regex of import group with the import source. 
+    * This function takes a source (string) as import and set of groups to match against
+    * and returns the most suitable match
+    * It sorts the list of matches and returns the first match.
+    * @return groupName for the source (string)
+  */
   findImportGroupForSource(source, groups) {
     const groupFound = [];
     const imageMatcher = new RegExp('.(jpe?g|png|svg|gif|mp3|mp4)$', 'u');
@@ -195,6 +238,13 @@ const ImportSorter = class {
   }
 
 
+  /*
+    * This function using the initializedImportGroups pushes each source into its suitable group
+    * What we have as the final result is an object of import group, where each groupName is the key and the value is 
+    * the imports that belong to the group
+    * @returns the array in array version of sorted imports. These are later compared with current order to decide to run a eslint 
+    * fixer or not.
+  */
   performImportSorting() {
     const initializedImportGroups = this.createInitializedImportGroups();
 
@@ -205,10 +255,16 @@ const ImportSorter = class {
       impGroup[groupForImport].imports.push(imp);
       return impGroup;
     }, initializedImportGroups);
+
     return this.generateSortedImportStmntsFormat(this.sortedImportGroups);
   }
 
 
+  /*
+    * This function is used to generate the actual raw text of the sorted imports 
+    * this is directly used to replace the current ill-ordered imports text in case the eslint fixer runs.
+    * @return string
+  */
   getSortedImportRawText() {
     const sortedImportNodeGroup = this.generateSortedImportStmntsFormat(this.sortedImportGroups, (imp) => imp);
 
@@ -229,6 +285,13 @@ const flattenArrayToOneString = (arr) => {
 };
 
 
+/*
+  * compare 2 different import orders to check the validity of the oldOrder with the newOrder (sortedOrder)
+  * this is used to decide if the import order is already correct / sorted
+  * So we will not need to run the eslint fix action in case of correct / same order.
+  * @param oldOrder 
+  * @param newOrder (sortedOrder according to user passed groups)
+ */
 const isValidImportOrder = (oldOrder, newOrder) => {
   if (oldOrder.length !== newOrder.length) {
     return false;
