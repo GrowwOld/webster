@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/Groww/webster"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsup --env.NODE_ENV production",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a monitoring-v$PACKAGE_VERSION -m \"@groww-tech/monitoring-v$PACKAGE_VERSION\" && git push --tags"
+  },
   "keywords": [
     "monitoring",
     "groww",
