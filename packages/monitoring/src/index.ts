@@ -34,30 +34,32 @@ register.registerMetric(httpRequestTimer);
 
 
 /**
- * Expose '/metrics' route for promethues to monitor
- */
-prometheusApp.get('/metrics', async (req: Request, res: Response) => {
-  // Start the HTTP request timer, saving a reference to the returned method
-  const end = httpRequestTimer.startTimer();
-
-  // Save reference to the path so we can record it when ending the timer
-  const route = req.route.path;
-
-  res.setHeader('Content-Type', register.contentType);
-
-  // Whatever the metrics scraped by prometheus will get emitted using register.metrics()
-  res.send(await register.metrics());
-
-  // End timer and add labels
-  end({ route, code: res.statusCode, method: req.method });
-});
-
-/**
  * A function to initialize the prometheus service. It will monitor the request duration by storing route, status code and request method of each request.
  * @param PROMETHEUS_PORT Port which prometheus will listen
+ * @param routeToExpose Route on which server will expose the metrics
  * @returns void
  */
-export function initPrometheus(PROMETHEUS_PORT: number) {
+export function initPrometheus(PROMETHEUS_PORT: number, routeToExpose: string) {
+  /**
+ * Expose '/metrics' route for promethues to monitor
+ */
+  prometheusApp.get(routeToExpose, async (req: Request, res: Response) => {
+    // Start the HTTP request timer, saving a reference to the returned method
+    const end = httpRequestTimer.startTimer();
+
+    // Save reference to the path so we can record it when ending the timer
+    const route = req.route.path;
+
+    res.setHeader('Content-Type', register.contentType);
+
+    // Whatever the metrics scraped by prometheus will get emitted using register.metrics()
+    res.send(await register.metrics());
+
+    // End timer and add labels
+    end({ route, code: res.statusCode, method: req.method });
+  });
+
+
   prometheusApp.listen(PROMETHEUS_PORT, () => {
     console.log(`Prometheus is running on port ${PROMETHEUS_PORT}`);
   });
