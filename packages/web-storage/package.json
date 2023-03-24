@@ -43,8 +43,6 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/web-storage#readme",
   "devDependencies": {
-    "@groww-tech/eslint-config": "workspace:*",
-    "@groww-tech/tsconfig": "workspace:*",
     "@types/js-cookie": "3.0.2",
     "eslint": "7.26.0",
     "esbuild-plugin-glob": "1.0.5",
