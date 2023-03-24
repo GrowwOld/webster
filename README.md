@@ -29,17 +29,25 @@ This monorepo contains the following packages:
 - `eslint-plugin-internal`: ESLint Plugin with customized rules as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal.svg)](https://badge.fury.io/js/@groww-tech%2Feslint-plugin-internal)
 - `stylelint-config`: Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fstylelint-config.svg)](https://badge.fury.io/js/@groww-tech%2Fstylelint-config)
 - `ui-toolkit`: Standard UI Library adopted in Groww. Customized as per requirement and preferences of devs in Groww. [![npm version](https://badge.fury.io/js/@groww-tech%2Fui-toolkit.svg)](https://badge.fury.io/js/@groww-tech%2Fui-toolkit)
+- `web-storage`: Web storage is a storage service that provides simple APIs to get/set data to Local Storage and Cookies. Support for further browser storage is coming soon. [![npm version](https://badge.fury.io/js/@groww-tech%2web-storage.svg)](https://badge.fury.io/js/@groww-tech%2web-storage)
+- `ella`: Utility-belt library for JavaScript that provides general purpose methods used in day to day programming. [![npm version](https://badge.fury.io/js/@groww-tech%2Fella.svg)](https://badge.fury.io/js/@groww-tech%2Fella)
+- `encryption`: Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend. [![npm version](https://badge.fury.io/js/@groww-tech%2Fencryption.svg)](https://badge.fury.io/js/@groww-tech%2Fencryption)
+- `analytics`: Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm. [![npm version](https://badge.fury.io/js/@groww-tech%2Fanalytics.svg)](https://badge.fury.io/js/@groww-tech%2Fanalytics)
 
 
 ### Getting Started
-Clone this repository and install all the dependencies by running  `npm install`  on root folder.
+
+This repository uses **pnpm** as the package manager. To install pnpm, please refer to the [official pnpm installation guide](https://pnpm.io/installation).
+
+
+Clone this repository and install all the dependencies by running  `pnpm install`  on root folder.
 
 ### Build
 
 To build all packages, run the following command:
 
 ```
-npm run build
+pnpm run build
 ```
 
 ### Develop
@@ -47,21 +55,21 @@ npm run build
 To develop all packages, run the following command:
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 <br/>
 
 To build or develop a specific package, change directory to the package folder and run those commands in that folder.
 
-Task execution can also be scoped by passing scope argument to the command.
+Workspaces can also be filtered by passing filter argument to the command.
 ```
-npm run build -- --scope="*icon-store"
+pnpm run build --filter="*icon-store"
 ```
 This command when executed on root folder will build only the `icon-store` package.
 
 
-Read more about scoped tasks in Turborepo [here](https://turborepo.org/docs/features/scopes).
+Read more about filtering workspaces in Turborepo [here](https://turbo.build/repo/docs/core-concepts/monorepos/filtering).
 
 <br>
 

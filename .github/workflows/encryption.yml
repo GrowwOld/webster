@@ -1,0 +1,74 @@
+name: ENCRYPTION_BUILD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packages/encryption/**"
+env:
+  package_dir: "packages"
+  package_name: "encryption"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: "./${{env.package_dir}}/${{env.package_name}}"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 7
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.14.0
+          registry-url: https://registry.npmjs.org/
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Check package version
+        id: cpv
+        uses: PostHog/check-package-version@v2
+        with:
+          path: "${{env.package_dir}}/${{env.package_name}}"
+
+      - name: Echo output
+        run: |
+          echo "Committed version: ${{ steps.cpv.outputs.committed-version }}"
+          echo "Published version: ${{ steps.cpv.outputs.published-version }}"
+          echo "Is new version: ${{ steps.cpv.outputs.is-new-version }}"
+
+      - run: |
+          git config --global user.email "release-bot@groww.in"
+          git config --global user.name "github-bot"
+
+      - name: PNPM install
+        run: pnpm install
+
+      - name: Run Tests
+        run: pnpm test --filter="@groww-tech/${{env.package_name}}"
+
+      - name: Run Build
+        run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
+
+      - if: steps.cpv.outputs.is-new-version == 'true'
+        uses: ./.github/workflows/actions/pnpm_publish
+        with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
+          npm_token: ${{secrets.NPM_TOKEN}}
+          path: "./${{env.package_dir}}/${{env.package_name}}"
