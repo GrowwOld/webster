@@ -3,8 +3,6 @@ import express, { Request, Response } from 'express';
 
 import client from 'prom-client';
 
-import { histogramConfig } from './constants';
-
 const prometheusApp = express();
 
 
@@ -25,7 +23,12 @@ client.collectDefaultMetrics({
 /**
  * A histogram for request details which is counted based on bucket values.
  */
-const httpRequestTimer = new client.Histogram(histogramConfig);
+const httpRequestTimer = new client.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: [ 'method', 'route', 'code' ],
+  buckets: [ 0.1, 0.3, 0.5, 0.7, 1, 3, 5, 7, 10 ]
+});
 
 /**
  * Register the histogram into the registry, The registry provides a set of APIs that can be used to interact with histogram metrics.
