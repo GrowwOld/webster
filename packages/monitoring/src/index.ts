@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import express, { Request, Response } from 'express';
 
-import client from 'prom-client';
+import promClient from 'prom-client';
 
 const prometheusApp = express();
 
@@ -9,12 +9,12 @@ const prometheusApp = express();
 /**
  * A registry to manage metrics
  */
-const register = new client.Registry();
+const register = new promClient.Registry();
 
 /**
  * Collect the default metrics that prometheus gives
  */
-client.collectDefaultMetrics({
+promClient.collectDefaultMetrics({
   labels: { app: 'node-application-monitoring-app' },
   prefix: 'node_',
   register
@@ -23,7 +23,7 @@ client.collectDefaultMetrics({
 /**
  * A histogram for request details which is counted based on bucket values.
  */
-const httpRequestTimer = new client.Histogram({
+const httpRequestTimer = new promClient.Histogram({
   name: 'http_request_duration_seconds',
   help: 'Duration of HTTP requests in seconds',
   labelNames: [ 'method', 'route', 'code' ],
@@ -39,10 +39,10 @@ register.registerMetric(httpRequestTimer);
 /**
  * A function to initialize the prometheus service. It will monitor the request duration by storing route, status code and request method of each request.
  * @param PROMETHEUS_PORT Port which prometheus will listen
- * @param routeToExpose Route on which server will expose the metrics
+ * @param routeToExpose Route on which server will expose the metrics. By default it will be '/metrics'
  * @returns void
  */
-export function initPrometheus(PROMETHEUS_PORT: number, routeToExpose: string) {
+export function initPrometheus(PROMETHEUS_PORT: number, routeToExpose = '/metrics') {
   /**
  * Expose '/metrics' route for promethues to monitor
  */
