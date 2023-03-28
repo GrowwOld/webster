@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.23.1",
     "turbo": "latest",
-    "typescript": "^4.5.4"
+    "typescript": "4.5.5"
   },
   "engines": {
     "pnpm": ">=7.0.0",
