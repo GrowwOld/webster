@@ -1,0 +1,58 @@
+{
+  "name": "@groww-tech/monitoring",
+  "version": "0.0.1",
+  "description": "A monitoring CLI to spin up prometheus server",
+  "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
+  "scripts": {
+    "build": "tsup --env.NODE_ENV production",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a monitoring-v$PACKAGE_VERSION -m \"@groww-tech/monitoring-v$PACKAGE_VERSION\" && git push --tags"
+  },
+  "keywords": [
+    "monitoring",
+    "groww",
+    "web service"
+  ],
+  "author": "Groww Core Team <web-core@groww.in>",
+  "contributors": [
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    },
+    {
+      "name": "Shubham Gavali",
+      "url": "https://www.linkedin.com/in/shubhamgavali/"
+    }
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/Groww/webster/issues"
+  },
+  "homepage": "https://github.com/Groww/webster/tree/develop/packages/monitoring#readme",
+  "devDependencies": {
+    "@groww-tech/eslint-config": "workspace:*",
+    "@groww-tech/tsconfig": "workspace:*",
+    "@types/express": "^4.17.17",
+    "esbuild-plugin-glob": "1.0.5",
+    "eslint": "7.26.0",
+    "tsup": "5.11.11",
+    "typescript": "4.4.4"
+  },
+  "bin": {
+    "start-monitoring": "./dist/index.js"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "prom-client": "14.0.1"
+  }
+}
