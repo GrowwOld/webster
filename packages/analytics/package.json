@@ -42,9 +42,6 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/analytics#readme",
   "devDependencies": {
-    "@groww-tech/eslint-config": "workspace:*",
-    "@groww-tech/tsconfig": "workspace:*",
-    "eslint": "7.26.0",
     "typescript": "4.4.4",
     "tsup": "5.11.11",
     "esbuild-plugin-glob": "1.0.5"
