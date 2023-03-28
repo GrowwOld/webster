@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/encryption",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
@@ -16,7 +16,7 @@
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
     "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a encryption-v$PACKAGE_VERSION -m \"@groww-tech/encryption-v$PACKAGE_VERSION\" && git push --tags",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "keywords": [
     "groww",

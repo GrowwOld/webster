@@ -12,9 +12,6 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: "./${{env.package_dir}}/${{env.package_name}}"
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
@@ -58,13 +55,16 @@ jobs:
           git config --global user.name "github-bot"
 
       - name: PNPM install
-        run: pnpm install
+        run: |
+          pnpm install
 
       - name: Run Tests
-        run: pnpm test --filter="@groww-tech/${{env.package_name}}"
+        run: |
+          pnpm test --filter="@groww-tech/${{env.package_name}}"
 
       - name: Run Build
-        run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
+        run: |
+          pnpm build --filter="@groww-tech/${{env.package_name}}"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/pnpm_publish
