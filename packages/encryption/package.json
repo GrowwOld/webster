@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/encryption",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
