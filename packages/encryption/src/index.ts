@@ -1,7 +1,13 @@
 import aes from 'crypto-js/aes';
-import cryptoJS from 'crypto-js/enc-utf8';
+import Base64 from 'crypto-js/enc-base64';
+import Utf8 from 'crypto-js/enc-utf8';
 
-import { ResponseType } from './types';
+export { default as Utf8Encoder } from 'crypto-js/enc-utf8';
+export { default as Base64Encoder } from 'crypto-js/enc-base64';
+export { default as NoPadding } from 'crypto-js/pad-nopadding';
+export { default as sha256Hash } from 'crypto-js/sha256';
+
+import { ResponseType, CipherOptionType } from './types';
 
 /**
  * Encrypt
@@ -24,7 +30,7 @@ import { ResponseType } from './types';
  * ```
  */
 
-export const encryptAes = (dataToEncrypt: object | string, ENCODE: string) => {
+export const encryptAes = (dataToEncrypt: object | string, ENCODE: string | CryptoJS.lib.WordArray, base64Encode = false, cipherOptions?: CipherOptionType) => {
 
   const response: ResponseType = {
     data: null,
@@ -32,9 +38,19 @@ export const encryptAes = (dataToEncrypt: object | string, ENCODE: string) => {
   };
 
   try {
-    const ciphertext = aes.encrypt(JSON.stringify(dataToEncrypt), ENCODE);
 
-    response.data = ciphertext.toString();
+
+    if (base64Encode === true) {
+      const ciphertext = aes.encrypt(dataToEncrypt as CryptoJS.lib.WordArray, ENCODE, cipherOptions).ciphertext.toString(Base64);
+
+      response.data = ciphertext;
+
+    } else {
+      const ciphertext = aes.encrypt(JSON.stringify(dataToEncrypt), ENCODE, cipherOptions).toString();
+
+      response.data = ciphertext;
+    }
+
 
     return response;
 
@@ -75,7 +91,7 @@ export const encryptAes = (dataToEncrypt: object | string, ENCODE: string) => {
  *
  */
 
-export const decryptAes = (ciphertext: string | null, ENCODE: string) => {
+export const decryptAes = (ciphertext: string | null, ENCODE: string, cipherOptions?:CipherOptionType) => {
 
   const response: ResponseType = {
     data: null,
@@ -88,11 +104,12 @@ export const decryptAes = (ciphertext: string | null, ENCODE: string) => {
       return response;
     }
 
-    const bytes = aes.decrypt(ciphertext.toString(), ENCODE);
-
-    const decryptedData = JSON.parse(bytes.toString(cryptoJS));
+    const bytes = aes.decrypt(ciphertext.toString(), ENCODE, cipherOptions);
+    const decryptedData = JSON.parse(bytes.toString(Utf8));
 
     response.data = decryptedData;
+
+
     return response;
 
   } catch (e: any) {
