@@ -73,7 +73,7 @@ export const encryptAes = (dataToEncrypt: object | string, ENCODE: string) => {
  * ```
  */
 
-export const encryptAesBase64 = (dataToEncrypt:string, ENCODE: string| CryptoJS.lib.WordArray, cipherOptions:CipherOptionType) => {
+export const encryptAesBase64 = (dataToEncrypt: string, ENCODE: string | CryptoJS.lib.WordArray, cipherOptions: CipherOptionType) => {
 
   const response: ResponseType = {
     data: null,
