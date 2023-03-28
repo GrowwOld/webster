@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/eslint-config",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Standard Eslint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
   "main": "index.js",
   "repository": {
@@ -48,7 +48,8 @@
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-react": "^7.23.1",
-    "eslint-plugin-react-hooks": "^4.4.0"
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "eslint-plugin-import-newlines": "1.3.1"
   },
   "peerDependencies": {
     "@groww-tech/eslint-plugin-internal": "workspace:*",
@@ -56,6 +57,7 @@
     "@typescript-eslint/parser": "^4.19.0",
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-react": "^7.23.1"
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-import-newlines": "1.3.1"
   }
 }
