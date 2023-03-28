@@ -8,6 +8,7 @@ module.exports = {
     "declaration-no-important": [true, { "severity": "warning" }],
     "rule-empty-line-before": ["always", { "severity": "warning" }],
     "selector-id-pattern": null,
+    "selector-class-pattern": null,
     "custom-property-pattern": null,
     "keyframes-name-pattern": null,
     "color-hex-case": ["upper", { "severity": "warning" }],
