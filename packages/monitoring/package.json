@@ -49,7 +49,7 @@
     "typescript": "4.4.4"
   },
   "bin": {
-    "web-monitor": "./dist/index.js"
+    "start-monitoring": "./dist/index.js"
   },
   "dependencies": {
     "express": "4.17.1",
