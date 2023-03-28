@@ -64,7 +64,7 @@ jobs:
         run: pnpm test --filter="@groww-tech/${{env.package_name}}"
 
       - name: Run Build
-        run: pnpm run build --filter="@groww-tech/${{env.package_name}}"
+        run: pnpm build --filter="@groww-tech/${{env.package_name}}"
 
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/pnpm_publish
