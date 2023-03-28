@@ -8,7 +8,8 @@
     "react",
     "react-hooks",
     "@typescript-eslint",
-    "@groww-tech/eslint-plugin-internal"
+    "@groww-tech/eslint-plugin-internal",
+    "import-newlines"
   ],
   "parserOptions": {
     "ecmaVersion": 10,
@@ -24,6 +25,14 @@
     "es6": true
   },
   "rules": {
+    "import/no-duplicates": "warn",
+    "import-newlines/enforce": [
+      "warn",
+      {
+        "items": 3,
+        "semi": true
+      }
+    ],
     "react-hooks/exhaustive-deps": "warn",
     "@groww-tech/internal/padded-blocks-bottom-if-else-try-catch": "warn",
     "@groww-tech/internal/prefer-type-alias": "warn",
