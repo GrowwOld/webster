@@ -1,11 +1,13 @@
 import cookie from 'js-cookie';
 
+import { isEmpty } from '@groww-tech/ella';
+
 import localStorageInstance from './instances/localStorage';
 import sessionStorageInstance from './instances/sessionStorage';
 
 import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, MAXIMUM_EXPIRY_LIMIT, STORAGE_TYPE } from './constants';
 
-import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, getUserProvidedKeyFromStoredKey, isEmpty } from './helpers';
+import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, getUserProvidedKeyFromStoredKey } from './helpers';
 
 
 /**
