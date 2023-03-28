@@ -5,7 +5,7 @@
 
 <br/>
 
-Monitoring service which exposes a method to initialize the prometheus server for monitoring.
+Monitoring service is a CLI which starts the prometheus server for monitoring.
 
 
 ### Installation
@@ -14,13 +14,10 @@ Monitoring service which exposes a method to initialize the prometheus server fo
 npm i @groww-tech/monitoring
 ```
 
-### API
-
-
+### CLI Usage
+`web-monitor` will be the command to start prometheus server, optional command line arguments like port and route can be passed to it.
 ```
-import { initPrometheus } from '@groww-tech/monitoring';
-
-initPrometheus(8001, '/metrics'); // Prometheus server will run on port 8001. Second parameter will be optional, by default it will be '/metrics' route.
+PORT=8001 ROUTE=/metrics web-monitor
 ```
 
 📚[Complete API Documentation](https://groww.github.io/webster/)
