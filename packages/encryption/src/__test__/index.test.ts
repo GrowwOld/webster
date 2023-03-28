@@ -27,8 +27,8 @@ We are then comparing the data from the response of decryptAes function with the
 We are also checking if the error key is null in both the response objects from encryptAes
 */
 test.each([
-  [stringToEncrypt, encryptAes(stringToEncrypt, DUMMY_SECRET_KEY)],
-  [objectToEncrypt, encryptAes(objectToEncrypt, DUMMY_SECRET_KEY)]
+  [ stringToEncrypt, encryptAes(stringToEncrypt, DUMMY_SECRET_KEY) ],
+  [ objectToEncrypt, encryptAes(objectToEncrypt, DUMMY_SECRET_KEY) ]
 
 
 ])('Check if decryption of the encrypted data is equal to the original data',
