@@ -4,7 +4,7 @@ export type ResponseType = {
 }
 
 export type CipherOptionType = {
-  iv?: CryptoJS.lib.WordArray | undefined;
+  iv?: CryptoJS.lib.WordArray;
   format?: any ;
   [key:string]:any;
 }
