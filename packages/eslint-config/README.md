@@ -29,4 +29,4 @@ Add `"extends": "@groww-tech/eslint-config"` to your `.eslintrc`
 
 <br/>
 
-*This configuration is for use in Groww projects. Use at your own risk. *
+*This configuration is for use in Groww projects. Use at your own risk.*
