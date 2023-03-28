@@ -5,6 +5,9 @@ import promClient from 'prom-client';
 
 const prometheusApp = express();
 
+const ROUTE = process.env.ROUTE || '/metrics';
+const PORT = process.env.PORT || 8001;
+
 
 /**
  * A registry to manage metrics
@@ -37,33 +40,25 @@ register.registerMetric(httpRequestTimer);
 
 
 /**
- * A function to initialize the prometheus service. It will monitor the request duration by storing route, status code and request method of each request.
- * @param PROMETHEUS_PORT Port which prometheus will listen
- * @param routeToExpose Route on which server will expose the metrics. By default it will be '/metrics'
- * @returns void
- */
-export function initPrometheus(PROMETHEUS_PORT: number, routeToExpose = '/metrics') {
-  /**
- * Expose '/metrics' route for promethues to monitor
- */
-  prometheusApp.get(routeToExpose, async (req: Request, res: Response) => {
-    // Start the HTTP request timer, saving a reference to the returned method
-    const end = httpRequestTimer.startTimer();
+* Expose '/metrics' route for promethues to monitor
+*/
+prometheusApp.get(ROUTE, async (req: Request, res: Response) => {
+  // Start the HTTP request timer, saving a reference to the returned method
+  const end = httpRequestTimer.startTimer();
 
-    // Save reference to the path so we can record it when ending the timer
-    const route = req.route.path;
+  // Save reference to the path so we can record it when ending the timer
+  const route = req.route.path;
 
-    res.setHeader('Content-Type', register.contentType);
+  res.setHeader('Content-Type', register.contentType);
 
-    // Whatever the metrics scraped by prometheus will get emitted using register.metrics()
-    res.send(await register.metrics());
+  // Whatever the metrics scraped by prometheus will get emitted using register.metrics()
+  res.send(await register.metrics());
 
-    // End timer and add labels
-    end({ route, code: res.statusCode, method: req.method });
-  });
+  // End timer and add labels
+  end({ route, code: res.statusCode, method: req.method });
+});
 
 
-  prometheusApp.listen(PROMETHEUS_PORT, () => {
-    console.log(`Prometheus is running on port ${PROMETHEUS_PORT}`);
-  });
-}
+prometheusApp.listen(PORT, () => {
+  console.log(`Prometheus is running on port ${PORT}`);
+});

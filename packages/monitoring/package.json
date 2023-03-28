@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/monitoring",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web Monitoring is a service used to inject prometheus monitoring configuration",
   "main": "dist/index.js",
   "files": [
@@ -47,6 +47,9 @@
     "eslint": "7.26.0",
     "tsup": "5.11.11",
     "typescript": "4.4.4"
+  },
+  "bin": {
+    "web-monitor": "./dist/index.js"
   },
   "dependencies": {
     "express": "4.17.1",
