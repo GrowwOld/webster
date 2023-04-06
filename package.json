@@ -2,20 +2,28 @@
   "name": "webster",
   "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
+    "preinstall": "pnpm dlx only-allow pnpm",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "test": "turbo run test"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "@groww-tech/eslint-config": "workspace:*",
+    "@groww-tech/tsconfig": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@groww-tech/eslint-plugin-internal": "workspace:*",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1",
+    "turbo": "latest",
+    "typescript": "4.5.5"
   },
   "engines": {
-    "npm": ">=7.0.0",
+    "pnpm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "npm@8.1.4"
+  "packageManager": "pnpm@7.1.7"
 }

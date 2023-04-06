@@ -1,0 +1,8 @@
+# build
+dist
+
+#docs
+docs
+
+#deps
+node_modules

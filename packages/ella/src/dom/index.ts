@@ -6,6 +6,7 @@ import { isEmpty } from '../general';
 import {
   CUSTOM_EVENTS,
   OS_TYPES,
+  PLATFORM
 } from '../utils/constants';
 
 /**
@@ -266,6 +267,7 @@ export function encodeURLParams(queryParam: string) {
 
 
 /**
+ * @deprecated since version 0.2.0
  * This method can be used to get the browser name.
  *
  * @remarks
@@ -315,6 +317,61 @@ export function getBrowserName(): string {
   }
 
   return '';
+}
+
+
+/**
+ * This method can be used to get the browser name & version.
+ *
+ * @remarks
+ * This method depends on userAgent sniffing and therefore susciptible to spoofing. Avoid detecting browsers in business impacting code
+ *
+ * @example
+ * ```
+ * console.log('Browser Name - ',getBrowserName());
+ * ```
+ */
+export function getBrowserVersion() {
+
+  try {
+    const userAgent = navigator.userAgent;
+    let match = userAgent.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+    let browserObjMatch = [];
+
+    if (/trident/i.test(match[1])) {
+      browserObjMatch = /\brv[ :]+(\d+)/g.exec(userAgent) || [];
+
+      return { name: 'IE', version: (browserObjMatch[1] || '') };
+    }
+
+    if (match[1] === 'Chrome') {
+      browserObjMatch = userAgent.match(/\bOPR|Edge\/(\d+)/) ?? [];
+
+      if (browserObjMatch.length) { return { name: 'Opera', version: browserObjMatch[1] }; }
+    }
+
+    match = match[2] ? [ match[1], match[2] ] : [ navigator.appName, navigator.appVersion, '-?' ];
+
+    browserObjMatch = userAgent.match(/version\/(\d+)/i) ?? [];
+    if (browserObjMatch.length) { match.splice(1, 1, browserObjMatch[1]); }
+
+    return {
+      name: match[0],
+      version: match[1]
+    };
+
+  } catch (err) {
+    console.error(`Error with getBrowserName ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getBrowserName',
+      error: err
+    });
+    return {
+      name: null,
+      version: null
+    };
+  }
 }
 
 
@@ -645,7 +702,7 @@ export function postWindowMessage(postObj: Object = {}, eventIdentifier: string 
       function: 'postWindowMessage',
       error
     });
-    
+
     throw error;
   }
 }
@@ -812,7 +869,7 @@ export function dataURIToBlob(dataURI: string) {
  * To read more on this: https://stackoverflow.com/questions/54424729/ios-show-keyboard-on-input-focus
  *
  */
-export function forceFocusAndOpenKeyboard(element:HTMLElement, timeout = 0) {
+export function forceFocusAndOpenKeyboard(element: HTMLElement, timeout = 0) {
   try {
     const platformType = getOSName();
 
@@ -856,4 +913,58 @@ export function forceFocusAndOpenKeyboard(element:HTMLElement, timeout = 0) {
   } catch (err) {
     console.error('Unable to force focus input', err);
   }
+}
+
+/**
+ * This method can be used to get the Device details like browser name, user agent, os name and origin i.e desktop or mobile website.
+ *
+ * @remarks
+ * This method depends on userAgent sniffing and therefore susciptible to spoofing. Avoid detecting browsers in business impacting code
+ *
+ * @example
+ * ```
+ * console.log('Get Device Details - ',getDeviceDetails());
+ * ```
+ */
+export function getDeviceDetails() {
+  try {
+    if (typeof window !== 'undefined' && navigator != null) {
+
+      const browserName = getBrowserName();
+
+      const OSName = getOSName();
+
+      let origin = null;
+      const nAgt = navigator.userAgent;
+
+      //Checking here if any of these matches the given user agents then setting origin to mobile website else setting it to Desktop
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(nAgt)) {
+        origin = PLATFORM.MOBILE;
+
+      } else {
+        origin = PLATFORM.DESKTOP;
+      }
+
+
+      const finalPayload = {
+        browserName: browserName,
+        userAgent: navigator.userAgent,
+        OSName: OSName,
+        origin: origin    //Origin in this is the platform instance like Desktop or Msite
+      };
+
+      return finalPayload;
+
+    }
+
+  } catch (err) {
+    console.error(`Error with getDeviceDetails ${err}`);
+
+    dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
+      function: 'getDeviceDetails',
+      error: err
+    });
+  }
+
+  return '';
 }

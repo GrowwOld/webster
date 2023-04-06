@@ -374,7 +374,7 @@ export const getBreadcrumbSchema = (schema: BreadcrumbSchema[], web_host: string
   }
 
   const data = {
-    '@context': 'http://schema.org',
+    '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     'itemListElement': arr
   };
