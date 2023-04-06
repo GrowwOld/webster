@@ -12,9 +12,6 @@ env:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: "./${{env.package_dir}}/${{env.package_name}}"
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
