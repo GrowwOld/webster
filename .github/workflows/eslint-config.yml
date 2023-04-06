@@ -57,6 +57,10 @@ jobs:
           git config --global user.email "release-bot@groww.in"
           git config --global user.name "github-bot"
 
+      - name: PNPM install
+        run: pnpm install
+
+
       - if: steps.cpv.outputs.is-new-version == 'true'
         uses: ./.github/workflows/actions/pnpm_publish
         with:

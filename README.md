@@ -33,7 +33,7 @@ This monorepo contains the following packages:
 - `ella`: Utility-belt library for JavaScript that provides general purpose methods used in day to day programming. [![npm version](https://badge.fury.io/js/@groww-tech%2Fella.svg)](https://badge.fury.io/js/@groww-tech%2Fella)
 - `encryption`: Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend. [![npm version](https://badge.fury.io/js/@groww-tech%2Fencryption.svg)](https://badge.fury.io/js/@groww-tech%2Fencryption)
 - `analytics`: Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm. [![npm version](https://badge.fury.io/js/@groww-tech%2Fanalytics.svg)](https://badge.fury.io/js/@groww-tech%2Fanalytics)
-
+- `monitoring`: Monitoring service is a CLI which starts the prometheus server for monitoring. [![npm version](https://badge.fury.io/js/@groww-tech%2Fmonitoring.svg)](https://badge.fury.io/js/@groww-tech%2Fmonitoring)
 
 ### Getting Started
 

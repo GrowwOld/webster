@@ -9,7 +9,17 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "turbo": "latest"
+    "@groww-tech/eslint-config": "workspace:*",
+    "@groww-tech/tsconfig": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "@groww-tech/eslint-plugin-internal": "workspace:*",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.22.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1",
+    "turbo": "latest",
+    "typescript": "4.5.5"
   },
   "engines": {
     "pnpm": ">=7.0.0",
