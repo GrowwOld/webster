@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/analytics",
-  "version": "0.0.2",
+  "version": "1.1.0",
   "description": "Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm.",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
