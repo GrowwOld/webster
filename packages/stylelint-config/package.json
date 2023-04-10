@@ -40,9 +40,9 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/stylelint-config#readme",
   "dependencies": {
-    "stylelint-config-standard": "^25.0.0",
-    "stylelint-declaration-strict-value": "^1.8.0",
-    "stylelint-no-unsupported-browser-features": "^5.0.2"
+    "stylelint-config-standard": "25.0.0",
+    "stylelint-declaration-strict-value": "1.9.2",
+    "stylelint-no-unsupported-browser-features": "5.0.4"
   },
   "peerDependencies": {
     "stylelint": "^14.2.0"
