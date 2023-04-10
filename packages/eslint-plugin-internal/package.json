@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/eslint-plugin-internal",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "ESLint Plugin with customized rules as per requirement and preferences of devs in Groww.",
   "keywords": [
     "eslint",

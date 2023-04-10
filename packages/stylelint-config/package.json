@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/stylelint-config",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Standard Stylelint config adopted in Groww. Customized as per requirement and preferences of devs in Groww.",
   "main": "index.js",
   "scripts": {

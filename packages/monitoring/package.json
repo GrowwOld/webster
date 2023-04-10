@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/monitoring",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A monitoring CLI to spin up prometheus server",
   "main": "dist/index.js",
   "files": [

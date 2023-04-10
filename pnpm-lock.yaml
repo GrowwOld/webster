@@ -7,12 +7,12 @@ importers:
       '@groww-tech/eslint-config': workspace:*
       '@groww-tech/eslint-plugin-internal': workspace:*
       '@groww-tech/tsconfig': workspace:*
-      '@typescript-eslint/eslint-plugin': ^4.22.0
-      '@typescript-eslint/parser': ^4.22.0
+      '@typescript-eslint/eslint-plugin': 4.33.0
+      '@typescript-eslint/parser': 4.33.0
       babel-eslint: ^10.1.0
       eslint: ^7.22.0
-      eslint-plugin-import: ^2.22.1
-      eslint-plugin-react: ^7.23.1
+      eslint-plugin-import: 2.27.5
+      eslint-plugin-react: 7.32.2
       turbo: 1.8.8
       typescript: 4.5.5
     devDependencies:
@@ -46,24 +46,24 @@ importers:
 
   packages/ella:
     specifiers:
-      '@groww-tech/tsconfig': ^1.0.0
-      '@types/lodash.clonedeep': ^4.5.6
-      '@types/lodash.isequal': ^4.5.5
-      '@types/react': ^17.0.38
-      '@types/react-helmet': ^6.1.5
-      '@typescript-eslint/eslint-plugin': ^4.19.0
-      '@typescript-eslint/parser': ^4.19.0
+      '@groww-tech/tsconfig': workspace:*
+      '@types/lodash.clonedeep': 4.5.7
+      '@types/lodash.isequal': 4.5.6
+      '@types/react': 17.0.53
+      '@types/react-helmet': 6.1.6
+      '@typescript-eslint/eslint-plugin': 4.33.0
+      '@typescript-eslint/parser': 4.33.0
       dayjs: 1.10.7
-      esbuild-plugin-glob: ^1.0.5
-      gh-pages: ^3.2.3
-      lodash.clonedeep: ^4.5.0
-      lodash.isequal: ^4.5.0
-      react: ^16.12.0
-      react-helmet: ^6.1.0
-      rimraf: ^3.0.2
+      esbuild-plugin-glob: 1.1.3
+      gh-pages: 3.2.3
+      lodash.clonedeep: 4.5.0
+      lodash.isequal: 4.5.0
+      react: 16.14.0
+      react-helmet: 6.1.0
+      rimraf: 3.0.2
       tsup: 5.11.11
-      typedoc: ^0.22.11
-      typescript: ^4.5.4
+      typedoc: 0.22.18
+      typescript: 4.9.5
     dependencies:
       dayjs: 1.10.7
       lodash.clonedeep: 4.5.0
@@ -105,13 +105,13 @@ importers:
   packages/eslint-config:
     specifiers:
       '@groww-tech/eslint-plugin-internal': workspace:*
-      '@typescript-eslint/eslint-plugin': ^4.19.0
-      '@typescript-eslint/parser': ^4.19.0
-      eslint: ^7.22.0
-      eslint-plugin-import: ^2.22.1
+      '@typescript-eslint/eslint-plugin': 4.33.0
+      '@typescript-eslint/parser': 4.33.0
+      eslint: 7.32.0
+      eslint-plugin-import: 2.27.5
       eslint-plugin-import-newlines: 1.3.1
-      eslint-plugin-react: ^7.23.1
-      eslint-plugin-react-hooks: ^4.4.0
+      eslint-plugin-react: 7.32.2
+      eslint-plugin-react-hooks: 4.6.0
     devDependencies:
       '@groww-tech/eslint-plugin-internal': link:../eslint-plugin-internal
       '@typescript-eslint/eslint-plugin': 4.33.0_ffi3uiz42rv3jyhs6cr7p7qqry
@@ -124,10 +124,10 @@ importers:
 
   packages/eslint-plugin-internal:
     specifiers:
-      '@typescript-eslint/parser': ^4.24.0
-      eslint: ^7.1.0
-      jsx-ast-utils: ^3.3.3
-      mocha: ^7.2.0
+      '@typescript-eslint/parser': 4.33.0
+      eslint: 7.32.0
+      jsx-ast-utils: 3.3.3
+      mocha: 7.2.0
       requireindex: ~1.1.0
     dependencies:
       requireindex: 1.1.0
@@ -139,15 +139,15 @@ importers:
 
   packages/icon-store:
     specifiers:
-      '@babel/core': ^7.15.5
-      '@babel/plugin-transform-runtime': ^7.15.0
-      '@babel/preset-env': ^7.15.6
-      '@babel/preset-react': ^7.14.5
-      '@svgr/cli': ^5.5.0
-      chalk: ^4.1.2
-      npm-run-all: ^4.1.5
-      react: ^16.12.0
-      terser: ^5.9.0
+      '@babel/core': 7.21.3
+      '@babel/plugin-transform-runtime': 7.21.0
+      '@babel/preset-env': 7.20.2
+      '@babel/preset-react': 7.18.6
+      '@svgr/cli': 5.5.0
+      chalk: 4.1.2
+      npm-run-all: 4.1.5
+      react: 16.14.0
+      terser: 5.16.8
     devDependencies:
       '@babel/core': 7.21.3
       '@babel/plugin-transform-runtime': 7.21.0_@babel+core@7.21.3
@@ -163,7 +163,7 @@ importers:
     specifiers:
       '@groww-tech/eslint-config': workspace:*
       '@groww-tech/tsconfig': workspace:*
-      '@types/express': ^4.17.17
+      '@types/express': 4.17.17
       esbuild-plugin-glob: 1.0.5
       eslint: 7.26.0
       express: 4.17.1
@@ -184,43 +184,43 @@ importers:
 
   packages/react-charts:
     specifiers:
-      '@babel/cli': ^7.11.6
-      '@babel/core': ^7.13.15
-      '@babel/plugin-proposal-class-properties': ^7.13.0
-      '@babel/plugin-proposal-private-methods': ^7.13.0
-      '@babel/plugin-transform-runtime': ^7.11.5
-      '@babel/preset-env': ^7.11.5
-      '@babel/preset-react': ^7.13.13
-      '@babel/preset-typescript': ^7.13.0
-      '@babel/runtime': ^7.14.6
+      '@babel/cli': 7.21.0
+      '@babel/core': 7.21.3
+      '@babel/plugin-proposal-class-properties': 7.18.6
+      '@babel/plugin-proposal-private-methods': 7.18.6
+      '@babel/plugin-transform-runtime': 7.21.0
+      '@babel/preset-env': 7.20.2
+      '@babel/preset-react': 7.18.6
+      '@babel/preset-typescript': 7.21.0
+      '@babel/runtime': 7.21.0
       '@groww-tech/tsconfig': workspace:*
-      '@rollup/plugin-commonjs': ^19.0.0
-      '@rollup/plugin-node-resolve': ^11.2.1
-      '@rollup/plugin-typescript': ^8.3.0
-      '@types/d3-array': ^3.0.2
-      '@types/react': ^17.0.38
-      '@types/react-dom': ^17.0.3
-      '@visx/axis': ^2.2.2
-      '@visx/event': ^2.1.2
-      '@visx/scale': ^2.2.2
-      '@visx/shape': ^2.2.2
-      babel-loader: ^8.2.2
-      postcss: ^8.2.13
-      postcss-import: ^14.0.2
-      postcss-url: ^10.1.3
-      react: ^16.12.0
-      react-dom: ^16.12.0
-      rimraf: ^3.0.2
-      rollup: ^2.45.2
-      rollup-plugin-babel: ^4.4.0
-      rollup-plugin-commonjs: ^10.1.0
-      rollup-plugin-node-resolve: ^5.2.0
-      rollup-plugin-peer-deps-external: ^2.2.4
-      rollup-plugin-postcss: ^4.0.0
-      rollup-plugin-prettier: ^2.1.0
-      rollup-plugin-size: ^0.2.2
-      rollup-plugin-terser: ^7.0.2
-      typescript: ^4.2.2
+      '@rollup/plugin-commonjs': 19.0.2
+      '@rollup/plugin-node-resolve': 11.2.1
+      '@rollup/plugin-typescript': 8.5.0
+      '@types/d3-array': 3.0.4
+      '@types/react': 17.0.53
+      '@types/react-dom': 17.0.19
+      '@visx/axis': 2.18.0
+      '@visx/event': 2.17.0
+      '@visx/scale': 2.18.0
+      '@visx/shape': 2.18.0
+      babel-loader: 8.3.0
+      postcss: 8.4.21
+      postcss-import: 14.1.0
+      postcss-url: 10.1.3
+      react: 16.14.0
+      react-dom: 16.14.0
+      rimraf: 3.0.2
+      rollup: 2.79.1
+      rollup-plugin-babel: 4.4.0
+      rollup-plugin-commonjs: 10.1.0
+      rollup-plugin-node-resolve: 5.2.0
+      rollup-plugin-peer-deps-external: 2.2.4
+      rollup-plugin-postcss: 4.0.2
+      rollup-plugin-prettier: 2.3.0
+      rollup-plugin-size: 0.2.2
+      rollup-plugin-terser: 7.0.2
+      typescript: 4.9.5
     dependencies:
       '@babel/runtime': 7.21.0
       '@visx/axis': 2.18.0_react@16.14.0
@@ -263,9 +263,9 @@ importers:
 
   packages/stylelint-config:
     specifiers:
-      stylelint-config-standard: ^25.0.0
-      stylelint-declaration-strict-value: ^1.8.0
-      stylelint-no-unsupported-browser-features: ^5.0.2
+      stylelint-config-standard: 25.0.0
+      stylelint-declaration-strict-value: 1.9.2
+      stylelint-no-unsupported-browser-features: 5.0.4
     dependencies:
       stylelint-config-standard: 25.0.0
       stylelint-declaration-strict-value: 1.9.2
@@ -276,46 +276,46 @@ importers:
 
   packages/ui-toolkit:
     specifiers:
-      '@babel/core': ^7.13.15
-      '@babel/plugin-proposal-class-properties': ^7.13.0
-      '@babel/plugin-proposal-private-methods': ^7.13.0
-      '@babel/preset-react': ^7.13.13
-      '@babel/preset-typescript': ^7.13.0
+      '@babel/core': 7.21.3
+      '@babel/plugin-proposal-class-properties': 7.18.6
+      '@babel/plugin-proposal-private-methods': 7.18.6
+      '@babel/preset-react': 7.18.6
+      '@babel/preset-typescript': 7.21.0
       '@groww-tech/base-css': workspace:*
       '@groww-tech/icon-store': workspace:*
-      '@rollup/plugin-commonjs': ^19.0.0
-      '@rollup/plugin-node-resolve': ^11.2.1
-      '@stitches/react': ^1.2.7
-      '@storybook/addon-actions': ^6.2.8
-      '@storybook/addon-essentials': ^6.2.8
-      '@storybook/addon-links': ^6.2.8
-      '@storybook/react': ^6.2.8
-      '@types/object-assign': ^4.0.30
-      '@types/react': ^17.0.38
-      '@types/react-dom': ^17.0.3
-      '@types/react-lazyload': ^3.1.0
-      babel-loader: ^8.2.2
-      classnames: ^2.2.6
-      concurrently: ^6.0.2
-      copyfiles: ^2.4.1
+      '@rollup/plugin-commonjs': 19.0.2
+      '@rollup/plugin-node-resolve': 11.2.1
+      '@stitches/react': 1.2.8
+      '@storybook/addon-actions': 6.5.16
+      '@storybook/addon-essentials': 6.5.16
+      '@storybook/addon-links': 6.5.16
+      '@storybook/react': 6.5.16
+      '@types/object-assign': 4.0.30
+      '@types/react': 17.0.53
+      '@types/react-dom': 17.0.19
+      '@types/react-lazyload': 3.2.0
+      babel-loader: 8.3.0
+      classnames: 2.3.2
+      concurrently: 6.5.1
+      copyfiles: 2.4.1
       flat-carousel: 0.0.1
-      lodash.debounce: ^4.0.8
-      postcss: ^8.2.13
-      postcss-import: ^14.0.2
-      postcss-url: ^10.1.3
-      react: ^16.12.0
-      react-dom: ^16.12.0
-      react-lazyload: ^2.6.9
-      react-waypoint: ^10.1.0
-      rimraf: ^3.0.2
-      rollup: ^2.45.2
-      rollup-plugin-babel: ^4.4.0
-      rollup-plugin-copy: ^3.4.0
-      rollup-plugin-filesize: ^9.1.1
-      rollup-plugin-peer-deps-external: ^2.2.4
-      rollup-plugin-postcss: ^4.0.0
-      rollup-plugin-terser: ^7.0.2
-      rollup-plugin-typescript: ^1.0.1
+      lodash.debounce: 4.0.8
+      postcss: 8.4.21
+      postcss-import: 14.1.0
+      postcss-url: 10.1.3
+      react: 16.14.0
+      react-dom: 16.14.0
+      react-lazyload: 2.6.9
+      react-waypoint: 10.3.0
+      rimraf: 3.0.2
+      rollup: 2.79.1
+      rollup-plugin-babel: 4.4.0
+      rollup-plugin-copy: 3.4.0
+      rollup-plugin-filesize: 9.1.2
+      rollup-plugin-peer-deps-external: 2.2.4
+      rollup-plugin-postcss: 4.0.2
+      rollup-plugin-terser: 7.0.2
+      rollup-plugin-typescript: 1.0.1
       typescript: 4.5.5
     dependencies:
       '@groww-tech/icon-store': link:../icon-store
@@ -923,7 +923,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.20.2
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.21.3_@babel+core@7.12.9
     dev: true
@@ -3925,13 +3925,13 @@ packages:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
       '@types/eslint': 8.21.3
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
     dev: true
 
   /@types/eslint/8.21.3:
     resolution: {integrity: sha512-fa7GkppZVEByMWGbTtE5MbmXWJTVbrjjaS8K6uQj+XtuuUv1fsuPAxhygfqLmsb/Ufb3CV8deFCpiMfAgi00Sw==}
     dependencies:
-      '@types/estree': 0.0.51
+      '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
     dev: true
 
@@ -3981,7 +3981,7 @@ packages:
     resolution: {integrity: sha512-IO+MJPVhoqz+28h1qLAcBEH2+xHMK6MTyHJc7MTnnYb6wsoLR29POVGJ7LycmVXIqyy/4/2ShP5sUwTXuOwb/w==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 16.18.21
+      '@types/node': 18.15.10
     dev: true
 
   /@types/graceful-fs/4.1.6:
@@ -4068,7 +4068,7 @@ packages:
   /@types/node-fetch/2.6.2:
     resolution: {integrity: sha512-DHqhlq5jeESLy19TYhLakJ07kNumXWjcDdxXsLUMJZ6ue8VZJj4kLPQVE/2mdHh3xZziNF1xppu5lwmS53HR+A==}
     dependencies:
-      '@types/node': 16.18.21
+      '@types/node': 18.15.10
       form-data: 3.0.1
     dev: true
 
@@ -4195,7 +4195,7 @@ packages:
   /@types/webpack-sources/3.2.0:
     resolution: {integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==}
     dependencies:
-      '@types/node': 16.18.21
+      '@types/node': 18.15.10
       '@types/source-list-map': 0.1.2
       source-map: 0.7.4
     dev: true
@@ -4203,7 +4203,7 @@ packages:
   /@types/webpack/4.41.33:
     resolution: {integrity: sha512-PPajH64Ft2vWevkerISMtnZ8rTs4YmRbs+23c402J0INmxDKCrhZNvwZYtzx96gY2wAtXdrK1BS2fiC8MlLr3g==}
     dependencies:
-      '@types/node': 16.18.21
+      '@types/node': 18.15.10
       '@types/tapable': 1.0.8
       '@types/uglify-js': 3.17.1
       '@types/webpack-sources': 3.2.0
@@ -4503,7 +4503,7 @@ packages:
       '@visx/shape': 2.18.0_react@16.14.0
       '@visx/text': 2.17.0_react@16.14.0
       classnames: 2.3.2
-      prop-types: 15.7.2
+      prop-types: 15.8.1
       react: 16.14.0
     dev: false
 
@@ -4528,7 +4528,7 @@ packages:
     dependencies:
       '@types/react': 17.0.53
       classnames: 2.3.2
-      prop-types: 15.7.2
+      prop-types: 15.8.1
       react: 16.14.0
     dev: false
 
@@ -4563,7 +4563,7 @@ packages:
       d3-path: 1.0.9
       d3-shape: 1.3.7
       lodash: 4.17.21
-      prop-types: 15.7.2
+      prop-types: 15.8.1
       react: 16.14.0
     dev: false
 
@@ -4576,7 +4576,7 @@ packages:
       '@types/react': 17.0.53
       classnames: 2.3.2
       lodash: 4.17.21
-      prop-types: 15.7.2
+      prop-types: 15.8.1
       react: 16.14.0
       reduce-css-calc: 1.3.0
     dev: false
@@ -10159,7 +10159,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 16.18.21
+      '@types/node': 18.15.10
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -12680,13 +12680,6 @@ packages:
       sisteransi: 1.0.5
     dev: true
 
-  /prop-types/15.7.2:
-    resolution: {integrity: sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react-is: 16.13.1
-
   /prop-types/15.8.1:
     resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
     dependencies:
@@ -12895,7 +12888,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      prop-types: 15.7.2
+      prop-types: 15.8.1
       react: 16.14.0
       scheduler: 0.19.1
     dev: true
