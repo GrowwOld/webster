@@ -15,7 +15,8 @@
   },
   "scripts": {
     "build": "tsup --env.NODE_ENV production",
-    "test" : "vitest run"
+    "test" : "vitest run",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a web-storage-v$PACKAGE_VERSION -m \"@groww-tech/web-storage-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
     "storage",
@@ -52,6 +53,7 @@
     "jsdom": "21.1.1"
   },
   "dependencies": {
-    "js-cookie": "2.2.1"
+    "js-cookie": "2.2.1",
+    "@groww-tech/ella": "0.2.4"
   }
 }

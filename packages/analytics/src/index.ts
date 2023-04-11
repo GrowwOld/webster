@@ -5,8 +5,8 @@ import { USER_ATTRIBUTES, MAX_COUNT_CHECK } from './constants';
 const browserDetailsObject = getDeviceDetails() as DeviceDetailsPayload;
 let countWebengageLoad = 1;
 let countGtmLoad = 1;
-const webengage: any = null;
-const dataLayer: any = null;
+const webengage: any = undefined;
+const dataLayer: any = undefined;
 
 
 /**
