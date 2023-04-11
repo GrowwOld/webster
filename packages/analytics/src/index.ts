@@ -5,8 +5,13 @@ import { USER_ATTRIBUTES, MAX_COUNT_CHECK } from './constants';
 const browserDetailsObject = getDeviceDetails() as DeviceDetailsPayload;
 let countWebengageLoad = 1;
 let countGtmLoad = 1;
-const webengage: any = undefined;
-const dataLayer: any = undefined;
+
+declare global {
+  interface Window { 
+    webengage: any;
+    dataLayer: any;
+  }
+}
 
 
 /**
@@ -62,7 +67,7 @@ export function trackEvent(category: string, eventName: string, properties = {})
 function sendEventToWebengage(eventName: string, properties: object) {
   if (isWebengageDefined()) {
     //This is the webengage API to send event name and properties
-    webengage.track(eventName, properties);
+    window.webengage.track(eventName, properties);
 
   } else {
     //This block will keep calling itself after every 1sec till webengage doesn't get loaded
@@ -86,10 +91,9 @@ function sendEventToWebengage(eventName: string, properties: object) {
  *
  */
 function sendEventToGtm(eventName: string, properties: object, category: string) {
-
-  if (typeof dataLayer !== 'undefined') {
+  if (isGtmDefined()) {
     // Pushing these events to datalayer
-    dataLayer.push({
+    window.dataLayer.push({
       event: 'event',
       eventCategory: category,
       eventAction: eventName,
@@ -142,10 +146,10 @@ export function identifyLoggedInUser(name: string, emailId: string, thirdPartyId
  */
 function identifyWebengageLoggedInUser(name: string, emailId: string, thirdPartyId = '', phoneNumber = '') {
   if (isWebengageDefined()) {
-    if (webengage.user) {
+    if (window.webengage.user) {
 
       //By calling the webengage's login method all of this stored information is attributed to this identified user.
-      webengage.user.login(thirdPartyId);
+      window.webengage.user.login(thirdPartyId);
 
       updateAttributeInWebengage(USER_ATTRIBUTES.FirstName, name);
       updateAttributeInWebengage(USER_ATTRIBUTES.UserEmail, emailId);
@@ -190,9 +194,9 @@ export function updateUserAttribute(attribute: string, value: string) {
  */
 function updateAttributeInWebengage(attribute: string, value: string) {
   if (isWebengageDefined()) {
-    if (webengage.user) {
-      //Webengage provides a setter for assigning values against each attribute for the users
-      webengage.user.setAttribute(attribute, value);
+    if (window.webengage.user) {
+      //webengage provides a setter for assigning values against each attribute for the users
+      window.webengage.user.setAttribute(attribute, value);
     }
 
   } else {
@@ -213,5 +217,18 @@ function updateAttributeInWebengage(attribute: string, value: string) {
  *
  */
 function isWebengageDefined() {
-  return typeof webengage !== 'undefined';
+  return typeof window !== 'undefined' && typeof window.webengage !== 'undefined';
+}
+
+
+/**
+ * This function checks and returns that gtm is not undefined
+ *
+ * @returns boolean
+ *
+ * @internal
+ *
+ */
+function isGtmDefined() {
+  return typeof window !== 'undefined' && typeof window.dataLayer !== 'undefined';
 }
