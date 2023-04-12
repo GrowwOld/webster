@@ -339,10 +339,10 @@ const LineGraph = (props: LineGraphProps) => {
         <g>
           {
             linePaths.map(lp => {
-              const x = (d) => lp.isSeriesToScale ? getXScaleValue(getXaxisValue(d)) : getXaxisValue(d);
+              const x = (d:Point) => lp.isSeriesToScale ? getXScaleValue(getXaxisValue(d)) : getXaxisValue(d);
 
 
-              const y = (d) => lp.isSeriesToScale ? getYScaleValue(getYaxisValue(d)) : getYaxisValue(d);
+              const y = (d:Point) => lp.isSeriesToScale ? getYScaleValue(getYaxisValue(d)) : getYaxisValue(d);
 
               const { areaProps } = lp || {};
 
@@ -355,14 +355,14 @@ const LineGraph = (props: LineGraphProps) => {
               const { toX, toY } = areaProps || {};
 
               if (!isEmpty(toX)) {
-                areaPath.y(y);
+                areaPath.y(y as any);
                 areaPath.x0(getXScaleValue(toX ?? 0));
-                areaPath.x1(x);
+                areaPath.x1(x as any);
 
               } else if (!isEmpty(toY)) {
-                areaPath.x(x);
+                areaPath.x(x as any);
                 areaPath.y0(getYScaleValue(toY ?? 0));
-                areaPath.y1(y);
+                areaPath.y1(y as any);
 
               }
 
@@ -414,4 +414,4 @@ const LineGraph = (props: LineGraphProps) => {
 
 
 export default LineGraph;
-export type { Point, LinePathData, LineGraphProps, ToolTipData };
+export type { Point, LinePathData, LineGraphProps, ToolTipData, ToolTipSeriesData };
