@@ -2,18 +2,18 @@
  * @module General
  */
 
-import { dispatchCustomEvent } from '../dom';
-import { CUSTOM_EVENTS } from '../utils/constants';
+import { dispatchCustomEvent } from "../dom";
+import { CUSTOM_EVENTS } from "../utils/constants";
 import {
   GenericArguments,
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData
-} from '../utils/types';
+  TabsData,
+} from "../utils/types";
 
-export { default as cloneDeep } from 'lodash.clonedeep';
-export { default as isEqual } from 'lodash.isequal';
+export { default as cloneDeep } from "lodash.clonedeep";
+export { default as isEqual } from "lodash.isequal";
 
 /**
  * This method can be used to check if the variable is empty or not. Returns true if it is empty else false.
@@ -29,45 +29,47 @@ export { default as isEqual } from 'lodash.isequal';
  */
 export function isEmpty(data: any) {
   try {
-    if (data === null || data === undefined) {
+    if (data === null || data === undefined || typeof data === "undefined") {
       return true;
     }
 
     const dataType = typeof data;
 
     switch (dataType) {
-      case 'string':
-        if (data.trim() === '' || data === 'null') {
+      case "string":
+        if (data.trim() === "" || data === "null") {
           return true;
         }
 
         return false;
 
-      case 'object':
+      case "object":
         if (Array.isArray(data)) {
           return data.length <= 0;
-
         } else if (data instanceof Set || data instanceof Map) {
           return data.size <= 0;
-
         } else {
           return Object.keys(data).length <= 0;
         }
 
-      case 'number':
+      case "number":
         return false;
 
       default:
+        // for array
+        if (Array.isArray(data) && data.length <= 0) {
+          return true;
+        }
+
         return false;
     }
-
   } catch (e) {
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'isEmpty',
+      function: "isEmpty",
       params: {
-        data
+        data,
       },
-      error: e
+      error: e,
     });
 
     return true;
@@ -109,19 +111,20 @@ export function getSelectedTabIndex(
 ): number {
   try {
     if (!Array.isArray(tabs)) {
-      throw new Error('Invalid tabs input');
+      throw new Error("Invalid tabs input");
     }
 
     if (selectedTabName) {
-      const foundIndex = tabs.findIndex(tab => tab.searchId === selectedTabName);
+      const foundIndex = tabs.findIndex(
+        (tab) => tab.searchId === selectedTabName
+      );
 
       return foundIndex !== -1 ? foundIndex : 0;
     }
 
     return 0;
-
   } catch (e) {
-    console.error('Unable to return the selected tab index');
+    console.error("Unable to return the selected tab index");
     return 0;
   }
 }
@@ -178,8 +181,8 @@ export function downloadFile(downloadConfig: {
   fileUrl: string | null;
 }) {
   const DOWNLOAD_FILE_METHOD = {
-    BLOB: 'blob',
-    URL: 'url'
+    BLOB: "blob",
+    URL: "url",
   };
 
   const {
@@ -188,27 +191,24 @@ export function downloadFile(downloadConfig: {
     fileName,
     downloadMethod = DOWNLOAD_FILE_METHOD.URL,
     fileExtension,
-    fileUrl
+    fileUrl,
   } = downloadConfig;
-
 
   const createFileUrlFromBlob = (file: File | null, type: string) => {
     if (file) {
       // It is necessary to create a new blob object with mime-type explicitly set
       // otherwise only Chrome works like it should
-      const newBlob = new Blob([ file ], { type });
+      const newBlob = new Blob([file], { type });
 
       // For other browsers:
       // Create a link pointing to the ObjectURL containing the blob.
       const fileURL = (window.URL || window.webkitURL).createObjectURL(newBlob);
 
       return fileURL;
-
     } else {
-      throw new Error('file/blob is null');
+      throw new Error("file/blob is null");
     }
   };
-
 
   const downloadFileFromUrl = (
     fileUrl: string | null,
@@ -216,28 +216,27 @@ export function downloadFile(downloadConfig: {
     extension: string
   ) => {
     if (fileUrl) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
 
       link.href = fileUrl;
       link.download = `${fileName}.${extension}`;
-      link.target = '_blank';
+      link.target = "_blank";
 
       document.body.appendChild(link);
       link.click();
 
-      setTimeout(function() {
+      setTimeout(function () {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(fileUrl);
       }, 10);
-
     } else {
-      throw new Error('fileUrl is empty');
+      throw new Error("fileUrl is empty");
     }
   };
 
   try {
-    if (typeof window === 'undefined') {
-      throw new Error('window is undefined');
+    if (typeof window === "undefined") {
+      throw new Error("window is undefined");
     }
 
     switch (downloadMethod) {
@@ -253,11 +252,10 @@ export function downloadFile(downloadConfig: {
         break;
 
       default:
-        throw new Error('Invalid download method');
+        throw new Error("Invalid download method");
     }
-
   } catch (err) {
-    console.error('File download failed - ', err);
+    console.error("File download failed - ", err);
   }
 }
 
@@ -291,13 +289,12 @@ export function sortObjectByValue(
     const sortable = [];
 
     for (const key in obj) {
-      sortable.push([ key, obj[key] ]);
+      sortable.push([key, obj[key]]);
     }
 
-    sortable.sort(function(a, b) {
+    sortable.sort(function (a, b) {
       if (isDescending) {
         return b[1] < a[1] ? -1 : b[1] > a[1] ? 1 : 0;
-
       } else {
         return a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0;
       }
@@ -310,9 +307,8 @@ export function sortObjectByValue(
     }
 
     return orderedList;
-
   } catch (error) {
-    console.error('Error in sorting object, original object returned', error);
+    console.error("Error in sorting object, original object returned", error);
     return obj;
   }
 }
@@ -347,9 +343,8 @@ export function getData(
     return originalString?.split(search)?.join(replace);
   }
 
-
   const sanitzePath = (currPath: string) => {
-    const stringsToReplace = [ '[', ']', '..' ];
+    const stringsToReplace = ["[", "]", ".."];
 
     // 'a.[0].b.c' => 'a.0.b.c'
     const currPathString = String(currPath);
@@ -357,40 +352,39 @@ export function getData(
     let sanitizedPath = currPathString;
 
     for (const index in stringsToReplace) {
-      sanitizedPath = replaceAll(sanitizedPath, stringsToReplace[index], '.');
+      sanitizedPath = replaceAll(sanitizedPath, stringsToReplace[index], ".");
     }
 
     const isLastIndexDot =
-      sanitizedPath.lastIndexOf('.') === sanitizedPath.length - 1;
+      sanitizedPath.lastIndexOf(".") === sanitizedPath.length - 1;
 
     sanitizedPath = sanitizedPath.slice(
       0,
-      isLastIndexDot ? sanitizedPath.lastIndexOf('.') : sanitizedPath.length
+      isLastIndexDot ? sanitizedPath.lastIndexOf(".") : sanitizedPath.length
     );
 
     return sanitizedPath;
   };
 
   try {
-    const newPathArray = String(sanitzePath(path)).split('.');
+    const newPathArray = String(sanitzePath(path)).split(".");
 
     for (const path of newPathArray) {
       obj = obj?.[path] as any;
     }
 
-    return typeof obj === 'undefined' ? def : obj;
-
+    return typeof obj === "undefined" ? def : obj;
   } catch (e) {
-    console.error('Error while using getData', e);
+    console.error("Error while using getData", e);
 
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'getData',
+      function: "getData",
       params: {
         obj,
         path,
-        def
+        def,
       },
-      error: e
+      error: e,
     });
 
     return def;
@@ -416,17 +410,16 @@ export function getData(
  */
 export function getObjectEntries(obj: any) {
   try {
-    if (typeof obj !== 'object' || obj === null) {
-      console.error('Input is not an object');
+    if (typeof obj !== "object" || obj === null) {
+      console.error("Input is not an object");
       return [];
     }
 
     const keys = Object.keys(obj);
 
-    return keys.map((key) => [ key, obj[key] ]);
-
+    return keys.map((key) => [key, obj[key]]);
   } catch (error) {
-    console.error('There was problem while creating object entries', error);
+    console.error("There was problem while creating object entries", error);
 
     throw error;
   }
@@ -475,9 +468,8 @@ export function getIndexByMatchingObjectValue<MatchValueType>(
     }
 
     return -1;
-
   } catch (error) {
-    console.error('Error while find index by matching object value', error);
+    console.error("Error while find index by matching object value", error);
 
     throw error;
   }
@@ -502,12 +494,12 @@ export function getPathVariableFromUrlIndex(
   indexFromLast: number = 0
 ) {
   try {
-    const keys = [ ...url.split('/') ];
+    const keys = [...url.split("/")];
 
     if (keys.length > indexFromLast) {
       let searchId = keys?.[keys?.length - 1 - indexFromLast];
 
-      const queryParamIndex = searchId?.indexOf('?');
+      const queryParamIndex = searchId?.indexOf("?");
 
       if (queryParamIndex >= 0) {
         searchId = searchId.substring(0, queryParamIndex);
@@ -515,20 +507,19 @@ export function getPathVariableFromUrlIndex(
 
       return searchId;
     }
-
   } catch (error) {
-    console.error('Unable to get path variable - ', error);
+    console.error("Unable to get path variable - ", error);
 
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'getPathVariableFromUrlIndex',
+      function: "getPathVariableFromUrlIndex",
       params: {
         url,
-        indexFromLast
+        indexFromLast,
       },
-      error
+      error,
     });
 
-    return '';
+    return "";
   }
 }
 
@@ -591,7 +582,6 @@ export function debounce(
 ) {
   let timeout: ReturnType<typeof setTimeout>;
 
-
   const debouncedFunction = (...args: GenericArguments) => {
     if (!timeout && leading) {
       func(...args);
@@ -646,7 +636,6 @@ export function debounce(
 export function asyncThrottle(callback: GenericFunction, intervalInMs: number) {
   let lastRun = 0;
 
-
   const throttled = async (...args: GenericArguments) => {
     const currentWait = lastRun + intervalInMs - Date.now();
     const shouldRun = currentWait <= 0;
@@ -654,10 +643,9 @@ export function asyncThrottle(callback: GenericFunction, intervalInMs: number) {
     if (shouldRun) {
       lastRun = Date.now();
       return await callback(args);
-
     } else {
-      return await new Promise(function(resolve) {
-        setTimeout(function() {
+      return await new Promise(function (resolve) {
+        setTimeout(function () {
           resolve(throttled(args));
         }, currentWait);
       });
@@ -691,7 +679,7 @@ export function uniqBy(arr: GenericFunction, iteratee: GenericFunction) {
     }
 
     const cb =
-      typeof iteratee === 'function'
+      typeof iteratee === "function"
         ? iteratee
         : (o: GenericFunction) => o[iteratee];
 
@@ -708,8 +696,7 @@ export function uniqBy(arr: GenericFunction, iteratee: GenericFunction) {
       }, new Map())
       .values();
 
-    return [ ...pickedObjects ];
-
+    return [...pickedObjects];
   } catch (error) {
     console.error(error);
 
@@ -761,7 +748,6 @@ export function remove<T>(
     idsToRemove.forEach((id) => array.splice(id, 1));
 
     return removedValues;
-
   } catch (e) {
     console.error(e);
 
@@ -788,7 +774,7 @@ export function omit(
 ): MultiLevelObject | null {
   try {
     // if empty, or not type of object, return empty object
-    if (isEmpty(object) || typeof object !== 'object') {
+    if (isEmpty(object) || typeof object !== "object") {
       return {};
     }
 
@@ -803,7 +789,6 @@ export function omit(
     }
 
     return result;
-
   } catch (e) {
     console.error(e);
     return object;
@@ -830,14 +815,13 @@ export const getEntityFiltersFromJSONString = (
   try {
     const parsedFilters = JSON.parse(filter);
     const isObject =
-      typeof parsedFilters === 'object' && parsedFilters !== null;
+      typeof parsedFilters === "object" && parsedFilters !== null;
 
     if (isObject || Array.isArray(parsedFilters)) {
       return parsedFilters;
     }
 
     return defaultValue;
-
   } catch (e) {
     return defaultValue;
   }
@@ -860,12 +844,11 @@ export const getEntityFiltersFromJSONString = (
  */
 export const parseJSON = (
   parameter: string,
-  fallback = '',
+  fallback = "",
   reviver?: (this: any, key: string, value: any) => any
 ) => {
   try {
     return JSON.parse(parameter, reviver);
-
   } catch (exception) {
     return fallback;
   }
@@ -895,14 +878,13 @@ export const parseJSON = (
  */
 export const isAllObjectValuesZero = (obj: object) => {
   try {
-    if (obj === null || typeof obj === 'undefined') {
+    if (obj === null || typeof obj === "undefined") {
       return true;
     }
 
     return Object.values(obj).every((val) => val === 0);
-
   } catch (e) {
-    console.error('Failed with: ', e);
+    console.error("Failed with: ", e);
   }
 };
 
@@ -937,17 +919,15 @@ export function removeNullProperties(obj: MultiLevelObject) {
   try {
     const newObj: MultiLevelObject = {};
 
-    getObjectEntries(obj).forEach(([ key, value ]) => {
+    getObjectEntries(obj).forEach(([key, value]) => {
       if (value === Object(value)) {
         newObj[key] = removeNullProperties(value);
-
       } else if (value != null) {
         newObj[key] = obj[key];
       }
     });
 
     return newObj;
-
   } catch (error) {
     console.error(error);
 
