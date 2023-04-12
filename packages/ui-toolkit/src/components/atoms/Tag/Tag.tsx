@@ -13,13 +13,13 @@ const Tag = (props: Props) => {
   let tagClass = props.tagClass;
 
   if (props.isWarning) {
-    tagClass = 'tg11Warning';
+    tagClass += ' tg11Warning';
 
   } else if (props.isError) {
-    tagClass = 'tg11Error';
+    tagClass += ' tg11Error';
 
   } else if (props.isInfo) {
-    tagClass = 'tg11Info';
+    tagClass += ' tg11Info';
   }
 
   if (childrenCount === 1) {
