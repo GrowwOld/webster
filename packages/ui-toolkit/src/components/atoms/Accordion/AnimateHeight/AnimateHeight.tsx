@@ -251,7 +251,7 @@ class AnimateHeight extends React.Component<Props, State> {
     return cx({
       [this.animationStateClasses?.static as string]: true,
       [this.animationStateClasses?.staticHeightZero as string]: height === 0,
-      [this.animationStateClasses?.staticHeightSpecific as string]: height > 0,
+      [this.animationStateClasses?.staticHeightSpecific as string]: typeof height === 'number' && height > 0,
       [this.animationStateClasses?.staticHeightAuto as string]: height === 'auto'
     });
   }
