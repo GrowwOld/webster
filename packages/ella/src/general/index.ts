@@ -31,16 +31,13 @@ export { default as isEqual } from 'lodash.isequal';
  * ```
  */
 export function isEmpty<T extends AllowedValueType>(data: T | Empty): data is PickEmptyType<T> {
-
   try {
     if (data === null || data === undefined || typeof data === 'undefined') {
       return true;
+
     }
 
-    const dataType = typeof data;
-
-    switch (dataType) {
-
+    switch (typeof data) {
       case 'string':
         if ((data as string).trim() === '' || (data as string) === 'null' || data === null) {
           return true;
@@ -49,10 +46,11 @@ export function isEmpty<T extends AllowedValueType>(data: T | Empty): data is Pi
         return false;
 
       case 'object':
-        const keys = Object.keys(data);
-        const len = keys.length;
+        if (Array.isArray(data) && data.length === 0) {
+          return true;
+        }
 
-        if (len <= 0) {
+        if (Object.keys(data).length === 0) {
           return true;
         }
 
@@ -62,11 +60,6 @@ export function isEmpty<T extends AllowedValueType>(data: T | Empty): data is Pi
         return false;
 
       default:
-        // for array
-        if (Array.isArray(data) && data.length <= 0) {
-          return true;
-        }
-
         return false;
     }
 

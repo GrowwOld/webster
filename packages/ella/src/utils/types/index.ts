@@ -70,17 +70,9 @@ export type TabsData = {
 
 // isEmpty function
 
-export type AllowedValueType = string | number | Array<any> | object | null | undefined | Symbol;
+export type AllowedValueType = string |number| Array<any> | object | null | undefined | symbol;
 
-export type Empty =
-  | never[]
-  | Record<keyof any, never>
-  | ''
-  | null
-  | undefined
-  | never;
+export type Empty = [] | {} | '';
 
 export type PickEmptyType<T> =
-      T extends AllowedValueType
-        ? Empty
-        : T;
+          T extends AllowedValueType ? (T extends Empty ? never : T) : T;
