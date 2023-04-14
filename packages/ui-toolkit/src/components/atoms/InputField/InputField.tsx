@@ -99,17 +99,19 @@ const InputField = (props: Props) => {
       >{label}</label>
 
       {
-        showError
-          ? <div
+        showError &&
+          <div
             className="errorText"
             data-test-id={errorDataTestId ? errorDataTestId : null}
           >
             {errorText}
           </div>
-          : null
       }
 
-      {!showError && noErrorText !== '' ? <div className="noErrorText">{noErrorText}</div> : null}
+      {
+        !showError && (noErrorText !== '') &&
+          <div className="noErrorText">{noErrorText}</div>
+      }
     </div>
   );
 };
