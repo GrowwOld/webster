@@ -118,10 +118,14 @@ const InputField = (props: Props) => {
 export default InputField;
 
 
-type Props = {
+type RequiredProps = {
   label: string;
-  onInput: (e: React.FormEvent<HTMLInputElement>) => void;
+  onInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | number;
+};
+
+
+type DefaultProps = {
   id: string;
   inputType: string;
   showError: boolean;
@@ -129,15 +133,38 @@ type Props = {
   noErrorText: string;
   disabled: boolean;
   disableCopyPaste: boolean;
-  onEnterPress: Function;
-  onBackspace: Function;
-  maxTextLimit: number;
+  onEnterPress?: Function;
+  onBackspace?: Function;
+  maxTextLimit?: number;
   minNumber: number;
   maxNumber: number;
   fontSize: string;
   autoComplete: string;
   placeholder: string;
-  customClass: string;
+  customClass?: string;
   inputDataTestId: string;
   errorDataTestId: string;
 };
+
+
+InputField.defaultProps = {
+  showError: false,
+  fontSize: '',
+  id: '',
+  inputDataTestId: '',
+  inputType: 'text',
+  autoComplete: 'on',
+  disableCopyPaste: false,
+  disabled: false,
+  maxNumber: 10000000,
+  minNumber: 0,
+  maxTextLimit: 250,
+  placeholder: '',
+  noErrorText: '',
+  value: '',
+  errorDataTestId: '',
+  errorText: 'Please recheck your input'
+} as DefaultProps;
+
+
+export type Props = RequiredProps & DefaultProps;

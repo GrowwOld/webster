@@ -16,16 +16,16 @@ const VARIANTS = {
 const NumberPicker = (props: Props) => {
 
   const {
-    value = 1,
-    minValue = 1,
-    onInput = () => {},
-    onKeyDown = () => {},
-    stepValue = 1,
-    shouldFocusOnMount = false,
-    disabled = false,
-    variant = VARIANTS.default,
-    maxWidth = 98,
-    width = 50
+    value,
+    minValue,
+    onInput,
+    onKeyDown,
+    stepValue,
+    shouldFocusOnMount,
+    disabled,
+    variant,
+    maxWidth,
+    width
   } = props;
 
   const textInput: React.Ref<HTMLInputElement> = useRef(null);
@@ -107,19 +107,26 @@ const NumberPicker = (props: Props) => {
 };
 
 
-type Props = {
+type RequiredProps = {
   value: number;
+  stepValue: number;
+};
+
+
+type DefaultProps = {
   minValue: number;
   onInput: Function;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   inputClass: string;
-  stepValue: number;
   shouldFocusOnMount: boolean;
   disabled: boolean;
   variant: Variant;
   maxWidth: number;
   width: number;
 };
+
+
+export type Props = RequiredProps & DefaultProps;
 
 
 type Variant = 'warning' | 'error' | 'default' | 'disabled' | 'unstyled';
