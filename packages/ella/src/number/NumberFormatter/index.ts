@@ -165,7 +165,7 @@ const defaultNumberConfig = {
  * ```
  *
  */
-export function NumberFormatter(num: string | number, numberConfig: numberConfigType = {}) {
+export function NumberFormatter(num: string | number, numberConfig: NumberConfig = {}) {
 
   const initNumberConfig = {
     ...defaultNumberConfig, // will add all the default config and then overwrite with existing numberConfig which is passed.
@@ -379,7 +379,7 @@ function returnSignValueStr(sign : string, value : number | string, spaceBetween
 }
 
 
-type numberConfigType = {
+export type NumberConfig = {
   addCommas?: boolean;
   millionCommas?: boolean;
   fallback?: any;
