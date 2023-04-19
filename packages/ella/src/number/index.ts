@@ -107,7 +107,7 @@ export function isValidMobileNumber(mobNumber: number | string) {
  * ```
  */
 export function convertPaisaToRupee(value: number | string) {
-   return parseFloat(value as string) / 100;
+  return parseFloat(value as string) / 100;
 }
 
 /**
