@@ -390,15 +390,15 @@ export function toFixedWithoutRounding(num: number | string, toFixedDecimal: num
       return num;
     }
 
-    let number = num.toString();
+    const numString = num.toString();
 
-    const decimalIndex = number.indexOf('.');
+    const decimalIndex = numString.indexOf('.');
 
     if (decimalIndex === -1 || toFixedDecimal < 0) {
-      return number;
+      return numString;
     }
 
-    return number.slice(0, (decimalIndex + (toFixedDecimal + 1)));
+    return numString.slice(0, (decimalIndex + (toFixedDecimal + 1)));
 
   } catch (err) {
     console.error('Error in rounding off number ', err);
