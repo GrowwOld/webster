@@ -924,6 +924,19 @@ export function removeNullProperties(obj: MultiLevelObject) {
   }
 }
 
+/**
+ * Parses a cookie string into a valid JSON object.
+ *
+ * @param {cookie} string
+ *
+ * @example
+ * ```typescript
+ * const parsedCookieJson = parseCookie('cookie1=some-data;cookie2=other-data')
+ * ```
+ *
+ * @returns { Object } - Returns an object which is the json representation of the cookie string
+ */
+
 export function parseCookie(cookie: string | undefined) {
   if (!cookie) return {};
 
