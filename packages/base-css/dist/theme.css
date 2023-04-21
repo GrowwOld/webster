@@ -48,7 +48,7 @@ html {
   --constantSecondaryClr180: #2A2A2A;
   --constantSecondaryClr10: #F6F6F7;
   --cardBackground: #FFF;
- --mintSecondaryBackground: #F8F8F8;
+ --mintSecondaryBackground: #1B1B1B;
 }
 
 html[data-theme="dark"] {
@@ -93,5 +93,5 @@ html[data-theme="dark"] {
   --constantSecondaryClr180: #2A2A2A;
   --constantSecondaryClr10: #2A2A2A;
   --cardBackground: #1D1D1D;
-  --mintSecondaryBackground: #1B1B1B;
+  --mintSecondaryBackground: #F8F8F8;
 }
