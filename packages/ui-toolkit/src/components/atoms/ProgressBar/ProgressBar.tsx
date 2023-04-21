@@ -1,4 +1,5 @@
 import React from 'react';
+//@ts-ignore
 import { Waypoint } from 'react-waypoint';
 
 import { getIntegerRandomNoBetweenTwoNo } from '../../../utils/helper';
@@ -21,6 +22,7 @@ class ProgressBar extends React.PureComponent<Props> {
     const { isCircular } = this.props;
 
     return (
+      //@ts-ignore
       <Waypoint onEnter={this.animateProgressBar}>
         <div>
           {

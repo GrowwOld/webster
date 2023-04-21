@@ -115,6 +115,7 @@
     "@groww-tech/icon-store": "workspace:*",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
+    "object-assign": "4.1.1",
     "react-waypoint": "^10.1.0"
   }
 }

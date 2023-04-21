@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { NumberInput } from '../index';
+import { NumberInput } from '../NumberInput';
 
 import './numberPicker.css';
 
