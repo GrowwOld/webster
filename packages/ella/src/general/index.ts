@@ -923,3 +923,19 @@ export function removeNullProperties(obj: MultiLevelObject) {
     throw error;
   }
 }
+
+export function parseCookie(cookie: string | undefined) {
+  if (!cookie) return {};
+
+  let cookieObj : {[key: string]: string} = {};
+
+  cookieObj = cookie.split(';').reduce((finalObj, singleCookie) => {
+    const [ key, value ] : string[] = singleCookie.split('=');
+
+    finalObj[key.trim()] = value;
+
+    return finalObj;
+  }, {} as {[key: string]: string});
+
+  return cookieObj;
+}

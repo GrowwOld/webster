@@ -4,13 +4,10 @@
 
 import React from 'react';
 
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 
 import { dispatchCustomEvent } from '../dom';
-import {
-  COMMON_URLS,
-  CUSTOM_EVENTS,
-} from '../utils/constants';
+import { COMMON_URLS, CUSTOM_EVENTS } from '../utils/constants';
 import JsonLd from '../utils/JsonLd';
 import {
   ArticleSchema,
@@ -18,7 +15,7 @@ import {
   FaqSchema,
   MetatagsData,
   ProductSchema,
-  WebpageSchema,
+  WebpageSchema
 } from '../utils/types';
 
 /**
@@ -57,7 +54,7 @@ export function getMetaTags(dataObject: MetatagsData, web_host: string) {
   const canonicalUrl = dataObject.canonicalUrl ? dataObject.canonicalUrl : routeName;
 
   return (
-    <Helmet>
+    <Head>
       <title>{title}</title>
       <meta name="description"
         content={desc}
@@ -119,7 +116,7 @@ export function getMetaTags(dataObject: MetatagsData, web_host: string) {
       <link rel="canonical"
         href={canonicalUrl}
       />
-    </Helmet>
+    </Head>
   );
 }
 
