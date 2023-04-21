@@ -195,7 +195,7 @@ importers:
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
       '@babel/runtime': ^7.14.6
-      '@groww-tech/base-css': workspace:*
+      '@groww-tech/base-css': ^0.0.6
       '@groww-tech/tsconfig': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
@@ -227,7 +227,7 @@ importers:
       typescript: ^4.2.2
     dependencies:
       '@babel/runtime': 7.21.0
-      '@groww-tech/base-css': link:../base-css
+      '@groww-tech/base-css': 0.0.6
       '@visx/axis': 2.18.0_react@16.14.0
       '@visx/event': 2.17.0
       '@visx/scale': 2.18.0
@@ -289,6 +289,7 @@ importers:
       '@babel/plugin-proposal-private-methods': ^7.13.0
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
+      '@babel/runtime': ^7.14.6
       '@groww-tech/base-css': workspace:*
       '@groww-tech/icon-store': workspace:*
       '@rollup/plugin-commonjs': ^19.0.0
@@ -308,7 +309,7 @@ importers:
       copyfiles: ^2.4.1
       flat-carousel: 0.0.1
       lodash.debounce: ^4.0.8
-      object-assign: ^4.1.1
+      object-assign: 4.1.1
       postcss: ^8.2.13
       postcss-import: ^14.0.2
       postcss-url: ^10.1.3
@@ -340,6 +341,7 @@ importers:
       '@babel/plugin-proposal-private-methods': 7.18.6_@babel+core@7.21.3
       '@babel/preset-react': 7.18.6_@babel+core@7.21.3
       '@babel/preset-typescript': 7.21.0_@babel+core@7.21.3
+      '@babel/runtime': 7.21.0
       '@groww-tech/base-css': link:../base-css
       '@rollup/plugin-commonjs': 19.0.2_rollup@2.79.1
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.79.1
@@ -2144,6 +2146,10 @@ packages:
   /@gar/promisify/1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
+
+  /@groww-tech/base-css/0.0.6:
+    resolution: {integrity: sha512-FbpBrkjzxt0jlv/52k9sp1m+tXBLISKg/l2Wu9CcvyOHAFg3tXOvsk3etjGaNXApoqOuiyQqgdimubySCsopsg==}
+    dev: false
 
   /@groww-tech/ella/0.2.4_react@16.14.0:
     resolution: {integrity: sha512-l7mWbANHGyZmS++7Ox4zrZMvrSo1sc1sd5RcPGP8cH6pwVzEojE2r+m+a7xZs9REFsD3SFdR+cffAtwgVYg2sg==}

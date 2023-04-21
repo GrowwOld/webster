@@ -78,6 +78,7 @@
     "@babel/plugin-proposal-private-methods": "^7.13.0",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@babel/runtime": "^7.14.6",
     "@groww-tech/base-css": "workspace:*",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
