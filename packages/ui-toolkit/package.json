@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -111,7 +111,6 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "typescript": "4.5.5",
-    "rollup-plugin-visualizer": "latest",
     "@groww-tech/icon-store": "workspace:*"
   },
   "dependencies": {
