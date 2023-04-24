@@ -70,7 +70,8 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0 || ^17.0.0",
     "react-dom": "^16.12.0 || ^17.0.0",
-    "react-lazyload": "^3.0.0"
+    "react-lazyload": "^3.0.0",
+    "@groww-tech/icon-store": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
@@ -109,10 +110,11 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "4.5.5"
+    "typescript": "4.5.5",
+    "rollup-plugin-visualizer": "latest",
+    "@groww-tech/icon-store": "workspace:*"
   },
   "dependencies": {
-    "@groww-tech/icon-store": "workspace:*",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
     "react-waypoint": "^10.1.0"

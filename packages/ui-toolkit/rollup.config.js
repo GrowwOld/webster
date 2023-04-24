@@ -7,6 +7,7 @@ import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript';
+import { visualizer } from 'rollup-plugin-visualizer';
 
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
@@ -41,6 +42,10 @@ const commonConfig = {
       targets: [
         { src: 'src/types', dest: 'dist' }
       ]
+    }),
+    visualizer({
+      emitFile: true,
+      filename: 'stats.html'
     })
   ],
   external: [ 'react', 'react-dom', 'classnames', 'react-lazyload' ]
