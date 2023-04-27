@@ -282,7 +282,7 @@ importers:
       '@babel/preset-react': ^7.13.13
       '@babel/preset-typescript': ^7.13.0
       '@groww-tech/base-css': workspace:*
-      '@groww-tech/icon-store': workspace:*
+      '@groww-tech/icon-store': 1.3.0
       '@rollup/plugin-commonjs': ^19.0.0
       '@rollup/plugin-node-resolve': ^11.2.1
       '@stitches/react': ^1.2.7
@@ -328,7 +328,7 @@ importers:
       '@babel/preset-react': 7.18.6_@babel+core@7.21.3
       '@babel/preset-typescript': 7.21.0_@babel+core@7.21.3
       '@groww-tech/base-css': link:../base-css
-      '@groww-tech/icon-store': link:../icon-store
+      '@groww-tech/icon-store': 1.3.0_react@16.14.0
       '@rollup/plugin-commonjs': 19.0.2_rollup@2.79.1
       '@rollup/plugin-node-resolve': 11.2.1_rollup@2.79.1
       '@stitches/react': 1.2.8_react@16.14.0
@@ -2137,6 +2137,14 @@ packages:
       lodash.isequal: 4.5.0
       react-helmet: 6.1.0
     dev: false
+
+  /@groww-tech/icon-store/1.3.0_react@16.14.0:
+    resolution: {integrity: sha512-DN8DGO8oXDVomV7BaUmF6Kp2Fv1bJID3ABjWz2Pq+JV06piYGM/0nKWu+2yD7C+VtDguHK9dDHs+uGdbsH+weA==}
+    peerDependencies:
+      react: ^16.12.0
+    dependencies:
+      react: 16.14.0
+    dev: true
 
   /@humanwhocodes/config-array/0.5.0:
     resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
@@ -8734,7 +8742,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0

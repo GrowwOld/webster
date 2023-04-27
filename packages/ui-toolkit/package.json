@@ -111,7 +111,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "typescript": "4.5.5",
-    "@groww-tech/icon-store": "workspace:*"
+    "@groww-tech/icon-store": "1.3.0"
   },
   "dependencies": {
     "flat-carousel": "0.0.1",
