@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/monitoring",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A monitoring CLI to spin up prometheus server",
   "main": "dist/index.js",
   "files": [
@@ -40,8 +40,6 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/monitoring#readme",
   "devDependencies": {
-    "@groww-tech/eslint-config": "workspace:*",
-    "@groww-tech/tsconfig": "workspace:*",
     "@types/express": "^4.17.17",
     "esbuild-plugin-glob": "1.0.5",
     "eslint": "7.26.0",
