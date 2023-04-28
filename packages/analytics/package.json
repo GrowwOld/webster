@@ -44,9 +44,10 @@
   "devDependencies": {
     "typescript": "4.4.4",
     "tsup": "5.11.11",
-    "esbuild-plugin-glob": "1.0.5"
+    "esbuild-plugin-glob": "1.0.5",
+    "@groww-tech/ella": "0.2.5"
   },
-  "dependencies": {
-    "@groww-tech/ella": "workspace:*"
+  "peerDependencies": {
+    "@groww-tech/ella": "^0.2.5"
   }
 }
