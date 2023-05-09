@@ -1,0 +1,134 @@
+.group {
+  position: relative;
+}
+
+.inf11Input input {
+  font-size: 18px;
+  padding: 10px 10px 10px 2px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--subText);
+  box-shadow: none;
+  background: var(--primaryBg);
+  color: var(--text);
+}
+
+.inf11Input input:focus {
+  outline: none;
+}
+
+.inf11Input input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  background-color: var(--primaryBg) !important;
+  color: var(--text);
+}
+
+.inf11Input input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--primaryBg) inset;
+  -webkit-text-fill-color: var(--text);
+}
+
+.inf11Input input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+label {
+  color: var(--subText);
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 2px;
+  top: 10px;
+  transition: 0.2s ease all;
+}
+
+.inf11Input input:focus ~ label,
+input:valid ~ label {
+  top: -15px;
+  font-size: 14px;
+  color: var(--primaryClr);
+}
+
+.labelError {
+  color: var(--growwRed) !important;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar::before,
+.bar::after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: var(--primaryClr);
+  transition: 0.2s ease all;
+}
+
+.barError::before,
+.barError::after {
+  background: var(--growwRed);
+}
+
+.bar::before {
+  left: 50%;
+}
+
+.bar::after {
+  right: 50%;
+}
+
+.inf11Input input:focus ~ .bar::before,
+input:focus ~ .bar::after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.inf11Input input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+
+  from {
+    background: var(--primaryClr);
+  }
+
+  to {
+    width: 100;
+    background: var(--constantTransparent);
+  }
+}
+
+.errorText {
+  color: var(--growwRed);
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.noErrorText {
+  color: var(--subText);
+  font-size: 14px;
+  margin-top: 3px;
+}

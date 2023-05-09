@@ -16,3 +16,5 @@ export interface ReactIconProps extends SVGProps<SVGSVGElement> {
 }
 
 export type ReactIconComponentType = ComponentType<ReactIconProps>;
+
+declare module '@groww-tech/icon-store/mi';
