@@ -1,0 +1,64 @@
+.np15Icon {
+  border-radius: 3px;
+  max-width: 100%;
+  position: relative;
+  background-color: var(--primaryClr10) !important;
+  color: var(--primaryClr);
+  padding: 4px;
+  text-align: center;
+}
+
+.np15Icon:active {
+  background-color: var(--tertiaryBg) !important;
+}
+
+.np15Root {
+  border-radius: 3px;
+  display: inline-flex;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--primaryClr10) !important;
+  color: var(--primaryClr);
+  white-space: nowrap;
+}
+
+.np15Input:focus {
+  outline: none;
+}
+
+.np15Input {
+  background-color: var(--primaryClr10) !important;
+  width: 60px;
+  height: 32px;
+  color: var(--primaryClr) !important;
+  font-size: 20px !important;
+  font-weight: 500;
+  letter-spacing: 0.33px;
+  text-align: center;
+}
+
+.np15InputErr {
+  color: var(--growwRed) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--growwRed10) inset;
+}
+
+.np15InputWarning {
+  color: var(--growwYellow) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--growwYellow10) inset;
+}
+
+#numPicker #txtinput88 {
+  width: 72px;
+}
+
+.np15InputDiv {
+  display: flex;
+  align-items: center;
+  caret-color: var(--primaryClr);
+}
+
+.addPaddingTop7 {
+  padding-top: 7px;
+}
+

@@ -123,11 +123,22 @@ describe('Local Storage Tests', () => {
         storage.setDataToStorage('key2', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
         storage.setDataToStorage('key3', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
         storage.setDataToStorage('key4', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
+        storage.setDataToStorage('key5', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
+        storage.setDataToStorage('key6', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
+        storage.setDataToStorage('key7', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
+        storage.setDataToStorage('key8', value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10, storage.BUCKETS_AVAILABLE.AUTH);
 
         storage.clearBucketStorage(storage.BUCKETS_AVAILABLE.AUTH);
-        const data = storage.getDataFromStorage('key1', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data1 = storage.getDataFromStorage('key1', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data2 = storage.getDataFromStorage('key2', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data3 = storage.getDataFromStorage('key3', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data4 = storage.getDataFromStorage('key4', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data5 = storage.getDataFromStorage('key5', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
+        const data6 = storage.getDataFromStorage('key6', storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, storage.BUCKETS_AVAILABLE.AUTH);
 
-        if (!data) {
+        const isDataPresent = data1 || data2 || data3 || data4 || data5 || data6;
+
+        if (!(isDataPresent)) {
           testResult = true;
         }
 
