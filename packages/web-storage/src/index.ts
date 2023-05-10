@@ -5,9 +5,19 @@ import { isEmpty } from '@groww-tech/ella';
 import localStorageInstance from './instances/localStorage';
 import sessionStorageInstance from './instances/sessionStorage';
 
-import { BUCKETS, DEFAULT_STORAGE_EXPIRY_TIME, MAXIMUM_EXPIRY_LIMIT, STORAGE_TYPE } from './constants';
+import {
+  BUCKETS,
+  DEFAULT_STORAGE_EXPIRY_TIME,
+  MAXIMUM_EXPIRY_LIMIT,
+  STORAGE_TYPE
+} from './constants';
 
-import { checkForErrors, getBucketNameFromKey, getFullKeyForItem, getUserProvidedKeyFromStoredKey } from './helpers';
+import {
+  checkForErrors,
+  getBucketNameFromKey,
+  getFullKeyForItem,
+  getUserProvidedKeyFromStoredKey
+} from './helpers';
 
 
 /**
@@ -245,7 +255,17 @@ function clearStorageCookies() {
  */
 
 export function clearBucketStorage(bucket: string) {
-  for (let index = 0; index < localStorage.length; index++) {
+  const localStorageLength = localStorage.length;
+
+  // PLEASE NOTE:-
+  //
+  // we are keeping reverse array because everytime if() is true, the original array gets altered
+  // and the keys move 1 index up. For example:- If LS length is initial 10 and iterator is at 0.
+  // If we remove the first key, LS length becomes 9 and iterator will be at 1. The key that will be
+  // initial at index 1 will be moving to index 0 now. And since the iterator is at 1, index 0 will not be deleted.
+  // this is why we are keeping the loop backwards startin from length - 1;
+  //
+  for (let index = localStorageLength - 1; index >= 0; index--) {
     const key = localStorage.key(index) || '';
     const userKey = getUserProvidedKeyFromStoredKey(key);
 
