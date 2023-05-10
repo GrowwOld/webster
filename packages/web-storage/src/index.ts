@@ -263,9 +263,9 @@ export function clearBucketStorage(bucket: string) {
   // and the keys move 1 index up. For example:- If LS length is initial 10 and iterator is at 0.
   // If we remove the first key, LS length becomes 9 and iterator will be at 1. The key that will be
   // initial at index 1 will be moving to index 0 now. And since the iterator is at 1, index 0 will not be deleted.
-  // this is why we are keeping the loop backwards
+  // this is why we are keeping the loop backwards startin from length - 1;
   //
-  for (let index = localStorageLength; index >= 0; index--) {
+  for (let index = localStorageLength - 1; index >= 0; index--) {
     const key = localStorage.key(index) || '';
     const userKey = getUserProvidedKeyFromStoredKey(key);
 
