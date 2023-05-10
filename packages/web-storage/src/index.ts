@@ -199,8 +199,8 @@ export function clearStorage(storageType: string) {
  */
 
 function clearStorageLS() {
-  clearBucketStorage(BUCKETS.OTHERS);
   clearBucketStorage(BUCKETS.AUTH);
+  clearBucketStorage(BUCKETS.OTHERS);
 }
 
 /**
@@ -255,14 +255,17 @@ function clearStorageCookies() {
  */
 
 export function clearBucketStorage(bucket: string) {
+  const localStorageLength = localStorage.length;
 
-  // we are creating a temporary array to store the keys that are to be deleted.
-  // this is because when a key is deleted the original localStorage array is altered.
-  // this is not a good practice to iterate over changing synchronous arrays. Hence keeping it
-  // in a new array and then deleting key by key.
-  const keysToDeleteArray : { userKey: string; bucket: string}[] = [];
-
-  for (let index = 0; index < localStorage.length; index++) {
+  // PLEASE NOTE:-
+  //
+  // we are keeping reverse array because everytime if() is true, the original array gets altered
+  // and the keys move 1 index up. For example:- If LS length is initial 10 and iterator is at 0.
+  // If we remove the first key, LS length becomes 9 and iterator will be at 1. The key that will be
+  // initial at index 1 will be moving to index 0 now. And since the iterator is at 1, index 0 will not be deleted.
+  // this is why we are keeping the loop backwards
+  //
+  for (let index = localStorageLength; index >= 0; index--) {
     const key = localStorage.key(index) || '';
     const userKey = getUserProvidedKeyFromStoredKey(key);
 
@@ -270,13 +273,9 @@ export function clearBucketStorage(bucket: string) {
     // and remove the keys only that stores values not expiration time.
     // they will automatically be cleared after the original key is removed.
     if (getBucketNameFromKey(key) === bucket && !userKey.includes('-exptime')) {
-      keysToDeleteArray.push({ userKey, bucket });
+      clearKeyFromStorage(userKey, STORAGE_TYPE.LOCAL_STORAGE, bucket);
     }
   }
-
-  keysToDeleteArray.forEach((item) => {
-    clearKeyFromStorage(item.userKey, STORAGE_TYPE.LOCAL_STORAGE, item.bucket);
-  });
 }
 
 /**
