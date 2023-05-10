@@ -923,3 +923,32 @@ export function removeNullProperties(obj: MultiLevelObject) {
     throw error;
   }
 }
+
+/**
+ * Parses a cookie string into a valid JSON object.
+ *
+ * @param {cookie} string
+ *
+ * @example
+ * ```
+ * const parsedCookieJson = parseCookieToJson('cookie1=some-data;cookie2=other-data') // Output: { cookie1: "some-data", cookie2: "other-data" }
+ * ```
+ *
+ * @returns { Object } - Returns an object which is the json representation of the cookie string
+ */
+
+export function parseCookieToJson(cookie: string | undefined) {
+  if (!cookie) return {};
+
+  let cookieObj : {[key: string]: string} = {};
+
+  cookieObj = cookie.split(';').reduce((finalObj, singleCookie) => {
+    const [ key, value ] : string[] = singleCookie.split('=');
+
+    finalObj[key.trim()] = value;
+
+    return finalObj;
+  }, {} as {[key: string]: string});
+
+  return cookieObj;
+}
