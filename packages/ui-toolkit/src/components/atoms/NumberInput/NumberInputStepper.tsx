@@ -8,7 +8,7 @@ import {
 import BaseNumberInput from "./BaseNumberInput";
 import { NumberInputProps } from "./NumberInput";
 
-const INPUT_ACTION_TYPE = {
+export const INPUT_ACTION_TYPE = {
   INCREMENT: 'INCREMENT',
   DECREMENT: 'DECREMENT'
 };
