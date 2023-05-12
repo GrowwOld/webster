@@ -1,8 +1,17 @@
-import { Add, Remove } from '@groww-tech/icon-store/mi';
-import React from 'react';
-import { NumberInputProps } from './NumberInput';
+import React from "react";
 
-import BaseNumberInput from './BaseNumberInput';
+import {
+  Add,
+  Remove
+} from "@groww-tech/icon-store/mi";
+
+import BaseNumberInput from "./BaseNumberInput";
+import { NumberInputProps } from "./NumberInput";
+
+const INPUT_ACTION_TYPE = {
+  INCREMENT: 'INCREMENT',
+  DECREMENT: 'DECREMENT'
+};
 
 export const NumberInputStepper = React.forwardRef<HTMLInputElement, NumberInputProps>((props, ref) => {
   return (
@@ -27,7 +36,8 @@ const StepSuffixComponent = ({ step = 1, max = Number.POSITIVE_INFINITY, value, 
 
       // @ts-ignore : to prevent onChange re writing as it can be passed by user
       //we are synthentically generating custome event to set value
-      onChange({ target: { value: floorValue } });
+      // sending actionType to detect that value has been increased by clicking on the + icon
+      onChange({ target: { value: floorValue }, actionType: INPUT_ACTION_TYPE.INCREMENT });
     }
   };
 
@@ -56,7 +66,8 @@ const StepPrefixComponent = ({ step = 1, min = Number.NEGATIVE_INFINITY, value, 
 
       // @ts-ignore : to prevent onChange re writing as it can be passed by user
       //we are synthentically generating custome event to set value
-      onChange({ target: { value: floorValue } });
+      // sending actionType to detect that value has been decreased by clicking on the - icon
+      onChange({ target: { value: floorValue }, actionType: INPUT_ACTION_TYPE.DECREMENT });
     }
   };
 

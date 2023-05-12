@@ -67,7 +67,7 @@ const NumberPicker = (props: Props) => {
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
 
-    onInput(val);
+    onInput(val, e);
   };
 
 
