@@ -64,7 +64,7 @@ const NumberPicker = (props: Props) => {
   }, [ value ]);
 
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (e: InputChangeEvent) => {
     const val = Number(e.target.value);
 
     onInput(val, e);
@@ -130,6 +130,10 @@ export type Props = RequiredProps & DefaultProps;
 
 
 type Variant = 'warning' | 'error' | 'default' | 'disabled' | 'unstyled';
+
+interface InputChangeEvent extends React.ChangeEvent<HTMLInputElement> {
+  actionType?: string;
+}
 
 
 NumberPicker.defaultProps = {
