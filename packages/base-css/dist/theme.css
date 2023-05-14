@@ -49,6 +49,7 @@ html {
   --constantSecondaryClr10: #F6F6F7;
   --cardBackground: #FFF;
  --mintSecondaryBackground: #1B1B1B;
+ --mintSecondaryBg: #F8F8F8;
 }
 
 html[data-theme="dark"] {
@@ -94,4 +95,5 @@ html[data-theme="dark"] {
   --constantSecondaryClr10: #2A2A2A;
   --cardBackground: #1D1D1D;
   --mintSecondaryBackground: #F8F8F8;
+  --mintSecondaryBg: #1B1B1B;
 }
