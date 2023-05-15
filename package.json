@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@groww-tech/eslint-config": "workspace:*",
+    "@groww-tech/eslint-plugin-internal": "workspace:*",
     "@groww-tech/tsconfig": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "@groww-tech/eslint-plugin-internal": "workspace:*",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.22.0",
     "eslint-plugin-import": "^2.22.1",
@@ -25,5 +25,8 @@
     "pnpm": ">=7.0.0",
     "node": ">=14.0.0"
   },
-  "packageManager": "pnpm@7.1.7"
+  "packageManager": "pnpm@7.1.7",
+  "dependencies": {
+    "@changesets/cli": "^2.26.1"
+  }
 }
