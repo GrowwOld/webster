@@ -1,11 +1,9 @@
-const fs = require('fs');
+const fs = require("fs");
 
-const fileTypes = [ '.ts', '.jsx', '.ts', '.tsx' ];
-
+const fileTypes = [".ts", ".jsx", ".ts", ".tsx"];
 
 function getModulePaths(path) {
   const moduleList = fs.readdirSync(path);
-
   const modulePaths = [];
 
   moduleList.forEach((module) => {
@@ -19,15 +17,11 @@ function getModulePaths(path) {
 
       return true; // continue loop
     });
-
   });
 
   return modulePaths;
 }
 
 export function getInputFiles() {
-  return [
-    './src/index.ts',
-    ...getModulePaths('./src')
-  ];
+  return ["./src/index.ts", ...getModulePaths("./src")];
 }
