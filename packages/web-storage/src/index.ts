@@ -7,6 +7,7 @@ import sessionStorageInstance from './instances/sessionStorage';
 
 import {
   BUCKETS,
+  BUCKET_SEPERATOR,
   DEFAULT_STORAGE_EXPIRY_TIME,
   MAXIMUM_EXPIRY_LIMIT,
   STORAGE_TYPE
@@ -201,6 +202,7 @@ export function clearStorage(storageType: string) {
 function clearStorageLS() {
   clearBucketStorage(BUCKETS.AUTH);
   clearBucketStorage(BUCKETS.OTHERS);
+  clearRogueKeys();
 }
 
 /**
@@ -274,6 +276,38 @@ export function clearBucketStorage(bucket: string) {
     // they will automatically be cleared after the original key is removed.
     if (getBucketNameFromKey(key) === bucket && !userKey.includes('-exptime')) {
       clearKeyFromStorage(userKey, STORAGE_TYPE.LOCAL_STORAGE, bucket);
+    }
+  }
+}
+
+/**
+ * Clear Extra Keys that are not using the storage library.
+ *
+ * @remarks
+ * This method is a part of our Storage Library.
+ *
+ *
+ * @returns void
+ * @internal
+ *
+ */
+
+function clearRogueKeys() {
+  const localStorageLength = localStorage.length;
+
+  // PLEASE NOTE:-
+  //
+  // we are keeping reverse array because everytime if() is true, the original array gets altered
+  // and the keys move 1 index up. For example:- If LS length is initial 10 and iterator is at 0.
+  // If we remove the first key, LS length becomes 9 and iterator will be at 1. The key that will be
+  // initial at index 1 will be moving to index 0 now. And since the iterator is at 1, index 0 will not be deleted.
+  // this is why we are keeping the loop backwards startin from length - 1;
+  //
+  for (let index = localStorageLength - 1; index >= 0; index--) {
+    const key = localStorage.key(index) || '';
+
+    if (!key.includes(BUCKET_SEPERATOR)) {
+      localStorage.removeItem(key);
     }
   }
 }
