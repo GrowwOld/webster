@@ -8,13 +8,26 @@
   justify-content: center;
 }
 
+.flex {
+  display: flex;
+}
+
 .valign-wrapper {
   display: flex;
   align-items: center;
 }
 
+.halign-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .vspace-between {
   justify-content: space-between;
+}
+
+.flex-direction-column {
+  flex-direction: column;
 }
 
 .right-align {
