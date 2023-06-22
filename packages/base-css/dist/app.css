@@ -55,8 +55,8 @@ body {
   color: var(--text) !important;
   margin: 0;
   box-sizing: border-box;
-  font-weight: 400;
-  font-family: Roboto, system-ui;
+  font-weight: 435;
+  font-family: GrowwSans, system-ui;
   min-width: 320px;
   -webkit-font-smoothing: antialiased;
 }
