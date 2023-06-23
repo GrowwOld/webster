@@ -56,7 +56,7 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-weight: 435;
-  font-family: GrowwSans, system-ui;
+  font-family: GrowwSans,NotoSans, system-ui;
   min-width: 320px;
   -webkit-font-smoothing: antialiased;
 }
