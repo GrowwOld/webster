@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/base-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Base CSS classes used by all Groww Web Projects",
   "main": "dist/index.css",
   "files": [
