@@ -2,7 +2,10 @@
   "name": "@groww-tech/mint-css",
   "version": "1.0.0",
   "description": "",
-  "main": "index.css",
+  "main": "./dist/bundle.css",
+  "scripts": {
+    "build:typography": "pnpm rollup -c"
+  },
   "keywords": [
     "mint-css",
     "css",
@@ -17,5 +20,13 @@
       "name": "Akshay Naik"
     }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "postcss": "^8.4.21",
+    "rollup": "^2.45.2",
+    "rollup-plugin-postcss": "^4.0.2"
+  },
+  "dependencies": {
+    "postcss-import": "^14.0.2"
+  }
 }
