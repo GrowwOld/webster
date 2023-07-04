@@ -1,0 +1,21 @@
+{
+  "name": "@groww-tech/mint-css",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.css",
+  "keywords": [
+    "mint-css",
+    "css",
+    "groww",
+    "style"
+  ],
+  "contributors": [
+    {
+      "name": "Shubham Gavali"
+    },
+    {
+      "name": "Akshay Naik"
+    }
+  ],
+  "license": "MIT"
+}
