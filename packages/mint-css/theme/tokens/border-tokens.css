@@ -1,0 +1,34 @@
+.borderPrimary {
+  border-color: var(--gray150)
+}
+
+/*-------------------------------------------*/
+/*--------------Extended Tokens--------------*/
+/*-------------------------------------------*/
+
+.borderDisabled {
+  border-color: var(--gray100)
+}
+
+
+.borderAccent {
+  border-color: var(--green500)
+}
+
+
+.borderPositive {
+  border-color: var(--green500)
+}
+
+
+.borderNegative {
+  border-color: var(--red500)
+}
+
+
+.borderNeutral {
+  border-color: var(--gray900)
+}
+html[data-theme="dark"] .borderNeutral {
+  border-color: var(--white);
+}
