@@ -1,5 +1,5 @@
 html {
-	/* Font sizes */
+  /* Font sizes */
   --font-size-12: .75rem;
   --font-size-14: .875rem;
   --font-size-16: 1rem;
@@ -9,12 +9,12 @@ html {
   --font-size-24: 1.5rem;
   --font-size-28: 1.75rem;
   --font-size-32: 2rem;
-	--font-size-40: 2.5rem;
+  --font-size-40: 2.5rem;
   --font-size-44: 2.75rem;
   --font-size-56: 3.5rem;
 
-	/* Font weights */
-	--font-weight-regular: 435;
-	--font-weight-medium: 535;
-	--font-weight-bold: 660;
+  /* Font weights */
+  --font-weight-regular: 435;
+  --font-weight-medium: 535;
+  --font-weight-bold: 660;
 }
