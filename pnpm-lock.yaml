@@ -167,7 +167,7 @@ importers:
       postcss-import: ^14.0.2
       rollup: ^2.45.2
       rollup-plugin-copy: ^3.4.0
-      rollup-plugin-postcss-modules: ^2.1.1
+      rollup-plugin-postcss: ^4.0.0
       url-loader: ^4.1.1
     dependencies:
       postcss-import: 14.1.0_postcss@8.4.21
@@ -175,7 +175,7 @@ importers:
       postcss: 8.4.21
       rollup: 2.79.1
       rollup-plugin-copy: 3.4.0
-      rollup-plugin-postcss-modules: 2.1.1_postcss@8.4.21
+      rollup-plugin-postcss: 4.0.2_postcss@8.4.21
       url-loader: 4.1.1_webpack@5.76.3
 
   packages/monitoring:
@@ -12461,22 +12461,6 @@ packages:
       string-hash: 1.1.3
     dev: true
 
-  /postcss-modules/6.0.0_postcss@8.4.21:
-    resolution: {integrity: sha512-7DGfnlyi/ju82BRzTIjWS5C4Tafmzl3R79YP/PASiocj+aa6yYphHhhKUOEoXQToId5rgyFgJ88+ccOUydjBXQ==}
-    peerDependencies:
-      postcss: ^8.0.0
-    dependencies:
-      generic-names: 4.0.0
-      icss-utils: 5.1.0_postcss@8.4.21
-      lodash.camelcase: 4.3.0
-      postcss: 8.4.21
-      postcss-modules-extract-imports: 3.0.0_postcss@8.4.21
-      postcss-modules-local-by-default: 4.0.0_postcss@8.4.21
-      postcss-modules-scope: 3.0.0_postcss@8.4.21
-      postcss-modules-values: 4.0.0_postcss@8.4.21
-      string-hash: 1.1.3
-    dev: true
-
   /postcss-normalize-charset/5.1.0_postcss@8.4.21:
     resolution: {integrity: sha512-mSgUJ+pd/ldRGVx26p2wz9dNZ7ji6Pn8VWBajMXFf8jk7vUoSrZ2lt/wZR7DtlZYKesmZI680qjr2CeFF2fbUg==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -13488,10 +13472,6 @@ packages:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: true
 
-  /reserved-words/0.1.2:
-    resolution: {integrity: sha512-0S5SrIUJ9LfpbVl4Yzij6VipUdafHrOTzvmfazSw/jeZrZtQK303OPZW+obtkaw7jQlTQppy0UvZWm9872PbRw==}
-    dev: true
-
   /resolve-from/4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -13631,20 +13611,6 @@ packages:
       rollup: '*'
     dependencies:
       rollup: 2.79.1
-    dev: true
-
-  /rollup-plugin-postcss-modules/2.1.1_postcss@8.4.21:
-    resolution: {integrity: sha512-XdQ+5hIZg5f7QvB4IMYzujffsfpNQZdRo57m4v4uAOXkUpFos+dQf6pW9x0LILVSmcZpGyjO2zryjg+jI+t/YA==}
-    peerDependencies:
-      postcss: ^8.0.0
-    dependencies:
-      camelcase: 6.3.0
-      postcss: 8.4.21
-      postcss-modules: 6.0.0_postcss@8.4.21
-      reserved-words: 0.1.2
-      rollup-plugin-postcss: 4.0.2_postcss@8.4.21
-    transitivePeerDependencies:
-      - ts-node
     dev: true
 
   /rollup-plugin-postcss/4.0.2_postcss@8.4.21:
