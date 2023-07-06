@@ -2,6 +2,7 @@ import postcssModules from 'rollup-plugin-postcss-modules';
 import postcssImport from 'postcss-import';
 import copy from 'rollup-plugin-copy';
 
+
 export default {
   input: './index.js', // Entry point of your application
   output: {
@@ -16,30 +17,16 @@ export default {
       extract: true,
       minimize: true,
       sourceMap: false,
-      modules: true,
-      loaders: [
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: 'url-loader',
-        },
-      ],
+      modules: true
     }),
     copy({
       targets: [
-        { src: './typography/fonts/*.woff2', dest: 'dist/fonts' }, // Copy font files to the desired output directory
-      ],
-      after: [
         {
-          src: 'dist/bundle.css',
-          dest: 'dist',
-          transform: (contents) => {
-            // Modify the font paths in the CSS file
-            const modifiedContents = contents.toString().replace(/url\(fonts\//g, 'url(dist/fonts/');
-            return modifiedContents;
-          },
-        },
+          src: './typography/fonts/*.woff2',
+          dest: 'dist/fonts'
+        }, // Copy font files to the desired output directory
       ],
-    }),
+    })
   ],
 
 };

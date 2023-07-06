@@ -2,13 +2,13 @@
   font-family: 'GrowwSans';
   font-style: normal;
   font-weight: 300 700;
-  src: url(./GrowwSans-Variable.woff2) format('woff2-variations');
+  src: url(./fonts/GrowwSans-Variable.woff2) format('woff2-variations');
 }
 
 @font-face {
   font-family: 'NotoSans';
   font-weight: 400;
-  src: url(./NotoSansDevanagari-Regular.woff2) format('woff2');
+  src: url(./fonts/NotoSansDevanagari-Regular.woff2) format('woff2');
   /* Unicode range for Devanagari script (Hindi) */
   unicode-range: U+0900-097F;
 }
@@ -17,7 +17,7 @@
 @font-face {
   font-family: 'NotoSans';
   font-weight: 500;
-  src: url(./NotoSansDevanagari-SemiBold.woff2) format('woff2');
+  src: url(./fonts/NotoSansDevanagari-SemiBold.woff2) format('woff2');
   /* Unicode range for Devanagari script (Hindi) */
   unicode-range: U+0900-097F;
 }
