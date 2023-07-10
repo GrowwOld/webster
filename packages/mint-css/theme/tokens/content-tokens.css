@@ -1,0 +1,85 @@
+.contentPrimary {
+  color: var(--gray900);
+}
+html[data-theme="dark"] .contentPrimary{
+  color: var(--white)
+}
+
+
+.contentSecondary {
+  color: var(--gray700);
+}
+
+
+.contentTertiary {
+  color: var(--gray500);
+}
+
+
+.contentInversePrimary {
+  color: var(--white);
+}
+html[data-theme="dark"] .contentInversePrimary{
+  color: var(--black)
+}
+
+.contentInverseSecondary {
+  color: var(--gray300);
+}
+html[data-theme="dark"] .contentInverseSecondary{
+  color: var(--gray400)
+}
+
+
+/*-------------------------------------------*/
+/*--------------Extended Tokens--------------*/
+/*-------------------------------------------*/
+
+.contentAccent {
+  color: var(--green500);
+}
+
+
+.contentNegative {
+  color: var(--red500);
+}
+
+
+.contentWarning {
+  color: var(--yellow500);
+}
+
+
+.contentPositive {
+  color: var(--green500);
+}
+
+
+.contentDisabled {
+  color: var(--gray400);
+}
+html[data-theme="dark"] .contentDisabled{
+  color: var(--gray500)
+}
+
+
+.contentOnColour {
+  color: var(--white);
+}
+
+
+.contentOnColourInverse {
+  color: var(--gray900);
+}
+html[data-theme="dark"] .contentOnColourInverse{
+  color: var(--black)
+}
+
+.contentAccentSecondary {
+  color: var(--purple500);
+}
+
+
+.contentAccentSecondarySubtle {
+  color: var(--purple300);
+}

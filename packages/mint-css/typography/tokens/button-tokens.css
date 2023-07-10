@@ -1,0 +1,11 @@
+.buttonSentenceCase14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.14;
+}
+
+.buttonUpperCase16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.25;
+}
