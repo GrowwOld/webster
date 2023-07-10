@@ -19,6 +19,19 @@ export type LinePathData= {
   hoverExactPoint?: boolean;
   hoverPointStrokeMultiplier?: number;
   highlightPointStrokeMultiplier?: number;
+  isDraggable?: boolean;
+  draggableConfig?: {
+    stopColor: string;
+    stopColor2?: string;
+    lineColor?: string;
+    gradientTransform?: string;
+    negativeDrag?: {
+      stopColor: string;
+      stopColor2?: string;
+      lineColor?: string;
+      gradientTransform?: string;
+    };
+  };
 }
 
 export type AreaProps = {
@@ -47,6 +60,8 @@ export type LineGraphProps = {
   minX?: number;
   maxY?: number;
   minY?: number;
+
+  isDragAllowed: boolean;
 }
 
 export type XYCoords = {x: number; y: number};
@@ -59,6 +74,8 @@ export type ToolTipSeriesData = {
   tooltipTop: number;
   isPerfectIntersection: boolean;
   intersectionPointOnLine: HoveredPointData;
+  prevPoint?: Point;
+  prevTooltipLeft?: number;
 }
 
 export type HoveredPointData = {
@@ -70,4 +87,9 @@ export type HoveredPointData = {
 export type ToolTipData = {
   seriesData: ToolTipSeriesData[];
   otherData: HoveredPointData;
+}
+
+export type DragData = {
+  startPoint: number;
+  endPoint?: number;
 }

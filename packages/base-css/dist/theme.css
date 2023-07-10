@@ -37,6 +37,7 @@ html {
   --tertiaryBg: #ECEDEF;
   --quaternaryBg: #F6F6F7;
   --preloaderBg: #F6F6F7;
+  --transparentBg: rgba(255,255,255,0);
   --rippleNormal: rgba(0, 0, 0, 0.1);
   --constantGrowwYellow150: #D2AB66;
   --constantText: #44475B;
@@ -83,6 +84,7 @@ html[data-theme="dark"] {
   --tertiaryBg: #2A2A2A;
   --quaternaryBg: #1D1D1D;
   --preloaderBg: #2A2A2A;
+  --transparentBg: rgba(18,18,18,0);
   --rippleNormal: rgba(255, 255, 255, 0.1);
   --constantGrowwYellow150: #D2AB66;
   --constantText: #44475B;
