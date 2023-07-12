@@ -129,6 +129,7 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const onMouseUp = () => {
+    props.onMouseUp?.();
     setDragPoints(null);
   };
 

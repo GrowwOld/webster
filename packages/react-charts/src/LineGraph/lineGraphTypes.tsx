@@ -52,6 +52,7 @@ export type LineGraphProps = {
 
   onMouseEnter?: (td: ToolTipData) => void; //on mouse enter callback
   onMouseLeave?: ()=> void;        // on Mouse leave callback
+  onMouseUp?: ()=> void;        // on Mouse Up callback
 
   toolTipLeftUpdated?: number;   // calculated/updated toolTipLeft
   toolTipTopUpdated?: number;    // calculated/updated toolTipTop
