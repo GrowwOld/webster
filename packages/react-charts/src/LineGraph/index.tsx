@@ -108,16 +108,24 @@ const LineGraph = (props: LineGraphProps) => {
     );
   };
 
-  const isPositiveDrag = (lp: LinePathData) => {
-    const { startPoint, endPoint } = dragPoints ?? {};
 
-    if (startPoint === undefined || endPoint === undefined) return false;
-    if (startPoint < endPoint) return lp?.series?.[startPoint]?.[1] < lp?.series?.[endPoint]?.[1];
-    return lp?.series?.[startPoint]?.[1] > lp?.series?.[endPoint]?.[1];
+  const getDragColor = (lp: LinePathData) => {
+    const { startPoint, endPoint } = dragPoints ?? {};
+    const { fill = lp?.color, lineColor, negativeLineColor } = lp?.draggableConfig ?? {};
+
+    if (startPoint === undefined || endPoint === undefined) return lp?.color;
+    const lpStart = lp?.series?.[startPoint]?.[1];
+    const lpEnd = lp?.series?.[endPoint]?.[1];
+    const line = lineColor ?? fill;
+    const negativeLine = negativeLineColor ?? lineColor ?? fill;
+
+    if (startPoint < endPoint) return lpStart < lpEnd ? line : negativeLine;
+    return lpStart > lpEnd ? line : negativeLine;
   };
 
 
   const onMouseDown = (e: EventType) => {
+    props.onMouseDown?.();
     if (!props.isDragAllowed) return;
 
     const { x } = localPoint(e) || { x: 0 };
@@ -198,7 +206,7 @@ const LineGraph = (props: LineGraphProps) => {
           prevTooltipLeft: getXScaleValue(dragPoints?.startPoint)
         });
 
-        if (x0 < seriesLen - 1 && dragPoints.startPoint !== undefined) {
+        if (x0 <= seriesLen && dragPoints.startPoint !== undefined) {
           setDragPoints({
             ...dragPoints,
             endPoint: Math.max(Math.trunc(x0), 0)
@@ -256,24 +264,14 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const getDragLinePoints = (series: Point[]) => {
-    const { startPoint, endPoint } = dragPoints ?? {};
-    const lps: Point[] = [];
+    let { startPoint, endPoint } = dragPoints ?? {};
 
     if (startPoint === undefined || endPoint === undefined) return [];
-
-
-    if (startPoint < endPoint) {
-      for (let i = startPoint; i <= endPoint; i++) {
-        lps.push(series?.[i]);
-      }
-
-    } else {
-      for (let i = startPoint; i >= endPoint; i--) {
-        lps.push(series?.[i]);
-      }
+    if (startPoint > endPoint) {
+      [ startPoint, endPoint ] = [ endPoint, startPoint ];
     }
 
-    return lps;
+    return series?.slice(startPoint, endPoint);
   };
 
 
@@ -409,7 +407,7 @@ const LineGraph = (props: LineGraphProps) => {
 
     const x = getXScaleValue(dragPoints?.startPoint);
     const y = getYScaleValue(lp.series?.[dragPoints.startPoint]?.[1]);
-    const color = isPositiveDrag(lp) ? 'var(--primaryClr)' : 'var(--growwRed)';
+    const color = getDragColor(lp);
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
       return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
@@ -443,24 +441,11 @@ const LineGraph = (props: LineGraphProps) => {
       y = currTooltipData?.tooltipTop as number;
     }
 
-    const color = dragPoints?.endPoint ? isPositiveDrag(lp) ? 'var(--primaryClr)' : 'var(--growwRed)' : lp?.color;
+    const color = dragPoints?.endPoint ? getDragColor(lp) : lp?.color;
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
       return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
     }
-  };
-
-
-  const getDragColors = (lp: LinePathData) => {
-    const colorScheme = !isPositiveDrag(lp) && lp?.draggableConfig?.negativeDrag ? lp?.draggableConfig?.negativeDrag : lp?.draggableConfig;
-    const { stopColor, stopColor2, lineColor, gradientTransform } = colorScheme ?? {};
-
-    return {
-      dragPolColor: stopColor,
-      dragPolColor2: stopColor2 ?? stopColor,
-      dragLineColor: lineColor ?? stopColor,
-      dragGradient: gradientTransform ?? DefaultGradientTransform
-    };
   };
 
 
@@ -481,6 +466,7 @@ const LineGraph = (props: LineGraphProps) => {
 
         onMouseDown={onMouseDown}
       >
+        {props.getDefs?.()}
         <g>
           {
             linePaths.map(lp => {
@@ -515,7 +501,7 @@ const LineGraph = (props: LineGraphProps) => {
               const toShowDrag = lp.isDraggable && dragPoints?.endPoint;
               const dragPolPoints = toShowDrag ? getDragPolPoints(height, lp) : '';
               const dragLinePoints = toShowDrag ? getDragLinePoints(lp?.series) : [];
-              const { dragPolColor, dragPolColor2, dragLineColor, dragGradient } = getDragColors(lp);
+              const lineColor = getDragColor(lp);
 
 
               return (
@@ -542,29 +528,14 @@ const LineGraph = (props: LineGraphProps) => {
                   />
                   {
                     toShowDrag && <>
-                      <defs>
-                        <linearGradient id="gradient"
-                          gradientTransform={dragGradient}
-                        >
-                          <stop offset="0%"
-                            stop-color={dragPolColor2}
-                          />
-                          <stop offset="30%"
-                            stop-color={dragPolColor}
-                          />
-                          <stop offset="100%"
-                            stop-color={dragPolColor}
-                          />
-                        </linearGradient>
-                      </defs>
                       <polygon
                         points={dragPolPoints || ''}
-                        fill="url(#gradient)"
+                        fill={lp?.draggableConfig?.fill ?? lp?.color}
                         shape-rendering="geometricPrecision"
                       />
                       <path
                         d={linePath(dragLinePoints) || ''}
-                        stroke={dragLineColor}
+                        stroke={lineColor}
                         style={{ ...lp.style }}
                         key={lp.key + 'Drag'}
                         strokeOpacity={lp.strokeOpacity}
