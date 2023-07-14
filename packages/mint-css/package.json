@@ -1,10 +1,10 @@
 {
   "name": "@groww-tech/mint-css",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Mint CSS",
   "main": "./dist/bundle.css",
   "scripts": {
-    "build:typography": "pnpm rollup -c"
+    "build": "pnpm rollup -c"
   },
   "keywords": [
     "mint-css",
