@@ -15,8 +15,6 @@ import './lineGraph.css';
 
 const DefaultStrokeMultiplier = 1.5;
 
-
-
 const LineGraph = (props: LineGraphProps) => {
   const [ tooltipData, setToolTipData ] = useState<ToolTipData | null>(null);
   const [ dragPoints, setDragPoints ] = useState<DragData | null>(null);
@@ -110,16 +108,16 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const getDragColor = (lp: LinePathData) => {
-    const { startPoint, endPoint } = dragPoints ?? {};
+    const { startIndex, endIndex } = dragPoints ?? {};
     const { fill = lp?.color, lineColor, negativeLineColor } = lp?.draggableConfig ?? {};
 
-    if (startPoint === undefined || endPoint === undefined) return lp?.color;
-    const lpStart = lp?.series?.[startPoint]?.[1];
-    const lpEnd = lp?.series?.[endPoint]?.[1];
+    if (startIndex === undefined || endIndex === undefined) return lp?.color;
+    const lpStart = lp?.series?.[startIndex]?.[1];
+    const lpEnd = lp?.series?.[endIndex]?.[1];
     const line = lineColor ?? fill;
     const negativeLine = negativeLineColor ?? lineColor ?? fill;
 
-    if (startPoint < endPoint) return lpStart < lpEnd ? line : negativeLine;
+    if (startIndex < endIndex) return lpStart < lpEnd ? line : negativeLine;
     return lpStart > lpEnd ? line : negativeLine;
   };
 
@@ -132,7 +130,7 @@ const LineGraph = (props: LineGraphProps) => {
 
     const x0 = invertX(x).toString();
 
-    setDragPoints({ startPoint: Math.trunc(parseInt(x0)) });
+    setDragPoints({ startIndex: Math.trunc(parseInt(x0)) });
   };
 
 
@@ -198,18 +196,18 @@ const LineGraph = (props: LineGraphProps) => {
         } };
 
       if (isDraggable && dragPoints) {
-        const prevPoint: Point = series[dragPoints?.startPoint];
+        const dragStartPoint: Point = series[dragPoints?.startIndex];
 
         toolTipSeriesData.push({
           ...tempTooltipData,
-          prevPoint,
-          prevTooltipLeft: getXScaleValue(dragPoints?.startPoint)
+          dragStartPoint,
+          dragTooltipLeft: getXScaleValue(dragPoints?.startIndex)
         });
 
-        if (x0 <= seriesLen && dragPoints.startPoint !== undefined) {
+        if (x0 <= seriesLen && dragPoints.startIndex !== undefined) {
           setDragPoints({
             ...dragPoints,
-            endPoint: Math.max(Math.trunc(x0), 0)
+            endIndex: Math.max(Math.trunc(x0), 0)
           });
         }
 
@@ -233,17 +231,15 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const getDragLinePoints = (series: Point[]) => {
-    let { startPoint, endPoint } = dragPoints ?? {};
+    let { startIndex, endIndex } = dragPoints ?? {};
 
-    if (startPoint === undefined || endPoint === undefined) return [];
-    if (startPoint > endPoint) {
-      [ startPoint, endPoint ] = [ endPoint, startPoint + 1 ];
-
-    } else {
-      endPoint += 1;
+    if (startIndex === undefined || endIndex === undefined) return [];
+    if (startIndex > endIndex) {
+      [ startIndex, endIndex ] = [ endIndex, startIndex ];
     }
 
-    return series?.slice(startPoint, endPoint);
+    endIndex += 1;
+    return series?.slice(startIndex, endIndex);
   };
 
 
@@ -329,7 +325,7 @@ const LineGraph = (props: LineGraphProps) => {
       return null;
     }
 
-    if (isDragAllowed && dragPoints?.endPoint) {
+    if (isDragAllowed && dragPoints?.endIndex) {
       return getTooltipUI(tooltipData);
     }
 
@@ -371,14 +367,14 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const showDraggedPoints = (lp: LinePathData) => {
-    if (!lp.allowToolTip || !dragPoints?.endPoint) {
+    if (!lp.allowToolTip || !dragPoints?.endIndex) {
       return null;
     }
 
     const { hoverPointStrokeMultiplier, strokeWidth } = lp;
 
-    const x = getXScaleValue(dragPoints?.startPoint) + 2;
-    const y = getYScaleValue(lp.series?.[dragPoints.startPoint]?.[1]);
+    const x = getXScaleValue(dragPoints?.startIndex) + 2;
+    const y = getYScaleValue(lp.series?.[dragPoints.startIndex]?.[1]);
     const color = getDragColor(lp);
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
@@ -413,7 +409,7 @@ const LineGraph = (props: LineGraphProps) => {
       y = currTooltipData?.tooltipTop as number;
     }
 
-    const color = dragPoints?.endPoint ? getDragColor(lp) : lp?.color;
+    const color = dragPoints?.endIndex ? getDragColor(lp) : lp?.color;
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
       return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
@@ -470,7 +466,7 @@ const LineGraph = (props: LineGraphProps) => {
               }
 
 
-              const toShowDrag = lp.isDraggable && dragPoints?.endPoint;
+              const toShowDrag = lp.isDraggable && dragPoints?.endIndex;
               const dragLinePoints = toShowDrag ? getDragLinePoints(lp?.series) : [];
               const dragLineColor = getDragColor(lp);
               const dragPath = area({});

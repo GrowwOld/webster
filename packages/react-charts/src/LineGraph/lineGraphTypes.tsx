@@ -70,8 +70,8 @@ export type ToolTipSeriesData = {
   tooltipTop: number;
   isPerfectIntersection: boolean;
   intersectionPointOnLine: HoveredPointData;
-  prevPoint?: Point;
-  prevTooltipLeft?: number;
+  dragStartPoint?: Point;
+  dragTooltipLeft?: number;
 }
 
 export type HoveredPointData = {
@@ -86,6 +86,6 @@ export type ToolTipData = {
 }
 
 export type DragData = {
-  startPoint: number;
-  endPoint?: number;
+  startIndex: number;
+  endIndex?: number;
 }
