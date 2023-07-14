@@ -14,7 +14,7 @@ import type { Point, LinePathData, LineGraphProps, ToolTipData, ToolTipSeriesDat
 import './lineGraph.css';
 
 const DefaultStrokeMultiplier = 1.5;
-const DefaultGradientTransform = 'rotate(270 0.5 0.5)';
+
 
 
 const LineGraph = (props: LineGraphProps) => {
@@ -232,43 +232,15 @@ const LineGraph = (props: LineGraphProps) => {
   };
 
 
-  const getDragPolPoints = (height: number, lp: LinePathData) => {
-    if (dragPoints?.startPoint === undefined || dragPoints?.endPoint === undefined) return '';
-
-    const startPoint = lp?.series?.[dragPoints?.startPoint];
-    const endPoint = lp?.series?.[dragPoints?.endPoint];
-
-    if (!startPoint || !endPoint) return '';
-    let points = `${getXScaleValue(startPoint?.[0])},${getYScaleValue(startPoint?.[1])}`;
-
-    if (endPoint?.length) {
-      if (startPoint?.[0] < endPoint?.[0]) {
-        for (let i = startPoint?.[0]; i <= endPoint?.[0]; i++) {
-          const tp = lp?.series?.[i - 1];
-
-          points += ` ${getXScaleValue(tp?.[0])},${getYScaleValue(tp?.[1])}`;
-        }
-
-      } else {
-        for (let i = startPoint?.[0]; i >= endPoint?.[0]; i--) {
-          const tp = lp?.series?.[i - 1];
-
-          points += ` ${getXScaleValue(tp?.[0])},${getYScaleValue(tp?.[1])}`;
-        }
-      }
-    }
-
-    points += ` ${getXScaleValue(endPoint?.[0])},${height} ${getXScaleValue(startPoint?.[0])},${height}`;
-    return points;
-  };
-
-
   const getDragLinePoints = (series: Point[]) => {
     let { startPoint, endPoint } = dragPoints ?? {};
 
     if (startPoint === undefined || endPoint === undefined) return [];
     if (startPoint > endPoint) {
-      [ startPoint, endPoint ] = [ endPoint, startPoint ];
+      [ startPoint, endPoint ] = [ endPoint, startPoint + 1 ];
+
+    } else {
+      endPoint += 1;
     }
 
     return series?.slice(startPoint, endPoint);
@@ -405,7 +377,7 @@ const LineGraph = (props: LineGraphProps) => {
 
     const { hoverPointStrokeMultiplier, strokeWidth } = lp;
 
-    const x = getXScaleValue(dragPoints?.startPoint);
+    const x = getXScaleValue(dragPoints?.startPoint) + 2;
     const y = getYScaleValue(lp.series?.[dragPoints.startPoint]?.[1]);
     const color = getDragColor(lp);
 
@@ -499,10 +471,13 @@ const LineGraph = (props: LineGraphProps) => {
 
 
               const toShowDrag = lp.isDraggable && dragPoints?.endPoint;
-              const dragPolPoints = toShowDrag ? getDragPolPoints(height, lp) : '';
               const dragLinePoints = toShowDrag ? getDragLinePoints(lp?.series) : [];
-              const lineColor = getDragColor(lp);
+              const dragLineColor = getDragColor(lp);
+              const dragPath = area({});
 
+              dragPath.x(x as any);
+              dragPath.y0(height);
+              dragPath.y1(y as any);
 
               return (
                 <>
@@ -528,16 +503,16 @@ const LineGraph = (props: LineGraphProps) => {
                   />
                   {
                     toShowDrag && <>
-                      <polygon
-                        points={dragPolPoints || ''}
-                        fill={lp?.draggableConfig?.fill ?? lp?.color}
-                        shape-rendering="geometricPrecision"
+                      <path
+                        d={dragPath(dragLinePoints) || ''}
+                        fill={lp?.draggableConfig?.fill}
+                        key={lp.key + 'DragArea'}
                       />
                       <path
                         d={linePath(dragLinePoints) || ''}
-                        stroke={lineColor}
+                        stroke={dragLineColor}
                         style={{ ...lp.style }}
-                        key={lp.key + 'Drag'}
+                        key={lp.key + 'DragLine'}
                         strokeOpacity={lp.strokeOpacity}
                         shapeRendering="geometricPrecision"
                         strokeWidth={lp.strokeWidth}
