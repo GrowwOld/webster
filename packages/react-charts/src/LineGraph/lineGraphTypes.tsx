@@ -19,6 +19,12 @@ export type LinePathData= {
   hoverExactPoint?: boolean;
   hoverPointStrokeMultiplier?: number;
   highlightPointStrokeMultiplier?: number;
+  isDraggable?: boolean;
+  draggableConfig?: {
+    fill?: string,
+    lineColor?: string,
+    negativeLineColor?: string,
+  };
 }
 
 export type AreaProps = {
@@ -39,14 +45,19 @@ export type LineGraphProps = {
 
   onMouseEnter?: (td: ToolTipData) => void; //on mouse enter callback
   onMouseLeave?: ()=> void;        // on Mouse leave callback
+  onMouseUp?: ()=> void;        // on Mouse Up callback
+  onMouseDown?: ()=> void;        // on Mouse Down callback
 
   toolTipLeftUpdated?: number;   // calculated/updated toolTipLeft
   toolTipTopUpdated?: number;    // calculated/updated toolTipTop
   getTooltipUI?: (toolTipData: ToolTipData) => JSX.Element; //get tool tip ui
+  getDefs?: () => JSX.Element; //get defs for ui
   maxX?: number;
   minX?: number;
   maxY?: number;
   minY?: number;
+
+  isDragAllowed: boolean; // if dragging is allowed inside graph area
 }
 
 export type XYCoords = {x: number; y: number};
@@ -59,6 +70,8 @@ export type ToolTipSeriesData = {
   tooltipTop: number;
   isPerfectIntersection: boolean;
   intersectionPointOnLine: HoveredPointData;
+  dragStartPoint?: Point;
+  dragTooltipLeft?: number;
 }
 
 export type HoveredPointData = {
@@ -70,4 +83,9 @@ export type HoveredPointData = {
 export type ToolTipData = {
   seriesData: ToolTipSeriesData[];
   otherData: HoveredPointData;
+}
+
+export type DragData = {
+  startIndex: number;
+  endIndex?: number;
 }
