@@ -475,6 +475,7 @@ const LineGraph = (props: LineGraphProps) => {
               const dragLineColor = getDragColor(lp);
               const dragPath = area({});
 
+              //TODO: handling for vertical graph
               dragPath.x(x as any);
               dragPath.y0(height);
               dragPath.y1(y as any);
