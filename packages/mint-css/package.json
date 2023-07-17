@@ -4,7 +4,7 @@
   "description": "Mint CSS",
   "main": "./dist/bundle.css",
   "scripts": {
-    "build": "pnpm rollup -c"
+    "build": "rm -rf dist && pnpm rollup -c"
   },
   "keywords": [
     "mint-css",
