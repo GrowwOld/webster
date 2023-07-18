@@ -211,7 +211,7 @@ const LineGraph = (props: LineGraphProps) => {
           setDragPoints(null);
         }
 
-        if (x0 <= seriesLen && dragPoints.startPoint !== undefined) {
+        if (x0 < seriesLen - 1 && dragPoints.startPoint !== undefined) {
           setDragPoints({
             ...dragPoints,
             endPoint: x
@@ -488,7 +488,7 @@ const LineGraph = (props: LineGraphProps) => {
                 dragPath.x(x as any);
                 dragPath.y0(height);
                 dragPath.y1(y as any);
-                
+
               }
 
 
