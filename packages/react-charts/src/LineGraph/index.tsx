@@ -149,7 +149,6 @@ const LineGraph = (props: LineGraphProps) => {
   const onMouseOut = () => {
     onMouseLeave?.();
     setToolTipData(null);
-    setDragPoints(null);
   };
 
 
