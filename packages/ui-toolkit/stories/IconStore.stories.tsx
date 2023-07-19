@@ -45,23 +45,25 @@ export const AllImageIcons = () => {
 
 
 export const AllMaterialIcons = () => {
-  return <div className="story_icon_all_image_list">
-    {
-      Object.keys(materialIcons).map(icon => {
-        const IconComponent = materialIcons[icon];
-        const importCode = `import { ${icon} } from '@groww-tech/icon-store/mi';`;
+  return (
+    <div className="story_icon_all_image_list">
+      {
+        Object.keys(materialIcons).map(icon => {
+          const IconComponent = materialIcons[icon];
+          const importCode = `import { ${icon} } from '@groww-tech/icon-store/mi';`;
 
-        return (
-          <div
-            key={icon}
-            className="story_icon_all_image_list_item"
-            onClick={() => { copyToClipboard(importCode); }}
-          >
-            <IconComponent size={48}/>
-            <div className="fs16">{icon}</div>
-          </div>
-        );
-      })
-    }
-  </div>;
+          return (
+            (<div
+              key={icon}
+              className="story_icon_all_image_list_item"
+              onClick={() => { copyToClipboard(importCode); }}
+            >
+              <IconComponent size={48}/>
+              <div className='bodyRegular16'>{icon}</div>
+            </div>)
+          );
+        })
+      }
+    </div>
+  );
 };

@@ -75,7 +75,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
           >
             <KeyboardArrowLeft fontSize={21} />
           </div>
-          <div className="cc12Year fs15">
+          <div className='cc12Year bodyRegular16'>
             <div>{getMonthAbbrByIndex(dateToShow.getMonth() + 1)} {dateToShow.getFullYear()}</div>
           </div>
           <div onClick={this.goToNextMonth}
@@ -97,8 +97,8 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
   getMonthUI = () => {
     return (
-      <div>
-        <div className='cc12WeekNameBox valign-wrapper fs14 contentSecondary'>
+      (<div>
+        <div className='cc12WeekNameBox valign-wrapper contentSecondary bodyRegular14'>
           {
             WEEK_DAYS.map(day => (
               <div className="cc12WeekName">
@@ -109,7 +109,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
             ))
           }
         </div>
-      </div>
+      </div>)
     );
   }
 
@@ -138,10 +138,10 @@ class DateCalendar extends React.PureComponent<Props, State> {
                         const dateSelected = this.isDateSelected(date);
 
                         return (
-                          <div className="cc12DateBlock">
+                          (<div className="cc12DateBlock">
                             <div
                               className={
-                                cn('cc12Date valign-wrapper cur-po fs14 circle', {
+                                cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
                                   'cc12DateNotSelected': !dateSelected,
                                   'cc12DateSelected': dateSelected,
                                   'cc12DisableDate': (minDate && this.compareDate(minDate, newDate)) || (maxDate && this.compareDate(newDate, maxDate))
@@ -151,7 +151,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                             >
                               {date}
                             </div>
-                          </div>
+                          </div>)
                         );
                       }
 

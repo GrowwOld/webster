@@ -46,7 +46,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
                 >
                   <div
                     className={
-                      cn('fs13 mn12MonthText valign-wrapper cur-po', {
+                      cn('mn12MonthText valign-wrapper cur-po bodyRegular14', {
                         'mn12MonthTextSelected': ((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
                         'mn12MonthBack': !((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
                         'cc12DisableDate': ((index > presentDate.getMonth()) && (presentDate.getFullYear() === dateToShow.getFullYear()))

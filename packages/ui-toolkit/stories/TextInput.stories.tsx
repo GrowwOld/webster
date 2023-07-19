@@ -117,7 +117,7 @@ CustomLabel.decorators = [
   (Story) => (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div
-        className='fs16 contentSecondary'
+        className='contentSecondary bodyRegular16'
         style={{ marginBottom: '8px' }}
       >Shares to buy NSE</div>
       <Story />
@@ -134,14 +134,14 @@ CustomLabel.args = {
 
 export const EditPhoneNumber = Template.bind({});
 EditPhoneNumber.args = {
-  PrefixComponent: () => (<span className='fs16'>+91 </span>),
+  PrefixComponent: () => (<span className='bodyRegular16'>+91 </span>),
   placeholder: '+91',
   disabled: true
 };
 
 export const EditPhoneNumberExclusive = Template.bind({});
 EditPhoneNumber.args = {
-  PrefixComponent: () => (<span className='fs16'>+91 </span>),
+  PrefixComponent: () => (<span className='bodyRegular16'>+91 </span>),
   placeholder: '+91',
   variant: 'exclusive'
 };
@@ -164,5 +164,5 @@ UnstyledLargeRupeeSymbol.args = {
   placeholder: 'Enter Email',
   variant: 'unstyled',
   size: 'large',
-  PrefixComponent: () => <div className='fs22 fw500'>₹ </div>
+  PrefixComponent: () => <div className='heading20'>₹ </div>
 };

@@ -38,7 +38,7 @@ const InformationBox = (props: Props) => {
   } = props;
 
   const parentDivClass = cn({
-    'valign-wrapper infbd45ParentDiv fs14': true,
+    'valign-wrapper infbd45ParentDiv bodyRegular14': true,
     [`${informationBoxClass}`]: informationBoxClass !== ''
   });
 
