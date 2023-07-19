@@ -8,16 +8,16 @@ import { area } from '@visx/shape';
 import type { EventType } from '../utils/commonTypes';
 import { isEmpty } from '../utils/helpers';
 
-import type { Point, LinePathData, LineGraphProps, ToolTipData, ToolTipSeriesData } from './lineGraphTypes';
+import type { Point, LinePathData, LineGraphProps, ToolTipData, ToolTipSeriesData, DragData } from './lineGraphTypes';
 
 
 import './lineGraph.css';
 
 const DefaultStrokeMultiplier = 1.5;
 
-
 const LineGraph = (props: LineGraphProps) => {
   const [ tooltipData, setToolTipData ] = useState<ToolTipData | null>(null);
+  const [ dragPoints, setDragPoints ] = useState<DragData | null>(null);
 
   const {
     paddingVert,
@@ -33,10 +33,10 @@ const LineGraph = (props: LineGraphProps) => {
   }
 
 
-  const getXaxisValue = (d:Point) => d[0];
+  const getXaxisValue = (d: Point) => d?.[0];
 
 
-  const getYaxisValue = (d: Point): number => d[1];
+  const getYaxisValue = (d: Point): number => d?.[1];
 
   let minY: number = Number.MAX_SAFE_INTEGER;
   let maxY:number = Number.MIN_SAFE_INTEGER;
@@ -107,9 +107,43 @@ const LineGraph = (props: LineGraphProps) => {
   };
 
 
+  const getDragColor = (lp: LinePathData) => {
+    const { startIndex, endIndex } = dragPoints ?? {};
+    const { fill = lp?.color, lineColor, negativeLineColor } = lp?.draggableConfig ?? {};
+
+    if (startIndex === undefined || endIndex === undefined) return lp?.color;
+    const lpStart = lp?.series?.[startIndex]?.[1];
+    const lpEnd = lp?.series?.[endIndex]?.[1];
+    const line = lineColor ?? fill;
+    const negativeLine = negativeLineColor ?? lineColor ?? fill;
+
+    if (startIndex < endIndex) return lpStart < lpEnd ? line : negativeLine;
+    return lpStart > lpEnd ? line : negativeLine;
+  };
+
+
+  const onMouseDown = (e: EventType) => {
+    props.onMouseDown?.();
+    if (!props.isDragAllowed) return;
+
+    const { x } = localPoint(e) || { x: 0 };
+
+    const x0 = invertX(x).toString();
+
+    setDragPoints({ startIndex: Math.trunc(parseInt(x0)) });
+  };
+
+
+  const onMouseUp = () => {
+    props.onMouseUp?.();
+    setDragPoints(null);
+  };
+
+
   const onMouseOut = () => {
     onMouseLeave?.();
     setToolTipData(null);
+    setDragPoints(null);
   };
 
 
@@ -123,16 +157,17 @@ const LineGraph = (props: LineGraphProps) => {
     const x0 = invertX(x);
     const y0 = invertY(y);
 
-    const bisectXAxix = bisector(getXaxisValue).left;
+    const bisectXAxis = bisector(getXaxisValue).left;
 
 
     const toolTipSeriesData: Array<ToolTipSeriesData> = [];
 
     linePaths?.map((lp: LinePathData) => {
+      const { isDraggable } = lp;
       const series = [ ...lp.series ];
       const seriesLen = series.length;
 
-      let index = bisectXAxix(series, x0, 0);
+      let index = bisectXAxis(series, x0, 0);
 
       //checking for perferct intersection of hovered point with current line
       const isPerfectIntersection = index !== 0 && !isEmpty(series?.[index]?.[0]) && series?.[index]?.[0] >= x0;
@@ -150,7 +185,7 @@ const LineGraph = (props: LineGraphProps) => {
 
       const calculatedYAtHoveredPoint = slope * (x0 - prevPoint[0]) + prevPoint[1];
 
-      toolTipSeriesData.push({
+      const tempTooltipData = {
         point: nextPoint,
         tooltipLeft: lp?.isSeriesToScale ? getXScaleValue(getXaxisValue(nextPoint)) : getXaxisValue(nextPoint),
         tooltipTop: lp?.isSeriesToScale ? getYScaleValue(getYaxisValue(nextPoint)) : getYaxisValue(nextPoint),
@@ -158,7 +193,28 @@ const LineGraph = (props: LineGraphProps) => {
         intersectionPointOnLine: {
           coords: { x: getXScaleValue(x0), y: getYScaleValue(calculatedYAtHoveredPoint) },
           invertedValues: { x: x0, y: calculatedYAtHoveredPoint }
-        } });
+        } };
+
+      if (isDraggable && dragPoints) {
+        const dragStartPoint: Point = series[dragPoints?.startIndex];
+
+        toolTipSeriesData.push({
+          ...tempTooltipData,
+          dragStartPoint,
+          dragTooltipLeft: getXScaleValue(dragPoints?.startIndex)
+        });
+
+        if (x0 <= seriesLen && dragPoints.startIndex !== undefined) {
+          setDragPoints({
+            ...dragPoints,
+            endIndex: Math.max(Math.trunc(x0), 0)
+          });
+        }
+
+      } else {
+        toolTipSeriesData.push(tempTooltipData);
+      }
+
     });
 
     const toolTipData: ToolTipData = {
@@ -171,7 +227,19 @@ const LineGraph = (props: LineGraphProps) => {
 
     onMouseEnter?.(toolTipData);
     setToolTipData(toolTipData);
+  };
 
+
+  const getDragLinePoints = (series: Point[]) => {
+    let { startIndex, endIndex } = dragPoints ?? {};
+
+    if (startIndex === undefined || endIndex === undefined) return [];
+    if (startIndex > endIndex) {
+      [ startIndex, endIndex ] = [ endIndex, startIndex ];
+    }
+
+    endIndex += 1;
+    return series?.slice(startIndex, endIndex);
   };
 
 
@@ -204,11 +272,7 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const showHighlightedPoints = (lp: LinePathData) => {
-
-
-    if (!lp.hasHighlightedPoints) {
-      return;
-    }
+    if (!lp.hasHighlightedPoints) return;
 
     const strokeMultiplier = lp.highlightPointStrokeMultiplier ?? DefaultStrokeMultiplier;
 
@@ -240,7 +304,8 @@ const LineGraph = (props: LineGraphProps) => {
     const {
       getTooltipUI,
       toolTipLeftUpdated,
-      toolTipTopUpdated
+      toolTipTopUpdated,
+      isDragAllowed
     } = props;
 
     const tooltipStyle : React.CSSProperties = {
@@ -260,13 +325,61 @@ const LineGraph = (props: LineGraphProps) => {
       return null;
     }
 
+    if (isDragAllowed && dragPoints?.endIndex) {
+      return getTooltipUI(tooltipData);
+    }
+
     return (
-      <div
-        style={tooltipStyle}
-      >
+      <div style={tooltipStyle}>
         {getTooltipUI(tooltipData)}
       </div>
     );
+  };
+
+
+  const getHoveredPointUI = (x: number, y: number, color: string, strokeWidth: number, hoverPointStrokeMultiplier?: number) => {
+    const strokeMultiplier = hoverPointStrokeMultiplier ?? DefaultStrokeMultiplier;
+
+    return (
+      <>
+        <circle
+          cx={x}
+          cy={y}
+          r={strokeWidth * strokeMultiplier}
+          fill={color}
+          stroke='var(--primaryBg)'
+          strokeWidth={strokeWidth }
+          pointerEvents="none"
+        />
+        <circle
+          cx={x}
+          cy={y}
+          r={strokeWidth * strokeMultiplier}
+          fill='var(--constantTransparent)'
+          stroke={color}
+          className='lg43Opacity3'
+          strokeWidth={strokeWidth * strokeMultiplier / 2}
+          pointerEvents="none"
+        />
+      </>
+    );
+  };
+
+
+  const showDraggedPoints = (lp: LinePathData) => {
+    if (!lp.allowToolTip || !dragPoints?.endIndex) {
+      return null;
+    }
+
+    const { hoverPointStrokeMultiplier, strokeWidth } = lp;
+
+    const x = getXScaleValue(dragPoints?.startIndex) + 2;
+    const y = getYScaleValue(lp.series?.[dragPoints.startIndex]?.[1]);
+    const color = getDragColor(lp);
+
+    if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
+      return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
+    }
   };
 
 
@@ -275,7 +388,7 @@ const LineGraph = (props: LineGraphProps) => {
       return null;
     }
 
-    const { hoverPointStrokeMultiplier } = lp;
+    const { hoverPointStrokeMultiplier, strokeWidth } = lp;
 
     const hoverExactPoint = lp.hoverExactPoint;
 
@@ -296,32 +409,10 @@ const LineGraph = (props: LineGraphProps) => {
       y = currTooltipData?.tooltipTop as number;
     }
 
-    const strokeMultiplier = (hoverPointStrokeMultiplier ?? DefaultStrokeMultiplier);
+    const color = dragPoints?.endIndex ? getDragColor(lp) : lp?.color;
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
-      return (
-        <>
-          <circle
-            cx={x}
-            cy={y}
-            r={lp.strokeWidth * strokeMultiplier}
-            fill={lp.color}
-            stroke='var(--primaryBg)'
-            strokeWidth={lp.strokeWidth }
-            pointerEvents="none"
-          />
-          <circle
-            cx={x}
-            cy={y}
-            r={lp.strokeWidth * strokeMultiplier}
-            fill='var(--constantTransparent)'
-            stroke={lp.color}
-            className='lg43Opacity3'
-            strokeWidth={lp.strokeWidth * strokeMultiplier / 2}
-            pointerEvents="none"
-          />
-        </>
-      );
+      return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
     }
   };
 
@@ -330,12 +421,20 @@ const LineGraph = (props: LineGraphProps) => {
     <>
       <svg width={width}
         height={height}
-        onMouseMove={handleTooltip}
+
         onTouchMove={handleTooltip}
+        onMouseMove={handleTooltip}
+
         onTouchStart={handleTooltip}
-        onMouseLeave={onMouseOut}
+
         onTouchEnd={onMouseOut}
+        onMouseLeave={onMouseOut}
+
+        onMouseUp={onMouseUp}
+
+        onMouseDown={onMouseDown}
       >
+        {props.getDefs?.()}
         <g>
           {
             linePaths.map(lp => {
@@ -367,6 +466,16 @@ const LineGraph = (props: LineGraphProps) => {
               }
 
 
+              const toShowDrag = lp.isDraggable && dragPoints?.endIndex;
+              const dragLinePoints = toShowDrag ? getDragLinePoints(lp?.series) : [];
+              const dragLineColor = getDragColor(lp);
+              const dragPath = area({});
+
+              //TODO: handling for vertical graph
+              dragPath.x(x as any);
+              dragPath.y0(height);
+              dragPath.y1(y as any);
+
               return (
                 <>
                   {
@@ -389,6 +498,24 @@ const LineGraph = (props: LineGraphProps) => {
                     shapeRendering="geometricPrecision"
                     strokeWidth={lp.strokeWidth}
                   />
+                  {
+                    toShowDrag && <>
+                      <path
+                        d={dragPath(dragLinePoints) || ''}
+                        fill={lp?.draggableConfig?.fill}
+                        key={lp.key + 'DragArea'}
+                      />
+                      <path
+                        d={linePath(dragLinePoints) || ''}
+                        stroke={dragLineColor}
+                        style={{ ...lp.style }}
+                        key={lp.key + 'DragLine'}
+                        strokeOpacity={lp.strokeOpacity}
+                        shapeRendering="geometricPrecision"
+                        strokeWidth={lp.strokeWidth}
+                      />
+                    </>
+                  }
                 </>
               );
             })
@@ -401,6 +528,7 @@ const LineGraph = (props: LineGraphProps) => {
                   {showBlinkingPointUI(lp)}
                   {showHighlightedPoints(lp)}
                   {showHoveredPoints(lp, idx)}
+                  {showDraggedPoints(lp)}
                 </>
               );
             })
