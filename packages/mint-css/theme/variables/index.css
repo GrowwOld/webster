@@ -31,6 +31,11 @@ html {
   --yellow100: #fff5e0;
   --red500: #eb5b3c;
   --red100: #fae9e5;
+  --tempBg: #ffffff;
+  --tempTransparent:  rgba(0, 0, 0, 0);
+  --tempHalfTransparent: rgba(0, 0, 0, 0.5);
+  --tempCardBg: #FFF;
+  --tempBoxShadow: rgba(0, 0, 0, 0.1);
 }
 
 html[data-theme="dark"] {
@@ -58,4 +63,9 @@ html[data-theme="dark"] {
   --yellow100: #46391d;
   --red500: #d55438;
   --red100: #411d16;
+  --tempBg: #121212;
+  --tempTransparent:  rgba(0, 0, 0, 0);
+  --tempHalfTransparent: rgba(0, 0, 0, 0.5);
+  --tempCardBg: #1D1D1D;
+  --tempBoxShadow: rgba(0, 0, 0, 0.6);
 }
