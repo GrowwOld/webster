@@ -5,7 +5,7 @@ import copy from 'rollup-plugin-copy';
 export default {
   input: './index.css', // Entry point of your application
   output: {
-    file: './dist/bundle.css', // Output file
+    file: './dist/index.css', // Output file
     format: 'cjs', // Output format (can be 'iife', 'umd', 'cjs', 'esm')
   },
   plugins: [
@@ -15,13 +15,7 @@ export default {
       ],
       extract: true,
       minimize: true,
-      sourceMap: false,
-      loaders: [
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: 'url-loader',
-        },
-      ],
+      sourceMap: false
     }),
     copy({
       targets: [
@@ -29,13 +23,8 @@ export default {
       ],
       after: [
         {
-          src: 'dist/bundle.css',
-          dest: 'dist',
-          transform: (contents) => {
-            // Modify the font paths in the CSS file
-            const modifiedContents = contents.toString().replace(/url\(fonts\//g, 'url(dist/fonts/');
-            return modifiedContents;
-          },
+          src: 'dist/index.css',
+          dest: 'dist'
         },
       ],
     }),
