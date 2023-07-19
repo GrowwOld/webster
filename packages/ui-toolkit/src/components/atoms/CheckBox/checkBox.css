@@ -5,7 +5,7 @@
 
 .c11CLabel {
   font-size: 14px;
-  color: var(--text);
+  color: var(--gray900);
   margin-left: 12px;
   letter-spacing: 0.3px;
   -webkit-font-smoothing: auto;

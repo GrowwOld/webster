@@ -7,13 +7,13 @@
   position: absolute;
   border-radius: 4px;
   padding: 6px;
-  color: var(--text130);
-  background: var(--primaryBg);
-  box-shadow: 0 0 10px var(--boxShadow);
+  color: var(--gray900);
+  background: var(--tempBg);
+  box-shadow: 0 0 10px var(--tempBoxShadow);
   font-size: 13px;
   opacity: 1;
   z-index: var(--zindex900);
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray150);
 }
 
 .pop12Popover::before {
@@ -54,7 +54,7 @@
 .top-end::before {
   top: 100%;
   left: 50%;
-  border-top-color: var(--primaryBg);
+  border-top-color: var(--tempBg);
 }
 
 /* popover right positions: start, mid, end */
@@ -86,7 +86,7 @@
   top: 50%;
   left: -6px;
   transform: translate(0, -50%);
-  border-right-color: var(--primaryBg);
+  border-right-color: var(--tempBg);
 }
 
 /* popover bottom positions: start, mid, end */
@@ -117,7 +117,7 @@
 .bottom-end::before {
   bottom: 100%;
   left: 50%;
-  border-bottom-color: var(--primaryBg);
+  border-bottom-color: var(--tempBg);
 }
 
 /* popover left positions: start, mid, end */
@@ -149,5 +149,5 @@
   top: 50%;
   right: -12px;
   transform: translate(0, -50%);
-  border-left-color: var(--primaryBg);
+  border-left-color: var(--tempBg);
 }

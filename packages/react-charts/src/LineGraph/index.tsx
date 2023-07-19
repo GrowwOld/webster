@@ -260,7 +260,7 @@ const LineGraph = (props: LineGraphProps) => {
           cy={lastPointY}
           r={lp.strokeWidth * 1.5}
           fill={lp.color}
-          stroke='var(--primaryBg)'
+          stroke='var(--tempBg)'
           strokeWidth={lp.strokeWidth / 2}
           pointerEvents="none"
           style={lp.style}
@@ -313,7 +313,7 @@ const LineGraph = (props: LineGraphProps) => {
       left: 0,
       boxShadow: 'none',
       padding: 0,
-      backgroundColor: 'var(--constantTransparent)',
+      backgroundColor: 'var(--tempTransparent)',
       position: 'absolute',
       borderRadius: '3px',
       transform: `translate(${toolTipLeftUpdated}px, ${toolTipTopUpdated}px)`
@@ -347,7 +347,7 @@ const LineGraph = (props: LineGraphProps) => {
           cy={y}
           r={strokeWidth * strokeMultiplier}
           fill={color}
-          stroke='var(--primaryBg)'
+          stroke='var(--tempBg)'
           strokeWidth={strokeWidth }
           pointerEvents="none"
         />
@@ -355,7 +355,7 @@ const LineGraph = (props: LineGraphProps) => {
           cx={x}
           cy={y}
           r={strokeWidth * strokeMultiplier}
-          fill='var(--constantTransparent)'
+          fill='var(--tempTransparent)'
           stroke={color}
           className='lg43Opacity3'
           strokeWidth={strokeWidth * strokeMultiplier / 2}

@@ -18,20 +18,20 @@
   border-radius: 50%;
   justify-content: center;
   margin: 3px auto;
-  background: var(--primaryBg);
+  background: var(--tempBg);
 }
 
 .mn12MonthBack {
-  background: var(--primaryBg);
+  background: var(--tempBg);
 }
 
 .mn12MonthBack:hover {
-  background-color: var(--boxShadow);
+  background-color: var(--tempBoxShadow);
 }
 
 .mn12MonthTextSelected {
-  background-color: var(--primaryClr);
-  color: var(--primaryBg);
+  background-color: var(--green500);
+  color: var(--tempBg);
 }
 
 .mn12MonthBox {

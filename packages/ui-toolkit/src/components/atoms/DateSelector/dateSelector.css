@@ -10,14 +10,14 @@
 .date101Label {
   font-size: 16px;
   text-align: center;
-  color: var(--subText);
+  color: var(--gray700);
 }
 
 .date101SelectedLabel {
   margin-top: 25px;
   font-size: 19px;
   text-align: center;
-  color: var(--text130);
+  color: var(--gray900);
 }
 
 .date101Grid-container {
@@ -37,53 +37,53 @@
 
 .date101Grid-item.regular {
   pointer-events: auto;
-  color: var(--text);
-  background-color: var(--primaryBg);
+  color: var(--gray900);
+  background-color: var(--tempBg);
   cursor: pointer;
   transition: all .1s ease-in-out;
 }
 
 .date101Grid-item.active {
   pointer-events: auto;
-  color: var(--primaryBg);
-  background-color: var(--secondaryClr);
+  color: var(--tempBg);
+  background-color: var(--purple500);
   transform: scale(1.2);
   cursor: pointer;
 }
 
 .date101Grid-item.default-active {
   pointer-events: auto;
-  color: var(--primaryBg);
-  background-color: var(--primaryClr);
+  color: var(--tempBg);
+  background-color: var(--green500);
   transform: scale(1.2);
   cursor: pointer;
 }
 
 .date101Grid-item.disabled {
   pointer-events: none;
-  background-color: var(--primaryBg);
+  background-color: var(--tempBg);
   cursor: not-allowed;
-  color: var(--subText50);
+  color: var(--gray500);
 }
 
 .date101Grid-item.previously-active {
   pointer-events: auto;
-  color: var(--text);
+  color: var(--gray900);
   transform: scale(1.2);
-  background-color: var(--boxShadow);
+  background-color: var(--tempBoxShadow);
   cursor: pointer;
 }
 
 .date101Grid-item.regular:hover {
   transform: scale(1.2);
-  background: var(--constantSecondaryClr10);
+  background: var(--gray50);
 }
 
 .date101DropDiv {
   border-radius: 4px;
-  box-shadow: 0 4px 10px 0 var(--boxShadow);
-  border: 1px solid var(--border);
-  background-color: var(--primaryBg);
+  box-shadow: 0 4px 10px 0 var(--tempBoxShadow);
+  border: 1px solid var(--gray150);
+  background-color: var(--tempBg);
   padding: 10px;
 }
 
@@ -92,12 +92,12 @@
 }
 
 .date101TooltipMainDiv {
-  background: var(--primaryBg);
+  background: var(--tempBg);
   border-radius: 5px;
   width: 350px;
   height: auto;
   position: absolute;
-  box-shadow: 0px 4px 20px 0px var(--boxShadow);
+  box-shadow: 0px 4px 20px 0px var(--tempBoxShadow);
   transition: all ease-in-out 0.3s;
 }
 
@@ -109,9 +109,9 @@
   content: '';
   width: 0px;
   height: 0;
-  border-right: solid 10px var(--constantTransparent);
-  border-bottom: solid 10px var(--primaryBg);
-  border-left: solid 10px var(--constantTransparent);
+  border-right: solid 10px var(--tempTransparent);
+  border-bottom: solid 10px var(--tempBg);
+  border-left: solid 10px var(--tempTransparent);
 } */
 
 .date101CrossButton {
@@ -119,7 +119,7 @@
   opacity: 0.5;
   top: 10px;
   right: 10px;
-  color: var(--text);
+  color: var(--gray900);
   cursor: pointer;
 }
 

@@ -14,7 +14,7 @@ export default {
 const Template: Story<TickerProps> = (args) => {
   const [ currentState, setCurrentState ] = React.useState({
     price: '₹74128.91',
-    class: 'primaryClr'
+    class: 'contentAccent'
   });
 
 
@@ -24,13 +24,13 @@ const Template: Story<TickerProps> = (args) => {
         if (prevState.price === '₹74128.91') {
           return {
             price: '₹56981.19',
-            class: 'clrRed'
+            class: 'contentNegative'
           };
 
         } else {
           return {
             price: '₹74128.91',
-            class: 'primaryClr'
+            class: 'contentAccent'
           };
         }
       });
@@ -53,7 +53,7 @@ const Template: Story<TickerProps> = (args) => {
           {...args}
           textClassName='fs28 fw500'
           text={currentState.price}
-          currentClassName='clrText'
+          currentClassName='contentPrimary'
           hiddenClassName={currentState.class}
         />
 

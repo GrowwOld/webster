@@ -73,9 +73,9 @@ const defaultProps: DefaultProps = {
   height: 24,
   leftText: '',
   rightText: '',
-  inactiveBackgroundColor: 'var(--subText)',
-  switchCircleColor: 'var(--constantWhite)',
-  activeBackgroundColor: 'var(--primaryClr)',
+  inactiveBackgroundColor: 'var(--gray700)',
+  switchCircleColor: 'var(--white)',
+  activeBackgroundColor: 'var(--green500)',
   dataTestId: ''
 };
 

@@ -30,5 +30,5 @@
   border-radius: 50%;
   /*same as width, height*/
   transition: all 0.3s;
-  box-shadow: 0 0 2px 0 var(--boxShadow);
+  box-shadow: 0 0 2px 0 var(--tempBoxShadow);
 }

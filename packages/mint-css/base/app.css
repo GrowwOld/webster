@@ -51,8 +51,8 @@ p {
 }
 
 body {
-  background: var(--primaryBg) !important;
-  color: var(--text) !important;
+  background: var(--tempBg) !important;
+  color: var(--gray900) !important;
   margin: 0;
   box-sizing: border-box;
   font-weight: 435;
@@ -62,7 +62,7 @@ body {
 }
 
 a {
-  color: var(--primaryClr);
+  color: var(--green500);
   text-decoration: none;
 }
 

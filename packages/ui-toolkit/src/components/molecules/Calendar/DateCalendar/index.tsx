@@ -1,6 +1,11 @@
 import React from 'react';
 import cn from 'classnames';
-import { KeyboardArrowLeft, KeyboardArrowRight, KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from '@groww-tech/icon-store/mi';
+import {
+  KeyboardArrowLeft,
+  KeyboardArrowRight,
+  KeyboardDoubleArrowLeft,
+  KeyboardDoubleArrowRight
+} from '@groww-tech/icon-store/mi';
 
 import { getDatesArray, getMonthAbbrByIndex } from './dateCalendarUtils';
 
@@ -93,7 +98,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
   getMonthUI = () => {
     return (
       <div>
-        <div className="cc12WeekNameBox valign-wrapper fs14 clrSubText">
+        <div className='cc12WeekNameBox valign-wrapper fs14 contentSecondary'>
           {
             WEEK_DAYS.map(day => (
               <div className="cc12WeekName">

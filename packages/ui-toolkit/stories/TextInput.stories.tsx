@@ -117,7 +117,7 @@ CustomLabel.decorators = [
   (Story) => (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div
-        className='fs16 clrSubText'
+        className='fs16 contentSecondary'
         style={{ marginBottom: '8px' }}
       >Shares to buy NSE</div>
       <Story />

@@ -5,7 +5,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  background-color: var(--primaryBg);
+  background-color: var(--tempBg);
 }
 
 .ph-item,

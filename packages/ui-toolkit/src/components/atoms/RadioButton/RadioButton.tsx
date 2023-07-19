@@ -25,7 +25,7 @@ const RadioButton = (props: Props) => {
   } = props;
 
   const labelParentClassName = cn({
-    'clrText fs15 radioLs2': true,
+    'contentPrimary fs15 radioLs2': true,
     [`${labelClassName}`]: true,
     'radioCo11LabelRight': radioDirection === RADIO_DIRECTION.RIGHT,
     'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT

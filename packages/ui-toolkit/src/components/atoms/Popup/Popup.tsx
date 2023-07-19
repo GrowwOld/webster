@@ -4,7 +4,7 @@ import Rodal from './Rodal/Rodal';
 
 export const RESPONSIVE_POPUP_STYLES = {
   display: 'block',
-  background: 'var(--primaryBg)',
+  background: 'var(--tempBg)',
   borderTopLeftRadius: '7px',
   borderTopRightRadius: '7px',
   marginBottom: '0px',

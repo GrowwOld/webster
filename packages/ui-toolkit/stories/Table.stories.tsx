@@ -18,7 +18,7 @@ const tableData = [
   { company: 'Hindustan Unilever', marketCap: '₹5,42,391 Cr', marketPrice: '₹2,284.80', growthType: false, value: '-1.02%', sector: 'Personal Products' }
 ];
 
-const headerStyle = { color: 'var(--subText)', borderBottom: 'dashed 1px var(--subText70)' };
+const headerStyle = { color: 'var(--gray700)', borderBottom: 'dashed 1px var(--gray700)' };
 
 
 const Template: Story<TableProps> = (args) => <Table {...args}>
@@ -33,7 +33,7 @@ const Template: Story<TableProps> = (args) => <Table {...args}>
     tableData.map((data, index) => {
       return (
         <Table.Row key={index}
-          style={{ borderBottom: 'solid 1px var(--subText70)' }}
+          style={{ borderBottom: 'solid 1px var(--gray700)' }}
         >
           <Table.Cell>{data.company}</Table.Cell>
           <Table.Cell>{data.marketCap}</Table.Cell>
@@ -42,7 +42,7 @@ const Template: Story<TableProps> = (args) => <Table {...args}>
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}
             >
               <span>{data.marketPrice}</span>
-              <span className={`fs12 ${data.growthType ? 'primaryClr' : 'growwRed'}`}>( {data.value} )</span>
+              <span className={`fs12 ${data.growthType ? 'contentAccent' : 'contentNegative'}`}>( {data.value} )</span>
             </div>
           </Table.Cell>
           <Table.Cell>{data.sector}</Table.Cell>

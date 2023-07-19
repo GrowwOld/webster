@@ -1,9 +1,9 @@
 .gb6Box {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--gray150);
   border-radius: 5px;
   width: 100%;
   padding: 16px 0;
-  color: var(--text);
+  color: var(--gray900);
 }
 
 .gb6Icon {

@@ -20,7 +20,7 @@ export const Template: Story<ProgressBarProps> = (args) => {
 
 Template.args = {
   name: "Demo ProgressBar",
-  color: "var(--secondaryClr)",
+  color: "var(--purple500)",
   fillerThickness: 10,
   size: 420
 }

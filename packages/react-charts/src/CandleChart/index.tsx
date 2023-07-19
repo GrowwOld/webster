@@ -144,7 +144,7 @@ const CandleChart = (props: Props) => {
       left: 0,
       boxShadow: 'none',
       padding: 0,
-      backgroundColor: 'var(--constantTransparent)',
+      backgroundColor: 'var(--tempTransparent)',
       position: 'absolute',
       borderRadius: '3px',
       transform: `translate(${finalToolTipLeft}px, ${-1 * toolTipHeight}px)`
@@ -220,7 +220,7 @@ const CandleChart = (props: Props) => {
                 y1={0}
                 x2={tooltipData.tooltipLeft}
                 y2={height}
-                stroke='var(--border)'
+                stroke='var(--gray150)'
                 strokeWidth={1}
                 pointerEvents="none"
               />

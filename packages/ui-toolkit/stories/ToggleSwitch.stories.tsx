@@ -30,9 +30,9 @@ Default.args = {
   height: 24,
   leftText: '',
   rightText: '',
-  inactiveBackgroundColor: 'var(--subText)',
-  switchCircleColor: 'var(--constantWhite)',
-  activeBackgroundColor: 'var(--primaryClr)'
+  inactiveBackgroundColor: 'var(--gray700)',
+  switchCircleColor: 'var(--white)',
+  activeBackgroundColor: 'var(--green500)'
 }
 
 export const WithText = Template.bind({});
@@ -45,12 +45,12 @@ WithText.args = {
 export const SwitchCircle = Template.bind({});
 SwitchCircle.args = {
   ...Default.args,
-  switchCircleColor: 'var(--growwRed)'
+  switchCircleColor: 'var(--red500)'
 }
 
 export const Custom = Template.bind({});
 Custom.args = {
   ...Default.args,
-  inactiveBackgroundColor: 'var(--growwRed)',
-  activeBackgroundColor: 'var(--secondaryClr)'
+  inactiveBackgroundColor: 'var(--red500)',
+  activeBackgroundColor: 'var(--purple500)'
 }
