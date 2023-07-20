@@ -1,10 +1,18 @@
 {
   "name": "@groww-tech/mint-css",
   "version": "0.0.1",
-  "description": "Mint CSS",
+  "description": "A CSS library that provides classes, tokens, variables, fonts and other essential stylings governed under MINT design system, used by Groww",
   "main": "./dist/bundle.css",
+  "files": [
+    "/dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Groww/webster"
+  },
   "scripts": {
-    "build": "rm -rf dist && pnpm rollup -c"
+    "build": "rm -rf dist && pnpm rollup -c",
+    "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/mint-css-v$PACKAGE_VERSION\" && git push --tags"
   },
   "keywords": [
     "mint-css",
