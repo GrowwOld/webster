@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'GrowwSans';
+  font-style: normal;
+  font-weight: 300 700;
+  src: url(./GrowwSans-Variable.woff2) format('woff2-variations');
+}
+
+/** These Font faces will be required in coming versions, once NotoSans is added*/
+
+/* @font-face {
+  font-family: 'NotoSans';
+  font-weight: 400;
+  src: url(./NotoSansDevanagari-Regular.woff2) format('woff2');
+  // Unicode range for Devanagari script (Hindi)
+  unicode-range: U+0900-097F;
+} */
+
+
+/* @font-face {
+  font-family: 'NotoSans';
+  font-weight: 500;
+  src: url(./NotoSansDevanagari-SemiBold.woff2) format('woff2');
+  // Unicode range for Devanagari script (Hindi)
+  unicode-range: U+0900-097F;
+}  */

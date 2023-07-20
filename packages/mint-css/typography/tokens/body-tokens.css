@@ -1,0 +1,47 @@
+.bodyRegular12 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+}
+
+.bodyMedium12 {
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+.bodyRegular14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.42;
+}
+
+.bodyMedium14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.42;
+}
+
+.bodyRegular16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.37;
+}
+
+.bodyMedium16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.37;
+}
+
+.bodyRegular18 {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.38;
+}
+
+.bodyMedium18 {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.38;
+}
