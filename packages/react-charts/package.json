@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/react-charts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React charts library tailored as per Groww needs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -42,7 +42,7 @@
   "peerDependencies": {
     "react": "^16.12.0 || ^17.0.0",
     "react-dom": "^16.12.0 || ^17.0.0",
-    "@groww-tech/base-css": "^0.0.6",
+    "@groww-tech/mint-css": "0.0.1",
     "prop-types": "15.7.2"
   },
   "devDependencies": {
