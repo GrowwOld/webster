@@ -2,7 +2,7 @@ name: Ella_Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ fix/pnpmVersion ]
     paths:
       - 'packages/ella/**'
 env:
