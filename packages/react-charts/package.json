@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/react-charts",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "React charts library tailored as per Groww needs",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -16,7 +16,8 @@
   },
   "author": "Vikas Singh <vikas.singh707@gmail.com> (https://twitter.com/VikasSi25579022)",
   "contributors": [
-    "Samyak Jain (https://twitter.com/__samyak)"
+    "Samyak Jain (https://twitter.com/__samyak)",
+    "Akash Vashist (https://twitter.com/akayishh)"
   ],
   "license": "MIT",
   "bugs": {
