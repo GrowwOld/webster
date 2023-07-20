@@ -28,7 +28,6 @@ export { default as isEqual } from 'lodash.isequal';
  * ```
  */
 export function isEmpty(data: any) {
-  console.log(data)
   try {
     if (data === null || data === undefined || typeof data === 'undefined') {
       return true;
