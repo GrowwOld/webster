@@ -24,6 +24,7 @@ export type LinePathData= {
     fill?: string,
     lineColor?: string,
     negativeLineColor?: string,
+    toY?: boolean;
   };
 }
 
@@ -57,7 +58,7 @@ export type LineGraphProps = {
   maxY?: number;
   minY?: number;
 
-  isDragAllowed: boolean; // if dragging is allowed inside graph area
+  isDragAllowed?: boolean; // if dragging is allowed inside graph area
 }
 
 export type XYCoords = {x: number; y: number};
@@ -86,6 +87,6 @@ export type ToolTipData = {
 }
 
 export type DragData = {
-  startIndex: number;
-  endIndex?: number;
+  startPoint: number;
+  endPoint?: number;
 }
