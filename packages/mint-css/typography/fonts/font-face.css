@@ -5,6 +5,7 @@
   src: url(./GrowwSans-Variable.woff2) format('woff2-variations');
 }
 
+/** These Font faces will be required in coming versions, once NotoSans is added*/
 
 /* @font-face {
   font-family: 'NotoSans';
