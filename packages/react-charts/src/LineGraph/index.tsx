@@ -107,17 +107,25 @@ const LineGraph = (props: LineGraphProps) => {
   };
 
 
+  const getIndexFromScaledPoint = (x:number, series: Point[]) => {
+    const bisectXAxis = bisector(getXaxisValue).left;
+
+    return bisectXAxis(series, invertX(x), 0);
+  };
+
+
   const getDragColor = (lp: LinePathData) => {
-    const { startIndex, endIndex } = dragPoints ?? {};
+    const { startPoint, endPoint } = dragPoints ?? {};
     const { fill = lp?.color, lineColor, negativeLineColor } = lp?.draggableConfig ?? {};
 
-    if (startIndex === undefined || endIndex === undefined) return lp?.color;
-    const lpStart = lp?.series?.[startIndex]?.[1];
-    const lpEnd = lp?.series?.[endIndex]?.[1];
+    if (startPoint === undefined || endPoint === undefined) return lp?.color;
+
+    const lpStart = lp?.series?.[getIndexFromScaledPoint(startPoint, lp.series)]?.[1];
+    const lpEnd = lp?.series?.[getIndexFromScaledPoint(endPoint, lp.series)]?.[1];
     const line = lineColor ?? fill;
     const negativeLine = negativeLineColor ?? lineColor ?? fill;
 
-    if (startIndex < endIndex) return lpStart < lpEnd ? line : negativeLine;
+    if (startPoint < endPoint) return lpStart < lpEnd ? line : negativeLine;
     return lpStart > lpEnd ? line : negativeLine;
   };
 
@@ -128,9 +136,7 @@ const LineGraph = (props: LineGraphProps) => {
 
     const { x } = localPoint(e) || { x: 0 };
 
-    const x0 = invertX(x).toString();
-
-    setDragPoints({ startIndex: Math.trunc(parseInt(x0)) });
+    setDragPoints({ startPoint: x });
   };
 
 
@@ -143,7 +149,6 @@ const LineGraph = (props: LineGraphProps) => {
   const onMouseOut = () => {
     onMouseLeave?.();
     setToolTipData(null);
-    setDragPoints(null);
   };
 
 
@@ -157,9 +162,6 @@ const LineGraph = (props: LineGraphProps) => {
     const x0 = invertX(x);
     const y0 = invertY(y);
 
-    const bisectXAxis = bisector(getXaxisValue).left;
-
-
     const toolTipSeriesData: Array<ToolTipSeriesData> = [];
 
     linePaths?.map((lp: LinePathData) => {
@@ -167,7 +169,7 @@ const LineGraph = (props: LineGraphProps) => {
       const series = [ ...lp.series ];
       const seriesLen = series.length;
 
-      let index = bisectXAxis(series, x0, 0);
+      let index = getIndexFromScaledPoint(x, series);
 
       //checking for perferct intersection of hovered point with current line
       const isPerfectIntersection = index !== 0 && !isEmpty(series?.[index]?.[0]) && series?.[index]?.[0] >= x0;
@@ -196,18 +198,22 @@ const LineGraph = (props: LineGraphProps) => {
         } };
 
       if (isDraggable && dragPoints) {
-        const dragStartPoint: Point = series[dragPoints?.startIndex];
+        const dragStartPoint = series[getIndexFromScaledPoint(dragPoints?.startPoint, series)];
 
         toolTipSeriesData.push({
           ...tempTooltipData,
           dragStartPoint,
-          dragTooltipLeft: getXScaleValue(dragPoints?.startIndex)
+          dragTooltipLeft: dragPoints?.startPoint
         });
 
-        if (x0 <= seriesLen && dragPoints.startIndex !== undefined) {
+        if (!dragStartPoint) {
+          setDragPoints(null);
+        }
+
+        if (x0 < seriesLen - 1 && dragPoints.startPoint !== undefined) {
           setDragPoints({
             ...dragPoints,
-            endIndex: Math.max(Math.trunc(x0), 0)
+            endPoint: x
           });
         }
 
@@ -231,20 +237,23 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const getDragLinePoints = (series: Point[]) => {
-    let { startIndex, endIndex } = dragPoints ?? {};
+    let { startPoint, endPoint } = dragPoints ?? {};
 
-    if (startIndex === undefined || endIndex === undefined) return [];
-    if (startIndex > endIndex) {
-      [ startIndex, endIndex ] = [ endIndex, startIndex ];
+    if (startPoint === undefined || endPoint === undefined) return [];
+    if (startPoint > endPoint) {
+      [ startPoint, endPoint ] = [ endPoint, startPoint ];
     }
 
-    endIndex += 1;
+    endPoint += 1;
+
+    const startIndex = getIndexFromScaledPoint(startPoint, series);
+    const endIndex = getIndexFromScaledPoint(endPoint, series);
+
     return series?.slice(startIndex, endIndex);
   };
 
 
   const showBlinkingPointUI = (lp: LinePathData) => {
-
     const lastPoint = lp.series[lp.series.length - 1];
     const lastPointY = getYScaleValue(getYaxisValue(lastPoint));
     const lastPointX = getXScaleValue(getXaxisValue(lastPoint));
@@ -273,7 +282,6 @@ const LineGraph = (props: LineGraphProps) => {
 
   const showHighlightedPoints = (lp: LinePathData) => {
     if (!lp.hasHighlightedPoints) return;
-
     const strokeMultiplier = lp.highlightPointStrokeMultiplier ?? DefaultStrokeMultiplier;
 
     return (
@@ -325,7 +333,7 @@ const LineGraph = (props: LineGraphProps) => {
       return null;
     }
 
-    if (isDragAllowed && dragPoints?.endIndex) {
+    if (isDragAllowed && dragPoints?.endPoint) {
       return getTooltipUI(tooltipData);
     }
 
@@ -367,14 +375,14 @@ const LineGraph = (props: LineGraphProps) => {
 
 
   const showDraggedPoints = (lp: LinePathData) => {
-    if (!lp.allowToolTip || !dragPoints?.endIndex) {
+    if (!lp.allowToolTip || !dragPoints?.endPoint) {
       return null;
     }
 
     const { hoverPointStrokeMultiplier, strokeWidth } = lp;
 
-    const x = getXScaleValue(dragPoints?.startIndex) + 2;
-    const y = getYScaleValue(lp.series?.[dragPoints.startIndex]?.[1]);
+    const x = dragPoints?.startPoint;
+    const y = getYScaleValue(lp.series?.[getIndexFromScaledPoint(dragPoints.startPoint, lp?.series)]?.[1]);
     const color = getDragColor(lp);
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
@@ -409,7 +417,7 @@ const LineGraph = (props: LineGraphProps) => {
       y = currTooltipData?.tooltipTop as number;
     }
 
-    const color = dragPoints?.endIndex ? getDragColor(lp) : lp?.color;
+    const color = dragPoints?.endPoint ? getDragColor(lp) : lp?.color;
 
     if (scaleX.range[0] <= x && x <= scaleX.range[1] && scaleY.range[1] <= y && y <= scaleY.range[0]) {
       return getHoveredPointUI(x, y, color, strokeWidth, hoverPointStrokeMultiplier);
@@ -465,16 +473,23 @@ const LineGraph = (props: LineGraphProps) => {
 
               }
 
-
-              const toShowDrag = lp.isDraggable && dragPoints?.endIndex;
+              const toShowDrag = lp.isDraggable && dragPoints?.endPoint;
               const dragLinePoints = toShowDrag ? getDragLinePoints(lp?.series) : [];
               const dragLineColor = getDragColor(lp);
               const dragPath = area({});
 
-              //TODO: handling for vertical graph
-              dragPath.x(x as any);
-              dragPath.y0(height);
-              dragPath.y1(y as any);
+              if (lp?.draggableConfig?.toY) {
+                dragPath.y(x as any);
+                dragPath.x0(width);
+                dragPath.x1(y as any);
+
+              } else {
+                dragPath.x(x as any);
+                dragPath.y0(height);
+                dragPath.y1(y as any);
+
+              }
+
 
               return (
                 <>
