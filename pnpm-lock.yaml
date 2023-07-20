@@ -1,5 +1,9 @@
 lockfileVersion: 5.4
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -6408,7 +6412,8 @@ packages:
       - supports-color
     dev: true
 
-  /concat-map/0.0.1:
+
+  /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   /concat-stream/1.6.2:
