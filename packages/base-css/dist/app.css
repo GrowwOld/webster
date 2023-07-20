@@ -1,7 +1,7 @@
 html {
-  box-sizing: border-box;
   /* Since we are using rem units, which are relative to this font size of root element */
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 #root {
