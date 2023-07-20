@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://groww.in/" rel="noopener" target="_blank"><img width="250" src="	https://storage.googleapis.com/groww-assets/web-assets/img/website-logo/logo-light-groww.svg" alt="MUI logo"></a>
+  <a href="https://groww.in/" rel="noopener" target="_blank"><img width="250" src="https://storage.googleapis.com/groww-assets/web-assets/img/website-logo/logo-light-groww.svg" alt="Groww"></a>
 </p>
 
 
