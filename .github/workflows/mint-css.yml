@@ -1,4 +1,4 @@
-name: UI-TOOLKIT-BUILD
+name: MINT-CSS-BUILD
 
 on:
   push:
