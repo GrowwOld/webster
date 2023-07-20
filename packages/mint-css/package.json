@@ -20,7 +20,12 @@
     "groww",
     "style"
   ],
+  "author": "Groww Core Team <web-core@groww.in>",
   "contributors": [
+    {
+      "name": "Vikas Singh",
+      "url": "https://twitter.com/VikasSi25579022"
+    },
     {
       "name": "Shubham Gavali",
       "url": "https://www.linkedin.com/in/shubhamgavali"
