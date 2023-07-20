@@ -22,19 +22,25 @@
   ],
   "contributors": [
     {
-      "name": "Shubham Gavali"
+      "name": "Shubham Gavali",
+      "url": "https://www.linkedin.com/in/shubhamgavali"
     },
     {
-      "name": "Akshay Naik"
+      "name": "Akshay Naik",
+      "url": "https://www.linkedin.com/in/akshay-naik-004a2b211"
+    },
+    {
+      "name": "Prashant Adhikari",
+      "url": "https://www.linkedin.com/in/prashantadhikari753"
     }
   ],
   "license": "MIT",
   "devDependencies": {
-    "postcss": "^8.4.21",
-    "postcss-import": "^14.0.2",
-    "postcss-loader": "^7.3.3",
-    "rollup": "^2.45.2",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-postcss": "^4.0.0"
+    "postcss": "8.4.21",
+    "postcss-import": "14.0.2",
+    "postcss-loader": "7.3.3",
+    "rollup": "2.45.2",
+    "rollup-plugin-copy": "3.4.0",
+    "rollup-plugin-postcss": "4.0.0"
   }
 }
