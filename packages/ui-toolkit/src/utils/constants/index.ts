@@ -23,6 +23,7 @@ export const LIGHT_THM = {
   yellow100: '#fff5e0',
   red500: '#eb5b3c',
   red100: '#fae9e5',
+  /*These variables will be removed in future, once we migrate these to tokens*/
   tempBg: '#ffffff',
   tempTransparent: 'rgba(0, 0, 0, 0)',
   tempHalfTransparent: 'rgba(0, 0, 0, 0.5)',
@@ -56,6 +57,7 @@ export const DARK_THM = {
   yellow100: '#46391d',
   red500: '#d55438',
   red100: '#411d16',
+  /*These variables will be removed in future, once we migrate these to tokens*/
   tempBg: '#121212',
   tempTransparent: 'rgba(0, 0, 0, 0)',
   tempHalfTransparent: 'rgba(0, 0, 0, 0.5)',
