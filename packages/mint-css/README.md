@@ -5,7 +5,7 @@
 
 <h1 align="center">Mint CSS</h1>
 
-<p align="center">A CSS library provides classes, tokens, variables, fonts and other essential stylings governed under MINT design system used by Groww</p>
+<p align="center">A CSS library that provides classes, tokens, variables, fonts and other essential stylings governed under MINT design system, used by Groww</p>
 
 ## Table of Contents
 
@@ -119,4 +119,6 @@ There are two categories through which we will be exposing various semantic toke
 
 MIT
 
-*This CSS library is customized for use in Groww projects. Use at your own risk.*
+------
+
+> *This CSS library is customized for use in Groww projects. Use at your own risk.*
