@@ -158,7 +158,7 @@
 /* clearfix when parent contains float childrens */
 
 .clearfix::after {
-  content: "";
+  content: ".";
   display: block;
   clear: both;
   visibility: hidden;

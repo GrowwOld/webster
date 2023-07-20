@@ -34,6 +34,7 @@ This monorepo contains the following packages:
 - `encryption`: Encryption service as name suggests provides encryption, decryption facility with all major algorithms in trend. [![npm version](https://badge.fury.io/js/@groww-tech%2Fencryption.svg)](https://badge.fury.io/js/@groww-tech%2Fencryption)
 - `analytics`: Analytics service exposes methods to send events to 3rd party analytics tools like Webengage and Gtm. [![npm version](https://badge.fury.io/js/@groww-tech%2Fanalytics.svg)](https://badge.fury.io/js/@groww-tech%2Fanalytics)
 - `monitoring`: Monitoring service is a CLI which starts the prometheus server for monitoring. [![npm version](https://badge.fury.io/js/@groww-tech%2Fmonitoring.svg)](https://badge.fury.io/js/@groww-tech%2Fmonitoring)
+- `mint-css`: A CSS library that provides classes, tokens, variables, fonts and other essential stylings governed under MINT design system, used by Groww [![npm version](https://badge.fury.io/js/@groww-tech%2Fmint-css.svg)](https://badge.fury.io/js/@groww-tech%2Fmint-css)
 
 ### Getting Started
 

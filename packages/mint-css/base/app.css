@@ -1,10 +1,13 @@
 html {
-  /* Since we are using rem units, which are relative to this font size of root element */
-  font-size: 16px;
   box-sizing: border-box;
 }
 
 #root {
+  /*
+    z-index variables
+    maxValue(10001) -> snackbar(900) -> popup(800) -> video playback(700) ->
+    sidebar(600) -> Header(500) -> dropdown(400) -> fix bottom btn(300)
+  */
   --zindex10001: 10001;
   --zindex900: 900;
   --zindex800: 800;

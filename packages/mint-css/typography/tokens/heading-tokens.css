@@ -1,0 +1,23 @@
+.heading14 {
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.42;
+}
+
+.heading16 {
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.37;
+}
+
+.heading18 {
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.38;
+}
+
+.heading20 {
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+}
