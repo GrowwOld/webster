@@ -20,21 +20,36 @@
     "groww",
     "style"
   ],
+  "author": "Groww Core Team <web-core@groww.in>",
   "contributors": [
     {
-      "name": "Shubham Gavali"
+      "name": "Vikas Singh",
+      "url": "https://www.linkedin.com/in/vikas-singh-76261517/"
     },
     {
-      "name": "Akshay Naik"
+      "name": "Shubham Gavali",
+      "url": "https://www.linkedin.com/in/shubhamgavali"
+    },
+    {
+      "name": "Akshay Naik",
+      "url": "https://www.linkedin.com/in/akshay-naik-004a2b211"
+    },
+    {
+      "name": "Prashant Adhikari",
+      "url": "https://www.linkedin.com/in/prashantadhikari753"
+    },
+    {
+      "name": "Shivesh Raj Nigam",
+      "url": "https://www.linkedin.com/in/shiveshrajnigam/"
     }
   ],
   "license": "MIT",
   "devDependencies": {
-    "postcss": "^8.4.21",
-    "postcss-import": "^14.0.2",
-    "postcss-loader": "^7.3.3",
-    "rollup": "^2.45.2",
-    "rollup-plugin-copy": "^3.4.0",
-    "rollup-plugin-postcss": "^4.0.0"
+    "postcss": "8.4.21",
+    "postcss-import": "14.0.2",
+    "postcss-loader": "7.3.3",
+    "rollup": "2.45.2",
+    "rollup-plugin-copy": "3.4.0",
+    "rollup-plugin-postcss": "4.0.0"
   }
 }
