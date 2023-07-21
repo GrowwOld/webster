@@ -7,9 +7,9 @@ import './toggleSelection.css';
 const ToggleSelection = (props: Props) => {
   const { leftText, rightText, isActive, onChange, parentClass } = props;
 
-  const choiceClasses = 'fs16 fw500 fullWidth absolute-center tc341ChoiceClass ';
-  const activeChoiceClasses = choiceClasses + 'clrGreen tc341ActiveChoice';
-  const inActiveChoiceClasses = choiceClasses + 'clrText tc341InactiveChoice';
+  const choiceClasses = 'bodyMedium16 fullWidth absolute-center tc341ChoiceClass ';
+  const activeChoiceClasses = choiceClasses + 'contentAccent tc341ActiveChoice';
+  const inActiveChoiceClasses = choiceClasses + 'contentPrimary tc341InactiveChoice';
 
   const leftTextClasses = isActive ? activeChoiceClasses : inActiveChoiceClasses;
   const rightTextClasses = !isActive ? activeChoiceClasses : inActiveChoiceClasses;
@@ -49,8 +49,8 @@ const defaultProps: DefaultProps = {
   parentClass: '',
   leftText: 'En',
   rightText: 'हि',
-  activeBackgroundColor: 'var(--primaryClr)',
-  inactiveBackgroundColor: 'var(--subText)'
+  activeBackgroundColor: 'var(--green500)',
+  inactiveBackgroundColor: 'var(--gray700)'
 };
 
 

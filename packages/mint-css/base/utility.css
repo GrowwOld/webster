@@ -125,15 +125,15 @@
 
 .card {
   border-radius: 5px;
-  box-shadow: 0 1px 5px 0 var(--boxShadow);
-  border: 1px solid var(--border);
+  box-shadow: 0 1px 5px 0 var(--tempBoxShadow);
+  border: 1px solid var(--gray150);
 }
 
 .clickable-text {
   font-weight: 500;
   line-height: 1.29;
   letter-spacing: 0.23px;
-  color: var(--primaryClr);
+  color: var(--green500);
   margin-left: 5px;
   cursor: pointer;
 }
@@ -147,7 +147,7 @@
   border-style: dashed;
   border-width: 1px;
   opacity: 0.2;
-  color: var(--subText);
+  color: var(--gray700);
   width: 100%;
 }
 
@@ -180,6 +180,6 @@ html[xmlns] .clearfix {
 
 .componentsMainHeading {
   font-weight: 500;
-  color: var(--text130);
+  color: var(--gray900);
   margin: 0;
 }

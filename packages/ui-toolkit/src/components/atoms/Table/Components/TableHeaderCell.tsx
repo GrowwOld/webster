@@ -50,7 +50,7 @@ const TableHeaderCell = (props: React.ThHTMLAttributes<HTMLTableCellElement> & P
 
     const classes = cn(className, { 'tb10SelectHeaderCell': sortConfig?.isSelected });
     const customIconClass = sortConfig?.iconClass || '';
-    const iconClasses = cn('pos-rel tb10IconClass', customIconClass, { 'tb10HideIcon': sortConfig?.hideIcon, 'primaryClr': sortConfig?.isSelected });
+    const iconClasses = cn('pos-rel tb10IconClass', customIconClass, { 'tb10HideIcon': sortConfig?.hideIcon, 'contentAccent': sortConfig?.isSelected });
 
     return (
       <th

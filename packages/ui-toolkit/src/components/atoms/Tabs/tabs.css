@@ -8,24 +8,24 @@
   padding-right: 45px;
   height: 30px;
   cursor: pointer;
-  color: var(--text);
+  color: var(--gray900);
 }
 
 .tabs8TextActive {
-  color: var(--primaryClr);
+  color: var(--green500);
 }
 
 .tabs8Line {
   position: absolute;
   bottom: 0;
   height: 3px;
-  background: var(--primaryClr);
+  background: var(--green500);
   will-change: left, width;
   transition: left 0.2s linear, width 0.2s linear;
 }
 
 .tabs8Shadow {
-  box-shadow: 0 3px 3px -1px var(--boxShadow);
+  box-shadow: 0 3px 3px -1px var(--tempBoxShadow);
 }
 
 
@@ -60,7 +60,7 @@
   }
 
   .tabs8TextActive {
-    color: var(--primaryClr);
+    color: var(--green500);
   }
 
   .tabs8Line {
@@ -72,6 +72,6 @@
     min-width: max-content;
   }
   .tabs8Shadow {
-    box-shadow: 0 2px 3px 0 var(--boxShadow);
+    box-shadow: 0 2px 3px 0 var(--tempBoxShadow);
   }
 }

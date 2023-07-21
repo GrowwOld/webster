@@ -1,11 +1,11 @@
 .tb10Table {
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray150);
 }
 
 .tb10ThText {
-  color: var(--subText);
+  color: var(--gray700);
   opacity: 0.5;
   font-size: 12px;
   font-weight: 500;
@@ -17,15 +17,15 @@
 .tb10Td {
   min-height: 40px;
   text-align: left;
-  /* border-bottom: 1px solid var(--border); */
+  /* border-bottom: 1px solid var(--gray150); */
 }
 
 .tb10Table thead tr {
-  border-bottom: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--gray150);
 }
 
 .tb10Table tbody tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--gray150);
 }
 
 .tb10Table tbody tr:last-child {
@@ -35,7 +35,7 @@
 .tb10Th {
   min-height: 40px;
   text-align: left;
-  /* border-bottom: 1px dashed var(--boxShadow); */
+  /* border-bottom: 1px dashed var(--tempBoxShadow); */
 }
 
 .tb10HideIcon {
@@ -44,7 +44,7 @@
 
 .tb10SelectHeaderCell {
   font-weight: 500;
-  color: var(--text);
+  color: var(--gray900);
   opacity: 1;
 }
 

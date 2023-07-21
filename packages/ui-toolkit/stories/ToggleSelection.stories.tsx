@@ -36,6 +36,6 @@ Custom.args = {
   parentClass: 'cur-po',
   leftText: 'English',
   rightText: 'हिन्दी',
-  activeBackgroundColor: 'var(--growwRed)',
-  inactiveBackgroundColor: 'var(--growwYellow05)'
+  activeBackgroundColor: 'var(--red500)',
+  inactiveBackgroundColor: 'var(--yellow500)'
 };

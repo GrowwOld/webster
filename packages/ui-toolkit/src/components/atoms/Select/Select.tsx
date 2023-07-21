@@ -3,11 +3,7 @@ import cn from 'classnames';
 
 import { KeyboardArrowDown } from '@groww-tech/icon-store/mi';
 
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent
-} from '../Dropdown';
+import { Dropdown, DropdownTrigger, DropdownContent } from '../Dropdown';
 
 import { SelectData } from './selectTypes';
 
@@ -80,7 +76,7 @@ class Select extends React.PureComponent<Props> {
           <DropdownTrigger>
             <div className="width100 pos-rel">
               <div
-                className={`pos-rel valign-wrapper se55SelectBox clrText ${activeOptionBoxClass}`}
+                className={`pos-rel valign-wrapper se55SelectBox contentPrimary ${activeOptionBoxClass}`}
               >
                 <div>
                   {selectedOption ? selectedOption.label : placeholder}

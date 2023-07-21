@@ -2,7 +2,7 @@
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 15px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray150);
   font-size: 12px;
   width: fit-content;
   width: -moz-fit-content;
@@ -11,26 +11,26 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: var(--subText);
+  color: var(--gray700);
 }
 
 .chip12ChipUnselected:hover {
-  background: var(--boxShadow);
+  background: var(--tempBoxShadow);
 }
 
 .chip12ChipSelected {
-  color: var(--primaryBg);
-  background: var(--primaryClr);
+  color: var(--tempBg);
+  background: var(--green500);
 }
 
 .chip12ChipUnselected {
-  color: var(--text);
-  background: var(--primaryBg);
+  color: var(--gray900);
+  background: var(--tempBg);
 }
 
 .chip12Tag {
-  color: var(--subText);
-  border: 1px solid var(--border);
+  color: var(--gray700);
+  border: 1px solid var(--gray150);
   opacity: 0.8;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .chip12Tag:hover {
-  color: var(--text);
+  color: var(--gray900);
   opacity: 1;
 }
 

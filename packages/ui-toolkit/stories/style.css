@@ -1,4 +1,4 @@
-@import url(~@groww-tech/base-css/dist/index.css);
+@import url(~@groww-tech/mint-css/dist/index.css);
 
 :root{
   --spacing-none: 0;
@@ -22,7 +22,7 @@
 
 .accordion_parent_class {
   width: 200px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray150);
   border-radius: 4px;
   padding: 16px;
 }
@@ -35,8 +35,8 @@
 /* Dropdown */
 
 .story_card {
-  box-shadow: 0 1px 7px 0 var(--boxShadow);
-  background: var(--cardBackground);
+  box-shadow: 0 1px 7px 0 var(--tempBoxShadow);
+  background: var(--tempCardBg);
 }
 
 .story_dropdown_trigger {
@@ -58,12 +58,12 @@
 .story_dropdown_item {
   cursor: pointer;
   padding: var(--spacing-small) var(--spacing-small);
-  background: var(--primaryBg);
-  color: var(--text);
+  background: var(--tempBg);
+  color: var(--gray900);
 }
 
 .story_dropdown_item:hover {
-  background: var(--constantSecondaryClr10);
+  background: var(--gray50);
 }
 
 /* Icon ALL IMAGE LIST */
@@ -82,17 +82,17 @@
   padding: 16px;
   min-width: 220px;
   min-height: 136px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--gray150);
   border-radius: 8px;
   margin: 16px 8px;
 }
 
 .story_icon_all_image_list_item:hover {
   cursor: pointer;
-  border: 1px solid var(--text);
+  border: 1px solid var(--gray900);
 }
 
 .story_icon_all_image_list_item:active {
   cursor: pointer;
-  border: 2px solid var(--text);
+  border: 2px solid var(--gray900);
 }

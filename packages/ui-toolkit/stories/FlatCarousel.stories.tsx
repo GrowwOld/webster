@@ -21,7 +21,7 @@ const carouselImages = [
     height: 200,
     title: '1st Image',
     description: '1st Image',
-    titleClass: 'fs14'
+    titleClass: 'bodyRegular14'
   },
   {
     // eslint-disable-next-line max-len
@@ -32,7 +32,7 @@ const carouselImages = [
     height: 200,
     title: '2nd Image',
     description: '2nd Image',
-    titleClass: 'fs14'
+    titleClass: 'bodyRegular14'
   },
   {
     src: 'https://source.unsplash.com/random',
@@ -42,7 +42,7 @@ const carouselImages = [
     height: 200,
     title: '3rd Image',
     description: '3rd Image',
-    titleClass: 'fs14'
+    titleClass: 'bodyRegular14'
   }
 ];
 

@@ -1,12 +1,12 @@
 .pb65LinearMain {
   border-radius: 5;
-  background-color: var(--border);
+  background-color: var(--gray150);
   height: 10px;
 }
 
 .pb65CircleMain {
   stroke-linecap: round;
-  stroke: var(--border);
+  stroke: var(--gray150);
   fill: none;
 }
 

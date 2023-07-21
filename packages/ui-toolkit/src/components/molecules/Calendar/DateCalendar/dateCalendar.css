@@ -1,6 +1,6 @@
 .cc12Box {
   width: 300px;
-  color: var(--text);
+  color: var(--gray900);
   padding: 15px;
   cursor: auto;
 }
@@ -33,12 +33,12 @@
 .cc12DateNotSelected {}
 
 .cc12DateSelected {
-  background: var(--primaryClr);
-  color: var(--primaryBg);
+  background: var(--green500);
+  color: var(--tempBg);
 }
 
 .cc12DateNotSelected:hover {
-  background: var(--boxShadow);
+  background: var(--tempBoxShadow);
 }
 
 .cc12DateRow {

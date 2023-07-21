@@ -8,10 +8,10 @@
   display: block;
   width: 100%;
   border: none;
-  border-bottom: 1px solid var(--subText);
+  border-bottom: 1px solid var(--gray700);
   box-shadow: none;
-  background: var(--primaryBg);
-  color: var(--text);
+  background: var(--tempBg);
+  color: var(--gray900);
 }
 
 .inf11Input input:focus {
@@ -21,13 +21,13 @@
 .inf11Input input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  background-color: var(--primaryBg) !important;
-  color: var(--text);
+  background-color: var(--tempBg) !important;
+  color: var(--gray900);
 }
 
 .inf11Input input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--primaryBg) inset;
-  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px var(--tempBg) inset;
+  -webkit-text-fill-color: var(--gray900);
 }
 
 .inf11Input input[type=number]::-webkit-inner-spin-button,
@@ -39,7 +39,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 label {
-  color: var(--subText);
+  color: var(--gray700);
   font-size: 18px;
   font-weight: normal;
   position: absolute;
@@ -53,11 +53,11 @@ label {
 input:valid ~ label {
   top: -15px;
   font-size: 14px;
-  color: var(--primaryClr);
+  color: var(--green500);
 }
 
 .labelError {
-  color: var(--growwRed) !important;
+  color: var(--red500) !important;
 }
 
 .bar {
@@ -73,13 +73,13 @@ input:valid ~ label {
   width: 0;
   bottom: 0;
   position: absolute;
-  background: var(--primaryClr);
+  background: var(--green500);
   transition: 0.2s ease all;
 }
 
 .barError::before,
 .barError::after {
-  background: var(--growwRed);
+  background: var(--red500);
 }
 
 .bar::before {
@@ -112,23 +112,23 @@ input:focus ~ .bar::after {
 @keyframes inputHighlighter {
 
   from {
-    background: var(--primaryClr);
+    background: var(--green500);
   }
 
   to {
     width: 100;
-    background: var(--constantTransparent);
+    background: var(--tempTransparent);
   }
 }
 
 .errorText {
-  color: var(--growwRed);
+  color: var(--red500);
   font-size: 14px;
   margin-top: 3px;
 }
 
 .noErrorText {
-  color: var(--subText);
+  color: var(--gray700);
   font-size: 14px;
   margin-top: 3px;
 }

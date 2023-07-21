@@ -89,6 +89,6 @@ Custom.args = {
   buttonText: 'CHOOSE DATE',
   height: 50,
   width: 260,
-  textColor: 'var(--constantWhite)',
-  backgroundColor: 'var(--growwRed)'
+  textColor: 'var(--white)',
+  backgroundColor: 'var(--red500)'
 };

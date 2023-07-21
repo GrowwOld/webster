@@ -7,19 +7,19 @@ import { Info } from '@groww-tech/icon-store/mi';
 import './informationBox.css';
 
 const COLOR_TYPE = {
-  POSITIVE: 'var(--primaryClr10)',
-  NEUTRAL: 'var(--quaternaryBg)',
-  DEFAULT: 'var(--primaryBg)',
-  WARNING: 'var(--growwYellow10)',
-  ERROR: 'var(--growwRed10)'
+  POSITIVE: 'var(--green100)',
+  NEUTRAL: 'var(--gray50)',
+  DEFAULT: 'var(--tempBg)',
+  WARNING: 'var(--yellow100)',
+  ERROR: 'var(--red100)'
 };
 
 const BORDER_COLOR = {
-  POSITIVE: 'var(--primaryClr60)',
-  NEUTRAL: 'var(--border)',
-  DEFAULT: 'var(--border)',
-  WARNING: 'var(--growwYellow)',
-  ERROR: 'var(--growwRed)'
+  POSITIVE: 'var(--green100)',
+  NEUTRAL: 'var(--gray150)',
+  DEFAULT: 'var(--gray150)',
+  WARNING: 'var(--yellow500)',
+  ERROR: 'var(--red500)'
 };
 
 
@@ -38,7 +38,7 @@ const InformationBox = (props: Props) => {
   } = props;
 
   const parentDivClass = cn({
-    'valign-wrapper infbd45ParentDiv fs14': true,
+    'valign-wrapper infbd45ParentDiv bodyRegular14': true,
     [`${informationBoxClass}`]: informationBoxClass !== ''
   });
 
@@ -55,7 +55,7 @@ const InformationBox = (props: Props) => {
 
   const infoIconProps = {
     size: 20,
-    className: 'clrText infbd45InfoIcon'
+    className: 'contentPrimary infbd45InfoIcon'
   };
 
 

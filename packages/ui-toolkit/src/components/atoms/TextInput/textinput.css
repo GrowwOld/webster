@@ -1,16 +1,16 @@
 .txtinput88label {
   font-size: 13px;
   letter-spacing: 0.25px;
-  color: var(--subText);
+  color: var(--gray700);
   text-align: left;
 }
 
 .txtinput88parent {
   display: flex;
-  border-bottom: solid 1px var(--border);
+  border-bottom: solid 1px var(--gray150);
   align-items: center;
   padding: 10px 0 5px 0;
-  caret-color: var(--primaryClr);
+  caret-color: var(--green500);
 }
 
 .removeunderline {
@@ -18,7 +18,7 @@
 }
 
 .txtinput88parent:focus-within {
-  border-bottom: 2px solid var(--primaryClr);
+  border-bottom: 2px solid var(--green500);
 }
 
 .removeunderline:focus-within {
@@ -31,8 +31,8 @@
   font-size: 16px;
   flex-grow: 1;
   outline: 0;
-  color: var(--text);
-  background: var(--primaryBg);
+  color: var(--gray900);
+  background: var(--tempBg);
 
   /* -webkit-box-shadow: 0 0 0px 1000px white inset; */
 }
@@ -40,7 +40,7 @@
 
 .txtinput88input::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: var(--iconMedium);
+  color: var(--gray700);
   opacity: 1;
 
   /* Firefox */
@@ -48,22 +48,22 @@
 
 .txtinput88input:-ms-input-placeholder {
   /* Internet Explorer 10-11 */
-  color: var(--iconMedium);
+  color: var(--gray700);
 }
 
 .txtinput88input::-ms-input-placeholder {
   /* Microsoft Edge */
-  color: var(--iconMedium);
+  color: var(--gray700);
 }
 
 .txtinput88input:-webkit-autofill,
 .txtinput88input:-webkit-autofill:hover,
 .txtinput88input:-webkit-autofill:focus,
 .txtinput88input:-webkit-autofill:active {
-  /* box-shadow: 0 0 0 30px var(--primaryBg) inset !important; msite change */
-  -webkit-box-shadow: 0 0 0 30px var(--primaryBg) inset !important;
-  background-color: var(--primaryBg) !important;
-  -webkit-text-fill-color: var(--text);
+  /* box-shadow: 0 0 0 30px var(--tempBg) inset !important; msite change */
+  -webkit-box-shadow: 0 0 0 30px var(--tempBg) inset !important;
+  background-color: var(--tempBg) !important;
+  -webkit-text-fill-color: var(--gray900);
 }
 
 
@@ -73,7 +73,7 @@
   outline: 0;
 }
 .errorText {
-  color: var(--growwRed);
+  color: var(--red500);
   font-size: 14px;
   margin-top: 3px;
   text-align: left;
@@ -84,7 +84,7 @@
 }
 
 .infoText {
-  color: var(--growwYellow);
+  color: var(--yellow500);
   font-size: 14px;
   margin-top: 3px;
   text-align: left;
@@ -99,11 +99,11 @@
 }
 
 .txt88InputMUI {
-  border-bottom: 1px solid var(--subText) !important;
+  border-bottom: 1px solid var(--gray700) !important;
 }
 
 .txt88MlabelError {
-  color: var(--growwRed) !important;
+  color: var(--red500) !important;
 }
 
 .txt88Bar {
@@ -119,13 +119,13 @@
   width: 0;
   bottom: 0;
   position: absolute;
-  background: var(--primaryClr);
+  background: var(--green500);
   transition: 0.2s ease all;
 }
 
 .txt88BarError::before,
 .txt88BarError::after {
-  background: var(--growwRed);
+  background: var(--red500);
 }
 
 .txt88Bar::before {
@@ -141,14 +141,14 @@
 }
 
 .txt88MErrorText {
-  color: var(--growwRed);
+  color: var(--red500);
   font-size: 14px;
   margin-top: 3px;
   text-align: left;
 }
 
 /* .txt88MNoErrorText {
-  color: var(--subText);
+  color: var(--gray700);
   font-size: 14px;
   margin-top: 3px;
 } */
@@ -160,13 +160,13 @@
   }
   .txtinput88input::-ms-input-placeholder {
     /* Microsoft Edge */
-    color: var(--iconMedium);
+    color: var(--gray700);
     opacity: 0.2;
   }
   .txtinput88input::placeholder,
   .txtinput88input::-webkit-input-placeholder {
     opacity: 0.2;
-    color: var(--iconMedium);
+    color: var(--gray700);
   }
 
   .errorText {
@@ -189,10 +189,10 @@
     display: block;
     width: 100%;
     border: none;
-    -webkit-text-fill-color: var(--text);
-    border-bottom: 1px solid var(--subText);
-    background: var(--primaryBg);
-    color: var(--text);
+    -webkit-text-fill-color: var(--gray900);
+    border-bottom: 1px solid var(--gray700);
+    background: var(--tempBg);
+    color: var(--gray900);
   }
 
   input:focus {
@@ -202,11 +202,11 @@
   input:-webkit-autofill,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
-    background-color: var(--primaryBg) !important;
+    background-color: var(--tempBg) !important;
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px var(--primaryBg) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--tempBg) inset;
   }
 
   input[type="number"]::-webkit-inner-spin-button,
@@ -232,7 +232,7 @@
   input:valid ~ label {
     top: -15px;
     font-size: 14px;
-    color: var(--primaryClr);
+    color: var(--green500);
   }
 
   input:focus ~ .txt88Bar::before,
@@ -242,7 +242,7 @@
   input:-webkit-autofill ~ label {
     top: -15px;
     font-size: 14px;
-    color: var(--primaryClr);
+    color: var(--green500);
   }
 
   input:focus ~ .highlight {
@@ -251,7 +251,7 @@
 
   @keyframes inputHighlighter {
     from {
-      background: var(--primaryClr);
+      background: var(--green500);
     }
 
     to {

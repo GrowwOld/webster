@@ -21,8 +21,8 @@ class MonthCalendar extends React.PureComponent<Props, State> {
     const presentDate = new Date();
 
     return (
-      <div className="clrText">
-        <div className="card mn12Box">
+      <div className='contentPrimary'>
+        <div className='card borderPrimary mn12Box'>
           <div className="valign-wrapper mn12YearRow">
             <div
               className="valign-wrapper cur-po"
@@ -35,7 +35,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
               className="valign-wrapper  cur-po"
               onClick={this.handleForwardYearClick}
             >
-              <KeyboardArrowRight className={cn('mn12YearIcon', { 'clrSubText cur-no': dateToShow.getFullYear() === new Date().getFullYear() })}/>
+              <KeyboardArrowRight className={cn('mn12YearIcon', { 'contentSecondary cur-no': dateToShow.getFullYear() === new Date().getFullYear() })}/>
             </div>
           </div>
           <div className="valign-wrapper mn12MonthBox">
@@ -46,7 +46,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
                 >
                   <div
                     className={
-                      cn('fs13 mn12MonthText valign-wrapper cur-po', {
+                      cn('mn12MonthText valign-wrapper cur-po bodyRegular14', {
                         'mn12MonthTextSelected': ((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
                         'mn12MonthBack': !((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
                         'cc12DisableDate': ((index > presentDate.getMonth()) && (presentDate.getFullYear() === dateToShow.getFullYear()))

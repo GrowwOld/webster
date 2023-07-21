@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -79,7 +79,7 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.14.6",
-    "@groww-tech/base-css": "workspace:*",
+    "@groww-tech/mint-css": "0.0.1",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@stitches/react": "^1.2.7",

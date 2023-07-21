@@ -48,13 +48,13 @@ const skillsArray = [
     label: <span style={{ marginRight: '87px' }}>React</span>,
     value: 'REACT',
     checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
-    activeColor: 'var(--primaryClr)'
+    activeColor: 'var(--green500)'
   },
   {
     label: <span style={{ marginRight: '82px' }}>Spring</span>,
     value: 'SPRING',
     checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
-    inActiveColor: 'var(--growwRed)'
+    inActiveColor: 'var(--red500)'
   },
   {
     label: <span style={{ marginRight: '73px' }}>Express</span>,
@@ -66,14 +66,14 @@ const skillsArray = [
     label: <span style={{ marginRight: '8px' }}>Angular(disabled)</span>,
     value: 'ANGULAR',
     checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
-    inActiveColor: 'var(--secondaryClr)',
+    inActiveColor: 'var(--purple500)',
     disabled: true
   },
   {
     label: <span style={{ marginRight: '78px' }}>Django</span>,
     value: 'DJANGO',
     checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
-    activeColor: 'var(--growwRed)'
+    activeColor: 'var(--red500)'
   }
 ]
 

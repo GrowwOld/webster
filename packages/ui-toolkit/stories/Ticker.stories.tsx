@@ -14,7 +14,7 @@ export default {
 const Template: Story<TickerProps> = (args) => {
   const [ currentState, setCurrentState ] = React.useState({
     price: '₹74128.91',
-    class: 'primaryClr'
+    class: 'contentAccent'
   });
 
 
@@ -24,13 +24,13 @@ const Template: Story<TickerProps> = (args) => {
         if (prevState.price === '₹74128.91') {
           return {
             price: '₹56981.19',
-            class: 'clrRed'
+            class: 'contentNegative'
           };
 
         } else {
           return {
             price: '₹74128.91',
-            class: 'primaryClr'
+            class: 'contentAccent'
           };
         }
       });
@@ -43,7 +43,7 @@ const Template: Story<TickerProps> = (args) => {
 
   return (
     <>
-      <div className='fs24'>
+      <div className='display24'>
       Wipro
       </div>
       <div className='valign-wrapper width100'
@@ -51,13 +51,13 @@ const Template: Story<TickerProps> = (args) => {
       >
         <Ticker
           {...args}
-          textClassName='fs28 fw500'
+          textClassName='display28'
           text={currentState.price}
-          currentClassName='clrText'
+          currentClassName='contentPrimary'
           hiddenClassName={currentState.class}
         />
 
-        <span className='fs14'>
+        <span className='bodyRegular14'>
           <span className={currentState.class}>
             {currentState.price === '₹56981.19' ? '-17147.72 (3.7%)' : '17147.72 (3.7%)'}
           </span>
