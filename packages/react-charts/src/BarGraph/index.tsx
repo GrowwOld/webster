@@ -99,7 +99,7 @@ const BarGraph = (props: BarGraphProps) => {
     >
       <rect width={width}
         height={height}
-        fill="var(--constantTransparent)"
+        fill="var(--tempTransparent)"
         style={{ overflow: 'visible' }}
       />
       <g>
@@ -183,14 +183,14 @@ type RequiredProps = {
 }
 
 BarGraph.defaultProps = {
-  axisColor: 'var(--subText)',
+  axisColor: 'var(--gray700)',
   topMargin: 0,
   bottomMargin: 0,
   maxBarWidth: 20,
   getBarTopTextUI: () => null,
   showAxis: false,
   axisLabelFontSize: 11,
-  axisLabelColor: 'var(--text)',
+  axisLabelColor: 'var(--gray900)',
   bottomAxisHeight: 22
 } as DefaultProps;
 

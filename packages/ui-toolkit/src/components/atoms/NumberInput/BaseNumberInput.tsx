@@ -97,23 +97,23 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
 
 
 const calculateInputClass = (size: NumberInputProps['size']): string => {
-  let className = 'fw500 ';
+  let className = '';
 
   switch (size) {
     case 'small':
-      className += 'fs16';
+      className = 'bodyMedium16';
       break;
 
     case 'medium':
-      className += 'fs18';
+      className = 'bodyMedium18';
       break;
 
     case 'large':
-      className += 'fs22';
+      className = 'heading20';
       break;
 
     default:
-      className += 'fs18';
+      className = 'bodyMedium18';
       break;
 
   }

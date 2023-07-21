@@ -41,9 +41,9 @@
   justify-content: center;
   align-items: flex-start;
   padding: 12px 20px;
-  background-color: var(--primaryBg);
-  box-shadow: 0 4px 12px var(--boxShadow);
-  color: var(--text);
+  background-color: var(--tempBg);
+  box-shadow: 0 4px 12px var(--tempBoxShadow);
+  color: var(--gray900);
   border-radius: 4px;
   margin: 0;
   opacity: 1;
@@ -77,8 +77,8 @@
   height: 14px;
   margin: 1px;
   border-radius: 50%;
-  border: 2px solid var(--secondaryClr);
-  border-color: var(--secondaryClr) transparent var(--secondaryClr) transparent;
+  border: 2px solid var(--purple500);
+  border-color: var(--purple500) transparent var(--purple500) transparent;
   animation: ct-icon-loading 1.2s linear infinite;
 }
 

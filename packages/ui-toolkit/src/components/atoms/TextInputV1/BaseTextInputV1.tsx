@@ -26,7 +26,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
   return (
     <>
       {
-        label && <Label className='fs14 fw400'>{label}</Label>
+        label && <Label className='bodyRegular14'>{label}</Label>
       }
       <Container
         error={error ? true : false}
@@ -53,7 +53,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
         error && variant === 'unstyled' &&
 
         <ErrorLabel
-          className='fs14 fw400'
+          className='bodyRegular14'
           data-test-id={errorDataTestId.length ? errorDataTestId : null}
           error={error ? true : false}
         >
@@ -63,7 +63,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
       {
         variant !== 'unstyled' &&
         <ErrorLabel
-          className='fs14 fw400'
+          className='bodyRegular14'
           error={error ? true : false}
           data-test-id={errorDataTestId.length ? errorDataTestId : null}
         >
@@ -76,23 +76,23 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
 
 
 const calculateInputClass = (size: TextInputProps['size']): string => {
-  let className = 'fw400 ';
+  let className = '';
 
   switch (size) {
     case 'small':
-      className += 'fs14';
+      className = 'bodyRegular14';
       break;
 
     case 'medium':
-      className += 'fs16';
+      className = 'bodyRegular16';
       break;
 
     case 'large':
-      className += 'fs22';
+      className = 'heading20';
       break;
 
     default:
-      className += 'fs16';
+      className = 'bodyRegular16';
       break;
 
   }

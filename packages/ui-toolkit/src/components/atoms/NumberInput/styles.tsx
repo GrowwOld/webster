@@ -4,34 +4,34 @@ import { styled } from '@stitches/react';
 export const Container = styled('div', {
   display: 'flex',
   alignItems: 'center',
-  background: 'var(--primaryClr10)',
+  background: 'var(--green100)',
   width: 'fit-content',
   height: '30px',
-  color: 'var(--primaryClr)',
+  color: 'var(--green500)',
   borderRadius: '2px',
   padding: '0px 5px',
   variants: {
     variant: {
       warning: {
-        background: 'var(--growwYellow10)',
-        color: 'var(--growwYellow)'
+        background: 'var(--yellow100)',
+        color: 'var(--yellow500)'
       },
       error: {
-        background: 'var(--growwRed10)',
-        color: 'var(--growwRed)'
+        background: 'var(--red100)',
+        color: 'var(--red500)'
       },
       disabled: {
-        background: 'var(--constantSecondaryClr10)',
-        color: 'var(--text)'
+        background: 'var(--gray50)',
+        color: 'var(--gray900)'
       },
       unstyled: {
         background: 'transparent',
-        color: 'var(--text)',
+        color: 'var(--gray900)',
         border: 'none'
       },
       default: {
-        background: 'var(--primaryClr10)',
-        color: 'var(--primaryClr)'
+        background: 'var(--green100)',
+        color: 'var(--green500)'
       }
     }
   }
@@ -48,31 +48,31 @@ export const Input = styled('input', {
   flexGrow: 1,
   outline: 0,
   opacity: 1,
-  caretColor: 'var(--primaryClr)',
-  WebkitTextFillColor: 'var(--primaryClr)',
+  caretColor: 'var(--green500)',
+  WebkitTextFillColor: 'var(--green500)',
   padding: 0,
   variants: {
     variant: {
       warning: {
-        caretColor: 'var(--growwYellow)',
-        WebkitTextFillColor: 'var(--growwYellow)'
+        caretColor: 'var(--yellow500)',
+        WebkitTextFillColor: 'var(--yellow500)'
       },
       error: {
-        caretColor: 'var(--growwRed)',
-        WebkitTextFillColor: 'var(--growwRed)'
+        caretColor: 'var(--red500)',
+        WebkitTextFillColor: 'var(--red500)'
       },
       disabled: {
         pointerEvents: 'none',
-        caretColor: 'var(--text)',
-        WebkitTextFillColor: 'var(--text)'
+        caretColor: 'var(--gray900)',
+        WebkitTextFillColor: 'var(--gray900)'
       },
       unstyled: {
-        caretColor: 'var(--text)',
-        WebkitTextFillColor: 'var(--text)'
+        caretColor: 'var(--gray900)',
+        WebkitTextFillColor: 'var(--gray900)'
       },
       default: {
-        caretColor: 'var(--primaryClr)',
-        WebkitTextFillColor: 'var(--primaryClr)'
+        caretColor: 'var(--green500)',
+        WebkitTextFillColor: 'var(--green500)'
       }
     },
     showSteper: {
@@ -83,7 +83,7 @@ export const Input = styled('input', {
     }
   },
   '&::placeholder': {
-    color: 'var(--iconMedium)',
-    WebkitTextFillColor: 'var(--iconMedium)'
+    color: 'var(--gray700)',
+    WebkitTextFillColor: 'var(--gray700)'
   }
 });

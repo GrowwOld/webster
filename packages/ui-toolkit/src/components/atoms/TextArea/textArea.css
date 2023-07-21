@@ -1,5 +1,5 @@
 .txta37Label {
-  color: var(--subText50);
+  color: var(--gray500);
   margin-bottom: 16px;
 }
 
@@ -8,7 +8,7 @@
   border-radius: 8px;
   caret-color: var(--priamryClr);
   padding: 16px;
-  color: var(--text);
+  color: var(--gray900);
   font-size: 16px;
 }
 
@@ -17,18 +17,18 @@
 }
 
 .txta37Area::placeholder {
-  color: var(--subText50);
+  color: var(--gray500);
 }
 
 .txta37Normal {
-  border: 2px solid var(--border);
+  border: 2px solid var(--gray150);
 }
 
 .txta37Error {
-  border: 2px solid var(--growwRed);
+  border: 2px solid var(--red500);
 }
 
 .txta37ErrorMessage {
-  color: var(--growwRed);
+  color: var(--red500);
   margin-top: 16px;
 }

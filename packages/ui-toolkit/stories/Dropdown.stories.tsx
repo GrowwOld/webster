@@ -26,12 +26,12 @@ const Template: Story<DropdownProps> = (args) => {
       {...args}
     >
       <DropdownTrigger>
-        <span className="fs21 story_dropdown_trigger">Domains
+        <span className='story_dropdown_trigger heading20'>Domains
           <KeyboardArrowDown />
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className="story_card fs14">
+        <div className='story_card bodyRegular14'>
           <div className='story_dropdown_item'>Finance</div>
           <div className='story_dropdown_item'>Marketing</div>
           <div className='story_dropdown_item'>Engineering</div>
@@ -51,24 +51,24 @@ export const DropdownIconAnimation = (args) => {
   const [ iconOrientation, setIconOrientation ] = useState('up');
 
   return (
-    <Dropdown
+    (<Dropdown
       {...args}
       onShow={() => { setIconOrientation('down'); }}
       onHide={() => { setIconOrientation('up'); }}
     >
       <DropdownTrigger>
-        <span className="fs18 story_dropdown_trigger">Domains
+        <span className='story_dropdown_trigger bodyRegular18'>Domains
           <KeyboardArrowDown className={`story_dropdown_icon story_dropdown_icon_${iconOrientation}`} />
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className="story_card fs14">
+        <div className='story_card bodyRegular14'>
           <div className='story_dropdown_item'>Finance</div>
           <div className='story_dropdown_item'>Marketing</div>
           <div className='story_dropdown_item'>Engineering</div>
         </div>
       </DropdownContent>
-    </Dropdown>
+    </Dropdown>)
   );
 };
 
@@ -85,7 +85,7 @@ DropdownIconAnimation.parameters = {
       onHide={() => { setIconOrientation('up') }}
     >
       <DropdownTrigger>
-        <span className="fs21 story_dropdown_trigger">Domains
+        <span className="heading20 story_dropdown_trigger">Domains
           <KeyboardArrowDown className={"story_dropdown_icon story_dropdown_icon_{iconOrientation}"} />
         </span>
       </DropdownTrigger>

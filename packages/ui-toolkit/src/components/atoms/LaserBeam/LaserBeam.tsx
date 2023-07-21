@@ -13,7 +13,7 @@ class LaserBeam extends React.Component<Props, State> {
   public static defaultProps: Props = {
     show: false,
     width: '2px',
-    background: 'var(--primaryClr)',
+    background: 'var(--green500)',
     zIndex: '1200',
     noShadow: false,
     ccStyle: 'dash',

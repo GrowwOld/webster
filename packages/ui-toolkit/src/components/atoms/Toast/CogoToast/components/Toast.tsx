@@ -7,11 +7,11 @@ import { LIGHT_THM } from '../../../../../utils/constants';
 
 
 const colors:{[key:string]: string} = {
-  success: LIGHT_THM.primaryClr,
-  info: LIGHT_THM.secondaryClr,
-  warn: LIGHT_THM.growwYellow,
-  error: LIGHT_THM.growwRed,
-  loading: LIGHT_THM.secondaryClr
+  success: LIGHT_THM.green500,
+  info: LIGHT_THM.purple500,
+  warn: LIGHT_THM.yellow500,
+  error: LIGHT_THM.red500,
+  loading: LIGHT_THM.purple500
 };
 
 

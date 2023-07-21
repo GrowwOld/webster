@@ -59,7 +59,7 @@ Default.args = {
   type: 'NEUTRAL',
   informationBoxClass: '',
   informationBoxStyle: {
-    color: 'var(--text)'
+    color: 'var(--gray900)'
   },
   content: `This is a default informaton box. This can be used for anything,
    from a notice box to a notification box to anything you need it to be!!.
@@ -119,7 +119,7 @@ Custom.args = {
   ...Default.args,
   type: 'DEFAULT',
   informationBoxStyle: {
-    background: 'var(--secondaryClr30)',
+    background: 'var(--purple100)',
     fontSize: 16
   },
   width: 500,

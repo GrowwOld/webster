@@ -21,7 +21,9 @@ const WALLETS_TABS = [
     width: 168,
     left: 10,
     name: (
-      <div style={{ padding: "10px 60px" }} className="fw500">
+      <div style={{ padding: "10px 60px" }}
+        className="bodyMedium14"
+      >
         DEPOSIT
       </div>
     )
@@ -30,7 +32,10 @@ const WALLETS_TABS = [
     width: 208,
     left: 180,
     name: (
-      <div style={{ padding: "10px 60px" }} className="fw500">
+      <div
+        style={{ padding: "10px 60px" }}
+        className="bodyMedium14"
+      >
         WITHDRAW
       </div>
     )

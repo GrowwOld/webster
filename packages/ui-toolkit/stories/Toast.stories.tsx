@@ -53,13 +53,13 @@ const Template : Story = (_args) => {
       />
 
       <Button
-        backgroundColor="var(--growwYellow)"
+        backgroundColor="var(--yellow500)"
         buttonText="Toast Warn"
         onClick={() => activateToast('warn')}
       />
 
       <Button
-        backgroundColor="var(--growwRed)"
+        backgroundColor="var(--red500)"
         buttonText="Toast Error"
         onClick={() => activateToast('error')}
       />
@@ -71,7 +71,7 @@ const Template : Story = (_args) => {
       />
 
       <Button
-        backgroundColor="var(--secondaryClr)"
+        backgroundColor="var(--purple500)"
         buttonText="Toast Loading"
         onClick={() => activateToast('loading')}
       />
@@ -127,13 +127,13 @@ Default.parameters = {
       />
 
       <Button
-        backgroundColor="var(--growwYellow)"
+        backgroundColor="var(--yellow500)"
         buttonText="Toast Warn"
         onClick={() => activateToast('warn')}
       />
 
       <Button
-        backgroundColor="var(--growwRed)"
+        backgroundColor="var(--red500)"
         buttonText="Toast Error"
         onClick={() => activateToast('error')}
       />
@@ -145,7 +145,7 @@ Default.parameters = {
       />
 
       <Button
-        backgroundColor="var(--secondaryClr)"
+        backgroundColor="var(--purple500)"
         buttonText="Toast Loading"
         onClick={() => activateToast('loading')}
       />

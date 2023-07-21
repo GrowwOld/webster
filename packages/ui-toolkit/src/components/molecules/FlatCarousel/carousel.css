@@ -5,13 +5,13 @@
 }
 
 .carousel__dot {
-  background: var(--subText70) !important;
+  background: var(--gray700) !important;
   transition: width 0.3s ease-in, background 0.2s ease-out;
 }
 
 .carousel__dot--active {
   width: 12px !important;
-  background: var(--primaryClr) !important;
+  background: var(--green500) !important;
 }
 
 .carousel-item-hidden {
@@ -27,7 +27,7 @@
   bottom: 57px;
   font-size: 20px;
   font-weight: 500;
-  color: var(--text);
+  color: var(--gray900);
 }
 
 .common171CarouselDesc {
@@ -39,7 +39,7 @@
   bottom: 33px;
   font-size: 13px;
   font-weight: 400;
-  color: var(--text);
+  color: var(--gray900);
 }
 
 .common171CarouselImg {

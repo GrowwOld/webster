@@ -115,7 +115,7 @@
 /* Slider */
 /* .carousel14Loading .carousel14List
 {
-    background: var(--primaryBg) url('./ajax-loader.gif') center center no-repeat;
+    background: var(--tempBg) url('./ajax-loader.gif') center center no-repeat;
 } */
 
 /* Arrows */
@@ -138,11 +138,11 @@
   -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   opacity: 0.6;
-  background: var(--subText);
+  background: var(--gray700);
   z-index: 1;
   border-radius: 50%;
   border: 1px transparent;
-  color: var(--primaryBg);
+  color: var(--tempBg);
 }
 
 .carousel14Prev:hover,
@@ -174,7 +174,7 @@
   line-height: 1;
 
   opacity: 0.75;
-  color: var(--subText);;
+  color: var(--gray700);;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -265,7 +265,7 @@
   text-align: center;
 
   opacity: 0.25;
-  color: var(--text);
+  color: var(--gray900);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -273,7 +273,7 @@
 
 .carousel14Dots li.carousel14Active button:before {
     opacity: 0.75;
-    color: var(--text);
+    color: var(--gray900);
 }
 
 @media screen and (max-width: 768px) {
