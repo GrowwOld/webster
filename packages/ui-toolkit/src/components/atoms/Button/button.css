@@ -49,8 +49,8 @@
 }
 
 .btn51RippleTertiary:hover {
-  background: var(--gray900) radial-gradient(circle, rgba(0, 0, 0, 0) 1%, var(--gray900) 1%) center/15000%;
-  filter: brightness(105%);
+  background: rgba(0, 208, 156, 0.04);
+  color: var(--green500);
 }
 
 .btn51RippleTertiary:active {
