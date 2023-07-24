@@ -1,7 +1,7 @@
 import { styled } from '@stitches/react';
 
 export const Container = styled('div', {
-  borderBottom: '2px solid var(--gray700)',
+  borderBottom: '2px solid var(--gray150)',
   width: '100%',
   position: 'relative',
   variants: {
