@@ -9,7 +9,7 @@ export const LIGHT_THM = {
   gray500: '#a1a3ad',
   gray400: '#b0b2ba',
   gray300: '#c7c8ce',
-  gray200: '#ddeee1',
+  gray200: '#dddee1',
   gray150: '#e9e9eb',
   gray100: '#f0f0f2',
   gray50: '#f8f8f8',
