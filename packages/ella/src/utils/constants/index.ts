@@ -1,6 +1,6 @@
 export const COMMON_URLS = {
   PROD_HOST: 'https://groww.in',
-  DEFAULT_GROWW_LOGO_270: 'https://groww.in/logo-groww270.png',
+  DEFAULT_GROWW_LOGO_270: 'https://groww.in/groww-logo-270.png',
   FACEBOOK_PAGE: 'https://www.facebook.com/growwapp',
   TWITTER_PAGE: 'https://twitter.com/_groww',
   YOUTUBE_PAGE: 'http://bit.ly/2rjkBHu',
