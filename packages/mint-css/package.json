@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/mint-css",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A CSS library that provides classes, tokens, variables, fonts and other essential stylings governed under MINT design system, used by Groww",
   "main": "./dist/bundle.css",
   "files": [
