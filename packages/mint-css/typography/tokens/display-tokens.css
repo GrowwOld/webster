@@ -1,23 +1,23 @@
 .display24 {
   font-size: var(--font-size-24);
   font-weight: var(--font-weight-medium);
-  line-height: 1.37;
+  line-height: 2.0625rem;
 }
 
 .display28 {
   font-size: var(--font-size-28);
   font-weight: var(--font-weight-medium);
-  line-height: 1.39;
+  line-height: 2.4375rem;
 }
 
 .display32 {
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-medium);
-  line-height: 1.37;
+  line-height: 2.75rem;
 }
 
 .display40 {
   font-size: var(--font-size-40);
   font-weight: var(--font-weight-medium);
-  line-height: 1.4;
+  line-height: 3.5rem;
 }
