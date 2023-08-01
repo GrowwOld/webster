@@ -1,8 +1,9 @@
-"use strict";
+'use strict';
 
-import React from "react";
-import classnames from "classnames";
-import { canGoNext } from "./utils/innerSliderUtils";
+import React from 'react';
+import classnames from 'classnames';
+import { ArrowForwardIos, ArrowBackIos } from '@groww-tech/icon-store/mi';
+import { canGoNext } from './utils/innerSliderUtils';
 
 export class PrevArrow extends React.PureComponent {
 
@@ -11,17 +12,17 @@ export class PrevArrow extends React.PureComponent {
     const customProps = { currentSlide, slideCount };
     const disableArrow = !infinite && (currentSlide === 0 || slideCount <= slidesToShow);
 
-    let prevClasses = { "carousel14Arrow": true, "carousel14Prev": true };
-    let prevHandler = this.clickHandler.bind(this, { message: "previous" });
+    const prevClasses = { 'carousel14Arrow': true, 'carousel14Prev': true };
+    let prevHandler = this.clickHandler.bind(this, { message: 'previous' });
 
     if (disableArrow) {
-      prevClasses[ "carousel14Disabled" ] = true;
+      prevClasses.carousel14Disabled = true;
       prevHandler = null;
     }
 
-    let prevArrowProps = {
-      key: "0",
-      "data-role": "none",
+    const prevArrowProps = {
+      key: '0',
+      'data-role': 'none',
       className: classnames(prevClasses),
       onClick: prevHandler
     };
@@ -36,8 +37,12 @@ export class PrevArrow extends React.PureComponent {
 
     } else {
       prevArrow = (
-        <button key="0" type="button" {...prevArrowProps}>
-          <i className="material-icons">keyboard_arrow_left</i>
+        <button
+          key="0"
+          type="button"
+          {...prevArrowProps}
+        >
+          <ArrowBackIos/>
         </button>
       );
     }
@@ -50,6 +55,7 @@ export class PrevArrow extends React.PureComponent {
     if (e) {
       e.preventDefault();
     }
+
     this.props.clickHandler(options, e);
   }
 }
@@ -60,17 +66,17 @@ export class NextArrow extends React.PureComponent {
     const { currentSlide, slideCount } = this.props;
     const customProps = { currentSlide, slideCount };
 
-    let nextClasses = { "carousel14Arrow": true, "carousel14Next": true };
-    let nextHandler = this.clickHandler.bind(this, { message: "next" });
+    const nextClasses = { 'carousel14Arrow': true, 'carousel14Next': true };
+    let nextHandler = this.clickHandler.bind(this, { message: 'next' });
 
     if (!canGoNext(this.props)) {
-      nextClasses[ "carousel14Disabled" ] = true;
+      nextClasses.carousel14Disabled = true;
       nextHandler = null;
     }
 
-    let nextArrowProps = {
-      key: "1",
-      "data-role": "none",
+    const nextArrowProps = {
+      key: '1',
+      'data-role': 'none',
       className: classnames(nextClasses),
       onClick: nextHandler
     };
@@ -83,10 +89,15 @@ export class NextArrow extends React.PureComponent {
         ...nextArrowProps,
         ...customProps
       });
+
     } else {
       nextArrow = (
-        <button key="1" type="button" {...nextArrowProps}>
-          <i className="material-icons">keyboard_arrow_right</i>
+        <button
+          key="1"
+          type="button"
+          {...nextArrowProps}
+        >
+          <ArrowForwardIos />
         </button>
       );
     }
@@ -99,6 +110,7 @@ export class NextArrow extends React.PureComponent {
     if (e) {
       e.preventDefault();
     }
+
     this.props.clickHandler(options, e);
   }
 }
