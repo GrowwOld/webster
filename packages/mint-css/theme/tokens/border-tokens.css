@@ -1,5 +1,5 @@
 .borderPrimary {
-  border-color: var(--gray150)
+  border: 1px solid var(--gray150)
 }
 
 /*-------------------------------------------*/
@@ -7,28 +7,28 @@
 /*-------------------------------------------*/
 
 .borderDisabled {
-  border-color: var(--gray100)
+  border: 1px solid var(--gray100)
 }
 
 
 .borderAccent {
-  border-color: var(--green500)
+  border: 1px solid var(--green500)
 }
 
 
 .borderPositive {
-  border-color: var(--green500)
+  border: 1px solid var(--green500)
 }
 
 
 .borderNegative {
-  border-color: var(--red500)
+  border: 1px solid var(--red500)
 }
 
 
 .borderNeutral {
-  border-color: var(--gray900)
+  border: 1px solid var(--gray900)
 }
 html[data-theme="dark"] .borderNeutral {
-  border-color: var(--white);
+  border: 1px solid var(--white);
 }
