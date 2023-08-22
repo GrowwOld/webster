@@ -117,7 +117,7 @@ input:focus ~ .bar::after {
 
   to {
     width: 100;
-    background: var(--tempTransparent);
+    background: transparent;
   }
 }
 

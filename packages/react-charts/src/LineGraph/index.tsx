@@ -8,12 +8,20 @@ import { area } from '@visx/shape';
 import type { EventType } from '../utils/commonTypes';
 import { isEmpty } from '../utils/helpers';
 
-import type { Point, LinePathData, LineGraphProps, ToolTipData, ToolTipSeriesData, DragData } from './lineGraphTypes';
+import type {
+  Point,
+  LinePathData,
+  LineGraphProps,
+  ToolTipData,
+  ToolTipSeriesData,
+  DragData
+} from './lineGraphTypes';
 
 
 import './lineGraph.css';
 
 const DefaultStrokeMultiplier = 1.5;
+
 
 const LineGraph = (props: LineGraphProps) => {
   const [ tooltipData, setToolTipData ] = useState<ToolTipData | null>(null);
@@ -321,7 +329,7 @@ const LineGraph = (props: LineGraphProps) => {
       left: 0,
       boxShadow: 'none',
       padding: 0,
-      backgroundColor: 'var(--tempTransparent)',
+      backgroundColor: 'transparent',
       position: 'absolute',
       borderRadius: '3px',
       transform: `translate(${toolTipLeftUpdated}px, ${toolTipTopUpdated}px)`
@@ -363,7 +371,7 @@ const LineGraph = (props: LineGraphProps) => {
           cx={x}
           cy={y}
           r={strokeWidth * strokeMultiplier}
-          fill='var(--tempTransparent)'
+          fill='rgba(0, 0, 0, 0)'
           stroke={color}
           className='lg43Opacity3'
           strokeWidth={strokeWidth * strokeMultiplier / 2}

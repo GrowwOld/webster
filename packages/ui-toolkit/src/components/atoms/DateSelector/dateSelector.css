@@ -101,19 +101,6 @@
   transition: all ease-in-out 0.3s;
 }
 
-/* .date101TooltipMainDiv:after {
-  position: absolute;
-  bottom: 138px;
-  right: -15px;
-  transform: rotate(90deg);
-  content: '';
-  width: 0px;
-  height: 0;
-  border-right: solid 10px var(--tempTransparent);
-  border-bottom: solid 10px var(--tempBg);
-  border-left: solid 10px var(--tempTransparent);
-} */
-
 .date101CrossButton {
   position: absolute;
   opacity: 0.5;

@@ -61,7 +61,7 @@
 
 .loader14Circular.constantWhite {
   border-top-color: var(--white);
-  border-right-color: var(--tempTransparent);
+  border-right-color: transparent;
   border-bottom-color: var(--white);
   border-left-color: var(--white);
 }
@@ -72,7 +72,7 @@
   border: 2px solid var(--tempBg);
   border-width: 2px;
   border-top-color: var(--green500);
-  border-right-color: var(--tempTransparent);
+  border-right-color: transparent;
   border-bottom-color: var(--green500);
   border-left-color: var(--green500);
   border-radius: 50%;
@@ -92,7 +92,7 @@
 
 .loader14Circular.contentNegative, .loader14CircularBolt.contentNegative>div:first-child {
   border-top-color: var(--red500);
-  border-right-color: var(--tempTransparent);
+  border-right-color: transparent;
   border-bottom-color: var(--red500);
   border-left-color: var(--red500);
 }
