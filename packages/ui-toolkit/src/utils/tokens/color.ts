@@ -28,7 +28,6 @@ export const lightColors = {
   overlay30: 'rgba(18, 18, 18, 0.3)',
   /*These variables will be removed in future, once we migrate these to tokens*/
   tempBg: '#ffffff',
-  tempTransparent: 'rgba(0, 0, 0, 0)',
   tempCardBg: '#FFF',
   tempBoxShadow: 'rgba(0, 0, 0, 0.1)'
 };
@@ -63,7 +62,6 @@ export const darkColors = {
   overlay30: 'rgba(18, 18, 18, 0.3)',
   /*These variables will be removed in future, once we migrate these to tokens*/
   tempBg: '#121212',
-  tempTransparent: 'rgba(0, 0, 0, 0)',
   tempCardBg: '#1D1D1D',
   tempBoxShadow: 'rgba(0, 0, 0, 0.6)'
 };
