@@ -17,7 +17,6 @@
 
 .rodal-mask {
   position: absolute;
-  background: var(--tempHalfTransparent);
 }
 
 /* -- dialog -- */
@@ -550,8 +549,4 @@
 
 .popup-border {
   border-radius: 6px;
-}
-
-.rodal-background {
-  background: var(--tempHalfTransparent);
 }
