@@ -3,10 +3,7 @@ import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
 
-import {
-  Loader,
-  LOADER_TYPE
-} from '../Loader';
+import { Loader, LOADER_TYPE } from '../Loader';
 
 import './button.css';
 class Button extends React.PureComponent<Props> {
@@ -26,7 +23,7 @@ class Button extends React.PureComponent<Props> {
     const classname = cn({
       'btn51Btn': true,
       'btn51RipplePrimary btn51Primary': buttonType === 'Primary',
-      'btn51RippleSecondary btn51Secondary': buttonType === 'Secondary',
+      'btn51RippleSecondary btn51Secondary backgroundPrimary': buttonType === 'Secondary',
       'btn51RippleTertiary btn51Tertiary': buttonType === 'Tertiary',
       'btn51Loading': showLoader,
       'btn51DisabledPrimary': isDisabled && buttonType === 'Primary',
@@ -35,7 +32,7 @@ class Button extends React.PureComponent<Props> {
     });
 
     return (
-      <div className={fixToBottom ? 'btn51BottomFixed' : ''} >
+      <div className={fixToBottom ? 'btn51BottomFixed backgroundPrimary' : ''} >
         <div
           className={classname}
           data-test-id={dataTestId.length ? dataTestId : null}

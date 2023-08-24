@@ -24,9 +24,6 @@
   transition: left 0.2s linear, width 0.2s linear;
 }
 
-.tabs8Shadow {
-  box-shadow: 0 3px 3px -1px var(--tempBoxShadow);
-}
 
 
 @media (max-width: 1025px) {
@@ -70,8 +67,5 @@
 
  .tabs8Parent {
     min-width: max-content;
-  }
-  .tabs8Shadow {
-    box-shadow: 0 2px 3px 0 var(--tempBoxShadow);
   }
 }

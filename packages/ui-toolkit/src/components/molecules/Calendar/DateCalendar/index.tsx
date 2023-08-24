@@ -143,7 +143,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                               className={
                                 cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
                                   'cc12DateNotSelected': !dateSelected,
-                                  'cc12DateSelected': dateSelected,
+                                  'cc12DateSelected contentInversePrimary': dateSelected,
                                   'cc12DisableDate': (minDate && this.compareDate(minDate, newDate)) || (maxDate && this.compareDate(newDate, maxDate))
                                 })
                               }

@@ -12,7 +12,7 @@ export class PrevArrow extends React.PureComponent {
     const customProps = { currentSlide, slideCount };
     const disableArrow = !infinite && (currentSlide === 0 || slideCount <= slidesToShow);
 
-    const prevClasses = { 'carousel14Arrow': true, 'carousel14Prev': true };
+    const prevClasses = { 'carousel14Arrow': true, 'carousel14Prev contentInversePrimary': true };
     let prevHandler = this.clickHandler.bind(this, { message: 'previous' });
 
     if (disableArrow) {
@@ -66,7 +66,7 @@ export class NextArrow extends React.PureComponent {
     const { currentSlide, slideCount } = this.props;
     const customProps = { currentSlide, slideCount };
 
-    const nextClasses = { 'carousel14Arrow': true, 'carousel14Next': true };
+    const nextClasses = { 'carousel14Arrow': true, 'carousel14Next contentInversePrimary': true };
     let nextHandler = this.clickHandler.bind(this, { message: 'next' });
 
     if (!canGoNext(this.props)) {

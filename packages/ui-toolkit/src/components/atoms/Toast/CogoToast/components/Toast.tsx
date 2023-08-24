@@ -20,7 +20,7 @@ const Toast = (props:Props) => {
   const marginType = `margin${place}`;
 
   const className = [
-    'ct-toast',
+    'ct-toast borderPrimary backgroundPrimary',
     props.onClick ? ' ct-cursor-pointer' : '',
     `ct-toast-${props.type}`
   ].join(' ');

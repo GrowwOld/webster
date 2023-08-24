@@ -5,11 +5,7 @@ import { KeyboardArrowDown } from '@groww-tech/icon-store/mi';
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 
-import {
-  Dropdown,
-  DropdownContent,
-  DropdownTrigger
-} from '../src/components/atoms';
+import { Dropdown, DropdownContent, DropdownTrigger } from '../src/components/atoms';
 import { Props as DropdownProps } from '../src/components/atoms/Dropdown/Dropdown';
 
 export default {
@@ -31,10 +27,10 @@ const Template: Story<DropdownProps> = (args) => {
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className='story_card bodyRegular14'>
-          <div className='story_dropdown_item'>Finance</div>
-          <div className='story_dropdown_item'>Marketing</div>
-          <div className='story_dropdown_item'>Engineering</div>
+        <div className='borderPrimary backgroundSurfacePrimary bodyRegular14'>
+          <div className='story_dropdown_item backgroundPrimary'>Finance</div>
+          <div className='story_dropdown_item backgroundPrimary'>Marketing</div>
+          <div className='story_dropdown_item backgroundPrimary'>Engineering</div>
         </div>
       </DropdownContent>
     </Dropdown>
@@ -62,10 +58,10 @@ export const DropdownIconAnimation = (args) => {
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className='story_card bodyRegular14'>
-          <div className='story_dropdown_item'>Finance</div>
-          <div className='story_dropdown_item'>Marketing</div>
-          <div className='story_dropdown_item'>Engineering</div>
+        <div className='borderPrimary backgroundSurfacePrimary bodyRegular14'>
+          <div className='story_dropdown_item backgroundPrimary'>Finance</div>
+          <div className='story_dropdown_item backgroundPrimary'>Marketing</div>
+          <div className='story_dropdown_item backgroundPrimary'>Engineering</div>
         </div>
       </DropdownContent>
     </Dropdown>)
@@ -90,7 +86,7 @@ DropdownIconAnimation.parameters = {
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className="story_card">
+        <div className="borderPrimary backgroundSurfacePrimary">
           <div>Finance</div>
           <div>Marketing</div>
           <div>Engineering</div>

@@ -79,25 +79,16 @@
   background: var(--gray50);
 }
 
-.date101DropDiv {
-  border-radius: 4px;
-  box-shadow: 0 4px 10px 0 var(--tempBoxShadow);
-  border: 1px solid var(--gray150);
-  background-color: var(--tempBg);
-  padding: 10px;
-}
 
 #userCart .dropdown__content {
   z-index: 1;
 }
 
 .date101TooltipMainDiv {
-  background: var(--tempBg);
   border-radius: 5px;
   width: 350px;
   height: auto;
   position: absolute;
-  box-shadow: 0px 4px 20px 0px var(--tempBoxShadow);
   transition: all ease-in-out 0.3s;
 }
 

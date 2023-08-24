@@ -125,8 +125,6 @@
 
 .card {
   border-radius: 5px;
-  box-shadow: 0 1px 5px 0 var(--tempBoxShadow);
-  border: 1px solid var(--gray150);
 }
 
 .clickable-text {

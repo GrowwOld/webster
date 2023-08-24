@@ -48,7 +48,7 @@ class DateSelector extends PureComponent<Props, State> {
     } else if (invokeMode === INVOKE_MODE.TOOLTIP) {
       return (
         <div
-          className="date101TooltipMainDiv"
+          className="date101TooltipMainDiv borderPrimary backgroundPrimary"
           style={
             {
               top: tooltipTop,

@@ -141,7 +141,7 @@ class Rodal extends React.Component<Props, State> {
         <Dialog {...this.props}
           animationType={animationType}
         >
-          <div className={`child-wrapper ${popupClass}`}>
+          <div className={`child-wrapper backgroundPrimary ${popupClass}`}>
             {children}
             {CloseButton}
           </div>

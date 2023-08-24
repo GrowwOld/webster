@@ -34,7 +34,6 @@
 
 .cc12DateSelected {
   background: var(--green500);
-  color: var(--tempBg);
 }
 
 .cc12DateNotSelected:hover {

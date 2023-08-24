@@ -32,8 +32,6 @@
   padding: 0;
   background: none;
   border-radius: 3px;
-
-  /* box-shadow: 0 1px 3px var(--tempBoxShadow); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -542,7 +540,6 @@
 }
 
 .child-wrapper {
-  background: var(--tempBg);
   position: relative;
   width: 100%;
 }

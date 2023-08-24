@@ -57,7 +57,7 @@ const ToggleSwitch = (props: Props) => {
           className="sw348reactSwitchLabel"
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton'}
+            className={'sw348reactSwitchButton borderPrimary'}
           />
         </div>
       </div>
