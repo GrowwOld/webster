@@ -61,8 +61,8 @@
     "lint": "concurrently npm:lint:*",
     "lint:src": "eslint src",
     "lint:types": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "pushTags": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag -a v$PACKAGE_VERSION -m \"@groww-tech/ui-toolkit-v$PACKAGE_VERSION\" && git push --tags"
   },
   "peerDependencies": {
@@ -83,10 +83,10 @@
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@stitches/react": "^1.2.7",
-    "@storybook/addon-actions": "^6.2.8",
-    "@storybook/addon-essentials": "^6.2.8",
-    "@storybook/addon-links": "^6.2.8",
-    "@storybook/react": "^6.2.8",
+    "@storybook/addon-actions": "^7.3.2",
+    "@storybook/addon-essentials": "^7.3.2",
+    "@storybook/addon-links": "^7.3.2",
+    "@storybook/react": "^7.3.2",
     "@types/object-assign": "^4.0.30",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.3",
@@ -110,7 +110,9 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "4.5.5"
+    "typescript": "4.5.5",
+    "storybook": "latest",
+    "@storybook/builder-vite": "latest"
   },
   "dependencies": {
     "@groww-tech/icon-store": "1.4.0",

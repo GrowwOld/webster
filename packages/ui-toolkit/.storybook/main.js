@@ -1,9 +1,25 @@
+import { dirname, join } from "path";
 module.exports = {
   "stories": [
     "../stories/*.stories.@(js|jsx|ts|tsx)"
   ],
+
   "addons": [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials"
-  ]
+    getAbsolutePath("@storybook/addon-links"),
+    getAbsolutePath("@storybook/addon-essentials")
+  ],
+
+  docs: {
+    autodocs: true
+  },
+
+  framework: 'react',
+
+  core: {
+    builder: '@storybook/builder-vite', // 👈 The builder enabled here.
+  },
+}
+
+function getAbsolutePath(value) {
+  return dirname(require.resolve(join(value, "package.json")));
 }
