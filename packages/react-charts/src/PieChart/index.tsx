@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
-import type { PieData } from './pieTypes';
+import React, { SVGProps, useState } from 'react';
+
 import { Pie } from '@visx/shape';
+
+import { isEmpty } from '../utils/helpers';
+
+import { PieData } from './pieTypes';
 
 
 const getValue = (d: PieData) => {
@@ -10,8 +14,9 @@ const getValue = (d: PieData) => {
 
 const PieChart = (props: PieChartProps) => {
 
-  const [ hoveredVal, setHoveredVal ] = useState<string>('');
-  const { data, height, width, donutThickness, hoveredPieThicknes, children, textClass, showArcsValue } = props;
+  const [ hoveredPie, setHoveredPie ] = useState<PieData | null>(null);
+  const { data, height, width, donutThickness, hoveredPieThicknes, children, textClass, showArcsValue, ...restProps } = props;
+
 
   const radius = Math.min(height, width) / 2 - (hoveredPieThicknes);
   const center = radius + hoveredPieThicknes;
@@ -20,7 +25,7 @@ const PieChart = (props: PieChartProps) => {
   const onMouseEnter = (d: PieData) => {
     const { onMouseEnter } = props;
 
-    setHoveredVal(d.title);
+    setHoveredPie(d);
     if (onMouseEnter instanceof Function) {
       onMouseEnter(d);
     }
@@ -30,7 +35,8 @@ const PieChart = (props: PieChartProps) => {
   const onMouseLeave = () => {
     const { onMouseLeave } = props;
 
-    setHoveredVal('');
+    setHoveredPie(null);
+
     if (onMouseLeave instanceof Function) {
       onMouseLeave();
     }
@@ -46,10 +52,12 @@ const PieChart = (props: PieChartProps) => {
         innerRadius={radius - donutThickness}
         padAngle={0}
         pieSortValues={null}
+        x="-180"
+        y="-300"
       >
         {
-          (pie) => {
-            return pie.arcs.map((arc, i) => {
+          (pie: any) => {
+            return pie.arcs.map((arc: any, i: number) => {
               const [ centroidX, centroidY ] = pie.path.centroid(arc);
 
               return (
@@ -86,6 +94,7 @@ const PieChart = (props: PieChartProps) => {
   return (
     <svg width={width}
       height={height}
+      {...restProps}
     >
       <g transform={`translate(${center},${center})`}>
         <Pie
@@ -93,30 +102,30 @@ const PieChart = (props: PieChartProps) => {
           pieValue={getValue}
           outerRadius={radius + hoveredPieThicknes}
           innerRadius={radius + 1}
-          padAngle={0.005}
+          padAngle={0}
           pieSortValues={null}
         >
           {
             (pie1) => {
+              const arc = pie1.arcs.find(arc => arc.data.id === hoveredPie?.id);
+
+
               return (
                 <>
                   {
-                    pie1.arcs.filter(arc => arc.data.title === hoveredVal).map(arc => {
-                      return (
-                        <g key={`letters-${arc.data.value}`}>
-                          <path
-                            d={pie1.path(arc) ?? undefined}
-                            fill={arc.data.color}
-                            fillOpacity={0.5}
-                          />
-                        </g>
-                      );
-                    })
+                    !(isEmpty(arc) || arc === undefined) &&
+                    <g key={`letters-${arc?.data.value}`}>
+                      <path
+                        d={pie1.path(arc) ?? ''}
+                        fill={arc?.data.color}
+                        fillOpacity={0.5}
+                      />
+                    </g>
                   }
                   {getInnerPieUI()}
-                  <g>
-                    {children}
-                  </g>
+                  {/* <g> */}
+                  {children}
+                  {/* </g> */}
                 </>
               );
             }
@@ -128,7 +137,7 @@ const PieChart = (props: PieChartProps) => {
 };
 
 
-type PieChartProps = {
+type PieChartProps = Exclude<SVGProps<SVGSVGElement>, 'onMouseEnter' | 'onMouseLeave'> & {
   data: Array<PieData>;
   height: number;
   width: number;
@@ -140,7 +149,7 @@ type PieChartProps = {
   textClass: string;
   showArcsValue?: boolean;
 }
-
+// Exclude<SVGProps<SVGAElement>, 'onCopy'>
 
 export default PieChart;
 export type { PieData };
