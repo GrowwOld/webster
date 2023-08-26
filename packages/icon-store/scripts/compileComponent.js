@@ -23,15 +23,16 @@ function compileReactComponentsUsingBabel() {
         componentFiles.forEach(async file => {
             if (file.endsWith('.js') && !file.includes('index.js')) {
 
-                const filePath = path.join(componentPath, file);
+							const filePath = path.join(componentPath, file);
+							const cjsFilePath = path.join(componentPath, 'cjs', file);
+							const esmFilePath = path.join(componentPath, 'esm', file);
 
-							const transformed = await esbuild.build({
+							await esbuild.build({
 								entryPoints: [filePath],
-								outfile: filePath,
+								outfile: cjsFilePath,
 								banner: {
 									"js": "var React = require('react');"
 								},
-								allowOverwrite: true,
 								format: 'cjs',
 								jsx: 'transform',
 								minify: true,
@@ -40,6 +41,22 @@ function compileReactComponentsUsingBabel() {
 								}
 							});
 
+							await esbuild.build({
+								entryPoints: [filePath],
+								outfile: esmFilePath,
+								banner: {
+									"js": "import React from 'react';"
+								},
+								format: 'esm',
+								jsx: 'transform',
+								minify: true,
+								loader: {
+									'.js': 'jsx'
+								}
+							});
+
+							fs.rmSync(filePath)
+							
 							if(componentPath === customComponentPath) {
 								clearTimeout(timeoutId);
 							}

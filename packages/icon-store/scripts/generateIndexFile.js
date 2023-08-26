@@ -15,10 +15,10 @@ async function createIndexFile(iconsType = 'mi', format="cjs"){
 		const componentName = s.split('.')[0];
 
 		if(format === 'cjs') {
-			fileContent = `exports.${componentName} = require('./${componentName}')`
+			fileContent = `exports.${componentName} = require('./cjs/${componentName}')`
 		}
 		else {
-			fileContent = `export { default as ${componentName} } from './${componentName}'`
+			fileContent = `export { default as ${componentName} } from './esm/${componentName}'`
 		}
 
 		indexFileContents.push(fileContent);
