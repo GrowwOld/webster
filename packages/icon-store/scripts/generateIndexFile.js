@@ -3,7 +3,7 @@ const path = require('path');
 
 async function createIndexFile(iconsType = 'mi', format="cjs"){
 	const targetDirectory = `../${iconsType}`;
-	const allFiles = fs.readdirSync(path.resolve(__dirname, targetDirectory));
+	const allFiles = fs.readdirSync(path.resolve(__dirname, targetDirectory, format));
 	const indexFileContents = [];
 	allFiles.forEach((s)=>{
 
