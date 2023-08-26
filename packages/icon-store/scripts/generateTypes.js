@@ -25,21 +25,12 @@
  
          components.forEach(component => {
  
-             if(component.includes('.js') && component !== 'index.js'){
+             if(component.includes('.js') && !component.includes('index')){
                  
                  const componentName = component.slice(0 , -3);
-                 const contentForComponent = `export var ${componentName}: ReactIconComponentType;`
+                 const contentForComponent = `export declare const ${componentName}: ReactIconComponentType;`
                  
                  allComponentTypeLines.push(contentForComponent);
-
-                const content = `import { ReactIconComponentType } from '../types';
-
-declare const ${componentName}: ReactIconComponentType;
-export default ${componentName};
-                `
-
-                const componentDeclarationFilePath = `${componentFolderPath}/${componentName}.d.ts`;
-                writeContentToFile(componentDeclarationFilePath, content);
              }
              
          });

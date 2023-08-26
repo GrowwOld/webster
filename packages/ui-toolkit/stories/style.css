@@ -1,4 +1,4 @@
-@import url(~@groww-tech/mint-css/dist/index.css);
+@import "@groww-tech/mint-css/dist/index.css";
 
 :root{
   --spacing-none: 0;

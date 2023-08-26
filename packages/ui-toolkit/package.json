@@ -86,7 +86,9 @@
     "@storybook/addon-actions": "^7.3.2",
     "@storybook/addon-essentials": "^7.3.2",
     "@storybook/addon-links": "^7.3.2",
+    "@storybook/builder-vite": "latest",
     "@storybook/react": "^7.3.2",
+    "@storybook/react-vite": "latest",
     "@types/object-assign": "^4.0.30",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.3",
@@ -110,12 +112,11 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript": "^1.0.1",
-    "typescript": "4.5.5",
     "storybook": "latest",
-    "@storybook/builder-vite": "latest"
+    "typescript": "4.5.5"
   },
   "dependencies": {
-    "@groww-tech/icon-store": "1.4.0",
+    "@groww-tech/icon-store": "file:.yalc/@groww-tech/icon-store",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
     "object-assign": "4.1.1",
