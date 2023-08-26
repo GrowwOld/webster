@@ -6,7 +6,7 @@ const customTemplate = (
   const componentRealName = componentName?.replace('Svg', '');
 
   return tpl`
-import {handleDefaultProps} from '../../utils';
+import {handleDefaultProps} from './utils';
 
 function ${componentRealName}(oldProps) {    
    const props = handleDefaultProps(oldProps);

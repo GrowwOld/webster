@@ -1,6 +1,33 @@
 const fs = require('fs');
 const path = require('path');
 
+const handleDefaultPropsFileContent = {
+	cjs: `
+	function handleDefaultProps(oldProps){
+		return {
+			...(oldProps.custom ? {} : { viewBox: '0 0 24 24', fill: 'currentColor', height: 24, width: 24}),
+			...(oldProps.size ? {height: oldProps.size, width: oldProps.size} : {}),
+			...oldProps,
+			size: undefined,
+			custom: undefined
+	};
+	}
+
+	module.exports = {handleDefaultProps}
+	`,
+	esm: `
+	export function handleDefaultProps(oldProps){
+		return {
+			...(oldProps.custom ? {} : { viewBox: '0 0 24 24', fill: 'currentColor', height: 24, width: 24}),
+			...(oldProps.size ? {height: oldProps.size, width: oldProps.size} : {}),
+			...oldProps,
+			size: undefined,
+			custom: undefined
+		};
+	}
+	`
+}
+
 async function createIndexFile(iconsType = 'mi', format="cjs"){
 	const targetDirectory = `../${iconsType}`;
 	const allFiles = fs.readdirSync(path.resolve(__dirname, targetDirectory, format));
@@ -31,6 +58,8 @@ async function createIndexFile(iconsType = 'mi', format="cjs"){
 	else {
 		fs.writeFileSync(path.resolve(__dirname, targetDirectory ,'index.esm.js'), indexFileContents.join('\n'))
 	}
+
+	fs.writeFileSync(path.resolve(__dirname, targetDirectory, format, 'utils.js'), handleDefaultPropsFileContent[format])
 
 }
 
