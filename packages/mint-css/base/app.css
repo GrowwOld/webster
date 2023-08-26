@@ -51,7 +51,7 @@ p {
 }
 
 body {
-  background: var(--tempBg) !important;
+  background: var(--dangerouslySetPrimaryBg) !important;
   color: var(--gray900) !important;
   margin: 0;
   box-sizing: border-box;

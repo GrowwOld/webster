@@ -38,14 +38,12 @@
 .date101Grid-item.regular {
   pointer-events: auto;
   color: var(--gray900);
-  background-color: var(--tempBg);
   cursor: pointer;
   transition: all .1s ease-in-out;
 }
 
 .date101Grid-item.active {
   pointer-events: auto;
-  color: var(--tempBg);
   background-color: var(--purple500);
   transform: scale(1.2);
   cursor: pointer;
@@ -53,7 +51,6 @@
 
 .date101Grid-item.default-active {
   pointer-events: auto;
-  color: var(--tempBg);
   background-color: var(--green500);
   transform: scale(1.2);
   cursor: pointer;
@@ -61,7 +58,6 @@
 
 .date101Grid-item.disabled {
   pointer-events: none;
-  background-color: var(--tempBg);
   cursor: not-allowed;
   color: var(--gray500);
 }
@@ -70,7 +66,6 @@
   pointer-events: auto;
   color: var(--gray900);
   transform: scale(1.2);
-  background-color: var(--tempBoxShadow);
   cursor: pointer;
 }
 

@@ -52,7 +52,7 @@
 .top-end::before {
   top: 100%;
   left: 50%;
-  border-top-color: var(--tempBg);
+  border-top-color: var(--dangerouslySetPrimaryBg);
 }
 
 /* popover right positions: start, mid, end */
@@ -84,7 +84,7 @@
   top: 50%;
   left: -6px;
   transform: translate(0, -50%);
-  border-right-color: var(--tempBg);
+  border-right-color: var(--dangerouslySetPrimaryBg);
 }
 
 /* popover bottom positions: start, mid, end */
@@ -115,7 +115,7 @@
 .bottom-end::before {
   bottom: 100%;
   left: 50%;
-  border-bottom-color: var(--tempBg);
+  border-bottom-color: var(--dangerouslySetPrimaryBg);
 }
 
 /* popover left positions: start, mid, end */
@@ -147,5 +147,5 @@
   top: 50%;
   right: -12px;
   transform: translate(0, -50%);
-  border-left-color: var(--tempBg);
+  border-left-color: var(--dangerouslySetPrimaryBg);
 }

@@ -24,12 +24,13 @@ export const lightColors = {
   red500: '#eb5b3c',
   red100: '#fae9e5',
   overlay00: 'rgba(18, 18, 18, 0)',
-  overlay10: 'rgba(18, 18, 18, 0.1)',
   overlay30: 'rgba(18, 18, 18, 0.3)',
-  /*These variables will be removed in future, once we migrate these to tokens*/
-  tempBg: '#ffffff',
-  tempCardBg: '#FFF',
-  tempBoxShadow: 'rgba(0, 0, 0, 0.1)'
+  overlay70: 'rgba(18, 18, 18, 0.7)',
+  /*
+  *This is a spcl, rather risky variable.
+  *Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
+  */
+  dangerouslySetPrimaryBg: 'ffffff'
 };
 
 export const darkColors = {
@@ -58,10 +59,11 @@ export const darkColors = {
   red500: '#d55438',
   red100: '#411d16',
   overlay00: 'rgba(18, 18, 18, 0)',
-  overlay10: 'rgba(18, 18, 18, 0.1)',
   overlay30: 'rgba(18, 18, 18, 0.3)',
-  /*These variables will be removed in future, once we migrate these to tokens*/
-  tempBg: '#121212',
-  tempCardBg: '#1D1D1D',
-  tempBoxShadow: 'rgba(0, 0, 0, 0.6)'
+  overlay70: 'rgba(18, 18, 18, 0.7)',
+  /*
+  *This is a spcl, rather risky variable.
+  *Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
+  */
+  dangerouslySetPrimaryBg: '#121212'
 };

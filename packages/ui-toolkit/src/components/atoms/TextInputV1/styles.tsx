@@ -62,7 +62,7 @@ export const PrimaryInput = styled('input', {
   outline: 0,
   padding: 0,
   color: 'var(--gray900)',
-  background: 'var(--tempBg)',
+  background: 'var(--dangerouslySetPrimaryBg)',
   caretColor: 'var(--green500)',
   variants: {
     variant: {
@@ -95,8 +95,8 @@ export const PrimaryInput = styled('input', {
     WebkitTextFillColor: 'var(--gray700)'
   },
   '&:-webkit-autofill': {
-    boxShadow: '0 0 0 30px var(--tempBg) inset !important',
-    backgroundColor: 'var(--tempBg) !important'
+    boxShadow: '0 0 0 30px var(--dangerouslySetPrimaryBg) inset !important',
+    backgroundColor: 'var(--dangerouslySetPrimaryBg) !important'
   }
 });
 

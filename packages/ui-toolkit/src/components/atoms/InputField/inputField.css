@@ -10,7 +10,7 @@
   border: none;
   border-bottom: 1px solid var(--gray700);
   box-shadow: none;
-  background: var(--tempBg);
+  background: var(--dangerouslySetPrimaryBg);
   color: var(--gray900);
 }
 
@@ -21,12 +21,12 @@
 .inf11Input input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
-  background-color: var(--tempBg) !important;
+  background-color: var(--dangerouslySetPrimaryBg) !important;
   color: var(--gray900);
 }
 
 .inf11Input input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--tempBg) inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--dangerouslySetPrimaryBg) inset;
   -webkit-text-fill-color: var(--gray900);
 }
 

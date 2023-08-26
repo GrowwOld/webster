@@ -21,7 +21,7 @@
 }
 
 .mn12MonthBack:hover {
-  background-color: var(--tempBoxShadow);
+  background-color: var(--overlay30);
 }
 
 .mn12MonthTextSelected {

@@ -277,7 +277,7 @@ const LineGraph = (props: LineGraphProps) => {
           cy={lastPointY}
           r={lp.strokeWidth * 1.5}
           fill={lp.color}
-          stroke='var(--tempBg)'
+          stroke='var(--dangerouslySetPrimaryBg)'
           strokeWidth={lp.strokeWidth / 2}
           pointerEvents="none"
           style={lp.style}
@@ -363,7 +363,7 @@ const LineGraph = (props: LineGraphProps) => {
           cy={y}
           r={strokeWidth * strokeMultiplier}
           fill={color}
-          stroke='var(--tempBg)'
+          stroke='var(--dangerouslySetPrimaryBg)'
           strokeWidth={strokeWidth }
           pointerEvents="none"
         />
