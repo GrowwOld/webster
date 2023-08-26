@@ -1,17 +1,12 @@
 {
   "name": "@groww-tech/icon-store",
-  "version": "1.4.6",
+  "version": "1.5.2",
   "description": "Icon Library customized for use in Groww",
   "files": [
-    "mi/index.js",
-		"mi/package.json",
-		"mi/index.esm.js",
-		"mi/index.d.ts",
-    "custom/index.js",
-		"custom/package.json",
-		"custom/index.esm.js",
-		"custom/index.d.ts",
-		"types.d.ts"
+		"mi",
+		"custom",
+		"types.d.ts",
+		"utils.js"
   ],
   "types": "types.d.ts",
   "sideEffects": false,
@@ -23,7 +18,7 @@
     "generate": "run-p generate:*",
     "generate:mi": "rm -rf mi && mkdir mi && svgr ./svgs/mi/ --out-dir ./mi/",
     "generate:custom": "rm -rf custom && mkdir custom && svgr ./svgs/custom/ --out-dir ./custom/",
-    "transform": "node scripts/generateIndexFile.js && node scripts/generateTypes.js && node scripts/createPackageJsonFiles.js",
+    "transform": "node scripts/compileComponent.js && node scripts/generateIndexFile.js && node scripts/generateTypes.js && node scripts/createPackageJsonFiles.js",
     "clean-mi-icons": "rm -rf svgs/mi && mkdir svgs/mi",
     "clean-custom-icons": "rm -rf svgs/custom && mkdir svgs/custom",
     "build": "npm run generate && npm run transform",

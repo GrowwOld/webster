@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -74,7 +74,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.13.15",
-    "prop-types": "^15.7.2",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-private-methods": "^7.13.0",
     "@babel/preset-react": "^7.13.13",
@@ -101,6 +100,7 @@
     "postcss": "^8.2.13",
     "postcss-import": "^14.0.2",
     "postcss-url": "^10.1.3",
+    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-lazyload": "^2.6.9",

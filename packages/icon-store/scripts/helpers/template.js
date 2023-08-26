@@ -6,13 +6,15 @@ const customTemplate = (
   const componentRealName = componentName?.replace('Svg', '');
 
   return tpl`
-${interfaces}
+import {handleDefaultProps} from '../utils';
 
-export function ${componentRealName}(oldProps) {    
+function ${componentRealName}(oldProps) {    
    const props = handleDefaultProps(oldProps);
 
     return ${jsx}
   }
+
+	export default React.memo(${componentRealName});
 
   `
 }
