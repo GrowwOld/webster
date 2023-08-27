@@ -5,8 +5,7 @@
   "files": [
     "mi",
     "custom",
-    "types.d.ts",
-    "utils.js"
+    "types.d.ts"
   ],
   "types": "types.d.ts",
   "sideEffects": false,
