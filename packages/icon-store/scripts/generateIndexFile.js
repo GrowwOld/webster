@@ -42,7 +42,7 @@ async function createIndexFile(iconsType = 'mi', format="cjs"){
 		const componentName = s.split('.')[0];
 
 		if(format === 'cjs') {
-			fileContent = `exports.${componentName} = require('./cjs/${componentName}')`
+			fileContent = `exports.${componentName} = require('./cjs/${componentName}').default`
 		}
 		else {
 			fileContent = `export { default as ${componentName} } from './esm/${componentName}'`
