@@ -1,12 +1,12 @@
 {
   "name": "@groww-tech/icon-store",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Icon Library customized for use in Groww",
   "files": [
-    "mi",
-    "custom",
-    "index.js",
-    "types.d.ts"
+		"mi",
+		"custom",
+		"types.d.ts",
+		"utils.js"
   ],
   "types": "types.d.ts",
   "sideEffects": false,
@@ -16,9 +16,9 @@
   },
   "scripts": {
     "generate": "run-p generate:*",
-    "generate:mi": "rm -rf mi && mkdir mi && svgr -d mi svgs/mi",
-    "generate:custom": "rm -rf custom && mkdir custom && svgr -d custom svgs/custom",
-    "transform": "node scripts/compileComponent.js && node scripts/generateTypes.js",
+    "generate:mi": "rm -rf mi && mkdir mi && svgr ./svgs/mi/ --out-dir ./mi/",
+    "generate:custom": "rm -rf custom && mkdir custom && svgr ./svgs/custom/ --out-dir ./custom/",
+    "transform": "node scripts/compileComponent.js && node scripts/generateIndexFile.js && node scripts/generateTypes.js && node scripts/createPackageJsonFiles.js",
     "clean-mi-icons": "rm -rf svgs/mi && mkdir svgs/mi",
     "clean-custom-icons": "rm -rf svgs/custom && mkdir svgs/custom",
     "build": "npm run generate && npm run transform",
@@ -54,15 +54,11 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/icon-store#readme",
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/plugin-transform-runtime": "^7.15.0",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/preset-react": "^7.14.5",
-    "@svgr/cli": "^5.5.0",
+		"@svgr/cli": "8.1.0",
     "chalk": "^4.1.2",
     "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
-    "terser": "^5.9.0"
+		"esbuild": "latest"
   },
   "peerDependencies": {
     "react": "^16.12.0 || ^17.0.0",
