@@ -1,3 +1,9 @@
+/**
+ * This function generate index files for both mi and custom icons
+ * both esm and cjs format (reexports)
+ * Providing an index file helps with developer ease of use and less number of imports overall
+ */
+
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');

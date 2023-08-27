@@ -1,3 +1,8 @@
+/**
+ * This function generate package.json files for both mi and custom icons
+ * package.json helps builders/bundlers to refer the correct file when building apps
+ */
+
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
