@@ -1,9 +1,8 @@
 const customTemplate = (
   { imports, interfaces, componentName, props, jsx, exports },
-  { tpl },
+  { tpl }
 ) => {
-
-  const componentRealName = componentName?.replace('Svg', '');
+  const componentRealName = componentName?.replace("Svg", "");
 
   return tpl`
 import {handleDefaultProps} from './utils';
@@ -16,7 +15,7 @@ function ${componentRealName}(oldProps) {
 
 	export default React.memo(${componentRealName});
 
-  `
-}
+  `;
+};
 
 module.exports = customTemplate;

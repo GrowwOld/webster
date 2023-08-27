@@ -1,8 +1,5 @@
 /* Ref: https://github.com/levrik/mdi-react/blob/master/scripts/generate-react.js */
-import {
-	ComponentType,
-	SVGAttributes,
-} from 'react';
+import { ComponentType, SVGAttributes } from "react";
 
 export interface ReactIconProps extends SVGAttributes<SVGElement> {
   /**

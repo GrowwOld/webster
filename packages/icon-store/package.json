@@ -3,10 +3,10 @@
   "version": "1.4.1",
   "description": "Icon Library customized for use in Groww",
   "files": [
-		"mi",
-		"custom",
-		"types.d.ts",
-		"utils.js"
+    "mi",
+    "custom",
+    "types.d.ts",
+    "utils.js"
   ],
   "types": "types.d.ts",
   "sideEffects": false,
@@ -54,11 +54,11 @@
   },
   "homepage": "https://github.com/Groww/webster/tree/develop/packages/icon-store#readme",
   "devDependencies": {
-		"@svgr/cli": "8.1.0",
+    "@svgr/cli": "8.1.0",
     "chalk": "^4.1.2",
     "npm-run-all": "^4.1.5",
     "react": "^16.12.0",
-		"esbuild": "latest"
+    "esbuild": "latest"
   },
   "peerDependencies": {
     "react": "^16.12.0 || ^17.0.0",
