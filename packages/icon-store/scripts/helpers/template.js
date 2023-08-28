@@ -1,32 +1,21 @@
-/**
- * Template for the icon component, used by svgr package.
- */
+const customTemplate = (
+  { imports, interfaces, componentName, props, jsx, exports },
+  { tpl }
+) => {
+  const componentRealName = componentName?.replace("Svg", "");
 
-function defaultTemplate(
-  { template },
-  opts,
-  { imports, componentName, jsx },
-) {
-  const plugins = ['jsx']
-  const jsTemplate = template.smart({ plugins })
-  const componentRealName = componentName.name?.replace('Svg', '');
+  return tpl`
+import {handleDefaultProps} from './utils';
 
-  return jsTemplate.ast`import React from 'react';
-  
-  function ${componentRealName}(oldProps) {    
-    const props = {
-      ...(oldProps.custom ? {} : { viewBox: '0 0 24 24', fill: 'currentColor', height: 24, width: 24}),
-      ...(oldProps.size ? {height: oldProps.size, width: oldProps.size} : {}),
-      ...oldProps,
-      size: undefined,
-      custom: undefined
-    };
+function ${componentRealName}(oldProps) {    
+   const props = handleDefaultProps(oldProps);
 
     return ${jsx}
   }
-  
-  export default React.memo(${componentRealName});
-    `
-}
 
-module.exports = defaultTemplate
+	export default React.memo(${componentRealName});
+
+  `;
+};
+
+module.exports = customTemplate;
