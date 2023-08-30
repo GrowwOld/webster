@@ -19,7 +19,7 @@ export const POPOVER_POSITIONS = {
 
 
 const Popover = (props: Props) => {
-  const [ isPopoverVisible, setPopoverVisible ] = useState(true);
+  const [ isPopoverVisible, setPopoverVisible ] = useState(false);
   const { direction, content, children, popoverWrapperClass } = props;
 
 
@@ -29,7 +29,7 @@ const Popover = (props: Props) => {
 
 
   const hideTip = () => {
-    // setPopoverVisible(false);
+    setPopoverVisible(false);
   };
 
   return (
