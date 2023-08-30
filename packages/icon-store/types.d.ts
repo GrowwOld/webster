@@ -1,10 +1,7 @@
 /* Ref: https://github.com/levrik/mdi-react/blob/master/scripts/generate-react.js */
-import {
-  ComponentType,
-  SVGProps,
-} from 'react';
+import { ComponentType, SVGAttributes } from "react";
 
-export interface ReactIconProps extends SVGProps<SVGSVGElement> {
+export interface ReactIconProps extends SVGAttributes<SVGElement> {
   /**
    * size is a common prop for height and width
    * @example
@@ -16,5 +13,3 @@ export interface ReactIconProps extends SVGProps<SVGSVGElement> {
 }
 
 export type ReactIconComponentType = ComponentType<ReactIconProps>;
-
-declare module '@groww-tech/icon-store/mi';
