@@ -9,7 +9,7 @@ import './informationBox.css';
 const COLOR_TYPE = {
   POSITIVE: 'var(--green100)',
   NEUTRAL: 'var(--gray50)',
-  DEFAULT: 'var(--tempBg)',
+  DEFAULT: 'var(--dangerouslySetPrimaryBg)',
   WARNING: 'var(--yellow100)',
   ERROR: 'var(--red100)'
 };

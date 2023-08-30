@@ -41,8 +41,6 @@
   justify-content: center;
   align-items: flex-start;
   padding: 12px 20px;
-  background-color: var(--tempBg);
-  box-shadow: 0 4px 12px var(--tempBoxShadow);
   color: var(--gray900);
   border-radius: 4px;
   margin: 0;

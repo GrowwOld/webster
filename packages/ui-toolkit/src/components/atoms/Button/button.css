@@ -67,7 +67,6 @@
 .btn51Secondary {
   border: 1px solid var(--green500);
   color: var(--green500);
-  background: var(--tempBg);
 }
 
 .btn51Tertiary {
@@ -102,7 +101,6 @@
   position: fixed;
   left: 0;
   border-top: 1px solid var(--gray150);
-  background: var(--tempBg);
   padding: 12px;
   width: 100%;
   z-index: 1000;

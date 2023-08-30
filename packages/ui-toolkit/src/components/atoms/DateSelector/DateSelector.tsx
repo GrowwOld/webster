@@ -48,7 +48,7 @@ class DateSelector extends PureComponent<Props, State> {
     } else if (invokeMode === INVOKE_MODE.TOOLTIP) {
       return (
         <div
-          className="date101TooltipMainDiv"
+          className="date101TooltipMainDiv borderPrimary backgroundPrimary"
           style={
             {
               top: tooltipTop,
@@ -123,16 +123,16 @@ class DateSelector extends PureComponent<Props, State> {
             let itemClass = 'date101Grid-item';
 
             if (defaultDate === date) {
-              itemClass += ' previously-active';
+              itemClass += ' previously-active backgroundOverlaySecondary';
 
             } else if (selectedDate === date) {
-              itemClass += invokeMode === INVOKE_MODE.DEFAULT ? ' default-active' : ' active';
+              itemClass += invokeMode === INVOKE_MODE.DEFAULT ? ' default-active contentInversePrimary' : ' active contentInversePrimary';
 
             } else if (isDisabled) {
-              itemClass += ' disabled';
+              itemClass += ' disabled backgroundPrimary';
 
             } else {
-              itemClass += ' regular';
+              itemClass += ' regular backgroundPrimary';
             }
 
             return (

@@ -38,14 +38,12 @@
 .date101Grid-item.regular {
   pointer-events: auto;
   color: var(--gray900);
-  background-color: var(--tempBg);
   cursor: pointer;
   transition: all .1s ease-in-out;
 }
 
 .date101Grid-item.active {
   pointer-events: auto;
-  color: var(--tempBg);
   background-color: var(--purple500);
   transform: scale(1.2);
   cursor: pointer;
@@ -53,7 +51,6 @@
 
 .date101Grid-item.default-active {
   pointer-events: auto;
-  color: var(--tempBg);
   background-color: var(--green500);
   transform: scale(1.2);
   cursor: pointer;
@@ -61,7 +58,6 @@
 
 .date101Grid-item.disabled {
   pointer-events: none;
-  background-color: var(--tempBg);
   cursor: not-allowed;
   color: var(--gray500);
 }
@@ -70,7 +66,6 @@
   pointer-events: auto;
   color: var(--gray900);
   transform: scale(1.2);
-  background-color: var(--tempBoxShadow);
   cursor: pointer;
 }
 
@@ -79,40 +74,18 @@
   background: var(--gray50);
 }
 
-.date101DropDiv {
-  border-radius: 4px;
-  box-shadow: 0 4px 10px 0 var(--tempBoxShadow);
-  border: 1px solid var(--gray150);
-  background-color: var(--tempBg);
-  padding: 10px;
-}
 
 #userCart .dropdown__content {
   z-index: 1;
 }
 
 .date101TooltipMainDiv {
-  background: var(--tempBg);
   border-radius: 5px;
   width: 350px;
   height: auto;
   position: absolute;
-  box-shadow: 0px 4px 20px 0px var(--tempBoxShadow);
   transition: all ease-in-out 0.3s;
 }
-
-/* .date101TooltipMainDiv:after {
-  position: absolute;
-  bottom: 138px;
-  right: -15px;
-  transform: rotate(90deg);
-  content: '';
-  width: 0px;
-  height: 0;
-  border-right: solid 10px var(--tempTransparent);
-  border-bottom: solid 10px var(--tempBg);
-  border-left: solid 10px var(--tempTransparent);
-} */
 
 .date101CrossButton {
   position: absolute;

@@ -14,20 +14,6 @@
   color: var(--gray700);
 }
 
-.chip12ChipUnselected:hover {
-  background: var(--tempBoxShadow);
-}
-
-.chip12ChipSelected {
-  color: var(--tempBg);
-  background: var(--green500);
-}
-
-.chip12ChipUnselected {
-  color: var(--gray900);
-  background: var(--tempBg);
-}
-
 .chip12Tag {
   color: var(--gray700);
   border: 1px solid var(--gray150);

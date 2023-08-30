@@ -97,7 +97,7 @@ class Select extends React.PureComponent<Props> {
               </div>
 
               <DropdownContent
-                className={`se55DropdownContent ${optionsParentClass}`}
+                className={`se55DropdownContent backgroundPrimary ${optionsParentClass}`}
                 animate={false}
               >
                 {

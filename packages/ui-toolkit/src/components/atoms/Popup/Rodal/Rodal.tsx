@@ -112,7 +112,7 @@ class Rodal extends React.Component<Props, State> {
 
     const Mask = showMask ? (
       <div
-        className="rodal-mask"
+        className="rodal-mask backgroundOverlaySecondary"
         style={customMaskStyles}
         onClick={closeMaskOnClick ? onClose : void 0}
       />
@@ -127,7 +127,7 @@ class Rodal extends React.Component<Props, State> {
     return (
       <div
         style={style}
-        className={cn('rodal', `rodal-fade-${animationType}`, className, 'rodal-background')}
+        className={cn('rodal', `rodal-fade-${animationType}`, className, 'backgroundOverlaySecondary')}
         onAnimationEnd={this.animationEnd}
         tabIndex={-1}
         ref={
@@ -141,7 +141,7 @@ class Rodal extends React.Component<Props, State> {
         <Dialog {...this.props}
           animationType={animationType}
         >
-          <div className={`child-wrapper ${popupClass}`}>
+          <div className={`child-wrapper backgroundPrimary ${popupClass}`}>
             {children}
             {CloseButton}
           </div>
