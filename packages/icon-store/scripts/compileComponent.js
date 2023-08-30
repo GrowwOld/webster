@@ -3,61 +3,68 @@
  * using babel transfromSync and minify the result using terser's api.
  */
 
+const esbuild = require("esbuild");
+const fs = require("fs");
+const path = require("path");
+const chalk = require("chalk");
 
-const babel = require('@babel/core');
-const fs = require('fs');
-const path = require('path');
-const { minify } = require("terser");
-const chalk = require('chalk')
-
-const babelConfig = {
-    presets: [
-        ['@babel/preset-env', {
-            "targets": {
-                "node": "current",
-                "browsers": [
-                    ">1%",
-                    "not ie 11"
-                ]
-            },
-            "loose": true,
-            "bugfixes": true,
-            "forceAllTransforms": true,
-            "corejs": 3,
-            "useBuiltIns": "entry"
-        }],
-        '@babel/preset-react'
-    ],
-    plugins: ['@babel/plugin-transform-runtime'],
-}
-
-
+const timeoutId = setTimeout(() => {
+  console.log("timeout occurred");
+}, 10000);
 
 function compileReactComponentsUsingBabel() {
-    const miComponentPath = path.join(__dirname, '../mi');
-    const customComponentPath = path.join(__dirname, '../custom');
+  const miComponentPath = path.join(__dirname, "../mi");
+  const customComponentPath = path.join(__dirname, "../custom");
 
-    [miComponentPath, customComponentPath].forEach(function (componentPath) {
-        console.log(chalk.green('Compiling resources from: ') + chalk.yellow(componentPath));
-        const componentFiles = fs.readdirSync(componentPath);
-        componentFiles.forEach(file => {
-            if (file.endsWith('.js') && !file.includes('index.js')) {
+  [miComponentPath, customComponentPath].forEach(function (componentPath) {
+    console.log(
+      chalk.green("Compiling resources from: ") + chalk.yellow(componentPath)
+    );
+    const componentFiles = fs.readdirSync(componentPath);
+    componentFiles.forEach(async (file) => {
+      if (file.endsWith(".js") && !file.includes("index.js")) {
+        const filePath = path.join(componentPath, file);
+        const cjsFilePath = path.join(componentPath, "cjs", file);
+        const esmFilePath = path.join(componentPath, "esm", file);
 
-                const filePath = path.join(componentPath, file);
-                const fileContents = fs.readFileSync(filePath, 'utf8');
-
-                const transformed = babel.transformSync(fileContents, babelConfig);
-
-                minify(transformed.code).then(result => {
-                    fs.writeFileSync(filePath, result.code);
-                }).catch(err => {
-                    console.error(err)
-                });
-            }
+        await esbuild.build({
+          entryPoints: [filePath],
+          outfile: cjsFilePath,
+          banner: {
+            js: "var React = require('react');",
+          },
+          format: "cjs",
+          jsx: "transform",
+          minify: true,
+          loader: {
+            ".js": "jsx",
+          },
         });
 
-        console.log(chalk.gray('Completed\n\n'))
+        await esbuild.build({
+          entryPoints: [filePath],
+          outfile: esmFilePath,
+          banner: {
+            js: "import React from 'react';",
+          },
+          format: "esm",
+          jsx: "transform",
+          minify: true,
+          loader: {
+            ".js": "jsx",
+          },
+        });
+
+        fs.rmSync(filePath);
+
+        if (componentPath === customComponentPath) {
+          clearTimeout(timeoutId);
+        }
+      }
     });
+
+    console.log(chalk.gray("Completed\n\n"));
+  });
 }
 
 compileReactComponentsUsingBabel();
