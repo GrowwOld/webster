@@ -3,7 +3,12 @@ import { max, min, bisector } from 'd3-array';
 import { localPoint } from '@visx/event';
 
 import { isEmpty } from '../utils/helpers';
-import type { Candle, CandleChartDefaultProps, CandleChartRequiredProps, CandleToolTipData } from './candleChartTypes';
+import type {
+  Candle,
+  CandleChartDefaultProps,
+  CandleChartRequiredProps,
+  CandleToolTipData
+} from './candleChartTypes';
 import type { EventType } from '../utils/commonTypes';
 
 import './candleChart.css';
@@ -144,7 +149,7 @@ const CandleChart = (props: Props) => {
       left: 0,
       boxShadow: 'none',
       padding: 0,
-      backgroundColor: 'var(--tempTransparent)',
+      backgroundColor: 'transparent',
       position: 'absolute',
       borderRadius: '3px',
       transform: `translate(${finalToolTipLeft}px, ${-1 * toolTipHeight}px)`

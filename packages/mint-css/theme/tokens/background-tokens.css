@@ -2,7 +2,7 @@
   background-color: var(--white);
 }
 html[data-theme="dark"] .backgroundPrimary{
-  background-color: var(--black)
+  background-color: var(--black);
 }
 
 
@@ -17,7 +17,7 @@ html[data-theme="dark"] .backgroundPrimary{
 
 
 .backgroundTransparent {
-  opacity: 0;
+  background-color: var(--overlay00);
 }
 
 
@@ -25,7 +25,7 @@ html[data-theme="dark"] .backgroundPrimary{
   background-color: var(--white);
 }
 html[data-theme="dark"] .backgroundSurfacePrimary {
-  background-color: var(--gray50)
+  background-color: var(--gray50);
 }
 
 
@@ -41,13 +41,17 @@ html[data-theme="dark"] .backgroundSurfaceSecondary {
   background-color: var(--gray900);
 }
 html[data-theme="dark"] .backgroundInversePrimary{
-  background-color: var(--white)
+  background-color: var(--white);
 }
 
 
 .backgroundOverlayPrimary {
-  background-color: var(--black);
-  opacity: 0.7;
+  background-color: var(--overlay70);
+}
+
+
+.backgroundOverlaySecondary {
+  background-color: var(--overlay30);
 }
 
 

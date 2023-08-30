@@ -32,8 +32,6 @@
   flex-grow: 1;
   outline: 0;
   color: var(--gray900);
-  background: var(--tempBg);
-
   /* -webkit-box-shadow: 0 0 0px 1000px white inset; */
 }
 
@@ -60,9 +58,9 @@
 .txtinput88input:-webkit-autofill:hover,
 .txtinput88input:-webkit-autofill:focus,
 .txtinput88input:-webkit-autofill:active {
-  /* box-shadow: 0 0 0 30px var(--tempBg) inset !important; msite change */
-  -webkit-box-shadow: 0 0 0 30px var(--tempBg) inset !important;
-  background-color: var(--tempBg) !important;
+  /* box-shadow: 0 0 0 30px var(--dangerouslySetPrimaryBg) inset !important; msite change */
+  -webkit-box-shadow: 0 0 0 30px var(--dangerouslySetPrimaryBg) inset !important;
+  background-color: var(--dangerouslySetPrimaryBg) !important;
   -webkit-text-fill-color: var(--gray900);
 }
 
@@ -191,7 +189,7 @@
     border: none;
     -webkit-text-fill-color: var(--gray900);
     border-bottom: 1px solid var(--gray700);
-    background: var(--tempBg);
+    background: var(--dangerouslySetPrimaryBg);
     color: var(--gray900);
   }
 
@@ -202,11 +200,11 @@
   input:-webkit-autofill,
   textarea:-webkit-autofill,
   select:-webkit-autofill {
-    background-color: var(--tempBg) !important;
+    background-color: var(--dangerouslySetPrimaryBg) !important;
   }
 
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px var(--tempBg) inset;
+    -webkit-box-shadow: 0 0 0 1000px var(--dangerouslySetPrimaryBg) inset;
   }
 
   input[type="number"]::-webkit-inner-spin-button,

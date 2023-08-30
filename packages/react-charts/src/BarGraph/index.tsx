@@ -99,7 +99,7 @@ const BarGraph = (props: BarGraphProps) => {
     >
       <rect width={width}
         height={height}
-        fill="var(--tempTransparent)"
+        fill="rgba(0, 0, 0, 0)"
         style={{ overflow: 'visible' }}
       />
       <g>

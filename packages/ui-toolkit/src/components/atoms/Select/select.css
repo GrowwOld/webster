@@ -13,7 +13,6 @@
   position: absolute;
   top: 43px;
   left: 0;
-  background: var(--tempBg);
   border: 1px solid var(--gray150);
   z-index: var(--zindex400);
 }

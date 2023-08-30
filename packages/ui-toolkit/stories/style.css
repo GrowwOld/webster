@@ -34,11 +34,6 @@
 
 /* Dropdown */
 
-.story_card {
-  box-shadow: 0 1px 7px 0 var(--tempBoxShadow);
-  background: var(--tempCardBg);
-}
-
 .story_dropdown_trigger {
   display: flex;
 }
@@ -58,7 +53,6 @@
 .story_dropdown_item {
   cursor: pointer;
   padding: var(--spacing-small) var(--spacing-small);
-  background: var(--tempBg);
   color: var(--gray900);
 }
 

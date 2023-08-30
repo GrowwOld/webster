@@ -112,12 +112,6 @@
   display: none;
 }
 
-/* Slider */
-/* .carousel14Loading .carousel14List
-{
-    background: var(--tempBg) url('./ajax-loader.gif') center center no-repeat;
-} */
-
 /* Arrows */
 
 .carousel14Arrow {
@@ -142,7 +136,6 @@
   z-index: 1;
   border-radius: 50%;
   border: 1px transparent;
-  color: var(--tempBg);
 }
 
 .carousel14Prev:hover,

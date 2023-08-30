@@ -34,11 +34,10 @@
 
 .cc12DateSelected {
   background: var(--green500);
-  color: var(--tempBg);
 }
 
 .cc12DateNotSelected:hover {
-  background: var(--tempBoxShadow);
+  background: var(--overlay30);
 }
 
 .cc12DateRow {
