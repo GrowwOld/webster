@@ -266,7 +266,7 @@ importers:
         specifier: ^7.14.6
         version: 7.21.0
       '@groww-tech/mint-css':
-        specifier: 0.0.5
+        specifier: 0.0.6
         version: link:../mint-css
       '@visx/axis':
         specifier: ^2.2.2
@@ -403,6 +403,9 @@ importers:
       '@groww-tech/icon-store':
         specifier: 1.4.1
         version: link:../icon-store
+      '@groww-tech/mint-css':
+        specifier: 0.0.6
+        version: link:../mint-css
       flat-carousel:
         specifier: 0.0.1
         version: 0.0.1
@@ -437,9 +440,6 @@ importers:
       '@babel/runtime':
         specifier: ^7.14.6
         version: 7.21.0
-      '@groww-tech/mint-css':
-        specifier: 0.0.5
-        version: link:../mint-css
       '@rollup/plugin-commonjs':
         specifier: ^19.0.0
         version: 19.0.2(rollup@2.79.1)
