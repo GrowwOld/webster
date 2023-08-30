@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -79,8 +79,6 @@
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/runtime": "^7.14.6",
-    "@groww-tech/mint-css": "0.0.6",
-    "@groww-tech/icon-store": "1.4.1",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@stitches/react": "^1.2.7",
@@ -114,6 +112,8 @@
     "typescript": "4.5.5"
   },
   "dependencies": {
+    "@groww-tech/mint-css": "0.0.6",
+    "@groww-tech/icon-store": "1.4.1",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
     "object-assign": "4.1.1",
