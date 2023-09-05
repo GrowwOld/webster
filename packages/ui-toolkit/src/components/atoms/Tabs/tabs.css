@@ -3,6 +3,10 @@
   max-height: 55px;
 }
 
+.bottomBorderOnly {
+  border-width: 0 0 1px 0;
+}
+
 .tabs8Text {
   line-height: 15px;
   padding-right: 45px;
