@@ -1,7 +1,10 @@
 .tabs8Container {
   position: relative;
   max-height: 55px;
-  border-bottom: 1px solid var(--gray150);
+}
+
+.bottomBorderOnly {
+  border-width: 0 0 1px 0;
 }
 
 .tabs8Text {

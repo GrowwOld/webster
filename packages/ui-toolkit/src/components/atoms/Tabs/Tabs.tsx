@@ -34,7 +34,7 @@ const Tabs = (props: Props) => {
 
 
   return (
-    <div className={cn('tabs8Container', { 'borderPrimary': showBottomBorder, 'tabs8PageWidth20Mgn': isHorizScrollable })}>
+    <div className={cn('tabs8Container', { 'borderPrimary bottomBorderOnly': showBottomBorder, 'tabs8PageWidth20Mgn': isHorizScrollable })}>
       {
         ((typeof width === 'number' ? width : parseInt(width)) > 0) &&
         <div className="tabs8Line mfSelected"
