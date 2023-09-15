@@ -20,8 +20,13 @@
   margin: 3px auto;
 }
 
+/* NOTE: Here below order matters as active, hover state color override */
 .mn12MonthBack:hover {
   background-color: var(--overlay30);
+}
+
+.mn12MonthCurrent {
+  background-color: var(--green300);
 }
 
 .mn12MonthTextSelected {
@@ -36,4 +41,9 @@
 
 .mn12YearIcon {
   font-size: 22px !important;
+}
+
+.cc12DisableDate {
+  opacity: 0.2;
+  cursor: default;
 }

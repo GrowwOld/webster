@@ -32,12 +32,17 @@
 
 .cc12DateNotSelected {}
 
-.cc12DateSelected {
-  background: var(--green500);
-}
-
+/* NOTE: Here below order matters as active, hover state color override */
 .cc12DateNotSelected:hover {
   background: var(--overlay30);
+}
+
+.cc12DateCurrent {
+  background: var(--green300);
+}
+
+.cc12DateSelected {
+  background: var(--green500);
 }
 
 .cc12DateRow {
@@ -52,4 +57,5 @@
 
 .cc12DisableDate {
   opacity: 0.2;
+  cursor: default;
 }
