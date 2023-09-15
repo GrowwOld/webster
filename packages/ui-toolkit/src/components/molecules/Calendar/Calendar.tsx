@@ -23,7 +23,7 @@ const Calendar = (props:Props) => {
 
   const emptyFunction = () => void 0;
 
-  const CalendarComponent = type === 'MONTH' ? MonthCalendar : DateCalendar;
+  const CalendarComponent = type === CALENDAR_TYPE.MONTH ? MonthCalendar : DateCalendar;
 
   return (
     <CalendarComponent

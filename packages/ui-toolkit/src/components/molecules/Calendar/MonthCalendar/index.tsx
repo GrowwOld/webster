@@ -30,20 +30,23 @@ class MonthCalendar extends React.PureComponent<Props, State> {
     const hasNextYear = !(maxDate && dateToShow.getFullYear() === maxDate.getFullYear());
     const hasPrevYear = !(minDate && dateToShow.getFullYear() === minDate.getFullYear());
 
+    const handlers = {
+      'PREVIOUS_MONTH': () => {
+        if (hasPrevYear) this.goToPreviousYear();
+      },
+      'NEXT_MONTH': () => {
+        if (hasNextYear) this.goToNextYear();
+      }
+    };
+
     return (
       <div className='contentPrimary'>
         <div className='card borderPrimary mn12Box'>
           <div className="valign-wrapper mn12YearRow">
-            <div
-              className="valign-wrapper cur-po"
-            >
+            <div className="valign-wrapper cur-po">
               <KeyboardArrowLeft
                 fontSize={21}
-                onClick={
-                  () => {
-                    if (hasPrevYear) this.goToPreviousYear();
-                  }
-                }
+                onClick={handlers.PREVIOUS_MONTH}
                 className={cn({ 'contentSecondary cur-no': !hasPrevYear })}
               />
             </div>
@@ -51,11 +54,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
             <div className="valign-wrapper cur-po">
               <KeyboardArrowRight
                 fontSize={21}
-                onClick={
-                  () => {
-                    if (hasNextYear) this.goToNextYear();
-                  }
-                }
+                onClick={handlers.NEXT_MONTH}
                 className={cn({ 'contentSecondary cur-no': !hasNextYear })}
               />
             </div>

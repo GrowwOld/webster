@@ -65,54 +65,49 @@ class DateCalendar extends React.PureComponent<Props, State> {
     const hasNextMonth = !(maxDate && dateToShow.getMonth() === maxDate.getMonth() && dateToShow.getFullYear() === maxDate.getFullYear());
     const hasPrevMonth = !(minDate && dateToShow.getMonth() === minDate.getMonth() && dateToShow.getFullYear() === minDate.getFullYear());
 
+    const handlers = {
+      'PREVIOUS_YEAR': () => {
+        if (hasPrevYear) this.goToPreviousYear();
+      },
+      'PREVIOUS_MONTH': () => {
+        if (hasPrevMonth) this.goToPreviousMonth();
+      },
+      'NEXT_MONTH': () => {
+        if (hasNextMonth) this.goToNextMonth();
+      },
+      'NEXT_YEAR': () => {
+        if (hasNextYear) this.goToNextYear();
+      }
+    };
+
     return (
       <div className="valign-wrapper cc12YearBox">
         <div className="valign-wrapper cur-po">
           <KeyboardDoubleArrowLeft
             fontSize={21}
-            onClick={
-              () => {
-                if (hasPrevYear) this.goToPreviousYear();
-              }
-            }
+            onClick={handlers.PREVIOUS_YEAR}
             className={cn({ 'contentSecondary cur-no': !hasPrevYear })}
           />
         </div>
-        <div
-          className="valign-wrapper cur-po"
-        >
+        <div className="valign-wrapper cur-po">
           <KeyboardArrowLeft fontSize={21}
-            onClick={
-              () => {
-                if (hasPrevMonth) this.goToPreviousMonth();
-              }
-            }
+            onClick={handlers.PREVIOUS_MONTH}
             className={cn({ 'contentSecondary cur-no': !hasPrevMonth })}
           />
         </div>
         <div className='cc12Year bodyRegular16'>
           <span>{getMonthAbbrByIndex(dateToShow.getMonth() + 1)} {dateToShow.getFullYear()}</span>
         </div>
-        <div
-          className="valign-wrapper cur-po"
-        >
+        <div className="valign-wrapper cur-po">
           <KeyboardArrowRight fontSize={21}
-            onClick={
-              () => {
-                if (hasNextMonth) this.goToNextMonth();
-              }
-            }
+            onClick={handlers.NEXT_MONTH}
             className={cn({ 'contentSecondary cur-no': !hasNextMonth })}
           />
         </div>
         <div className="valign-wrapper cur-po">
           <KeyboardDoubleArrowRight
             fontSize={21}
-            onClick={
-              () => {
-                if (hasNextYear) this.goToNextYear();
-              }
-            }
+            onClick={handlers.NEXT_YEAR}
             className={cn({ 'contentSecondary cur-no': !hasNextYear })}
           />
         </div>
