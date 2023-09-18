@@ -68,6 +68,11 @@ class MonthCalendar extends React.PureComponent<Props, State> {
                 const monthSelected = newDate.getTime() === selectedDate?.getTime();
                 const isDisabled = (minDate && compareDate(minDate, newDate)) || (maxDate && compareDate(newDate, maxDate));
 
+
+                const onClickHandler = () => {
+                  if (!isDisabled) this.onMonthClick(index);
+                };
+
                 return (
                   <div className="mn12Month"
                     key={`${dateToShow?.getTime()}${index}`}
@@ -81,11 +86,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
                           'cc12DisableDate': isDisabled
                         })
                       }
-                      onClick={
-                        () => {
-                          if (!isDisabled) this.onMonthClick(index);
-                        }
-                      }
+                      onClick={onClickHandler}
                     >
                       {month}
                     </div>

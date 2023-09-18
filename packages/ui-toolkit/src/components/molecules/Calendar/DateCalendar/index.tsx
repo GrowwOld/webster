@@ -157,6 +157,11 @@ class DateCalendar extends React.PureComponent<Props, State> {
                       const dateSelected = newDate.getTime() === selectedDate?.getTime();
                       const isDisabled = (minDate && compareDate(minDate, newDate)) || (maxDate && compareDate(newDate, maxDate));
 
+
+                      const onClickHandler = () => {
+                        if (!isDisabled) this.onDateClick(date);
+                      };
+
                       return (
                         <div className="cc12DateBlock"
                           key={`${newDate.getTime()}${index}`}
@@ -170,11 +175,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                                 'cc12DisableDate': isDisabled
                               })
                             }
-                            onClick={
-                              () => {
-                                if (!isDisabled) this.onDateClick(date);
-                              }
-                            }
+                            onClick={onClickHandler}
                           >
                             {date}
                           </span>
@@ -182,6 +183,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                       );
                     }
 
+                    // NOTE: Renders the empty date block or date offsets
                     return (
                       <div className="cc12DateBlock"
                         key={index}
