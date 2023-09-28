@@ -1,48 +1,44 @@
 import React from 'react';
 
 import './toggleSwitch.css';
+import '@groww-tech/mint-css/dist/index.css';
 
 
 const ToggleSwitch = (props: Props) => {
   const {
-    switchCircleColor, activeBackgroundColor, width,
-    inactiveBackgroundColor, onChange, height,
+    onChange, isDisabled,
     isActive, leftText, rightText, dataTestId
   } = props;
-
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
-  const circleDiameter = height - 4;
+  const circleDiameter = 20;
 
   const switchLabelStyle = {
-    background: isActive ? activeBackgroundColor : inactiveBackgroundColor,
-    width,
-    height,
-    borderRadius: height,
+    borderRadius: '24px',
     top: '0px', // required here, as somewhere in the project(globally) these values are altered
     left: '0px' // required here
   };
-  const switchDivStyle = {
-    width,
-    height
-  };
+
   const inputStyle = {
     margin: '0px' // required here, as somewhere in the project(globally) these values are altered
   };
 
+
+  const switchDivisonStyle = {
+    pointerEvents: isDisabled ? 'none' : 'unset'
+  };
+
   const switchButtonStyle = {
-    background: switchCircleColor,
-    width: `${circleDiameter}px`,
-    height: `${circleDiameter}px`,
-    transform: isActive ? `translateX(${width - circleDiameter - 4}px)` : 'none'
+    transform: isActive ? 'translateX(16px)' : 'none'
   };
 
   return (
     <div className="valign-wrapper">
       {leftText}
-      <div style={switchDivStyle}
+      <div
         className='sw348reactSwitchDivision'
         data-test-id={dataTestId.length ? dataTestId : null}
         onClick={(e) => onChange(e)}
+        style={switchDivisonStyle}
       >
         <input
           style={inputStyle}
@@ -52,12 +48,11 @@ const ToggleSwitch = (props: Props) => {
           id="reactSwitchId"
           type="checkbox"
         />
-        <div
-          style={switchLabelStyle}
-          className="sw348reactSwitchLabel"
+        <div style={switchLabelStyle}
+          className={isDisabled ? 'backgroundTertiary sw348reactSwitchLabel' : isActive ? 'backgroundPositive sw348reactSwitchLabel' : 'backgroundTertiary sw348reactSwitchLabel'}
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton borderPrimary'}
+            className={'sw348reactSwitchButton backgroundPrimary'}  //check the 'backgrpundPrimary' property, according to design language
           />
         </div>
       </div>
@@ -69,13 +64,10 @@ const ToggleSwitch = (props: Props) => {
 
 
 const defaultProps: DefaultProps = {
-  width: 52,
-  height: 24,
   leftText: '',
   rightText: '',
-  inactiveBackgroundColor: 'var(--gray700)',
-  switchCircleColor: 'var(--white)',
-  activeBackgroundColor: 'var(--green500)',
+  isActive: true,
+  isDisabled: false,
   dataTestId: ''
 };
 
@@ -87,14 +79,11 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  width: number;
-  height: number;
-  switchCircleColor: string;
-  activeBackgroundColor: string;
   leftText: React.ReactNode;
   rightText: React.ReactNode;
-  inactiveBackgroundColor: string;
   dataTestId: string;
+  isActive: boolean;
+  isDisabled: boolean;
 }
 
 
