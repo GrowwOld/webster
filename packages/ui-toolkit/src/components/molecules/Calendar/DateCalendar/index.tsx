@@ -81,7 +81,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
     };
 
     return (
-      <div className="valign-wrapper cc12YearBox">
+      <div className="valign-wrapper vspace-between">
         <div className="valign-wrapper cur-po">
           <KeyboardDoubleArrowLeft
             fontSize={21}
@@ -118,7 +118,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
   getMonthUI = () => {
     return (
-      <div className='cc12WeekNameBox valign-wrapper contentSecondary bodyRegular14'>
+      <div className='cc12WeekNameBox valign-wrapper vspace-between contentSecondary bodyRegular14'>
         {
           WEEK_DAYS.map((day) => (
             <span className="cc12WeekName"
@@ -170,7 +170,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                             className={
                               cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
                                 'cc12DateCurrent contentInversePrimary': this.isDateSelected(date),
-                                'cc12DateSelected contentInversePrimary': dateSelected,
+                                'backgroundPositive contentInversePrimary': dateSelected,
                                 'cc12DateNotSelected': !dateSelected && !isDisabled,
                                 'cc12DisableDate': isDisabled
                               })

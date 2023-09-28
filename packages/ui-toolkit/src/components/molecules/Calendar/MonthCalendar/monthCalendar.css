@@ -3,10 +3,6 @@
   width: 220px;
 }
 
-.mn12YearRow {
-  justify-content: space-between;
-}
-
 .mn12Month {
   text-align: center;
   min-width: 33%;
@@ -29,13 +25,8 @@
   background-color: var(--green300);
 }
 
-.mn12MonthTextSelected {
-  background-color: var(--green500);
-}
-
 .mn12MonthBox {
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 12px;
 }
 

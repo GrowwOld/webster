@@ -42,7 +42,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
     return (
       <div className='contentPrimary'>
         <div className='card borderPrimary mn12Box'>
-          <div className="valign-wrapper mn12YearRow">
+          <div className="valign-wrapper vspace-between">
             <div className="valign-wrapper cur-po">
               <KeyboardArrowLeft
                 fontSize={21}
@@ -59,7 +59,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
               />
             </div>
           </div>
-          <div className="valign-wrapper mn12MonthBox">
+          <div className="valign-wrapper vspace-between mn12MonthBox">
             {
               MONTHS.map((month, index) => {
                 const newDate = new Date(dateToShow);
@@ -81,7 +81,7 @@ class MonthCalendar extends React.PureComponent<Props, State> {
                       className={
                         cn('mn12MonthText backgroundPrimary valign-wrapper cur-po bodyRegular14', {
                           'mn12MonthCurrent contentInversePrimary': this.isMonthSelected(index),
-                          'mn12MonthTextSelected contentInversePrimary': monthSelected,
+                          'backgroundPositive contentInversePrimary': monthSelected,
                           'mn12MonthBack backgroundPrimary': !monthSelected && !isDisabled,
                           'cc12DisableDate': isDisabled
                         })

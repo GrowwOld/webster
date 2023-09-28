@@ -5,12 +5,7 @@
   cursor: auto;
 }
 
-.cc12YearBox {
-  justify-content: space-between;
-}
-
 .cc12WeekNameBox {
-  justify-content: space-between;
   margin-top: 14px;
   text-align: center;
 }
@@ -39,10 +34,6 @@
 
 .cc12DateCurrent {
   background: var(--green300);
-}
-
-.cc12DateSelected {
-  background: var(--green500);
 }
 
 .cc12DateRow {
