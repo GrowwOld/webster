@@ -21,7 +21,8 @@ const RadioButton = (props: Props) => {
     parentClassName,
     iconClassName,
     radioDirection,
-    dataTestId
+    dataTestId,
+    isDisabled
   } = props;
 
   const labelParentClassName = cn({
@@ -31,23 +32,32 @@ const RadioButton = (props: Props) => {
     'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT
   });
 
+
+  const radioButtonClick = () => {
+    if (!isDisabled) {
+      onSelect();
+    }
+  };
+
   return (
     <div
-      onClick={onSelect}
+      onClick={radioButtonClick}
       data-test-id={dataTestId.length ? dataTestId : null}
-      className={`radioCo11Box ${parentClassName} ${radioDirection === RADIO_DIRECTION.RIGHT ? 'radioCo11BoxReverse' : ''}`}
+      className={`radioCo11Box ${parentClassName}  ${radioDirection === RADIO_DIRECTION.RIGHT ? 'radioCo11BoxReverse' : ''}`}
     >
       {
         selected
           ? (
             <RadioButtonChecked
               size={20}
+              color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
               className={`radioCo11Icon ${iconClassName}`}
             />
           )
           : (
             <RadioButtonUnchecked
               size={20}
+              color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
               className={`radioCo11Icon ${iconClassName}`}
             />
           )
@@ -65,7 +75,8 @@ const defaultProps: DefaultProps = {
   labelClassName: '',
   parentClassName: 'bas11RadioParent',
   dataTestId: '',
-  radioDirection: RADIO_DIRECTION.LEFT
+  radioDirection: RADIO_DIRECTION.LEFT,
+  isDisabled: false
 };
 
 
@@ -75,6 +86,7 @@ type DefaultProps = {
   radioDirection: ValueOf<typeof RADIO_DIRECTION>;
   iconClassName: string;
   dataTestId: string;
+  isDisabled: boolean;
 }
 
 
