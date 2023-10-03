@@ -14,17 +14,17 @@ export default {
 
 
 const Template: Story<ToggleSwitchProps> = (args) => {
-  const [ checked, setChecked ] = React.useState(true);
+  const [ isChecked, setIsChecked ] = React.useState(true);
 
 
   const onChange = () => {
-    setChecked(!checked);
+    setIsChecked(!isChecked);
   };
 
   return (
     <div className="valign-wrapper">
       <ToggleSwitch {...args}
-        isActive={checked}
+        isActive={isChecked}
         onChange={onChange}
       />
     </div>
@@ -35,7 +35,7 @@ export const Default = Template.bind({});
 Default.args = {
   leftText: '',
   rightText: '',
-  isActive: 'true',
+  isActive: false,
   isDisabled: 'true'
 }
 
@@ -48,13 +48,10 @@ WithText.args = {
 
 export const SwitchCircle = Template.bind({});
 SwitchCircle.args = {
-  ...Default.args,
-  switchCircleColor: 'var(--red500)'
+  ...Default.args
 }
 
 export const Custom = Template.bind({});
-Custom.args = {
-  ...Default.args,
-  inactiveBackgroundColor: 'var(--red500)',
-  activeBackgroundColor: 'var(--purple500)'
+Custom.args = 
+  ...Default.args
 };

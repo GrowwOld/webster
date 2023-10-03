@@ -1,13 +1,18 @@
 import React from 'react';
 
-import './toggleSwitch.css';
 import '@groww-tech/mint-css/dist/index.css';
+
+import './toggleSwitch.css';
 
 
 const ToggleSwitch = (props: Props) => {
   const {
-    onChange, isDisabled,
-    isActive, leftText, rightText, dataTestId
+    onChange,
+    isDisabled,
+    isActive,
+    leftText,
+    rightText,
+    dataTestId
   } = props;
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
   const circleDiameter = 20;
