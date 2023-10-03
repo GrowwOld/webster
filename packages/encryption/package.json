@@ -51,6 +51,6 @@
     "vitest": "0.29.7"
   },
   "peerDependencies": {
-    "crypto-js": ">=3.3.0"
+    "crypto-js": ">= 3.3.0"
   }
 }
