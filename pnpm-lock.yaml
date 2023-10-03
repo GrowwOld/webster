@@ -121,8 +121,8 @@ importers:
   packages/encryption:
     dependencies:
       crypto-js:
-        specifier: 4.1.1
-        version: 4.1.1
+        specifier: 3.3.0
+        version: 3.3.0
     devDependencies:
       '@types/crypto-js':
         specifier: 4.1.1
@@ -402,7 +402,7 @@ importers:
     dependencies:
       '@groww-tech/icon-store':
         specifier: 1.4.1
-        version: link:../icon-store
+        version: 1.4.1(react-dom@16.14.0)(react@16.14.0)
       '@groww-tech/mint-css':
         specifier: 0.0.6
         version: link:../mint-css
@@ -2522,6 +2522,16 @@ packages:
       lodash.isequal: 4.5.0
       react: 16.14.0
       react-helmet: 6.1.0(react@16.14.0)
+    dev: false
+
+  /@groww-tech/icon-store@1.4.1(react-dom@16.14.0)(react@16.14.0):
+    resolution: {integrity: sha512-woALP51PnK8emtJBNk1kkEF5YC8P3CHsU0oeayWSU7fkgcQc7Qh/8CH2+ufKRgf+cNA/tgpCBWacuRUg/8R6Bg==}
+    peerDependencies:
+      react: ^16.12.0 || ^17.0.0
+      react-dom: ^16.12.0 || ^17.0.0
+    dependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     dev: false
 
   /@humanwhocodes/config-array@0.5.0:
@@ -7031,8 +7041,8 @@ packages:
       randomfill: 1.0.4
     dev: true
 
-  /crypto-js@4.1.1:
-    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
+  /crypto-js@3.3.0:
+    resolution: {integrity: sha512-DIT51nX0dCfKltpRiXV+/TVZq+Qq2NgF4644+K7Ttnla7zEzqc+kjJyiB96BHNyUTBxyjzRcZYpUdZa+QAqi6Q==}
     dev: false
 
   /css-color-names@0.0.4:
