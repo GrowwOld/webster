@@ -50,8 +50,3 @@ export const SwitchCircle = Template.bind({});
 SwitchCircle.args = {
   ...Default.args
 }
-
-export const Custom = Template.bind({});
-Custom.args = 
-  ...Default.args
-};
