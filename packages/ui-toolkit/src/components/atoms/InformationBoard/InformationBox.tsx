@@ -14,14 +14,6 @@ const COLOR_TYPE = {
   ERROR: 'var(--red100)'
 };
 
-const BORDER_COLOR = {
-  POSITIVE: 'var(--green100)',
-  NEUTRAL: 'var(--gray150)',
-  DEFAULT: 'var(--gray150)',
-  WARNING: 'var(--yellow500)',
-  ERROR: 'var(--red500)'
-};
-
 
 const InformationBox = (props: Props) => {
   const {
@@ -31,7 +23,6 @@ const InformationBox = (props: Props) => {
     content,
     showIcon,
     iconComponent,
-    outlined,
     informationBoxClass,
     informationBoxStyle,
     dataTestId
@@ -45,11 +36,7 @@ const InformationBox = (props: Props) => {
   const parentDivStyle = {
     height: height,
     width: width,
-    ...(
-      outlined
-        ? { border: `1px solid ${BORDER_COLOR[type]}` }
-        : { background: COLOR_TYPE[type] }
-    ),
+    background: COLOR_TYPE[type],
     ...informationBoxStyle
   };
 
@@ -81,7 +68,6 @@ const defaultProps: DefaultProps = {
   iconComponent: (props: ReactIconProps) => <Info {...props} />,
   width: 'auto',
   height: 'auto',
-  outlined: false,
   type: 'DEFAULT',
   informationBoxClass: '',
   informationBoxStyle: {},
@@ -100,7 +86,6 @@ type DefaultProps = {
    * iconComponent function returns svg icon component, we pass some extra props from InformationBox component
    */
   iconComponent: (props: ReactIconProps) => JSX.Element;
-  outlined: boolean;
   width: number | 'auto';
   height: number | 'auto';
   informationBoxClass: string;
