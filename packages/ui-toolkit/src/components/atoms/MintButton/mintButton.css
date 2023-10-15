@@ -1,0 +1,165 @@
+.btn96DefaultClass {
+  border-radius: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+/* -- Size Classes -- */
+
+.btn96SmallButton {
+    min-width: 88px;
+    height: 32px;
+    font-size: 12px;
+    width: fit-content;
+}
+
+.btn96MediumButton {
+    min-width: 108px;
+    height: 40px;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.btn96LargeButton {
+    padding: 12px 32px 12px 24px;
+    width: fit-content;
+    min-width: 172px;
+    height: 48px;
+    font-size: 16px;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: stretch;
+}
+
+.btn96IconLeft {
+ margin-right: 8px;
+}
+
+/* -- Primary Button -- */
+
+.btn96PrimaryButton {
+  background-color: var(--green500);
+  color: var(--dangerouslySetPrimaryBg);
+}
+
+
+/* -- Seconday Button -- */
+.btn96SecondaryButtonWithAccent {
+  background-color: var(--green100);
+  color: var(--green500);
+}
+
+.btn96SecondaryButtonWithoutAccent {
+ background-color: var(--dangerouslySetPrimaryBg);
+ color: var(--gray900);
+ border: 1px solid var(--gray150);
+}
+
+.btn96SecondaryButtonWithoutAccent:hover {
+ background-color: var(--gray50);
+}
+
+.btn96SecondaryButtonWithoutAccentDisabled {
+ background-color: var(--gray150);
+}
+
+/* -- Tertairy Button -- */
+
+.btn96TertiaryButtonWithoutAccent {
+    color: var(--gray900);
+}
+
+.btn96TertiaryButtonWithoutAccent .btn96ParentDimension {
+    border-bottom: 1px dashed var(--gray700);
+}
+
+.btn96TertiaryButtonWithoutAccent:hover {
+    background-color: var(--gray50);
+}
+
+
+.btn96TertiaryButtonWithAccent {
+    background-color: var(--dangerouslySetPrimaryBg);
+    color: var(--gray900);
+}
+
+.btn96TertiaryButtonWithAccent{
+  color: var(--green500);
+}
+
+.btn96TertiaryButtonWithAccent:hover {
+ background-color: var(--green100);
+}
+
+
+/* -- Compact classes -- */ 
+.btn96CompactButton {
+  width: fit-content;
+  min-width: fit-content;
+  border-radius: 0;
+}
+
+
+/* -- Disabled State -- */
+.btn96ButtonDisabled {
+  background-color: var(--gray50);
+  color: var(--gray500);
+  border: none;
+}
+
+.btn96TertiaryButtonDisabled {
+    color: var(--gray400);
+}
+
+.btn96TertiaryButtonDisabled .btn96ParentDimension {
+    border-bottom: 1px dashed var(--gray400);
+}
+
+
+/* Loader Classes */
+
+.btn96LoaderContainer {
+  margin: 0 24px;
+  height: 100%;
+}
+
+
+.btn96PrimaryButtonLoader {
+  border: 2px solid var(--dangerouslySetPrimaryBg);
+  border-top-color: var(--green500);
+}
+
+
+.btn96LoaderWithoutAccent {
+ border: 2px solid var(--gray900);
+ border-right-color: transparent;
+}
+
+.btn96MediumButton .btn96LoaderSize {
+  margin-top: 4px;
+  width: 20px;
+  height: 20px;
+}
+
+.btn96LargeButton .btn96LoaderSize {
+ margin-top: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.btn96SmallButton .btn96LoaderSize {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+}
+
+.btn96BottomFixed {
+    position: fixed;
+    left: 0;
+    border-top: 1px solid var(--gray150);
+    padding: 12px;
+    width: 100%;
+    z-index: 1000;
+    bottom: 0;
+}
