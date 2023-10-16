@@ -97,6 +97,7 @@
 .btn96CompactButton {
   width: fit-content;
   min-width: fit-content;
+  height: fit-content;
   border-radius: 0;
 }
 

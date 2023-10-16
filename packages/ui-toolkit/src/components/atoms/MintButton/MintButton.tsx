@@ -26,27 +26,23 @@ const MintButton = (props: Props) => {
     fixToBottom
   } = props;
 
-  const primaryButtonClassnames = cn({
-
-  });
-
   const classname = cn(
     'btn96DefaultClass',
     'absolute-center',
     'cur-po',
     {
-      'btn96SmallButton': size === 'Small' && !isCompact,
-      'btn96MediumButton': size === 'Medium' && !isCompact,
-      'btn96LargeButton': size === 'Large' && !isCompact,
+      'btn96SmallButton': size === 'Small',
+      'btn96MediumButton': size === 'Medium',
+      'btn96LargeButton': size === 'Large',
+      'btn96CompactButton': buttonType === 'Tertiary' && isCompact,
       'btn96PrimaryButton': buttonType === 'Primary',
-      'btn96ButtonDisabled': buttonType !== 'Tertiary' && isDisabled,
-      'btn96TertiaryButtonDisabled': buttonType === 'Tertiary' && isDisabled,
       'btn96SecondaryButtonWithAccent': buttonType === 'Secondary' && isAccent && !isDisabled,
       'btn96SecondaryButtonWithoutAccent': buttonType === 'Secondary' && !isAccent && !isDisabled,
       'btn96SecondaryButtonWithoutAccentDisabled': buttonType === 'Secondary' && !isAccent && isLoading,
-      'btn96CompactButton': buttonType === 'Tertiary' && isCompact,
+      'btn96TertiaryButtonDisabled': buttonType === 'Tertiary' && isDisabled,
       'btn96TertiaryButtonWithAccent': buttonType === 'Tertiary' && isAccent && !isDisabled,
-      'btn96TertiaryButtonWithoutAccent': buttonType === 'Tertiary' && !isAccent && !isDisabled
+      'btn96TertiaryButtonWithoutAccent': buttonType === 'Tertiary' && !isAccent && !isDisabled,
+      'btn96ButtonDisabled': buttonType !== 'Tertiary' && isDisabled
     });
 
 
