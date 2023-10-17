@@ -43,6 +43,9 @@
   color: var(--dangerouslySetPrimaryBg);
 }
 
+.btn96PrimaryButton:hover {
+  opacity: 0.9;
+}
 
 /* -- Seconday Button -- */
 .btn96SecondaryButtonWithAccent {
