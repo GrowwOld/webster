@@ -95,6 +95,26 @@
  background-color: var(--green100);
 }
 
+/* -- Positive Button -- */
+.btn96PositiveButton {
+ background-color: var(--green500);
+ color: var(--dangerouslySetPrimaryBg);
+}
+
+.btn96PositiveButton:hover {
+  opacity: 0.8;
+}
+
+/* -- Negative Button -- */ 
+.btn96NegativeButton {
+  background-color: var(--red500);
+  color: var(--dangerouslySetPrimaryBg);
+}
+
+.btn96NegativeButton:hover {
+  opacity: 0.9;
+}
+
 
 /* -- Compact classes -- */ 
 .btn96CompactButton {
@@ -131,7 +151,7 @@
 
 .btn96PrimaryButtonLoader {
   border: 2px solid var(--dangerouslySetPrimaryBg);
-  border-top-color: var(--green500);
+  border-top-color: transparent;
 }
 
 

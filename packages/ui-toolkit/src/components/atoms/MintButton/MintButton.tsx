@@ -10,7 +10,7 @@ const MintButton = (props: Props) => {
   const {
     size,
     buttonText,
-    buttonType,
+    variant,
     onClick,
     isAccent,
     isCompact,
@@ -34,22 +34,24 @@ const MintButton = (props: Props) => {
       'btn96SmallButton': size === 'Small',
       'btn96MediumButton': size === 'Medium',
       'btn96LargeButton': size === 'Large',
-      'btn96CompactButton': buttonType === 'Tertiary' && isCompact,
-      'btn96PrimaryButton': buttonType === 'Primary',
-      'btn96SecondaryButtonWithAccent': buttonType === 'Secondary' && isAccent && !isDisabled,
-      'btn96SecondaryButtonWithoutAccent': buttonType === 'Secondary' && !isAccent && !isDisabled,
-      'btn96SecondaryButtonWithoutAccentDisabled': buttonType === 'Secondary' && !isAccent && isLoading,
-      'btn96TertiaryButtonDisabled': buttonType === 'Tertiary' && isDisabled,
-      'btn96TertiaryButtonWithAccent': buttonType === 'Tertiary' && isAccent && !isDisabled,
-      'btn96TertiaryButtonWithoutAccent': buttonType === 'Tertiary' && !isAccent && !isDisabled,
-      'btn96ButtonDisabled': buttonType !== 'Tertiary' && isDisabled
+      'btn96CompactButton': variant === 'Tertiary' && isCompact,
+      'btn96PrimaryButton': variant === 'Primary',
+      'btn96PositiveButton': variant === 'Positive',
+      'btn96NegativeButton': variant === 'Negative',
+      'btn96SecondaryButtonWithAccent': variant === 'Secondary' && isAccent && !isDisabled,
+      'btn96SecondaryButtonWithoutAccent': variant === 'Secondary' && !isAccent && !isDisabled,
+      'btn96SecondaryButtonWithoutAccentDisabled': variant === 'Secondary' && !isAccent && isLoading,
+      'btn96TertiaryButtonDisabled': variant === 'Tertiary' && isDisabled,
+      'btn96TertiaryButtonWithAccent': variant === 'Tertiary' && isAccent && !isDisabled,
+      'btn96TertiaryButtonWithoutAccent': variant === 'Tertiary' && !isAccent && !isDisabled,
+      'btn96ButtonDisabled': variant !== 'Tertiary' && isDisabled
     });
 
 
   const loaderClasses = cn({
-    'btn96PrimaryButtonLoader': buttonType === 'Primary',
-    'btn96LoaderWithAccent': buttonType !== 'Primary' && isAccent,
-    'btn96LoaderWithoutAccent': buttonType !== 'Primary' && !isAccent
+    'btn96PrimaryButtonLoader': variant === 'Primary' || variant === 'Positive' || variant === 'Negative',
+    'btn96LoaderWithAccent': (variant === 'Secondary' || variant === 'Tertiary') && isAccent,
+    'btn96LoaderWithoutAccent': (variant === 'Secondary' || variant === 'Tertiary') && !isAccent
   });
 
 
@@ -127,7 +129,7 @@ type RequiredProps = {
 
 type DefaultProps = {
   size: 'Large' | 'Medium' | 'Small';
-  buttonType: 'Primary' | 'Secondary' | 'Tertiary';
+  variant: 'Primary' | 'Secondary' | 'Tertiary' | 'Positive' | 'Negative';
   isAccent: boolean;
   isCompact: boolean;
   fixToBottom: boolean;
@@ -145,7 +147,7 @@ type DefaultProps = {
 
 MintButton.defaultProps = {
   size: 'Medium',
-  buttonType: 'Primary',
+  variant: 'Primary',
   isAccent: false,
   isCompact: false,
   fixToBottom: false,

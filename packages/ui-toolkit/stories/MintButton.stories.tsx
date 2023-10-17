@@ -11,10 +11,10 @@ export default {
   title: 'MintButton',
   component: MintButton,
   argTypes: {
-    buttonType: {
+    variant: {
       control: {
         type: 'select',
-        options: [ 'Primary', 'Secondary', 'Tertiary' ]
+        options: [ 'Primary', 'Secondary', 'Tertiary', 'Positive', 'Negative' ]
       }
     }
   }
@@ -32,7 +32,7 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   ...Primary.args,
-  buttonType: 'Secondary'
+  variant: 'Secondary'
 };
 
 export const Disabled = Template.bind({});
