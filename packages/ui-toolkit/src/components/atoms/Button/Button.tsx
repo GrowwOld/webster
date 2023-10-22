@@ -1,162 +1,200 @@
 import React from 'react';
 import cn from 'classnames';
 
-import { ReactIconProps } from '@groww-tech/icon-store';
-
 import { Loader, LOADER_TYPE } from '../Loader';
 
 import './button.css';
-class Button extends React.PureComponent<Props> {
 
-  render() {
-    const {
-      buttonText,
-      buttonType,
-      fixToBottom,
-      isDisabled,
-      iconPosition,
-      showLoader,
-      loadingText,
-      dataTestId
-    } = this.props;
 
-    const classname = cn({
-      'btn51Btn': true,
-      'btn51RipplePrimary btn51Primary': buttonType === 'Primary',
-      'btn51RippleSecondary btn51Secondary backgroundPrimary': buttonType === 'Secondary',
-      'btn51RippleTertiary btn51Tertiary': buttonType === 'Tertiary',
-      'btn51Loading': showLoader,
-      'btn51DisabledPrimary': isDisabled && buttonType === 'Primary',
-      'btn51DisabledSecondary': isDisabled && buttonType === 'Secondary',
-      'btn51DisabledTertiary': isDisabled && buttonType === 'Tertiary'
+const VARIANTS = {
+  PRIMARY: 'Primary',
+  SECONDARY: 'Secondary',
+  TERTIARY: 'Tertiary',
+  POSITIVE: 'Positive',
+  NEGATIVE: 'Negative'
+};
+
+
+const Button = (props: Props) => {
+  const {
+    size,
+    buttonText,
+    variant,
+    onClick,
+    isAccent,
+    isCompact,
+    isDisabled,
+    leadingIcon,
+    trailingIcon,
+    isLoading,
+    isFullWidth,
+    dataTestId,
+    fixToBottom
+  } = props;
+
+  const primaryButtonClasses = cn(
+    {
+      'backgroundAccent': !isDisabled,
+      btn96ButtonLabel: !isDisabled && !isLoading,
+      btn96ButtonHover: !isDisabled
     });
 
-    return (
-      <div className={fixToBottom ? 'btn51BottomFixed backgroundPrimary' : ''} >
-        <div
-          className={classname}
-          data-test-id={dataTestId.length ? dataTestId : null}
-          onClick={this.onButtonClick}
-          style={this.getComputedStyle()}
-        >
-          {
-            showLoader && !isDisabled ? <Loader loaderType={LOADER_TYPE.LINEAR} /> : null
-          }
+  const secondaryButtonClasses = cn({
+    btn96SecondaryButtonWithAccent: isAccent && !isDisabled,
+    btn96SecondaryButtonWithoutAccent: !isAccent && !isDisabled,
+    btn96SecondaryButtonWithoutAccentDisabled: !isAccent && isLoading
+  });
 
-          <div className="absolute-center btn51ParentDimension">
-            <span className="absolute-center"
-              style={{ padding: '0px 25px' }}
-            >
-              {iconPosition === 'Left' && this.getIconUI()}
+  const tertiaryButtonClasses = cn({
+    btn96TertiaryButtonDisabled: isDisabled,
+    btn96TertiaryButtonWithAccent: isAccent && !isDisabled,
+    btn96TertiaryButtonWithoutAccent: !isAccent && !isDisabled
+  });
 
-              <span>{showLoader && !isDisabled ? loadingText : buttonText}</span>
+  const postiveButtonClasses = cn({
+    'backgroundPositive': !isDisabled,
+    btn96ButtonLabel: !isDisabled && !isLoading,
+    btn96ButtonHover: !isDisabled
+  });
 
-              {iconPosition === 'Right' && this.getIconUI()}
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const negativeButtonClasses = cn({
+    'backgroundNegative': !isDisabled,
+    btn96ButtonLabel: !isDisabled && !isLoading,
+    btn96ButtonHover: !isDisabled
+  });
 
 
-  getIconUI = () => {
-    const { iconComponent, iconPosition } = this.props;
+  const classname = cn('btn96DefaultClass', 'absolute-center', 'cur-po',
+    {
+      btn96SmallButton: size === 'Small',
+      btn96MediumButton: size === 'Medium',
+      btn96LargeButton: size === 'Large',
+      btn86FullWidth: isFullWidth,
+      btn96LoadingButton: isLoading && !isDisabled,
+      btn96CompactButton: variant === VARIANTS.TERTIARY && isCompact,
+      btn96ButtonLabel: variant !== VARIANTS.TERTIARY && !isDisabled,
+      btn96ButtonDisabled: variant !== VARIANTS.TERTIARY && isDisabled
+    });
 
+
+  const getButtonClasses = (variant: string) => {
+    switch (variant) {
+      case VARIANTS.PRIMARY:
+        return cn(primaryButtonClasses, classname);
+
+      case VARIANTS.SECONDARY:
+        return cn(secondaryButtonClasses, classname);
+
+      case VARIANTS.TERTIARY:
+        return cn(tertiaryButtonClasses, classname);
+
+      case VARIANTS.POSITIVE:
+        return cn(postiveButtonClasses, classname);
+
+      case VARIANTS.NEGATIVE:
+        return cn(negativeButtonClasses, classname);
+    }
+  };
+
+
+  const loaderClasses = cn({
+    btn96PrimaryButtonLoader: variant === VARIANTS.PRIMARY || variant === VARIANTS.POSITIVE || variant === VARIANTS.NEGATIVE,
+    btn96LoaderWithAccent: (variant === VARIANTS.SECONDARY || variant === VARIANTS.TERTIARY) && isAccent,
+    btn96LoaderWithoutAccent: (variant === VARIANTS.SECONDARY || variant === VARIANTS.TERTIARY) && !isAccent
+  });
+
+
+  const getIconSize = () => {
+    if (size === 'Small') return 16;
+    if (size === 'Medium') return 20;
+    if (size === 'Large') return 24;
+  };
+
+
+  const getIconUI = (position: string) => {
     const buttonIconProps = {
-      className: `btn51Icon${iconPosition}`,
-      fill: 'currentColor'
+      className: `btn96Icon${position}`,
+      fill: 'currentColor',
+      size: getIconSize()
     };
 
-    return iconComponent?.(buttonIconProps as ReactIconProps) || null;
-  }
+    if (position === 'Leading') return leadingIcon?.(buttonIconProps as any) || null;
+    if (position === 'Trailing') return trailingIcon?.(buttonIconProps as any) || null;
+  };
 
 
-  onButtonClick = (e: React.MouseEvent) => {
-    const { onClick, showLoader, isDisabled } = this.props;
-
-    if (!isDisabled && !showLoader) {
+  const onButtonClick = (e: React.MouseEvent) => {
+    if (!isDisabled && !isLoading) {
       onClick(e);
     }
-  }
+  };
 
 
-  getComputedStyle = () => {
-    const {
-      width,
-      height,
-      fontSize,
-      textColor,
-      backgroundColor,
-      ...restProps
-    } = this.props;
+  return (
+    <div className={fixToBottom ? 'btn96BottomFixed' : ''}>
+      <div
+        className={getButtonClasses(variant)}
+        data-test-id={dataTestId.length ? dataTestId : null}
+        onClick={onButtonClick}
+      >
+        {
+          isLoading && !isDisabled &&
+            <div className="absolute-center btn96LoaderContainer">
+              <Loader
+                loaderType={LOADER_TYPE.CIRCULAR}
+                loaderClassName={cn(loaderClasses, 'btn96LoaderSize')}
+              />
+            </div>
+        }
+        <div className="absolute-center">
+          {leadingIcon && getIconUI('Leading')}
 
-    return {
-      width,
-      height,
-      fontSize,
-      backgroundColor,
-      color: textColor,
-      ...restProps
-    };
-  }
+          <span className="btn96ParentDimension">
+            {buttonText}
+          </span>
 
+          {trailingIcon && getIconUI('Trailing')}
+        </div>
 
-  public static defaultProps: DefaultProps = {
-    /**
-    * How large should the button be?
-    */
-    width: 'auto',
-    height: '45px',
-    /**
-    * Is this the principal call to action on the page?
-    */
-    buttonType: 'Primary',
-    fixToBottom: false,
-    isDisabled: false,
-    iconComponent: null,
-    iconPosition: 'Left',
-    showLoader: false,
-    loadingText: 'Loading...',
-    fontSize: '',
-    textColor: '',
-    backgroundColor: '',
-    dataTestId: ''
-  }
-}
+      </div>
+    </div>
+  );
+};
 
 
 type RequiredProps = {
-  /**
-  * Button contents
-  */
   buttonText: string;
-  /**
-  * Optional click handler
-  */
   onClick: (e: React.MouseEvent) => void;
-}
+};
 
 
 type DefaultProps = {
-  width: string | number;
-  height: string | number;
-  buttonType: 'Primary' | 'Secondary' | 'Tertiary';
+  size: 'Large' | 'Medium' | 'Small';
+  variant: 'Primary' | 'Secondary' | 'Tertiary' | 'Positive' | 'Negative';
+  isAccent: boolean;
+  isCompact: boolean;
   fixToBottom: boolean;
+  isFullWidth: boolean;
   isDisabled: boolean;
-  iconComponent: ((props: ReactIconProps) => JSX.Element) | null;
-  iconPosition: 'Left' | 'Right';
-  showLoader: boolean;
-  loadingText: string;
-  fontSize: string | number;
-  textColor: string;
+  leadingIcon: ((props: any) => JSX.Element) | null;
+  trailingIcon: ((props: any) => JSX.Element) | null;
+  isLoading: boolean;
   dataTestId: string;
-  /**
-  * What background color to use
-  */
-  backgroundColor: string;
-}
+};
 
+Button.defaultProps = {
+  size: 'Medium',
+  variant: VARIANTS.POSITIVE,
+  isAccent: false,
+  isCompact: false,
+  fixToBottom: false,
+  isFullWidth: false,
+  isDisabled: false,
+  leadingIcon: null,
+  trailingIcon: null,
+  isLoading: false,
+  dataTestId: ''
+} as DefaultProps;
 
 export type Props = RequiredProps & DefaultProps;
 

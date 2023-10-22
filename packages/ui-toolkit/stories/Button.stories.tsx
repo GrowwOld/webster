@@ -1,37 +1,21 @@
 import React from 'react';
 
-import { ReactIconProps } from '@groww-tech/icon-store';
 import { Search } from '@groww-tech/icon-store/mi';
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 
-import { Button } from '../src/components/atoms';
+import { Button } from '../src/components/atoms/Button';
 import { Props as ButtonProps } from '../src/components/atoms/Button/Button';
 
 export default {
   title: 'Button',
   component: Button,
   argTypes: {
-    buttonType: {
+    variant: {
       control: {
         type: 'select',
-        options: [
-          'Primary',
-          'Secondary',
-          'Tertiary'
-        ]
+        options: [ 'Primary', 'Secondary', 'Tertiary', 'Positive', 'Negative' ]
       }
-    },
-    showLoader: {
-      control: {
-        type: 'select',
-        options: [
-          true, false
-        ]
-      }
-    },
-    loadingText: {
-      control: 'text'
     }
   }
 };
@@ -48,7 +32,13 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   ...Primary.args,
-  buttonType: 'Secondary'
+  variant: 'Secondary'
+};
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  ...Primary.args,
+  variant: 'Tertiary'
 };
 
 export const Disabled = Template.bind({});
@@ -60,35 +50,25 @@ Disabled.args = {
 export const Loading = Template.bind({});
 Loading.args = {
   ...Primary.args,
-  loadingText: 'LOADING',
-  showLoader: true
+  isLoading: false
 };
 
 export const FullWidth = Template.bind({});
 FullWidth.args = {
   ...Primary.args,
-  width: '100%'
+  isFullWidth: true
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
+export const WithLeadingIcon = Template.bind({});
+WithLeadingIcon.args = {
   ...Primary.args,
   buttonText: 'SEARCH',
-  iconPosition: 'Left',
-  iconComponent: (iconProps: ReactIconProps) => (
-    <Search
-      {...iconProps}
-      size={20}
-    />
-  )
+  leadingIcon: (iconProps: any) => <Search {...iconProps} />
 };
 
-export const Custom = Template.bind({});
-Custom.args = {
+export const WithTrailingIcon = Template.bind({});
+WithTrailingIcon.args = {
   ...Primary.args,
-  buttonText: 'CHOOSE DATE',
-  height: 50,
-  width: 260,
-  textColor: 'var(--white)',
-  backgroundColor: 'var(--red500)'
+  buttonText: 'SEARCH',
+  trailingIcon: (iconProps: any) => <Search {...iconProps} />
 };
