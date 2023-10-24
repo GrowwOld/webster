@@ -29,7 +29,7 @@ const Button = (props: Props) => {
     isLoading,
     isFullWidth,
     dataTestId,
-    fixToBottom
+    isFixToBottom
   } = props;
 
   const primaryButtonClasses = cn(
@@ -131,7 +131,7 @@ const Button = (props: Props) => {
 
 
   return (
-    <div className={fixToBottom ? 'btn96BottomFixed' : ''}>
+    <div className={isFixToBottom ? 'btn96BottomFixed' : ''}>
       <div
         className={getButtonClasses(variant)}
         data-test-id={dataTestId.length ? dataTestId : null}
@@ -173,7 +173,7 @@ type DefaultProps = {
   variant: 'Primary' | 'Secondary' | 'Tertiary' | 'Positive' | 'Negative';
   isAccent: boolean;
   isCompact: boolean;
-  fixToBottom: boolean;
+  isFixToBottom: boolean;
   isFullWidth: boolean;
   isDisabled: boolean;
   leadingIcon: ((props: any) => JSX.Element) | null;
@@ -187,7 +187,7 @@ Button.defaultProps = {
   variant: VARIANTS.POSITIVE,
   isAccent: false,
   isCompact: false,
-  fixToBottom: false,
+  isFixToBottom: false,
   isFullWidth: false,
   isDisabled: false,
   leadingIcon: null,
