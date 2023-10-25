@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { Cancel } from '@groww-tech/icon-store/mi';
-import { FnoIcon } from '@groww-tech/icon-store/custom';
+import { ArrowDropDown, Cancel, Sort } from '@groww-tech/icon-store/mi';
 import { ReactIconProps } from '@groww-tech/icon-store';
 
 import { action } from '@storybook/addon-actions';
@@ -14,15 +13,7 @@ import './style.css';
 
 export default {
   title: 'Chip',
-  component: Chip,
-  argTypes: {
-    iconPosition: {
-      control: {
-        type: 'select',
-        options: [ 'left', 'right' ]
-      }
-    }
-  }
+  component: Chip
 };
 
 
@@ -32,29 +23,22 @@ const Template: Story<ChipProps> = (args) => (
 
 export const Text = Template.bind({});
 Text.args = {
-  text: 'NFO',
+  text: 'Pill label',
   onClick: action('onChipClick')
 };
 
-export const WithMaterialIcon = Template.bind({});
-WithMaterialIcon.args = {
+export const WithLeadingIcon = Template.bind({});
+WithLeadingIcon.args = {
   ...Text.args,
-  iconPosition: 'right',
-  iconComponent: (iconProps: ReactIconProps) => (
-    <Cancel {...iconProps} />
+  leadingIcon: (iconProps: ReactIconProps) => (
+    <Sort {...iconProps} />
   )
 };
 
-export const WithCustomIcon = Template.bind({});
-WithCustomIcon.args = {
+export const WithTrailingIcon = Template.bind({});
+WithTrailingIcon.args = {
   ...Text.args,
-  text: 'IPO',
-  textClass: 'bodyMedium14',
-  iconPosition: 'right',
-  iconComponent: (iconProps: ReactIconProps) => (
-    <FnoIcon
-      {...iconProps}
-      size={18}
-    />
+  trailingIcon: (iconProps: ReactIconProps) => (
+    <ArrowDropDown {...iconProps} />
   )
 };
