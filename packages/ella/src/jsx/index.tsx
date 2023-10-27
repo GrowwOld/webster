@@ -14,7 +14,6 @@ import {
   ArticleSchema,
   BreadcrumbSchema,
   FaqSchema,
-  MetatagsData,
   ProductSchema,
   WebpageSchema,
 } from '../utils/types';
