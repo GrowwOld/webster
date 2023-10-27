@@ -75,7 +75,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
           >
             <KeyboardArrowLeft fontSize={21} />
           </div>
-          <div className='cc12Year bodyRegular16'>
+          <div className='cc12Year bodyLarge'>
             <div>{getMonthAbbrByIndex(dateToShow.getMonth() + 1)} {dateToShow.getFullYear()}</div>
           </div>
           <div onClick={this.goToNextMonth}
@@ -98,7 +98,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
   getMonthUI = () => {
     return (
       (<div>
-        <div className='cc12WeekNameBox valign-wrapper contentSecondary bodyRegular14'>
+        <div className='cc12WeekNameBox valign-wrapper contentSecondary bodyBase'>
           {
             WEEK_DAYS.map(day => (
               <div className="cc12WeekName">
@@ -141,7 +141,7 @@ class DateCalendar extends React.PureComponent<Props, State> {
                           (<div className="cc12DateBlock">
                             <div
                               className={
-                                cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
+                                cn('cc12Date valign-wrapper cur-po circle bodyBase', {
                                   'cc12DateNotSelected': !dateSelected,
                                   'cc12DateSelected contentInversePrimary': dateSelected,
                                   'cc12DisableDate': (minDate && this.compareDate(minDate, newDate)) || (maxDate && this.compareDate(newDate, maxDate))

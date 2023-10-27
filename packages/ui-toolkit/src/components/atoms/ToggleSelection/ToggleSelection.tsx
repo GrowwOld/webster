@@ -7,7 +7,7 @@ import './toggleSelection.css';
 const ToggleSelection = (props: Props) => {
   const { leftText, rightText, isActive, onChange, parentClass } = props;
 
-  const choiceClasses = 'bodyMedium16 fullWidth absolute-center tc341ChoiceClass ';
+  const choiceClasses = 'bodyLargeHeavy fullWidth absolute-center tc341ChoiceClass ';
   const activeChoiceClasses = choiceClasses + 'contentAccent tc341ActiveChoice';
   const inActiveChoiceClasses = choiceClasses + 'contentPrimary tc341InactiveChoice';
 
