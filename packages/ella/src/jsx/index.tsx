@@ -4,8 +4,6 @@
 
 import React from 'react';
 
-import { Helmet } from 'react-helmet';
-
 import { dispatchCustomEvent } from '../dom';
 import {
   COMMON_URLS,
@@ -21,107 +19,6 @@ import {
   WebpageSchema,
 } from '../utils/types';
 
-/**
- * This method can be used to insert meta tags in any page necessary for SEO.
- *
- * @param {MetatagsData} dataObject - Data object for meta tags
- * @param {string} web_host - Current domain based on environment .... like - https://groww.in
- *
- * @remarks
- * This method should be present in the first render otherwise SEO will not happen.
- *
- * @example
- * ```
- * getMetaTags(dataObject, config.host); // Use in render method
- * ```
- */
-export function getMetaTags(dataObject: MetatagsData, web_host: string) {
-  const title = dataObject.title;
-  let desc = dataObject.desc;
-
-  desc = desc.length > 315 ? desc.substring(0, 315) + ' ...' : desc;
-
-  const featuredImage = dataObject.featuredImage ? dataObject.featuredImage : COMMON_URLS.DEFAULT_GROWW_LOGO_270;
-
-  let robots = 'noindex';
-
-  if (web_host.includes(COMMON_URLS.PROD_HOST)) {
-    robots = 'index';
-  }
-
-  if (dataObject.noIndex) {
-    robots = 'noindex';
-  }
-
-  const routeName = web_host + dataObject.routeName;
-  const canonicalUrl = dataObject.canonicalUrl ? dataObject.canonicalUrl : routeName;
-
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description"
-        content={desc}
-      />
-      <meta name="robots"
-        content={robots}
-      />
-      <meta name="twitter:card"
-        content="summary_large_image"
-      />
-      <meta name="twitter:image"
-        content={featuredImage}
-      />
-      <meta name="twitter:description"
-        content={desc}
-      />
-      <meta name="twitter:title"
-        content={title}
-      />
-      <meta name="twitter:site"
-        content="_@groww"
-      />
-      <meta name="twitter:creator"
-        content="_@groww"
-      />
-      <meta itemProp="name"
-        content={title}
-      />
-      <meta itemProp="description"
-        content={desc}
-      />
-      <meta itemProp="image"
-        content={featuredImage}
-      />
-      <meta property="og:locale"
-        content="en_US"
-      />
-      <meta property="og:type"
-        content="website"
-      />
-      <meta property="og:title"
-        content={title}
-      />
-      <meta property="og:image"
-        content={featuredImage}
-      />
-      <meta property="og:description"
-        content={desc}
-      />
-      <meta property="og:url"
-        content={routeName}
-      />
-      <meta property="og:site_name"
-        content="Groww"
-      />
-      <link rel="publisher"
-        href="https://plus.google.com/b/112795119140865328446/+GrowwIn?"
-      />
-      <link rel="canonical"
-        href={canonicalUrl}
-      />
-    </Helmet>
-  );
-}
 
 
 /**
