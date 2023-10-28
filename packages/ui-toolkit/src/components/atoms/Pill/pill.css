@@ -1,4 +1,4 @@
-.chip12Chip {
+.pill12Pill {
   height: 32px;
   width: fit-content;
   padding: 8px 12px;
@@ -6,24 +6,24 @@
   border-radius: 99px;
 }
 
-.chip12Outlined {
+.pill12Outlined {
   border: 1px solid var(--gray150);
 }
 
-.chip12SelectedAccentChip {
+.pill12SelectedAccentPill {
  background-color: var(--green100);
  border: 1px solid var(--green500);
  color: var(--green500);
 }
 
-.chip12SelectedAccentChip:hover {
+.pill12SelectedAccentPill:hover {
   opacity: 0.9;
 }
 
-.chip12SelectedChip {
+.pill12SelectedPill {
   border: 1px solid var(--gray900);
 }
 
-.chip12ChipHover:hover {
+.pill12PillHover:hover {
   background-color: var(--gray50);
 }

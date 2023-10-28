@@ -27,7 +27,7 @@ const CheckBox = (props: Props) => {
 
   const checkBoxClick = (e: React.MouseEvent<HTMLDivElement> | React.ChangeEvent<HTMLInputElement>) => {
     if (!isDisabled) {
-      handleOnClick?.(value, !isChecked, e);
+      handleOnClick(value, !isChecked, e);
     }
   };
 
@@ -42,7 +42,7 @@ const CheckBox = (props: Props) => {
         isChecked ? (
           <CheckBoxChecked
             size={size}
-            color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
+            color={isDisabled ? 'contentDisabled' : 'var(--green500)'}
           />
         ) : (
           <CheckBoxOutlineBlank

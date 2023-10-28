@@ -3,14 +3,12 @@ import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
 
-import './chip.css';
+import './pill.css';
 
 
-const Chip = (props: Props) => {
+const Pill = (props: Props) => {
   const {
     text,
-    textClass,
-    parentClass,
     leadingIcon,
     trailingIcon,
     isAccent,
@@ -26,7 +24,7 @@ const Chip = (props: Props) => {
     onClick(e);
   };
 
-  const chipIconProps = {
+  const pillIconProps = {
     size: 14
   };
 
@@ -34,21 +32,20 @@ const Chip = (props: Props) => {
     <div
       className={
         cn('backgroundPrimary', 'contentPrimary', 'absolute-center', 'bodyMedium12', 'cur-po', {
-          chip12Chip: true,
-          chip12ChipHover: !isSelected && !isAccent,
-          chip12Outlined: isOutlined,
-          chip12SelectedChip: !isAccent && isSelected,
-          chip12SelectedAccentChip: isSelected && isAccent,
-          [`${parentClass}`]: true
+          pill12Pill: true,
+          pill12PillHover: !isSelected && !isAccent,
+          pill12Outlined: isOutlined,
+          pill12SelectedPill: !isAccent && isSelected,
+          pill12SelectedAccentPill: isSelected && isAccent
         })
       }
       onClick={handleClick}
     >
-      {leadingIcon?.(chipIconProps)}
+      {leadingIcon?.(pillIconProps)}
 
-      <span className={textClass}>{text}</span>
+      <span>{text}</span>
 
-      {trailingIcon?.(chipIconProps)}
+      {trailingIcon?.(pillIconProps)}
     </div>
   );
 };
@@ -66,21 +63,17 @@ type DefaultProps = {
   isOutlined: boolean;
   leadingIcon: ((props: ReactIconProps) => JSX.Element) | null;
   trailingIcon: ((props: ReactIconProps) => JSX.Element) | null;
-  parentClass: string;
-  textClass: string;
 };
 
 export type Props = RequiredProps & DefaultProps;
 
-Chip.defaultProps = {
+Pill.defaultProps = {
   onClick: () => { },
   isSelected: false,
   isOutlined: true,
   isAccented: false,
   leadingIcon: null,
-  trailingIcon: null,
-  textClass: '',
-  parentClass: ''
+  trailingIcon: null
 };
 
-export default React.memo(Chip);
+export default React.memo(Pill);

@@ -6,25 +6,25 @@ import { ReactIconProps } from '@groww-tech/icon-store';
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 
-import { Chip } from '../src/components/atoms';
-import { Props as ChipProps } from '../src/components/atoms/Chip/Chip';
+import { Pill } from '../src/components/atoms';
+import { Props as PillProps } from '../src/components/atoms/Pill/Pill';
 
 import './style.css';
 
 export default {
-  title: 'Chip',
-  component: Chip
+  title: 'Pill',
+  component: Pill
 };
 
 
-const Template: Story<ChipProps> = (args) => (
-  <Chip {...args} />
+const Template: Story<PillProps> = (args) => (
+  <Pill {...args} />
 );
 
 export const Text = Template.bind({});
 Text.args = {
   text: 'Pill label',
-  onClick: action('onChipClick')
+  onClick: action('onPillClick')
 };
 
 export const WithLeadingIcon = Template.bind({});
