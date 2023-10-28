@@ -30,3 +30,4 @@ export * from './Toastify';
 export * from './NumberInput';
 export * from './InputField';
 export * from './NumberPicker';
+export * from './IconButton';

@@ -1,103 +1,207 @@
-.btn51Btn {
-  display: inline-block;
+.btn96DefaultClass {
+  border-radius: 8px;
   font-weight: 500;
-  /* border: none; */
-  border-radius: 4px;
-  cursor: pointer;
   white-space: nowrap;
-  position: relative;
 }
 
-.btn51ParentDimension {
-  height: inherit;
-  /* width: inherit; */
+.btn96ButtonLabel {
+  color: var(--dangerouslySetPrimaryBg);
 }
 
-.btn51RipplePrimary {
-  background-position: center;
-  transition: background 0.8s;
+.btn96ButtonHover:hover {
+  opacity: 0.9;
 }
 
-.btn51RipplePrimary:hover {
-  background: #26D7AB radial-gradient(circle, transparent 1%, #26D7AB 1%) center/15000%;
+/* -- Size Classes -- */
+
+
+.btn96SmallButton {
+  min-width: 88px;
+  padding: 12px;
+  height: 32px;
+  gap: 6px;
+  font-size: 12px;
+  width: fit-content;
+  justify-content: center;
+  flex-shrink: 0;  
 }
 
-.btn51RipplePrimary:active {
-  background-color: #B3F1E1;
-  background-size: 100%;
-  transition: background 0s;
+.btn96MediumButton {
+  min-width: 108px;
+  padding: 12px 16px 12px;
+  height: 40px;
+  width: fit-content;
+  font-size: 14px;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.btn51RippleSecondary {
-  background-position: center;
-  transition: background 0.8s;
+.btn96LargeButton {
+  padding: 16px 24px;
+  width: fit-content;
+  min-width: 172px;
+  height: 48px;
+  font-size: 16px;
+  gap: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
+  justify-content: center;
 }
 
-.btn51RippleSecondary:hover {
-  background: var(--gray50) radial-gradient(circle, transparent 1%, var(--gray50) 1%) center/15000%;
+.btn86FullWidth{
+  width: 100%;
 }
 
-.btn51RippleSecondary:active {
-  background-color: var(--gray700);
-  background-size: 100%;
-  transition: background 0s;
+.btn96SmallButton > div > .btn96IconLeading {
+  margin-right: 6px;
 }
 
-.btn51RippleTertiary {
-  background-position: center;
-  transition: background 0.8s;
+.btn96SmallButton > div > .btn96IconTrailing {
+  margin-left: 6px
 }
 
-.btn51RippleTertiary:hover {
-  background: rgba(0, 208, 156, 0.04);
+.btn96MediumButton > div > .btn96IconLeading {
+  margin-right: 8px;
+}
+
+.btn96MediumButton > div > .btn96IconTrailing {
+  margin-left: 8px
+}
+
+.btn96LargeButton > div > .btn96IconLeading {
+  margin-right: 6px;
+}
+
+.btn96LargeButton > div > .btn96IconTrailing {
+  margin-left: 6px
+}
+
+
+/* -- Primary Button -- */
+
+.btn96PrimaryButton:hover {
+  opacity: 0.9;
+}
+
+/* -- Seconday Button -- */
+.btn96SecondaryButtonWithAccent {
+  background-color: var(--green100);
   color: var(--green500);
 }
 
-.btn51RippleTertiary:active {
-  background-color: var(--gray700);
-  background-size: 100%;
-  transition: background 0s;
+.btn96SecondaryButtonWithoutAccent {
+  background-color: var(--dangerouslySetPrimaryBg);
+  color: var(--gray900);
+  border: 1px solid var(--gray150);
 }
 
-.btn51Primary {
-  background: var(--green500);
-  color: var(--white);
+.btn96SecondaryButtonWithoutAccent:hover {
+  background-color: var(--gray50);
 }
 
-.btn51Secondary {
-  border: 1px solid var(--green500);
-  color: var(--green500);
-}
-
-.btn51Tertiary {
-  background: var(--green100);
-  color: var(--green500);
-}
-
-.btn51Loading {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.btn51DisabledPrimary {
-  background-color: var(--gray500);
-  pointer-events: none;
-  color: var(--white);
-}
-
-.btn51DisabledSecondary {
-  border-color: var(--gray500);
-  color: var(--gray500);
-  pointer-events: none;
-}
-
-.btn51DisabledTertiary {
-  color: var(--gray500);
+.btn96SecondaryButtonWithoutAccentDisabled {
   background-color: var(--gray150);
-  pointer-events: none;
 }
 
-.btn51BottomFixed {
+/* -- Tertairy Button -- */
+
+.btn96TertiaryButtonWithoutAccent {
+  color: var(--gray900);
+}
+
+.btn96TertiaryButtonWithoutAccent .btn96ParentDimension {
+  border-bottom: 1px dashed var(--gray700);
+}
+
+.btn96TertiaryButtonWithoutAccent:hover {
+  background-color: var(--gray50);
+}
+
+
+.btn96TertiaryButtonWithAccent {
+  color: var(--gray900);
+}
+
+.btn96TertiaryButtonWithAccent {
+  color: var(--green500);
+}
+
+.btn96TertiaryButtonWithAccent:hover {
+  background-color: var(--green100);
+}
+
+
+/* -- Compact classes -- */
+.btn96CompactButton {
+  width: fit-content;
+  min-width: fit-content;
+  height: fit-content;
+  border-radius: 0;
+  padding: 0 !important;
+}
+
+
+/* -- Disabled State -- */
+.btn96ButtonDisabled {
+  background-color: var(--gray50);
+  color: var(--gray500);
+  border: none;
+}
+
+.btn96TertiaryButtonDisabled {
+  color: var(--gray400);
+}
+
+.btn96TertiaryButtonDisabled .btn96ParentDimension {
+  border-bottom: 1px dashed var(--gray400);
+}
+
+
+/* Loader Classes */
+
+.btn96LoadingButton {
+  color: transparent;
+}
+
+.btn96LoadingButton .btn96ParentDimension {
+  border-bottom: none;
+}
+
+.btn96LoaderContainer {
+  margin: 0 24px; 
+  height: 100%;
+  position: absolute;
+}
+
+.btn96PrimaryButtonLoader {
+  border: 2px solid var(--dangerouslySetPrimaryBg);
+  border-top-color: transparent;
+}
+
+.btn96LoaderWithoutAccent {
+  border: 2px solid var(--gray900) !important; 
+  border-right-color: transparent !important; 
+}
+
+.btn96MediumButton .btn96LoaderSize {
+  margin-top: 4px;
+  width: 20px; 
+  height: 20px;
+}
+
+.btn96LargeButton .btn96LoaderSize {
+  margin-top: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.btn96SmallButton .btn96LoaderSize {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+}
+
+.btn96BottomFixed {
   position: fixed;
   left: 0;
   border-top: 1px solid var(--gray150);
@@ -105,12 +209,4 @@
   width: 100%;
   z-index: 1000;
   bottom: 0;
-}
-
-.btn51IconLeft {
-  margin: 0 8px 0 -8px;
-}
-
-.btn51IconRight {
-  margin-left: 8px;
 }
