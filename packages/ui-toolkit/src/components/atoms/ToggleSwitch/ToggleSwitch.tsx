@@ -48,7 +48,7 @@ const ToggleSwitch = (props: Props) => {
 
   return (
     <div className="valign-wrapper">
-      <div className={fontClass}>
+      <div className={getFontClass()}>
          {leftText}
       </div>
       <div
@@ -73,7 +73,7 @@ const ToggleSwitch = (props: Props) => {
           />
         </div>
       </div>
-      <div className={fontClass}>
+      <div className={getFontClass()}>
         {rightText}
       </div>
     </div>
