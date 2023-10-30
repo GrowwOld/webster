@@ -7,6 +7,7 @@ import './toggleSwitch.css';
 
 const ToggleSwitch = (props: Props) => {
   const {
+    size,
     onChange,
     isDisabled,
     isActive,
@@ -14,6 +15,15 @@ const ToggleSwitch = (props: Props) => {
     rightText,
     dataTestId
   } = props;
+
+  const getFontClass = () => {
+    if(size === "XLarge") return "bodyXLarge";
+    if(size === "Large") return "bodyLarge";
+    if(size === "Base") return "bodyBase";
+    if(size === "Small") return "bodySmallHeavy";
+    if(size === "XSmall") return "bodySmall";
+
+  }
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
   const circleDiameter = 20;
 
@@ -38,7 +48,9 @@ const ToggleSwitch = (props: Props) => {
 
   return (
     <div className="valign-wrapper">
-      {leftText}
+      <div className={fontClass}>
+         {leftText}
+      </div>
       <div
         className='sw348reactSwitchDivision'
         data-test-id={dataTestId.length ? dataTestId : null}
@@ -57,11 +69,13 @@ const ToggleSwitch = (props: Props) => {
           className={isDisabled ? 'backgroundTertiary sw348reactSwitchLabel' : isActive ? 'backgroundPositive sw348reactSwitchLabel' : 'backgroundTertiary sw348reactSwitchLabel'}
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton backgroundPrimary'}  //check the 'backgrpundPrimary' property, according to design language
+            className={'sw348reactSwitchButton backgroundAlwaysLight'}  //check the 'backgrpundPrimary' property, according to design language
           />
         </div>
       </div>
-      {rightText}
+      <div className={fontClass}>
+        {rightText}
+      </div>
     </div>
   );
 
@@ -73,7 +87,8 @@ const defaultProps: DefaultProps = {
   rightText: '',
   isActive: true,
   isDisabled: false,
-  dataTestId: ''
+  dataTestId: '',
+  size: 'Base' 
 };
 
 
@@ -89,6 +104,7 @@ type DefaultProps = {
   dataTestId: string;
   isActive: boolean;
   isDisabled: boolean;
+  size: 'XLarge'| 'Large' | 'Base' | 'Small' | 'XSmall';
 }
 
 
