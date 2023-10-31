@@ -11,7 +11,7 @@ export default {
 };
 
 const CustomGoBack = (
-  <div className='bodyRegular14'>
+  <div className='bodyBase'>
     Back
   </div>
 );

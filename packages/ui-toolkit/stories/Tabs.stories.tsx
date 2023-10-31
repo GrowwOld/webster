@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Story } from "@storybook/react";
+import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Props as TabsProps } from '../src/components/atoms/Tabs/Tabs';
@@ -21,8 +21,8 @@ const WALLETS_TABS = [
     width: 168,
     left: 10,
     name: (
-      <div style={{ padding: "10px 60px" }}
-        className="bodyMedium14"
+      <div style={{ padding: '10px 60px' }}
+        className="bodyBaseHeavy"
       >
         DEPOSIT
       </div>
@@ -33,19 +33,18 @@ const WALLETS_TABS = [
     left: 180,
     name: (
       <div
-        style={{ padding: "10px 60px" }}
-        className="bodyMedium14"
+        style={{ padding: '10px 60px' }}
+        className="bodyBaseHeavy"
       >
         WITHDRAW
       </div>
     )
   }
-]
+];
 
 Default.args = {
   data: WALLETS_TABS,
   showBottomBorder: true,
-  customStyleTab: "",
+  customStyleTab: '',
   onTabSelect: action('onSelect')
-}
-
+};
