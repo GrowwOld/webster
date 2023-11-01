@@ -58,7 +58,8 @@ class Select extends React.PureComponent<Props> {
       optionsParentClass,
       activeOptionBoxClass,
       activeIndex,
-      dataTestId
+      dataTestId,
+      readonly
     } = this.props;
 
     let selectedOption = null;
@@ -85,6 +86,7 @@ class Select extends React.PureComponent<Props> {
                 <KeyboardArrowDown size={22}/>
 
                 <input
+                  readOnly={readonly}
                   value={selectedOption?.value}
                   onKeyUp={this.onKeyUp}
                   onKeyDown={this.onKeyDown}
@@ -195,7 +197,8 @@ Select.defaultProps = {
   optionsParentClass: '',
   activeOptionBoxClass: '',
   onChange: () => {},
-  dataTestId: ''
+  dataTestId: '',
+  readonly: false
 } as DefaultProps;
 
 
@@ -219,6 +222,8 @@ type DefaultProps = {
   activeOptionBoxClass: string;
   onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void;
   dataTestId: string;
+  /* readonly is useful for phone devices where we are showing data from our own like dropdown */
+  readonly: boolean;
 }
 
 export type Props = RequiredProps & DefaultProps;
