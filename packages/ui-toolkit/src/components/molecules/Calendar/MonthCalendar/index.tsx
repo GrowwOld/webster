@@ -3,61 +3,96 @@ import cn from 'classnames';
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@groww-tech/icon-store/mi';
 
 import './monthCalendar.css';
+import { compareDate } from '../calendarUtils';
+import { CalendarProps as Props } from '../calendar.types';
 
 const MONTHS = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 
 class MonthCalendar extends React.PureComponent<Props, State> {
+  static defaultProps = {
+    highlightCurrentDate: true,
+    minDate: null,
+    maxDate: null
+  };
+
 
   state:State = {
-    dateToShow: this.props.currentDate
+    dateToShow: this.props.currentDate,
+    selectedDate: null
   };
 
 
   render() {
-    const { dateToShow } = this.state;
-    const { currentDate } = this.props;
+    const { dateToShow, selectedDate } = this.state;
+    const maxDate = this.props.maxDate ? new Date(this.props.maxDate) : null;
+    const minDate = this.props.minDate ? new Date(this.props.minDate) : null;
 
-    const currentMonthIndex = currentDate.getMonth();
-    const presentDate = new Date();
+    const hasNextYear = !(maxDate && dateToShow.getFullYear() === maxDate.getFullYear());
+    const hasPrevYear = !(minDate && dateToShow.getFullYear() === minDate.getFullYear());
+
+    const handlers = {
+      'PREVIOUS_MONTH': () => {
+        if (hasPrevYear) this.goToPreviousYear();
+      },
+      'NEXT_MONTH': () => {
+        if (hasNextYear) this.goToNextYear();
+      }
+    };
 
     return (
       <div className='contentPrimary'>
         <div className='card borderPrimary mn12Box'>
-          <div className="valign-wrapper mn12YearRow">
-            <div
-              className="valign-wrapper cur-po"
-              onClick={this.handlePrevYearClick}
-            >
-              <KeyboardArrowLeft className="mn12YearIcon"/>
+          <div className="valign-wrapper vspace-between">
+            <div className="valign-wrapper cur-po">
+              <KeyboardArrowLeft
+                fontSize={21}
+                onClick={handlers.PREVIOUS_MONTH}
+                className={cn({ 'contentSecondary cur-no': !hasPrevYear })}
+              />
             </div>
-            <div>{dateToShow.getFullYear()}</div>
-            <div
-              className="valign-wrapper  cur-po"
-              onClick={this.handleForwardYearClick}
-            >
-              <KeyboardArrowRight className={cn('mn12YearIcon', { 'contentSecondary cur-no': dateToShow.getFullYear() === new Date().getFullYear() })}/>
+            <span>{dateToShow.getFullYear()}</span>
+            <div className="valign-wrapper cur-po">
+              <KeyboardArrowRight
+                fontSize={21}
+                onClick={handlers.NEXT_MONTH}
+                className={cn({ 'contentSecondary cur-no': !hasNextYear })}
+              />
             </div>
           </div>
-          <div className="valign-wrapper mn12MonthBox">
+          <div className="valign-wrapper vspace-between mn12MonthBox">
             {
-              MONTHS.map((month, index) => (
-                <div className="mn12Month"
-                  key={`${dateToShow?.getTime()}${index}`}
-                >
-                  <div
-                    className={
-                      cn('mn12MonthText backgroundPrimary valign-wrapper cur-po bodyRegular14', {
-                        'mn12MonthTextSelected contentInversePrimary': ((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
-                        'mn12MonthBack backgroundPrimary': !((index === currentMonthIndex) && (currentDate.getFullYear() === dateToShow.getFullYear())),
-                        'cc12DisableDate': ((index > presentDate.getMonth()) && (presentDate.getFullYear() === dateToShow.getFullYear()))
-                      })
-                    }
-                    onClick={() => this.onMonthClick(index)}
+              MONTHS.map((month, index) => {
+                const newDate = new Date(dateToShow);
+
+                newDate.setMonth(index);
+                const monthSelected = newDate.getTime() === selectedDate?.getTime();
+                const isDisabled = (minDate && compareDate(minDate, newDate)) || (maxDate && compareDate(newDate, maxDate));
+
+
+                const onClickHandler = () => {
+                  if (!isDisabled) this.onMonthClick(index);
+                };
+
+                return (
+                  <div className="mn12Month"
+                    key={`${dateToShow?.getTime()}${index}`}
                   >
-                    {month}
+                    <div
+                      className={
+                        cn('mn12MonthText backgroundPrimary valign-wrapper cur-po bodyRegular14', {
+                          'mn12MonthCurrent contentInversePrimary': this.isMonthSelected(index),
+                          'backgroundPositive contentInversePrimary': monthSelected,
+                          'mn12MonthBack backgroundPrimary': !monthSelected && !isDisabled,
+                          'cc12DisableDate': isDisabled
+                        })
+                      }
+                      onClick={onClickHandler}
+                    >
+                      {month}
+                    </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             }
           </div>
         </div>
@@ -66,57 +101,53 @@ class MonthCalendar extends React.PureComponent<Props, State> {
   }
 
 
+  isMonthSelected = (month: number) => {
+    const { currentDate } = this.props;
+    const { dateToShow } = this.state;
+    const currentMonthIndex = currentDate.getMonth();
+
+    return month === currentMonthIndex && currentDate.getFullYear() === dateToShow.getFullYear();
+  }
+
+
   onMonthClick = (index:number) => {
-    const dateToShow = this.state.dateToShow;
-    const newDate = new Date(dateToShow.toString());
-    const presentDate = new Date();
-    const presentMonth = presentDate.getMonth();
+    const { onDateChange } = this.props;
+    const { dateToShow } = this.state;
+    const newDate = new Date(dateToShow);
 
-    if ((index > presentMonth) && (presentDate.getFullYear() === newDate.getFullYear())) {
-      return;
-    }
-
-    newDate.setDate(1);
     newDate.setMonth(index);
 
-    this.props.onDateChange(newDate);
+    onDateChange(newDate);
 
     this.setState({
-      dateToShow: newDate
+      dateToShow: newDate,
+      selectedDate: newDate
     });
   }
 
 
-  handlePrevYearClick = () => {
-    const dateToShow = this.state.dateToShow;
-    const newDate = new Date(dateToShow.toString());
+  goToPreviousYear = () => {
+    const { dateToShow } = this.state;
+    const newDate = new Date(dateToShow);
 
     newDate.setFullYear(dateToShow.getFullYear() - 1);
     this.setState({ dateToShow: newDate });
-  }
+  };
 
 
-  handleForwardYearClick = () => {
-    const dateToShow = this.state.dateToShow;
+  goToNextYear = () => {
+    const { dateToShow } = this.state;
+    const newDate = new Date(dateToShow);
 
-    if (dateToShow.getFullYear() !== new Date().getFullYear()) {
-      const newDate = new Date(dateToShow.toString());
-
-      newDate.setFullYear(dateToShow.getFullYear() + 1);
-      this.setState({ dateToShow: newDate });
-    }
-  }
+    newDate.setFullYear(dateToShow.getFullYear() + 1);
+    this.setState({ dateToShow: newDate });
+  };
 }
-
-
-type Props = {
-  currentDate: Date;
-  onDateChange: (date:Date) => void;
-};
 
 
 type State = {
   dateToShow: Date;
+  selectedDate: Date | null;
 }
 
 export default MonthCalendar;

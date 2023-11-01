@@ -3,10 +3,6 @@
   width: 220px;
 }
 
-.mn12YearRow {
-  justify-content: space-between;
-}
-
 .mn12Month {
   text-align: center;
   min-width: 33%;
@@ -20,20 +16,25 @@
   margin: 3px auto;
 }
 
+/* NOTE: Here below order matters as active, hover state color override */
 .mn12MonthBack:hover {
   background-color: var(--overlay30);
 }
 
-.mn12MonthTextSelected {
-  background-color: var(--green500);
+.mn12MonthCurrent {
+  background-color: var(--green300);
 }
 
 .mn12MonthBox {
   flex-wrap: wrap;
-  justify-content: space-between;
   margin-top: 12px;
 }
 
 .mn12YearIcon {
   font-size: 22px !important;
+}
+
+.cc12DisableDate {
+  opacity: 0.2;
+  cursor: default;
 }

@@ -3,7 +3,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 
 import { Calendar } from '../src/components/molecules';
-import { Props as CalendarProps, CALENDAR_TYPE } from '../src/components/molecules/Calendar/Calendar';
+import { Props, CALENDAR_TYPE } from '../src/components/molecules/Calendar/Calendar';
 
 export default {
   title: 'Calendar',
@@ -11,7 +11,7 @@ export default {
 };
 
 
-const Template: Story<CalendarProps> = (args) => <Calendar {...args} />;
+const Template: Story<Props> = (args) => <Calendar {...args} />;
 
 
 export const Month = Template.bind({});

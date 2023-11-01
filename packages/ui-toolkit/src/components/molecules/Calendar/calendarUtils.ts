@@ -47,3 +47,15 @@ export function getMonthAbbrByIndex(monthNumber: number): string {
 
   return monthNames[ monthNumber - 1 ];
 }
+
+
+  /* check date1 is greater than date2 */
+export function compareDate(date1: Date, date2: Date) {
+    // This conversion is required because there is no validation below and .get methods only exists on Date instance unix timestamp will fail
+  date1 = new Date(date1);
+  date2 = new Date(date2);
+  const d1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate(), 0, 0, 0);
+  const d2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate(), 0, 0, 0);
+
+  return d1.getTime() > d2.getTime();
+}

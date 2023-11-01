@@ -7,7 +7,8 @@ import {
   KeyboardDoubleArrowRight
 } from '@groww-tech/icon-store/mi';
 
-import { getDatesArray, getMonthAbbrByIndex } from './dateCalendarUtils';
+import { compareDate, getDatesArray, getMonthAbbrByIndex } from '../calendarUtils';
+import { CalendarProps as Props } from '../calendar.types';
 
 import './dateCalendar.css';
 
@@ -16,7 +17,7 @@ const WEEK_DAYS = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
 
 class DateCalendar extends React.PureComponent<Props, State> {
   static defaultProps = {
-    highlightCurrentDate: false,
+    highlightCurrentDate: true,
     minDate: null,
     maxDate: null
   };
@@ -24,12 +25,14 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
   state:State = {
     dateToShow: this.props.currentDate,
-    dates: getDatesArray(this.props.currentDate)
+    dates: getDatesArray(this.props.currentDate),
+    selectedDate: null
   };
 
 
   componentDidUpdate(prevProps: Props) {
-    if (prevProps.currentDate.getDate() != this.props.currentDate.getDate()) {
+
+    if (prevProps.currentDate.getDate() !== this.props.currentDate.getDate()) {
       this.setState({
         dateToShow: this.props.currentDate,
         dates: getDatesArray(this.props.currentDate)
@@ -43,15 +46,9 @@ class DateCalendar extends React.PureComponent<Props, State> {
     return (
       <div>
         <div className="cc12Box">
-          <div>
-            {this.getYearUI()}
-          </div>
-          <div>
-            {this.getMonthUI()}
-          </div>
-          <div>
-            {this.getDatesUI()}
-          </div>
+          {this.getYearUI()}
+          {this.getMonthUI()}
+          {this.getDatesUI()}
         </div>
       </div>
     );
@@ -60,35 +57,59 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
   getYearUI = () => {
     const { dateToShow } = this.state;
+    const maxDate = this.props.maxDate ? new Date(this.props.maxDate) : null;
+    const minDate = this.props.minDate ? new Date(this.props.minDate) : null;
+
+    const hasNextYear = !(maxDate && dateToShow.getFullYear() === maxDate.getFullYear());
+    const hasPrevYear = !(minDate && dateToShow.getFullYear() === minDate.getFullYear());
+    const hasNextMonth = !(maxDate && dateToShow.getMonth() === maxDate.getMonth() && dateToShow.getFullYear() === maxDate.getFullYear());
+    const hasPrevMonth = !(minDate && dateToShow.getMonth() === minDate.getMonth() && dateToShow.getFullYear() === minDate.getFullYear());
+
+    const handlers = {
+      'PREVIOUS_YEAR': () => {
+        if (hasPrevYear) this.goToPreviousYear();
+      },
+      'PREVIOUS_MONTH': () => {
+        if (hasPrevMonth) this.goToPreviousMonth();
+      },
+      'NEXT_MONTH': () => {
+        if (hasNextMonth) this.goToNextMonth();
+      },
+      'NEXT_YEAR': () => {
+        if (hasNextYear) this.goToNextYear();
+      }
+    };
 
     return (
-      <div>
-        <div className="valign-wrapper cc12YearBox">
-          <div className="valign-wrapper cur-po">
-            <KeyboardDoubleArrowLeft
-              fontSize={21}
-              onClick={this.goToPreviousYear}
-            />
-          </div>
-          <div onClick={this.goToPreviousMonth}
-            className="valign-wrapper cur-po"
-          >
-            <KeyboardArrowLeft fontSize={21} />
-          </div>
-          <div className='cc12Year bodyRegular16'>
-            <div>{getMonthAbbrByIndex(dateToShow.getMonth() + 1)} {dateToShow.getFullYear()}</div>
-          </div>
-          <div onClick={this.goToNextMonth}
-            className="valign-wrapper cur-po"
-          >
-            <KeyboardArrowRight fontSize={21} />
-          </div>
-          <div className="valign-wrapper cur-po">
-            <KeyboardDoubleArrowRight
-              fontSize={21}
-              onClick={this.goToNextYear}
-            />
-          </div>
+      <div className="valign-wrapper vspace-between">
+        <div className="valign-wrapper cur-po">
+          <KeyboardDoubleArrowLeft
+            fontSize={21}
+            onClick={handlers.PREVIOUS_YEAR}
+            className={cn({ 'contentSecondary cur-no': !hasPrevYear })}
+          />
+        </div>
+        <div className="valign-wrapper cur-po">
+          <KeyboardArrowLeft fontSize={21}
+            onClick={handlers.PREVIOUS_MONTH}
+            className={cn({ 'contentSecondary cur-no': !hasPrevMonth })}
+          />
+        </div>
+        <div className='cc12Year bodyRegular16'>
+          <span>{getMonthAbbrByIndex(dateToShow.getMonth() + 1)} {dateToShow.getFullYear()}</span>
+        </div>
+        <div className="valign-wrapper cur-po">
+          <KeyboardArrowRight fontSize={21}
+            onClick={handlers.NEXT_MONTH}
+            className={cn({ 'contentSecondary cur-no': !hasNextMonth })}
+          />
+        </div>
+        <div className="valign-wrapper cur-po">
+          <KeyboardDoubleArrowRight
+            fontSize={21}
+            onClick={handlers.NEXT_YEAR}
+            className={cn({ 'contentSecondary cur-no': !hasNextYear })}
+          />
         </div>
       </div>
     );
@@ -97,74 +118,83 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
   getMonthUI = () => {
     return (
-      (<div>
-        <div className='cc12WeekNameBox valign-wrapper contentSecondary bodyRegular14'>
-          {
-            WEEK_DAYS.map(day => (
-              <div className="cc12WeekName">
-                <div>
-                  {day}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>)
+      <div className='cc12WeekNameBox valign-wrapper vspace-between contentSecondary bodyRegular14'>
+        {
+          WEEK_DAYS.map((day) => (
+            <span className="cc12WeekName"
+              key={day}
+            >
+              {day}
+            </span>
+          ))
+        }
+      </div>
     );
   }
 
 
   getDatesUI = () => {
-    const { dates, dateToShow } = this.state;
+    const { dates, dateToShow, selectedDate } = this.state;
     const { minDate, maxDate } = this.props;
 
     return (
       <div>
-        <div>
-          {
-            dates.map((dateArr, datesArrIndex) => {
-              return (
-                <div
-                  key={'datesArrIndex' + datesArrIndex}
-                  className="valign-wrapper cc12DateRow"
-                >
-                  {
-                    dateArr.map((date) => {
-                      if (date !== null) {
-                        const newDate = new Date(dateToShow);
+        {
+          dates.map((dateArr, datesArrIndex) => {
 
-                        newDate.setDate(date);
+            return (
+              <div
+                key={'datesArrIndex' + datesArrIndex}
+                className="valign-wrapper cc12DateRow"
+              >
+                {
+                  dateArr.map((date, index) => {
+                    if (date !== null) {
+                      const newDate = new Date(dateToShow);
 
-                        const dateSelected = this.isDateSelected(date);
+                      newDate.setDate(date);
 
-                        return (
-                          (<div className="cc12DateBlock">
-                            <div
-                              className={
-                                cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
-                                  'cc12DateNotSelected': !dateSelected,
-                                  'cc12DateSelected contentInversePrimary': dateSelected,
-                                  'cc12DisableDate': (minDate && this.compareDate(minDate, newDate)) || (maxDate && this.compareDate(newDate, maxDate))
-                                })
-                              }
-                              onClick={() => this.onDateClick(date)}
-                            >
-                              {date}
-                            </div>
-                          </div>)
-                        );
-                      }
+                      const dateSelected = newDate.getTime() === selectedDate?.getTime();
+                      const isDisabled = (minDate && compareDate(minDate, newDate)) || (maxDate && compareDate(newDate, maxDate));
+
+
+                      const onClickHandler = () => {
+                        if (!isDisabled) this.onDateClick(date);
+                      };
 
                       return (
-                        <div className="cc12DateBlock">&nbsp;</div>
+                        <div className="cc12DateBlock"
+                          key={`${newDate.getTime()}${index}`}
+                        >
+                          <span
+                            className={
+                              cn('cc12Date valign-wrapper cur-po circle bodyRegular14', {
+                                'cc12DateCurrent contentInversePrimary': this.isDateSelected(date),
+                                'backgroundPositive contentInversePrimary': dateSelected,
+                                'cc12DateNotSelected': !dateSelected && !isDisabled,
+                                'cc12DisableDate': isDisabled
+                              })
+                            }
+                            onClick={onClickHandler}
+                          >
+                            {date}
+                          </span>
+                        </div>
                       );
-                    })
-                  }
-                </div>
-              );
-            })
-          }
-        </div>
+                    }
+
+                    // NOTE: Renders the empty date block or date offsets
+                    return (
+                      <div className="cc12DateBlock"
+                        key={index}
+                      >&nbsp;</div>
+                    );
+                  })
+                }
+              </div>
+            );
+          })
+        }
       </div>
     );
   }
@@ -215,46 +245,27 @@ class DateCalendar extends React.PureComponent<Props, State> {
 
 
   onDateClick = (date: number) => {
-    const { minDate, maxDate, onDateChange } = this.props;
+    const { onDateChange } = this.props;
     const { dateToShow } = this.state;
     const newDate = new Date(dateToShow);
 
     newDate.setDate(date);
 
-    if (minDate && (this.compareDate(minDate, newDate))) {
-      return;
-    }
-
-    if (maxDate && (this.compareDate(newDate, maxDate))) {
-      return;
-    }
-
     onDateChange(newDate);
-  }
 
-  /* check date1 is greater than date2 */
-  compareDate = (date1: Date, date2: Date) => {
-    const d1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate(), 0, 0, 0);
-    const d2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate(), 0, 0, 0);
-
-    return d1.getTime() > d2.getTime();
+    this.setState({
+      dateToShow: newDate,
+      selectedDate: newDate
+    });
   }
 
 }
 
 
-type Props = {
-  currentDate: Date;
-  onDateChange: (date:Date)=>void;
-  highlightCurrentDate: boolean;
-  minDate: Date | null;
-  maxDate: Date | null;
-};
-
-
 type State = {
   dateToShow: Date;
   dates: (number | null)[][];
+  selectedDate: Date | null;
 }
 
 
