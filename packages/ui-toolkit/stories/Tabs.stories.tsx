@@ -22,7 +22,7 @@ const WALLETS_TABS = [
     left: 10,
     name: (
       <div style={{ padding: "10px 60px" }}
-        className="bodyMedium14"
+        className="bodyBaseHeavy"
       >
         DEPOSIT
       </div>
@@ -34,7 +34,7 @@ const WALLETS_TABS = [
     name: (
       <div
         style={{ padding: "10px 60px" }}
-        className="bodyMedium14"
+        className="bodyBaseHeavy"
       >
         WITHDRAW
       </div>

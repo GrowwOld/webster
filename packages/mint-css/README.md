@@ -44,15 +44,15 @@ There are two categories through which we will be exposing various semantic toke
     - Heading
     - Button
 
-    e.g. The token `bodyRegular12` says that, it can be used in body with regular font weight which have font size of 12pts.
+    e.g. The token `bodySmall` says that, it can be used in body with regular font weight which have font size of 12pts.
     ```
-    .bodyRegular12 {
+    .bodySmall {
         font-size: var(--font-size-12);
         font-weight: var(--font-weight-regular);
         line-height: 1.5;
     }
     ```
-    ```<div className="bodyRegular12">Some content</div>```
+    ```<div className="bodySmall">Some content</div>```
 
     ----------
 2. Color tokens

@@ -1,22 +1,22 @@
-.display24 {
+.displaySmall {
   font-size: var(--font-size-24);
   font-weight: var(--font-weight-medium);
   line-height: 2.0625rem;
 }
 
-.display28 {
+.displayBase {
   font-size: var(--font-size-28);
   font-weight: var(--font-weight-medium);
   line-height: 2.4375rem;
 }
 
-.display32 {
+.displayLarge {
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-medium);
   line-height: 2.75rem;
 }
 
-.display40 {
+.displayXLarge {
   font-size: var(--font-size-40);
   font-weight: var(--font-weight-medium);
   line-height: 3.5rem;
