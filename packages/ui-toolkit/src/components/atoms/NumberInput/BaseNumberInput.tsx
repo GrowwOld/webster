@@ -101,19 +101,19 @@ const calculateInputClass = (size: NumberInputProps['size']): string => {
 
   switch (size) {
     case 'small':
-      className = 'bodyMedium16';
+      className = 'bodyLargeHeavy';
       break;
 
     case 'medium':
-      className = 'bodyMedium18';
+      className = 'bodyXLargeHeavy';
       break;
 
     case 'large':
-      className = 'heading20';
+      className = 'headingLarge';
       break;
 
     default:
-      className = 'bodyMedium18';
+      className = 'bodyXLargeHeavy';
       break;
 
   }
