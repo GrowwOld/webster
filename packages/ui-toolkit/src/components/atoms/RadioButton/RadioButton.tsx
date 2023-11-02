@@ -27,10 +27,10 @@ const RadioButton = (props: Props) => {
     'contentPrimary radioLs2': true,
     'radioCo11LabelRight': radioDirection === RADIO_DIRECTION.RIGHT,
     'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT,
-    'bodyRegular12': size === 'Small' || size === 'XSmall',
-    'bodyRegular14': size === 'Base',
-    'bodyRegular16': size === 'Large',
-    'bodyRegular18': size === 'XLarge'
+    'bodySmall': size === 'Small' || size === 'XSmall',
+    'bodyBase': size === 'Base',
+    'bodyLarge': size === 'Large',
+    'bodyXLarge': size === 'XLarge'
   });
 
 

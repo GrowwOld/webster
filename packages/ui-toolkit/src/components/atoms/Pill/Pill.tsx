@@ -30,10 +30,10 @@ const Pill = (props: Props) => {
   };
 
   const labelClassName = cn({
-    bodyRegular12: size === 'Small' || size === 'XSmall',
-    bodyRegular14: size === 'Base',
-    bodyRegular16: size === 'Large',
-    bodyRegular18: size === 'XLarge'
+    bodySmall: size === 'Small' || size === 'XSmall',
+    bodyBase: size === 'Base',
+    bodyLarge: size === 'Large',
+    bodyXLarge: size === 'XLarge'
   });
 
   return (

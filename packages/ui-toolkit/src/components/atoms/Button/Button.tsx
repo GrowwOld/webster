@@ -74,10 +74,10 @@ const Button = (props: Props) => {
   });
 
   const fontClasses = cn({
-    'bodyMedium12': size === SIZES.SMALL,
-    'bodyMedium14': size === SIZES.BASE,
-    'bodyMedium16': size === SIZES.LARGE,
-    'bodyMedium18': size === SIZES.XLARGE,
+    'bodySmallHeavy': size === SIZES.SMALL,
+    'bodyBaseHeavy': size === SIZES.BASE,
+    'bodyLargeHeavy': size === SIZES.LARGE,
+    'bodyXLargeHeavy': size === SIZES.XLARGE,
     'contentDisabled': isDisabled && !isAccent,
     'borderPrimary': isDisabled && !isAccent && variant !== VARIANTS.TERTIARY,
     'contentPrimary': !isAccent && !isDisabled,
