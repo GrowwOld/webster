@@ -42,7 +42,7 @@ const Template: Story<TableProps> = (args) => <Table {...args}>
               style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}
             >
               <span>{data.marketPrice}</span>
-              <span className={` bodyRegular12 ${data.growthType ? 'contentAccent' : 'contentNegative'}`}>( {data.value} )</span>
+              <span className={` bodySmall ${data.growthType ? 'contentAccent' : 'contentNegative'}`}>( {data.value} )</span>
             </div>
           </Table.Cell>
           <Table.Cell>{data.sector}</Table.Cell>

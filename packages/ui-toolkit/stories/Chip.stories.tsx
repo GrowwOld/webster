@@ -49,7 +49,7 @@ export const WithCustomIcon = Template.bind({});
 WithCustomIcon.args = {
   ...Text.args,
   text: 'IPO',
-  textClass: 'bodyMedium14',
+  textClass: 'bodyBaseHeavy',
   iconPosition: 'right',
   iconComponent: (iconProps: ReactIconProps) => (
     <FnoIcon
