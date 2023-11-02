@@ -30,7 +30,7 @@ const Tag = (props: Props) => {
   }
 
   return (
-    (<div className={`width100 tg11Container  bodyRegular12 ${tagClass}`}>
+    (<div className={`width100 tg11Container  bodySmall ${tagClass}`}>
       {props.children}
     </div>)
   );

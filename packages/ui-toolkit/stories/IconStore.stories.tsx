@@ -59,7 +59,7 @@ export const AllMaterialIcons = () => {
               onClick={() => { copyToClipboard(importCode); }}
             >
               <IconComponent size={48}/>
-              <div className='bodyRegular16'>{icon}</div>
+              <div className='bodyLarge'>{icon}</div>
             </div>)
           );
         })

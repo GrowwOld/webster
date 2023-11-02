@@ -26,7 +26,7 @@ const Template: Story<AccordionProps> = (args) => {
 export const AccordionArgs = Template.bind({});
 AccordionArgs.args = {
   title: 'Click To Expand',
-  titleClass: 'contentPrimary bodyMedium16',
+  titleClass: 'contentPrimary bodyLargeHeavy',
   iconClass: '',
   parentClass: 'accordion_parent_class',
   onMountOpen: false,

@@ -26,7 +26,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
   return (
     <>
       {
-        label && <Label className='bodyRegular14'>{label}</Label>
+        label && <Label className='bodyBase'>{label}</Label>
       }
       <Container
         error={error ? true : false}
@@ -53,7 +53,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
         error && variant === 'unstyled' &&
 
         <ErrorLabel
-          className='bodyRegular14'
+          className='bodyBase'
           data-test-id={errorDataTestId.length ? errorDataTestId : null}
           error={error ? true : false}
         >
@@ -63,7 +63,7 @@ const BaseTextInputV1 = React.forwardRef<HTMLInputElement, TextInputProps>((prop
       {
         variant !== 'unstyled' &&
         <ErrorLabel
-          className='bodyRegular14'
+          className='bodyBase'
           error={error ? true : false}
           data-test-id={errorDataTestId.length ? errorDataTestId : null}
         >
@@ -80,19 +80,19 @@ const calculateInputClass = (size: TextInputProps['size']): string => {
 
   switch (size) {
     case 'small':
-      className = 'bodyRegular14';
+      className = 'bodyBase';
       break;
 
     case 'medium':
-      className = 'bodyRegular16';
+      className = 'bodyLarge';
       break;
 
     case 'large':
-      className = 'heading20';
+      className = 'headingLarge';
       break;
 
     default:
-      className = 'bodyRegular16';
+      className = 'bodyLarge';
       break;
 
   }

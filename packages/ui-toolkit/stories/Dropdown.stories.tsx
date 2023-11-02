@@ -22,12 +22,12 @@ const Template: Story<DropdownProps> = (args) => {
       {...args}
     >
       <DropdownTrigger>
-        <span className='story_dropdown_trigger heading20'>Domains
+        <span className='story_dropdown_trigger headingLarge'>Domains
           <KeyboardArrowDown />
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className='borderPrimary backgroundSurfacePrimary bodyRegular14'>
+        <div className='borderPrimary backgroundSurfacePrimary bodyBase'>
           <div className='story_dropdown_item backgroundPrimary'>Finance</div>
           <div className='story_dropdown_item backgroundPrimary'>Marketing</div>
           <div className='story_dropdown_item backgroundPrimary'>Engineering</div>
@@ -53,12 +53,12 @@ export const DropdownIconAnimation = (args) => {
       onHide={() => { setIconOrientation('up'); }}
     >
       <DropdownTrigger>
-        <span className='story_dropdown_trigger bodyRegular18'>Domains
+        <span className='story_dropdown_trigger bodyXLarge'>Domains
           <KeyboardArrowDown className={`story_dropdown_icon story_dropdown_icon_${iconOrientation}`} />
         </span>
       </DropdownTrigger>
       <DropdownContent>
-        <div className='borderPrimary backgroundSurfacePrimary bodyRegular14'>
+        <div className='borderPrimary backgroundSurfacePrimary bodyBase'>
           <div className='story_dropdown_item backgroundPrimary'>Finance</div>
           <div className='story_dropdown_item backgroundPrimary'>Marketing</div>
           <div className='story_dropdown_item backgroundPrimary'>Engineering</div>
@@ -81,7 +81,7 @@ DropdownIconAnimation.parameters = {
       onHide={() => { setIconOrientation('up') }}
     >
       <DropdownTrigger>
-        <span className="heading20 story_dropdown_trigger">Domains
+        <span className="headingLarge story_dropdown_trigger">Domains
           <KeyboardArrowDown className={"story_dropdown_icon story_dropdown_icon_{iconOrientation}"} />
         </span>
       </DropdownTrigger>
