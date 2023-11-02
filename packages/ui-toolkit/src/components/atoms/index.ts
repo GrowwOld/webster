@@ -6,7 +6,7 @@ export * from './DateSelector';
 export * from './Dropdown';
 export * from './GoBack';
 export * from './Image';
-export * from './InformationBoard';
+export * from './MessageBox';
 export * from './LaserBeam';
 export * from './Loader';
 export * from './Popover';

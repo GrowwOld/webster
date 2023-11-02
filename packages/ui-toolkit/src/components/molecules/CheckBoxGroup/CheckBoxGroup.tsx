@@ -45,16 +45,12 @@ type RequiredProps = {
 
 
 type CheckBox = {
-  size?: number;
-  label?: React.ReactNode;
+  size?: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  label?: string;
   value?: string;
-  disabled?: boolean;
-  activeColor?: string;
-  inActiveColor?: string;
-  addParentClass?: string;
-  labelComponent?: () => React.ReactNode;
-  checkBoxDirection?: ValueOf<typeof CHECKBOX_DIRECTION>;
-}
+  isDisabled?: boolean;
+  checkBoxDirection?: 'Left' | 'Right';
+};
 
 CheckBoxGroup.defaultProps = defaultProps;
 

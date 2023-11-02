@@ -1,0 +1,32 @@
+.infbd45ParentDiv {
+  flex: 1 0 0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  width: fit-content;
+  gap: 8px;
+}
+
+.mb76CompactBox {
+  padding: 0 16px;
+  border-radius: 0;
+}
+
+.mb45XSmall {
+  padding: 12px 8px;
+}
+
+.mb45Small {
+ padding: 12px;
+}
+
+.mb45Base {
+ padding: 12px 16px;
+}
+
+.mb45Large {
+ padding: 12px 20px;
+}
+
+.mb45XLarge {
+ padding: 12px 24px;
+}

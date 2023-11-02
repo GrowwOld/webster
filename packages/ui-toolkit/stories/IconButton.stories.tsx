@@ -16,7 +16,7 @@ const Template: Story<IconButtonProps> = (args) => {
   const [ isSelected, setSelected ] = useState(false);
 
   return (
-    <div style={{ margin: 24 }}>
+    <div style={{ margin: 8 }}>
       <IconButton
         {...args}
         onClick={() => setSelected(!isSelected)}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Search } from '@groww-tech/icon-store/mi';
+import { Add, ChevronRight } from '@groww-tech/icon-store/mi';
 import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 
@@ -16,6 +16,12 @@ export default {
         type: 'select',
         options: [ 'Primary', 'Secondary', 'Tertiary', 'Positive', 'Negative' ]
       }
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: [ 'Small', 'Base', 'Large', 'XLarge' ]
+      }
     }
   }
 };
@@ -25,7 +31,7 @@ const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  buttonText: 'BUTTON',
+  buttonText: 'Button label',
   onClick: action('onButtonClick')
 };
 
@@ -62,13 +68,11 @@ FullWidth.args = {
 export const WithLeadingIcon = Template.bind({});
 WithLeadingIcon.args = {
   ...Primary.args,
-  buttonText: 'SEARCH',
-  leadingIcon: (iconProps: any) => <Search {...iconProps} />
+  leadingIcon: (iconProps: any) => <Add {...iconProps} />
 };
 
 export const WithTrailingIcon = Template.bind({});
 WithTrailingIcon.args = {
   ...Primary.args,
-  buttonText: 'SEARCH',
-  trailingIcon: (iconProps: any) => <Search {...iconProps} />
+  trailingIcon: (iconProps: any) => <ChevronRight {...iconProps} />
 };

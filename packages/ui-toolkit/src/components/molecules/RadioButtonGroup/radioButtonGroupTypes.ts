@@ -3,5 +3,5 @@ export type RadioButtonType = {
   label: React.ReactNode;
   labelClassName?: string;
   parentClassName?: string;
-  radioDirection?: string;
+  radioDirection?: 'Left' | 'Right';
 }

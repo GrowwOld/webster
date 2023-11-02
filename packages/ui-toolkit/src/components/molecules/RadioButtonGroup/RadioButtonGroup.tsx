@@ -22,11 +22,9 @@ const RadioButtonGroup = (props: Props) => {
               {...restProps}
             >
               <RadioButton
-                selected={selected === item.value}
+                isSelected={selected === item.value}
                 onSelect={() => onSelect(item.value)}
                 label={item.label}
-                labelClassName={item.labelClassName}
-                parentClassName={item.parentClassName}
                 radioDirection={item.radioDirection}
                 dataTestId= {dataTestId ? index + '-' + dataTestId + '-radio-button' : ''}
               />

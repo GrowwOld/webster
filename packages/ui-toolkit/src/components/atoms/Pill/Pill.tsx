@@ -8,6 +8,7 @@ import './pill.css';
 
 const Pill = (props: Props) => {
   const {
+    size,
     text,
     leadingIcon,
     trailingIcon,
@@ -25,38 +26,54 @@ const Pill = (props: Props) => {
   };
 
   const pillIconProps = {
-    size: 14
+    size: 20
   };
+
+  const labelClassName = cn({
+    bodyRegular12: size === 'Small' || size === 'XSmall',
+    bodyRegular14: size === 'Base',
+    bodyRegular16: size === 'Large',
+    bodyRegular18: size === 'XLarge'
+  });
 
   return (
     <div
       className={
-        cn('backgroundPrimary', 'contentPrimary', 'absolute-center', 'bodyMedium12', 'cur-po', {
-          pill12Pill: true,
-          pill12PillHover: !isSelected && !isAccent,
-          pill12Outlined: isOutlined,
-          pill12SelectedPill: !isAccent && isSelected,
-          pill12SelectedAccentPill: isSelected && isAccent
-        })
+        cn(
+          'backgroundPrimary',
+          'contentPrimary',
+          'absolute-center',
+          'cur-po',
+          'valign-wrapper',
+          `pill12Size${size}`,
+          {
+            pill12Pill: true,
+            pill12PillHover: !isSelected && !isAccent,
+            pill12Outlined: isOutlined,
+            pill12SelectedPill: !isAccent && isSelected,
+            pill12SelectedAccentPill: isSelected && isAccent
+          }
+        )
       }
       onClick={handleClick}
     >
-      {leadingIcon?.(pillIconProps)}
+      <span className='valign-wrapper'>{leadingIcon?.(pillIconProps)}</span>
 
-      <span>{text}</span>
+      <span className={labelClassName}>{text}</span>
 
-      {trailingIcon?.(pillIconProps)}
+      <span>{trailingIcon?.(pillIconProps)}</span>
     </div>
   );
 };
 
 
 type RequiredProps = {
-  text: React.ReactNode;
+  text: string;
 }
 
 
 type DefaultProps = {
+  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
   onClick: (e: React.MouseEvent<HTMLImageElement>) => void;
   isSelected: boolean;
   isAccent: boolean;
@@ -68,6 +85,7 @@ type DefaultProps = {
 export type Props = RequiredProps & DefaultProps;
 
 Pill.defaultProps = {
+  size: 'Base',
   onClick: () => { },
   isSelected: false,
   isOutlined: true,

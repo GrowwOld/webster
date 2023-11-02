@@ -16,7 +16,8 @@ export default function IconButton(props: Props) {
   } = props;
 
   const iconProps = {
-    className: cn(iconClass, 'ib31Icon absolute-center')
+    className: cn(iconClass, 'ib31Icon absolute-center'),
+    color: 'var(--green500)'
   };
 
   const iconClasses = cn(

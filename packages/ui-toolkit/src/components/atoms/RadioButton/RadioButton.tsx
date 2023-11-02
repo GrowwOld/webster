@@ -6,30 +6,31 @@ import { RadioButtonChecked, RadioButtonUnchecked } from '@groww-tech/icon-store
 import './radioButton.css';
 
 export const RADIO_DIRECTION = {
-  LEFT: 'LEFT',
-  RIGHT: 'RIGHT'
+  LEFT: 'Left',
+  RIGHT: 'Right'
 };
 
 
 const RadioButton = (props: Props) => {
 
   const {
+    size,
     label,
-    selected,
+    isSelected,
     onSelect,
-    labelClassName,
-    parentClassName,
-    iconClassName,
     radioDirection,
     dataTestId,
     isDisabled
   } = props;
 
   const labelParentClassName = cn({
-    'contentPrimary bodyRegular16 radioLs2': true,
-    [`${labelClassName}`]: true,
+    'contentPrimary radioLs2': true,
     'radioCo11LabelRight': radioDirection === RADIO_DIRECTION.RIGHT,
-    'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT
+    'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT,
+    'bodyRegular12': size === 'Small' || size === 'XSmall',
+    'bodyRegular14': size === 'Base',
+    'bodyRegular16': size === 'Large',
+    'bodyRegular18': size === 'XLarge'
   });
 
 
@@ -43,49 +44,45 @@ const RadioButton = (props: Props) => {
     <div
       onClick={radioButtonClick}
       data-test-id={dataTestId.length ? dataTestId : null}
-      className={`radioCo11Box ${parentClassName}  ${radioDirection === RADIO_DIRECTION.RIGHT ? 'radioCo11BoxReverse' : ''}`}
+      className={
+        `radioCo11Box valign-wrapper ${
+          radioDirection === 'Right' ? 'radioCo11BoxReverse' : ''
+        }`
+      }
     >
-      {
-        selected
-          ? (
+      <div className='valign-wrapper'>
+        {
+          isSelected ? (
             <RadioButtonChecked
               size={20}
               color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
-              className={`radioCo11Icon ${iconClassName}`}
             />
-          )
-          : (
+          ) : (
             <RadioButtonUnchecked
               size={20}
               color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
-              className={`radioCo11Icon ${iconClassName}`}
             />
           )
-      }
-      <div className={labelParentClassName}>
-        {label}
+        }
       </div>
+      <div className={labelParentClassName}>{label}</div>
     </div>
   );
 };
 
 
 const defaultProps: DefaultProps = {
-  iconClassName: '',
-  labelClassName: '',
-  parentClassName: 'bas11RadioParent',
+  size: 'Base',
   dataTestId: '',
-  radioDirection: RADIO_DIRECTION.LEFT,
+  radioDirection: 'Left',
   isDisabled: false
 };
 
 
 type DefaultProps = {
-  labelClassName: string;
-  parentClassName: string;
-  radioDirection: ValueOf<typeof RADIO_DIRECTION>;
-  iconClassName: string;
+  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
   dataTestId: string;
+  radioDirection: 'Left' | 'Right';
   isDisabled: boolean;
 }
 
@@ -93,7 +90,7 @@ type DefaultProps = {
 type RequiredProps = {
   value?: React.ReactNode;
   label: React.ReactNode;
-  selected: boolean;
+  isSelected: boolean;
   onSelect: () => void;
 }
 
