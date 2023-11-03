@@ -107,3 +107,11 @@ html[data-theme="dark"] .backgroundInversePrimary{
 .backgroundAccentSecondarySubtle {
   background-color: var(--purple100);
 }
+
+.backgroundAlwaysDark {
+  background-color: var(--black);
+}
+
+.backgroundAlwaysLight {
+  background-color: var(--white);
+}
