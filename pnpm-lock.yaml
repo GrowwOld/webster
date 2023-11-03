@@ -398,8 +398,8 @@ importers:
         specifier: 1.4.1
         version: 1.4.1(react-dom@16.12.0)(react@16.12.0)
       '@groww-tech/mint-css':
-        specifier: 0.0.8
-        version: link:../mint-css
+        specifier: 0.0.9
+        version: 0.0.9
       flat-carousel:
         specifier: 0.0.1
         version: 0.0.1
@@ -2925,6 +2925,10 @@ packages:
 
   /@groww-tech/mint-css@0.0.6:
     resolution: {integrity: sha512-ZIWslLwF9vJw4K1bfJh08Hu9hzKexhEYHnydPr7oVZ/H98bIQqLwVz6zG9YZ3CNKWHPBX9/uuWWS/4KNul5xWw==}
+    dev: false
+
+  /@groww-tech/mint-css@0.0.9:
+    resolution: {integrity: sha512-AJG8uSHB24gu1dLzlzMO0XhiR6jL/02Fi1fbn0z9rcoFaVPdXuzJtzUnuvOxbfUlZMnNJoevksABHyiJadU8Wg==}
     dev: false
 
   /@istanbuljs/load-nyc-config@1.1.0:
