@@ -1,6 +1,6 @@
 {
   "name": "@groww-tech/ui-toolkit",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "description": "A lightning nature UI",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -113,7 +113,7 @@
   },
   "dependencies": {
     "@groww-tech/icon-store": "1.4.1",
-    "@groww-tech/mint-css": "^0.0.6",
+    "@groww-tech/mint-css": "0.0.9",
     "flat-carousel": "0.0.1",
     "lodash.debounce": "^4.0.8",
     "object-assign": "4.1.1",
