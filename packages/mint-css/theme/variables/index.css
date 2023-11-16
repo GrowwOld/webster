@@ -34,11 +34,24 @@ html {
   --overlay00: rgba(18, 18, 18, 0);
   --overlay30: rgba(18, 18, 18, 0.3);
   --overlay70: rgba(18, 18, 18, 0.7);
-  /*
-  *This is a spcl, rather risky variable.
-  *Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
-  */
-  --dangerouslySetPrimaryBg: #ffffff; 
+
+
+  /***
+  * This is a spcl, rather risky variable.
+  * Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
+  ***/
+  --dangerouslySetPrimaryBg: #ffffff;
+
+
+  /***
+  * These set of variables are temporary
+  * To be used by only those pod's as specified in the naming.
+  ***/
+  --tempNbtBackgroundPink: #f1e3f3;
+  --tempNbtBackgroundYellow: #fff3c8;
+  --tempNbtBackgroundBlue: #d6eeff;
+  --tempNbtBackgroundGray: #f0f0f2;
+  --tempNbtBackgroundRed: #ffc7bb;
 }
 
 html[data-theme="dark"] {
@@ -69,9 +82,22 @@ html[data-theme="dark"] {
   --overlay00: rgba(18, 18, 18, 0);
   --overlay30: rgba(18, 18, 18, 0.3);
   --overlay70: rgba(18, 18, 18, 0.7);
-    /*
-  *This is a spcl, rather risky variable.
-  *Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
-  */
+
+
+  /***
+  * This is a spcl, rather risky variable.
+  * Only use this color variable at those places where theme token ("backgroundPrimary") usage is not possible (Ex: css psuedo classes)
+  ***/
   --dangerouslySetPrimaryBg: #121212;
+
+
+  /***
+  * These set of variables are temporary
+  * To be used by only those pod's as specified in the naming.
+  ***/
+  --tempNbtBackgroundPink: #9b63a3;
+  --tempNbtBackgroundYellow: #b27a00;
+  --tempNbtBackgroundBlue: #3e79a4;
+  --tempNbtBackgroundGray: #5c5c6f;
+  --tempNbtBackgroundRed: #c85d0f;
 }
