@@ -47,11 +47,11 @@ html {
   * These set of variables are temporary
   * To be used by only those pod's as specified in the naming.
   ***/
-  --tempNbtBackgroundPink: #f1e3f3;
-  --tempNbtBackgroundYellow: #fff3c8;
-  --tempNbtBackgroundBlue: #d6eeff;
-  --tempNbtBackgroundGray: #f0f0f2;
-  --tempNbtBackgroundRed: #ffc7bb;
+  --tempNbtPink: #f1e3f3;
+  --tempNbtYellow: #fff3c8;
+  --tempNbtBlue: #d6eeff;
+  --tempNbtGray: #f0f0f2;
+  --tempNbtRed: #ffc7bb;
 }
 
 html[data-theme="dark"] {
@@ -95,9 +95,9 @@ html[data-theme="dark"] {
   * These set of variables are temporary
   * To be used by only those pod's as specified in the naming.
   ***/
-  --tempNbtBackgroundPink: #9b63a3;
-  --tempNbtBackgroundYellow: #b27a00;
-  --tempNbtBackgroundBlue: #3e79a4;
-  --tempNbtBackgroundGray: #5c5c6f;
-  --tempNbtBackgroundRed: #c85d0f;
+  --tempNbtPink: #9b63a3;
+  --tempNbtYellow: #b27a00;
+  --tempNbtBlue: #3e79a4;
+  --tempNbtGray: #5c5c6f;
+  --tempNbtRed: #c85d0f;
 }

@@ -115,30 +115,3 @@ html[data-theme="dark"] .backgroundInversePrimary{
 .backgroundAccentSecondarySubtle {
   background-color: var(--purple100);
 }
-
-
-/*-------------------------------------------*/
-/*----------Temp pod specific token----------*/
-/*-----These set of tokens are temporary-----*/
-/*-Limited pod's as specified in the naming.-*/
-/*-------------------------------------------*/
-
-.tempNbtBackgroundPink {
-  background-color: var(--tempNbtBackgroundPink);
-}
-
-.tempNbtBackgroundYellow {
-  background-color: var(--tempNbtBackgroundYellow);
-}
-
-.tempNbtBackgroundBlue {
-  background-color: var(--tempNbtBackgroundBlue);
-}
-
-.tempNbtBackgroundGray {
-  background-color: var(--tempNbtBackgroundGray);
-}
-
-.tempNbtBackgroundRed {
-  background-color: var(--tempNbtBackgroundRed);
-}
