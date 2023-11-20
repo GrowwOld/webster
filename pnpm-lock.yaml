@@ -455,6 +455,9 @@ importers:
       '@storybook/react':
         specifier: ^6.2.8
         version: 6.2.8(@babel/core@7.13.15)(@types/react@17.0.38)(eslint@7.26.0)(react-dom@16.12.0)(react@16.12.0)(typescript@4.5.5)
+      '@types/classnames':
+        specifier: 2.2.11
+        version: 2.2.11
       '@types/object-assign':
         specifier: ^4.0.30
         version: 4.0.30
@@ -4506,6 +4509,10 @@ packages:
 
   /@types/chai@4.3.6:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
+    dev: true
+
+  /@types/classnames@2.2.11:
+    resolution: {integrity: sha512-2koNhpWm3DgWRp5tpkiJ8JGc1xTn2q0l+jUNUE7oMKXUf5NpI9AIdC4kbjGNFBdHtcxBD18LAksoudAVhFKCjw==}
     dev: true
 
   /@types/color-convert@2.0.1:
