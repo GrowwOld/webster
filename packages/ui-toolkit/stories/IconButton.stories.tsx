@@ -27,9 +27,10 @@ const Template: Story<IconButtonProps> = (args) => {
 
 export const IconButtonArgs = Template.bind({});
 IconButtonArgs.args = {
-  iconComponent: (iconProps: any) => (<Search size={24}
+  iconComponent: (iconProps: any) => (<Search
     {...iconProps}
   />),
+  size: 'Base',
   isDisabled: false,
   isSelected: false,
   isLoading: false

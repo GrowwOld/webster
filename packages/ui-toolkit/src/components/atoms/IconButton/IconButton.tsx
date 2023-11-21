@@ -1,10 +1,12 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { ReactIconProps } from '@groww-tech/icon-store';
+
 import { Loader, LOADER_TYPE } from '../Loader';
 
 import './iconButton.css';
-import { ReactIconProps } from '@groww-tech/icon-store';
+
 
 export default function IconButton(props: Props) {
   const {
@@ -12,12 +14,30 @@ export default function IconButton(props: Props) {
     isLoading,
     isDisabled,
     isSelected,
-    iconClass
+    size
   } = props;
 
+
+  const getIconSize = () => {
+    switch (size) {
+      case 'XSmall': return 24;
+
+      case 'Small': return 32;
+
+      case 'Base': return 40;
+
+      case 'Large': return 48;
+
+      case 'XLarge': return 56;
+
+      default: return 40;
+    }
+  };
+
   const iconProps = {
-    className: cn(iconClass, 'ib31Icon absolute-center'),
-    color: 'var(--green500)'
+    className: 'absolute-center',
+    color: isDisabled ? 'var(--gray400)' : 'var(--green500)',
+    size: getIconSize()
   };
 
   const iconClasses = cn(
@@ -47,7 +67,7 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  iconClass?: string;
+  size?: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
   isSelected?: boolean;
   isDisabled?: boolean;
   isLoading?: boolean;
@@ -55,7 +75,7 @@ type DefaultProps = {
 
 
 IconButton.defaultProps = {
-  iconClass: '',
+  size: 'Base',
   isSelected: false,
   isDisabled: false,
   isLoading: false

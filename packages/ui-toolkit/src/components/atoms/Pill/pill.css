@@ -5,14 +5,9 @@
   border-radius: 99px;
 }
 
-.pill12Outlined {
-  border: 1px solid var(--gray150);
-}
 
 .pill12SelectedAccentPill {
- background-color: var(--green100);
  border: 1px solid var(--green500);
- color: var(--green500);
 }
 
 .pill12SelectedAccentPill:hover {

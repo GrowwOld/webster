@@ -2,6 +2,7 @@
 @import './tokens/background-tokens.css';
 @import './tokens/border-tokens.css';
 @import './tokens/content-tokens.css';
+@import './tokens/temp-background-tokens.css';
 
 /* Variables */
 @import './variables/';

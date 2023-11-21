@@ -123,7 +123,7 @@ CheckBox.defaultProps = {
   labelComponent: () => null,
   checkBoxDirection: 'Left',
   dataTestId: ''
-} as unknown as DefaultProps;
+} as DefaultProps;
 
 export type Props = DefaultProps & RequiredProps;
 
