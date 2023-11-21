@@ -1,22 +1,22 @@
-.heading14 {
+.headingXSmall {
   font-size: var(--font-size-14);
   font-weight: var(--font-weight-medium);
   line-height: 1.25rem;
 }
 
-.heading16 {
+.headingSmall {
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-medium);
   line-height: 1.375rem;
 }
 
-.heading18 {
+.headingBase {
   font-size: var(--font-size-18);
   font-weight: var(--font-weight-medium);
   line-height: 1.5625rem;
 }
 
-.heading20 {
+.headingLarge {
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-medium);
   line-height: 1.25rem;
