@@ -3,16 +3,6 @@ import cn from 'classnames';
 
 import './loader.css';
 
-/*
-  Supported dimensions: (
-    SMALL: '12px',
-    MEDIUM: '15px',
-    LARGE: '18px',
-    MEDIUM_LARGE: '26px',
-    EXTRA_LARGE: '32px',
-    BOLT_DEFAULT: '60px'
-  )
-*/
 
 export const LOADER_TYPE = {
   CIRCULAR: 'circular',
@@ -145,7 +135,7 @@ export type DefaultProps = {
   loaderType: ValueOf<typeof LOADER_TYPE>;
   loaderClassName: string;
   active: boolean;
-  dimension: 'SMALL' | 'MEDIUM' | 'LARGE' | 'MEDIUM_LARGE' | 'EXTRA_LARGE' | 'BOLT_DEFAULT';
+  dimension: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge' | 'XXLarge' | 'BOLT_DEFAULT';
   borderWidth: string | number;
 }
 

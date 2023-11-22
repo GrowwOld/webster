@@ -5,17 +5,8 @@
   border-radius: 99px;
 }
 
-
-.pill12SelectedAccentPill {
- border: 1px solid var(--green500);
-}
-
 .pill12SelectedAccentPill:hover {
   opacity: 0.9;
-}
-
-.pill12SelectedPill {
-  border: 1px solid var(--gray900);
 }
 
 .pill12PillHover:hover {
@@ -23,21 +14,21 @@
 }
 
 .pill12SizeXSmall {
- padding: 12px 8px;
+ padding: 8px 12px;
 }
 
 .pill12SizeSmall {
- padding: 12px;
+ padding: 8px 14px;
 }
 
 .pill12SizeBase {
- padding: 12px 16px;
+ padding: 8px 16px;
 }
 
 .pill12SizeLarge {
- padding: 12px 20px;
+ padding: 8px 20px;
 }
 
 .pill12SizeXLarge {
- padding: 12px 24px;
+ padding: 8px 24px;
 }

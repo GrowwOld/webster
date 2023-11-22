@@ -1,25 +1,13 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { ReactIconProps } from '@groww-tech/icon-store';
+
+import { VARIANTS, BUTTON_SIZES } from './Button.contants';
 import { Loader, LOADER_TYPE } from '../Loader';
+import { POSITION } from '../../../utils/constants';
 
 import './button.css';
-
-
-const VARIANTS = {
-  PRIMARY: 'Primary',
-  SECONDARY: 'Secondary',
-  TERTIARY: 'Tertiary',
-  POSITIVE: 'Positive',
-  NEGATIVE: 'Negative'
-};
-
-const SIZES = {
-  SMALL: 'Small',
-  BASE: 'Base',
-  LARGE: 'Large',
-  XLARGE: 'XLarge'
-};
 
 
 const Button = (props: Props) => {
@@ -41,16 +29,17 @@ const Button = (props: Props) => {
 
   const primaryButtonClasses = cn(
     {
-      'contentOnColour': !isLoading && !isDisabled,
-      'backgroundAccent': true,
+      contentOnColour: !isLoading && !isDisabled,
+      backgroundAccent: true,
       btn96ButtonHover: !isDisabled
     });
 
   const secondaryButtonClasses = cn({
-    'backgroundAccentSubtle': isAccent,
-    'contentDisabled': isDisabled,
-    'borderPrimary': !isDisabled && !isAccent,
-    'backgroundSecondary': isLoading
+    btn96SecondaryButtonWithoutAccent: !isAccent,
+    backgroundAccentSubtle: isAccent,
+    contentDisabled: isDisabled,
+    borderPrimary: !isDisabled && !isAccent,
+    backgroundSecondary: isLoading
   });
 
   const tertiaryButtonClasses = cn({
@@ -60,77 +49,88 @@ const Button = (props: Props) => {
   });
 
   const postiveButtonClasses = cn({
-    'contentOnColour': !isDisabled && !isLoading,
-    'backgroundPositive': !isDisabled,
+    contentOnColour: !isDisabled && !isLoading,
+    backgroundPositive: !isDisabled,
     btn96ButtonLabel: !isDisabled && !isLoading,
     btn96ButtonHover: !isDisabled
   });
 
   const negativeButtonClasses = cn({
-    'contentOnColour': !isDisabled && !isLoading,
-    'backgroundNegative': !isDisabled,
+    contentOnColour: !isDisabled && !isLoading,
+    backgroundNegative: !isDisabled,
     btn96ButtonLabel: !isDisabled && !isLoading,
     btn96ButtonHover: !isDisabled
   });
 
   const fontClasses = cn({
-    'bodySmallHeavy': size === SIZES.SMALL,
-    'bodyBaseHeavy': size === SIZES.BASE,
-    'bodyLargeHeavy': size === SIZES.LARGE,
-    'bodyXLargeHeavy': size === SIZES.XLARGE,
-    'contentDisabled': isDisabled && !isAccent,
-    'borderPrimary': isDisabled && !isAccent && variant !== VARIANTS.TERTIARY,
-    'contentPrimary': !isAccent && !isDisabled,
-    'contentAccent': isAccent
+    bodySmallHeavy: size === BUTTON_SIZES.SMALL,
+    bodyBaseHeavy: size === BUTTON_SIZES.BASE,
+    bodyLargeHeavy: size === BUTTON_SIZES.LARGE,
+    bodyXLargeHeavy: size === BUTTON_SIZES.XLARGE,
+    contentDisabled: isDisabled && !isAccent,
+    contentPrimary: !isAccent && !isDisabled,
+    contentAccent: isAccent
   });
 
 
-  const classname = cn('btn96DefaultClass', 'absolute-center', fontClasses,
+  const baseClasses = cn('btn96DefaultClass absolute-center', fontClasses,
     {
       'cur-po': !isLoading && !isDisabled,
-      btn96SmallButton: size === 'Small',
-      btn96MediumButton: size === 'Base',
-      btn96LargeButton: size === 'Large',
-      btn96XLargeButton: size === 'XLarge',
+      btn96SmallButton: size === BUTTON_SIZES.SMALL,
+      btn96MediumButton: size === BUTTON_SIZES.BASE,
+      btn96LargeButton: size === BUTTON_SIZES.LARGE,
+      btn96XLargeButton: size === BUTTON_SIZES.XLARGE,
       btn86FullWidth: isFullWidth,
       btn96LoadingButton: isLoading,
       btn96CompactButton: variant === VARIANTS.TERTIARY && isCompact,
       btn96ButtonLabel: variant !== VARIANTS.TERTIARY && !isDisabled,
-      btn96ButtonDisabled: variant !== VARIANTS.TERTIARY && isDisabled && !isLoading
+      btn96ButtonDisabled: variant !== VARIANTS.TERTIARY && isDisabled && !isLoading,
+      borderPrimary: isDisabled && !isAccent && variant !== VARIANTS.TERTIARY
     });
 
 
   const getButtonClasses = (variant: string) => {
     switch (variant) {
       case VARIANTS.PRIMARY:
-        return cn(primaryButtonClasses, classname);
+        return cn(baseClasses, primaryButtonClasses);
 
       case VARIANTS.SECONDARY:
-        return cn(secondaryButtonClasses, classname);
+        return cn(baseClasses, secondaryButtonClasses);
 
       case VARIANTS.TERTIARY:
-        return cn(tertiaryButtonClasses, classname);
+        return cn(baseClasses, tertiaryButtonClasses);
 
       case VARIANTS.POSITIVE:
-        return cn(postiveButtonClasses, classname);
+        return cn(baseClasses, postiveButtonClasses);
 
       case VARIANTS.NEGATIVE:
-        return cn(negativeButtonClasses, classname);
+        return cn(baseClasses, negativeButtonClasses);
     }
   };
 
 
-  const loaderClasses = cn({
+  const loaderClasses = cn('btn96LoaderSize btn96LoaderMargin', {
     btn96PrimaryButtonLoader: variant === VARIANTS.PRIMARY || variant === VARIANTS.POSITIVE || variant === VARIANTS.NEGATIVE,
     btn96LoaderWithAccent: (variant === VARIANTS.SECONDARY || variant === VARIANTS.TERTIARY) && isAccent,
     btn96LoaderWithoutAccent: (variant === VARIANTS.SECONDARY || variant === VARIANTS.TERTIARY) && !isAccent
   });
 
+  const fixedToBottomClass = cn({
+    btn96BottomFixed: isFixToBottom,
+    borderPrimary: isFixToBottom
+  });
+
+  const borderBottomClasses = cn({
+    btn96TertiaryButtonBorder: variant === VARIANTS.TERTIARY,
+    borderNeutral: variant === VARIANTS.TERTIARY && !isDisabled,
+    borderDisabled: variant === VARIANTS.TERTIARY && isDisabled
+  });
+
 
   const getIconSize = () => {
-    if (size === 'Small') return 16;
-    if (size === 'Base') return 20;
-    if (size === 'Large' || size === 'XLarge') return 24;
+    if (size === BUTTON_SIZES.SMALL) return 16;
+    if (size === BUTTON_SIZES.BASE) return 20;
+    if (size === BUTTON_SIZES.LARGE || size === BUTTON_SIZES.XLARGE) return 24;
   };
 
 
@@ -140,20 +140,23 @@ const Button = (props: Props) => {
       size: getIconSize()
     };
 
-    if (position === 'Leading') return leadingIcon?.(buttonIconProps as any) || null;
-    if (position === 'Trailing') return trailingIcon?.(buttonIconProps as any) || null;
+    if (position === POSITION.LEADING) return leadingIcon?.(buttonIconProps as ReactIconProps) || null;
+    if (position === POSITION.TRAILING) return trailingIcon?.(buttonIconProps as ReactIconProps) || null;
   };
 
 
   const onButtonClick = (e: React.MouseEvent) => {
     if (!isDisabled && !isLoading) {
       onClick(e);
+
+    } else {
+      e.stopPropagation();
     }
   };
 
 
   return (
-    <div className={isFixToBottom ? 'btn96BottomFixed' : ''}>
+    <div className={fixedToBottomClass}>
       <div
         className={getButtonClasses(variant)}
         data-test-id={dataTestId.length ? dataTestId : null}
@@ -164,18 +167,18 @@ const Button = (props: Props) => {
             <div className="absolute-center btn96LoaderContainer">
               <Loader
                 loaderType={LOADER_TYPE.CIRCULAR}
-                loaderClassName={cn(loaderClasses, 'btn96LoaderSize')}
+                loaderClassName={loaderClasses}
               />
             </div>
         }
         <>
-          {leadingIcon && getIconUI('Leading')}
+          {leadingIcon && getIconUI(POSITION.LEADING)}
 
-          <span className="btn96ParentDimension">
+          <span className={borderBottomClasses}>
             {buttonText}
           </span>
 
-          {trailingIcon && getIconUI('Trailing')}
+          {trailingIcon && getIconUI(POSITION.TRAILING)}
         </>
 
       </div>
@@ -191,8 +194,8 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size: 'Small' | 'Base' | 'Large' | 'XLarge';
-  variant: 'Primary' | 'Secondary' | 'Tertiary' | 'Positive' | 'Negative';
+  size: ValueOf<typeof BUTTON_SIZES>;
+  variant: ValueOf<typeof VARIANTS>;
   isLoading: boolean;
   isAccent: boolean;
   isCompact: boolean;

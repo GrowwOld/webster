@@ -26,6 +26,7 @@ const Template: Story<MessageBoxProps> = (args) => <MessageBox {...args} />;
 export const Neutral = Template.bind({});
 Neutral.args = {
   background: 'Neutral',
+  isCompact: false,
   content: `This is a informaton box. This can be used for anything,
    from a notice box to a notification box to anything you need it to be!!.
   Just kidding it\'s just a template text to fill up space. :P`

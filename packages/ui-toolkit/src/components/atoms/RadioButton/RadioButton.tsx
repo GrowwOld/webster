@@ -4,11 +4,7 @@ import cn from 'classnames';
 import { RadioButtonChecked, RadioButtonUnchecked } from '@groww-tech/icon-store/mi';
 
 import './radioButton.css';
-
-export const RADIO_DIRECTION = {
-  LEFT: 'Left',
-  RIGHT: 'Right'
-};
+import { DIRECTION, SIZES } from '../../../utils/constants';
 
 
 const RadioButton = (props: Props) => {
@@ -23,66 +19,70 @@ const RadioButton = (props: Props) => {
     isDisabled
   } = props;
 
-  const labelParentClassName = cn({
-    'contentPrimary radioLs2': true,
-    'radioCo11LabelRight': radioDirection === RADIO_DIRECTION.RIGHT,
-    'radioCo11LabelLeft': radioDirection === RADIO_DIRECTION.LEFT,
-    'bodySmall': size === 'Small' || size === 'XSmall',
-    'bodyBase': size === 'Base',
-    'bodyLarge': size === 'Large',
-    'bodyXLarge': size === 'XLarge'
+  const iconColor = isDisabled ? 'var(--gray400)' : 'var(--green500)';
+
+  const baseClasses = cn('radioCo11Box valign-wrapper', {
+    radioCo11BoxReverse: radioDirection === DIRECTION.RIGHT
+  });
+
+  const labelClasses = cn('contentPrimary radioLs2', {
+    radioCo11LabelRight: radioDirection === DIRECTION.RIGHT,
+    radioCo11LabelLeft: radioDirection === DIRECTION.LEFT,
+    bodySmall: size === SIZES.SMALL || size === SIZES.XSMALL,
+    bodyBase: size === SIZES.BASE,
+    bodyLarge: size === SIZES.LARGE,
+    bodyXLarge: size === SIZES.XLARGE
   });
 
 
-  const radioButtonClick = () => {
+  const radioButtonClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (!isDisabled) {
       onSelect();
+
+    } else {
+      e.stopPropagation();
     }
   };
 
   return (
     <div
-      onClick={radioButtonClick}
+      onClick={(e) => radioButtonClick(e)}
       data-test-id={dataTestId.length ? dataTestId : null}
-      className={
-        `radioCo11Box valign-wrapper ${
-          radioDirection === 'Right' ? 'radioCo11BoxReverse' : ''
-        }`
-      }
+      className={baseClasses}
     >
       <div className='valign-wrapper'>
         {
           isSelected ? (
             <RadioButtonChecked
               size={20}
-              color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
+              color={iconColor}
             />
           ) : (
             <RadioButtonUnchecked
               size={20}
-              color={isDisabled ? 'var(--gray400)' : 'var(--green500)'}
+              color={iconColor}
             />
           )
         }
       </div>
-      <div className={labelParentClassName}>{label}</div>
+      <div className={labelClasses}>{label}</div>
     </div>
   );
 };
 
 
 const defaultProps: DefaultProps = {
-  size: 'Base',
+  size: SIZES.BASE,
   dataTestId: '',
-  radioDirection: 'Left',
+  radioDirection: DIRECTION.LEFT,
   isDisabled: false
 };
 
 
 type DefaultProps = {
-  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  size: ValueOf <typeof SIZES>;
   dataTestId: string;
-  radioDirection: 'Left' | 'Right';
+  radioDirection: ValueOf <typeof DIRECTION>;
   isDisabled: boolean;
 }
 

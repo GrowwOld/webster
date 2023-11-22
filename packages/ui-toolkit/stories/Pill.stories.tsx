@@ -24,7 +24,11 @@ const Template: Story<PillProps> = (args) => (
 export const Text = Template.bind({});
 Text.args = {
   text: 'Pill label',
-  onClick: action('onPillClick')
+  size: 'Base',
+  onClick: action('onPillClick'),
+  isSelected: false,
+  isAccent: true,
+  isOutlined: true
 };
 
 export const WithLeadingIcon = Template.bind({});

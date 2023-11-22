@@ -2,6 +2,7 @@ import React from 'react';
 import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
+import { SIZES } from '../../../utils/constants';
 
 import './pill.css';
 
@@ -29,40 +30,33 @@ const Pill = (props: Props) => {
     size: 20
   };
 
-  const labelClassName = cn({
-    bodySmall: size === 'Small' || size === 'XSmall',
-    bodyBase: size === 'Base',
-    bodyLarge: size === 'Large',
-    bodyXLarge: size === 'XLarge'
+  const baseClasses = cn('contentPrimary', 'absolute-center', 'cur-po', 'valign-wrapper', `pill12Size${size}`,
+    {
+      pill12Pill: true,
+      pill12PillHover: !isSelected && !isAccent,
+      borderNeutral: isOutlined && !isAccent,
+      borderPrimary: isOutlined && isAccent,
+      borderAccent: isAccent && isOutlined,
+      pill12SelectedPill: !isAccent && isSelected,
+      contentAccent: isAccent,
+      backgroundPositiveSubtle: isSelected && isAccent
+    });
+
+  const labelClasses = cn({
+    bodySmallHeavy: size === SIZES.SMALL || size === SIZES.XSMALL,
+    bodyBaseHeavy: size === SIZES.BASE,
+    bodyLargeHeavy: size === SIZES.LARGE || size === SIZES.XLARGE
   });
 
   return (
-    <div
-      className={
-        cn(
-          'backgroundPrimary',
-          'contentPrimary',
-          'absolute-center',
-          'cur-po',
-          'valign-wrapper',
-          `pill12Size${size}`,
-          {
-            pill12Pill: true,
-            pill12PillHover: !isSelected && !isAccent,
-            'borderNeutral': isOutlined && !isAccent,
-            'borderAccent': isAccent && isOutlined,
-            pill12SelectedPill: !isAccent && isSelected,
-            'backgroundPositiveSubtle contentAccent borderAccent': isSelected && isAccent
-          }
-        )
-      }
+    <div className={baseClasses}
       onClick={handleClick}
     >
-      <span className='valign-wrapper'>{leadingIcon?.(pillIconProps)}</span>
+      {leadingIcon && <span className='valign-wrapper'>{leadingIcon?.(pillIconProps)}</span>}
 
-      <span className={labelClassName}>{text}</span>
+      <span className={labelClasses}>{text}</span>
 
-      <span>{trailingIcon?.(pillIconProps)}</span>
+      {trailingIcon && <span className='valign-wrapper'>{trailingIcon?.(pillIconProps)}</span>}
     </div>
   );
 };
@@ -74,7 +68,7 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  size: ValueOf <typeof SIZES>;
   onClick: (e: React.MouseEvent<HTMLImageElement>) => void;
   isSelected: boolean;
   isAccent: boolean;
@@ -86,8 +80,8 @@ type DefaultProps = {
 export type Props = RequiredProps & DefaultProps;
 
 Pill.defaultProps = {
-  size: 'Base',
-  onClick: () => { },
+  size: SIZES.BASE,
+  onClick: () => {},
   isSelected: false,
   isOutlined: true,
   isAccented: false,

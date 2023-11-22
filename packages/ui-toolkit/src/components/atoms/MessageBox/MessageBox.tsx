@@ -3,14 +3,10 @@ import cn from 'classnames';
 
 import { Info } from '@groww-tech/icon-store/mi';
 
-import './messageBox.css';
+import { BACKGROUNDS } from './messageBox.constants';
+import { SIZES } from '../../../utils/constants';
 
-const BACKGROUNDS = {
-  NEUTRAL: 'Neutral',
-  WARNING: 'Warning',
-  ERROR: 'Error',
-  POSITIVE: 'Positive'
-};
+import './messageBox.css';
 
 
 const MessageBox = (props: Props) => {
@@ -23,25 +19,24 @@ const MessageBox = (props: Props) => {
     isCompact
   } = props;
 
-  const parentDivClass = cn({
-    'valign-wrapper infbd45ParentDiv': true,
-    'backgroundTertiary': background === BACKGROUNDS.NEUTRAL,
-    'backgroundWarningSubtle': background === BACKGROUNDS.WARNING,
-    'backgroundNegativeSubtle': background === BACKGROUNDS.ERROR,
-    'backgroundPositiveSubtle': background === BACKGROUNDS.POSITIVE,
-    'mb76CompactBox': isCompact === true
+  const baseClasses = cn(`mb45${size} valign-wrapper infbd45ParentDiv`, {
+    backgroundTertiary: background === BACKGROUNDS.NEUTRAL,
+    backgroundWarningSubtle: background === BACKGROUNDS.WARNING,
+    backgroundNegativeSubtle: background === BACKGROUNDS.ERROR,
+    backgroundPositiveSubtle: background === BACKGROUNDS.POSITIVE,
+    mb76CompactBox: isCompact
   });
 
-  const labelClassNames = cn({
-    'bodySmall': size === 'Small' || size === 'XSmall',
-    'bodyBase': size === 'Base',
-    'bodyLarge': size === 'Large',
-    'bodyXLarge': size === 'XLarge'
+  const labelClasses = cn('contentPrimary', {
+    bodySmall: size === SIZES.SMALL || size === SIZES.XSMALL,
+    bodyBase: size === SIZES.BASE,
+    bodyLarge: size === SIZES.LARGE,
+    bodyXLarge: size === SIZES.XLARGE
   });
 
   return (
     <div
-      className={cn(parentDivClass, isCompact ? `mb45${size}` : 'mb76CompactBox')}
+      className={baseClasses}
       data-test-id={dataTestId.length ? dataTestId : null}
     >
       <div className='valign-wrapper'>
@@ -53,7 +48,7 @@ const MessageBox = (props: Props) => {
         />
         }
       </div>
-      <span className={cn('contentPrimary', labelClassNames)}>{content}</span>
+      <span className={labelClasses}>{content}</span>
     </div>
   );
 };
@@ -67,18 +62,18 @@ type RequiredProps = {
 type DefaultProps = {
   isIconPresent: boolean;
   dataTestId: string;
-  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
-  background: 'Neutral' | 'Error' | 'Warning' | 'Positive';
+  size: ValueOf<typeof SIZES>;
+  background: ValueOf<typeof BACKGROUNDS>;
   isCompact: boolean;
 };
 
 
 MessageBox.defaultProps = {
   isIconPresent: true,
-  background: 'Neutral',
+  background: BACKGROUNDS.NEUTRAL,
   dataTestId: '',
   isOutlined: false,
-  size: 'XSmall',
+  size: SIZES.SMALL,
   isCompact: false
 } as DefaultProps;
 

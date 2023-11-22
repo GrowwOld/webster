@@ -7,7 +7,7 @@
 }
 
 .mb76CompactBox {
-  padding: 0 16px;
+  padding: 0 16px !important;
   border-radius: 0;
 }
 

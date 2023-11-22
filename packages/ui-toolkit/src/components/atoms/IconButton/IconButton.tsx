@@ -3,10 +3,10 @@ import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
 
+import { SIZES } from '../../../utils/constants';
 import { Loader, LOADER_TYPE } from '../Loader';
 
 import './iconButton.css';
-
 
 export default function IconButton(props: Props) {
   const {
@@ -20,38 +20,40 @@ export default function IconButton(props: Props) {
 
   const getIconSize = () => {
     switch (size) {
-      case 'XSmall': return 24;
 
-      case 'Small': return 32;
+      case SIZES.SMALL: return 16;
 
-      case 'Base': return 40;
+      case SIZES.BASE: return 20;
 
-      case 'Large': return 48;
+      case SIZES.LARGE: return 24;
 
-      case 'XLarge': return 56;
+      case SIZES.XLARGE: return 28;
 
-      default: return 40;
+      default: return 20;
     }
   };
 
   const iconProps = {
     className: 'absolute-center',
-    color: isDisabled ? 'var(--gray400)' : 'var(--green500)',
+    color: isDisabled ? 'var(--gray400)' : 'var(--gray900)',
     size: getIconSize()
   };
 
   const iconClasses = cn(
     'ib31IconDefault',
     {
-      'ib31Disabled': isDisabled,
-      'ib31IconSelected': isSelected,
-      'ib31IsLoading': isLoading
+      backgroundSecondary: isDisabled,
+      borderDisabled: isSelected && isDisabled,
+      borderNeutral: isSelected && !isDisabled,
+      ib31IconSelected: isSelected,
+      ib31IsLoading: isLoading
     });
 
   return (
     isLoading
       ? <Loader loaderType={LOADER_TYPE.CIRCULAR}
         loaderClassName='iconLoader'
+        dimension={size}
       />
       : <div className={iconClasses}>
         {iconComponent(iconProps as any)}
@@ -67,7 +69,7 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size?: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  size?: 'Small' | 'Base' | 'Large' | 'XLarge';
   isSelected?: boolean;
   isDisabled?: boolean;
   isLoading?: boolean;
@@ -75,7 +77,7 @@ type DefaultProps = {
 
 
 IconButton.defaultProps = {
-  size: 'Base',
+  size: SIZES.BASE,
   isSelected: false,
   isDisabled: false,
   isLoading: false

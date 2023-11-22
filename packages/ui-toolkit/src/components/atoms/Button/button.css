@@ -51,30 +51,17 @@
 
 
 /* -- Seconday Button -- */
-.btn96SecondaryButtonWithAccent {
-  background-color: var(--green100);
-  color: var(--green500);
-}
-
-.btn96SecondaryButtonWithoutAccent {
-  background-color: var(--dangerouslySetPrimaryBg);
-  color: var(--gray900);
-  border: 1px solid var(--gray150);
-}
-
 .btn96SecondaryButtonWithoutAccent:hover {
   background-color: var(--gray50);
 }
 
-.btn96SecondaryButtonWithoutAccentDisabled {
-  background-color: var(--gray150);
-}
 
 /* -- Tertairy Button -- */
 
 
-.btn96TertiaryButtonWithoutAccent .btn96ParentDimension {
-  border-bottom: 1px dashed var(--gray700);
+.btn96TertiaryButtonBorder {
+  border-style: dashed;
+  border-width: 0 0 1px 0
 }
 
 .btn96TertiaryButtonWithoutAccent:hover {
@@ -99,12 +86,6 @@
   border: 1px solid var(--gray50);
 }
 
-
-.btn96TertiaryButtonDisabled .btn96ParentDimension {
-  border-bottom: 1px dashed var(--gray400);
-}
-
-
 /* Loader Classes */
 
 .btn96LoadingButton {
@@ -120,35 +101,35 @@
 }
 
 .btn96PrimaryButtonLoader {
-  border: 2px solid var(--dangerouslySetPrimaryBg);
+  border: 2px solid var(--dangerouslySetPrimaryBg); /* the loader color will always bewhite in dark as well as in light theme */
   border-top-color: transparent;
 }
 
 .btn96LoaderWithoutAccent {
-  border: 2px solid var(--gray900) !important; 
-  border-right-color: transparent !important; 
+  border: 2px solid var(--gray900);
+  border-right-color: transparent;
+}
+
+.btn96LoaderMargin {
+  margin-top: 4px;
 }
 
 .btn96MediumButton .btn96LoaderSize {
-  margin-top: 4px;
   width: 20px; 
   height: 20px;
 }
 
 .btn96LargeButton .btn96LoaderSize {
-  margin-top: 4px;
   width: 24px;
   height: 24px;
 }
 
 .btn96XLargeButton .btn96LoaderSize {
-  margin-top: 4px;
   width: 24px;
   height: 24px;
 }
 
 .btn96SmallButton .btn96LoaderSize {
-  margin-top: 4px;
   width: 16px;
   height: 16px;
 }
@@ -156,7 +137,7 @@
 .btn96BottomFixed {
   position: fixed;
   left: 0;
-  border-top: 1px solid var(--gray150);
+  border-width: 1px 0 0 0;
   padding: 12px;
   width: 100%;
   z-index: 1000;

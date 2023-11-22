@@ -68,3 +68,22 @@ export const DARK_THM = {
   */
   dangerouslySetPrimaryBg: '#121212'
 };
+
+export const DIRECTION = {
+  LEFT: 'Left',
+  RIGHT: 'Right'
+} as const;
+
+
+export const SIZES = {
+  XSMALL: 'XSmall',
+  SMALL: 'Small',
+  BASE: 'Base',
+  LARGE: 'Large',
+  XLARGE: 'XLarge'
+} as const;
+
+export const POSITION = {
+  LEADING: 'Leading',
+  TRAILING: 'Trailing'
+} as const;

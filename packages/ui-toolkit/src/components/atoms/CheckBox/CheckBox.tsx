@@ -1,12 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
 
-import './checkBox.css';
+import { DIRECTION, SIZES } from '../../../utils/constants';
 
-export const CHECKBOX_DIRECTION = {
-  LEFT: 'Left',
-  RIGHT: 'Right'
-};
+import './checkBox.css';
 
 
 const CheckBox = (props: Props) => {
@@ -29,6 +26,9 @@ const CheckBox = (props: Props) => {
   ) => {
     if (!isDisabled) {
       handleOnClick(value, !isChecked, e);
+
+    } else {
+      e.stopPropagation();
     }
   };
 
@@ -73,19 +73,22 @@ const CheckBox = (props: Props) => {
     </svg>
   );
 
+  const baseClasses = cn(`c11Default valign-wrapper c11Pointer c11Size${size}`, {
+    c11checkOnRight: DIRECTION.RIGHT
+  });
 
   const labelClasses = cn({
-    'bodySmall': size === 'Small' || size === 'XSmall',
-    'bodyBase': size === 'Base',
-    'bodyLarge': size === 'Large',
-    'bodyXLarge': size === 'XLarge'
+    bodySmall: size === SIZES.SMALL || size === SIZES.XSMALL,
+    bodyBase: size === SIZES.BASE,
+    bodyLarge: size === SIZES.LARGE,
+    bodyXLarge: size === SIZES.XLARGE
   });
 
   return (
     <div
       onClick={(e) => checkBoxClick(e)}
       data-test-id={dataTestId.length ? dataTestId : null}
-      className={`c11Default valign-wrapper c11Pointer c11Size${size} ${checkBoxDirection === CHECKBOX_DIRECTION.RIGHT ? 'c11checkOnRight' : ''}`}
+      className={baseClasses}
     >
       <div className='valign-wrapper'>{isChecked ? active_svg : inactive_svg}</div>
 
@@ -96,12 +99,12 @@ const CheckBox = (props: Props) => {
 
 
 type DefaultProps = {
-  size: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  size: ValueOf<typeof SIZES>;
   label: string;
   value: string;
   isChecked: boolean;
   isDisabled: boolean;
-  checkBoxDirection: 'Left' | 'Right';
+  checkBoxDirection: ValueOf<typeof DIRECTION>;
   dataTestId: string;
 };
 
@@ -115,13 +118,13 @@ type RequiredProps = {
 };
 
 CheckBox.defaultProps = {
-  size: 'Base',
+  size: SIZES.BASE,
   label: '',
   value: '',
   isChecked: false,
   isDisabled: false,
   labelComponent: () => null,
-  checkBoxDirection: 'Left',
+  checkBoxDirection: DIRECTION.LEFT,
   dataTestId: ''
 } as DefaultProps;
 

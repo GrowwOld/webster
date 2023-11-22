@@ -27,12 +27,27 @@ export default {
 };
 
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => (
+  <Button
+    {...args}
+  />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
   buttonText: 'Button label',
-  onClick: action('onButtonClick')
+  onClick: action('onButtonClick'),
+  size: 'Base',
+  variant: 'Primary',
+  isLoading: false,
+  isAccent: false,
+  isCompact: false,
+  isFixToBottom: false,
+  isFullWidth: false,
+  isDisabled: false,
+  leadingIcon: null,
+  trailingIcon: null,
+  dataTestId: ''
 };
 
 export const Secondary = Template.bind({});
@@ -68,7 +83,7 @@ FullWidth.args = {
 export const WithLeadingIcon = Template.bind({});
 WithLeadingIcon.args = {
   ...Primary.args,
-  leadingIcon: (iconProps: any) => <Add {...iconProps} />
+  leadingIcon: (iconProps: any) => {}
 };
 
 export const WithTrailingIcon = Template.bind({});
