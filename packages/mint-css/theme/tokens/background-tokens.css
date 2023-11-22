@@ -54,6 +54,14 @@ html[data-theme="dark"] .backgroundInversePrimary{
   background-color: var(--overlay30);
 }
 
+.backgroundAlwaysDark {
+  background-color: var(--black);
+}
+
+.backgroundAlwaysLight {
+  background-color: var(--white);
+}
+
 
 /*-------------------------------------------*/
 /*--------------Extended Tokens--------------*/
@@ -106,12 +114,4 @@ html[data-theme="dark"] .backgroundInversePrimary{
 
 .backgroundAccentSecondarySubtle {
   background-color: var(--purple100);
-}
-
-.backgroundAlwaysDark {
-  background-color: var(--black);
-}
-
-.backgroundAlwaysLight {
-  background-color: var(--white);
 }
