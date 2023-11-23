@@ -50,17 +50,17 @@ const Button = (props: Props) => {
   });
 
   const postiveButtonClasses = cn({
-    contentOnColour: !isDisabled && !isLoading,
-    backgroundPositive: !isDisabled,
-    btn96ButtonLabel: !isDisabled && !isLoading,
-    btn96ButtonHover: !isDisabled
+    backgroundPositive: !isDisabled || (isLoading && isDisabled),
+    contentOnColour: !isLoading && !isDisabled,
+    btn96ButtonHover: !isDisabled,
+    backgroundSecondary: isDisabled && !isLoading
   });
 
   const negativeButtonClasses = cn({
-    contentOnColour: !isDisabled && !isLoading,
-    backgroundNegative: !isDisabled,
-    btn96ButtonLabel: !isDisabled && !isLoading,
-    btn96ButtonHover: !isDisabled
+    backgroundNegative: !isDisabled || (isLoading && isDisabled),
+    contentOnColour: !isLoading && !isDisabled,
+    btn96ButtonHover: !isDisabled,
+    backgroundSecondary: isDisabled && !isLoading
   });
 
   const fontClasses = cn({
@@ -104,6 +104,9 @@ const Button = (props: Props) => {
 
       case VARIANTS.NEGATIVE:
         return cn(baseClasses, negativeButtonClasses);
+
+      default :
+        return cn(baseClasses, primaryButtonClasses);
     }
   };
 

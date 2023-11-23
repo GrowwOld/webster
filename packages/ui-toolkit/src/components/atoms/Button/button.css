@@ -103,7 +103,7 @@
   border-top-color: transparent;
 }
 
-.btn96LoaderWithoutAccent {
+.btn96LoaderWithoutAccent { /*used because the token doesn't override the existing color of loader*/
   border: 2px solid var(--gray900);
   border-right-color: transparent;
 }

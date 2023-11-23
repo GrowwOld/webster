@@ -57,7 +57,7 @@ export default function IconButton(props: Props) {
         dimension={size}
       />
       : <div className={iconClasses}>
-        {iconComponent(iconProps as any)}
+        {iconComponent(iconProps as ReactIconProps)}
       </div>
   );
 }
