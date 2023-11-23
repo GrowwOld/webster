@@ -123,7 +123,6 @@ CheckBox.defaultProps = {
   value: '',
   isChecked: false,
   isDisabled: false,
-  labelComponent: () => null,
   checkBoxDirection: DIRECTION.LEFT,
   dataTestId: ''
 } as DefaultProps;
