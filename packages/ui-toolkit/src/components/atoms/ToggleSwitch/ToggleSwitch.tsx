@@ -1,8 +1,11 @@
 import React from 'react';
+import cn from 'classnames';
 
 import '@groww-tech/mint-css/dist/index.css';
+import { SIZES } from '../../../utils/constants';
 
 import './toggleSwitch.css';
+
 
 
 const ToggleSwitch = (props: Props) => {
@@ -16,14 +19,14 @@ const ToggleSwitch = (props: Props) => {
     dataTestId
   } = props;
 
-  const getFontClass = () => {
-    if(size === "XLarge") return "bodyXLarge";
-    if(size === "Large") return "bodyLarge";
-    if(size === "Base") return "bodyBase";
-    if(size === "Small") return "bodySmallHeavy";
-    if(size === "XSmall") return "bodySmall";
+  const labelClasses = cn({
+    bodySmallHeavy: size === SIZES.SMALL,
+    bodyXLarge: size === SIZES.XLARGE,
+    bodyBase: size === SIZES.BASE,
+    bodyLarge: size === SIZES.LARGE,
+    bodyXSmall: size === SIZES.XSMALL,
+  });
 
-  }
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
   const circleDiameter = 20;
 
@@ -37,7 +40,6 @@ const ToggleSwitch = (props: Props) => {
     margin: '0px' // required here, as somewhere in the project(globally) these values are altered
   };
 
-
   const switchDivisonStyle = {
     pointerEvents: isDisabled ? 'none' : 'unset'
   };
@@ -46,9 +48,11 @@ const ToggleSwitch = (props: Props) => {
     transform: isActive ? 'translateX(16px)' : 'none'
   };
 
+  const baseClasses = cn('contentPrimary', 'absolute-center', 'cur-po', 'valign-wrapper');
+
   return (
-    <div className="valign-wrapper">
-      <div className={getFontClass()}>
+    <div className={baseClasses}>
+      <div className={labelClasses}>
          {leftText}
       </div>
       <div
@@ -69,11 +73,11 @@ const ToggleSwitch = (props: Props) => {
           className={isDisabled ? 'backgroundTertiary sw348reactSwitchLabel' : isActive ? 'backgroundPositive sw348reactSwitchLabel' : 'backgroundTertiary sw348reactSwitchLabel'}
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton backgroundAlwaysLight'}  //check the 'backgrpundPrimary' property, according to design language
+            className={'sw348reactSwitchButton backgroundAlwaysLight'}  
           />
         </div>
       </div>
-      <div className={getFontClass()}>
+      <div className={labelClasses}>
         {rightText}
       </div>
     </div>
@@ -88,7 +92,7 @@ const defaultProps: DefaultProps = {
   isActive: true,
   isDisabled: false,
   dataTestId: '',
-  size: 'Base' 
+  size: SIZES.BASE,
 };
 
 
@@ -104,7 +108,7 @@ type DefaultProps = {
   dataTestId: string;
   isActive: boolean;
   isDisabled: boolean;
-  size: 'XLarge'| 'Large' | 'Base' | 'Small' | 'XSmall';
+  size: ValueOf <typeof SIZES>;
 }
 
 

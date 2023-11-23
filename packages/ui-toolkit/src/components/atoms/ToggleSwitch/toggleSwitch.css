@@ -21,8 +21,9 @@
   height: 1.5rem;           
   width: 2.5rem;
   position: relative;
-  transition: background-color 0.3s;  
+  transition: background-color 0.3s;
 }
+
 .sw348reactSwitchButton{
   height: 1.25rem;
   width: 1.25rem;
