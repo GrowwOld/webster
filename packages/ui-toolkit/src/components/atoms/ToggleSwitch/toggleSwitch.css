@@ -4,7 +4,6 @@
   align-items: center;
   z-index: var(--zindex900);
   margin: 0 auto;
-  cursor: pointer;
 }
 
 .sw348reactSwitchCheckbox {
@@ -17,7 +16,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
   height: 1.5rem;           
   width: 2.5rem;
   position: relative;

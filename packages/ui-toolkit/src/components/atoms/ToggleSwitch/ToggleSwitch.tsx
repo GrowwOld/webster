@@ -7,7 +7,6 @@ import { SIZES } from '../../../utils/constants';
 import './toggleSwitch.css';
 
 
-
 const ToggleSwitch = (props: Props) => {
   const {
     size,
@@ -24,7 +23,7 @@ const ToggleSwitch = (props: Props) => {
     bodyXLarge: size === SIZES.XLARGE,
     bodyBase: size === SIZES.BASE,
     bodyLarge: size === SIZES.LARGE,
-    bodyXSmall: size === SIZES.XSMALL,
+    bodyXSmall: size === SIZES.XSMALL
   });
 
   // circleDiameter is the diameter of the circular slider which should be smaller than the size of the parent component so as to provide offset between the slider and it's parent
@@ -40,26 +39,24 @@ const ToggleSwitch = (props: Props) => {
     margin: '0px' // required here, as somewhere in the project(globally) these values are altered
   };
 
-  const switchDivisonStyle = {
-    pointerEvents: isDisabled ? 'none' : 'unset'
-  };
 
   const switchButtonStyle = {
     transform: isActive ? 'translateX(16px)' : 'none'
   };
 
-  const baseClasses = cn('contentPrimary', 'absolute-center', 'cur-po', 'valign-wrapper');
+  const baseClasses = cn('contentPrimary', 'absolute-center', 'valign-wrapper', {
+    'cur-po': !isDisabled
+  });
 
   return (
     <div className={baseClasses}>
       <div className={labelClasses}>
-         {leftText}
+        {leftText}
       </div>
       <div
         className='sw348reactSwitchDivision'
         data-test-id={dataTestId.length ? dataTestId : null}
         onClick={(e) => onChange(e)}
-        style={switchDivisonStyle}
       >
         <input
           style={inputStyle}
@@ -73,7 +70,7 @@ const ToggleSwitch = (props: Props) => {
           className={isDisabled ? 'backgroundTertiary sw348reactSwitchLabel' : isActive ? 'backgroundPositive sw348reactSwitchLabel' : 'backgroundTertiary sw348reactSwitchLabel'}
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton backgroundAlwaysLight'}  
+            className={'sw348reactSwitchButton backgroundAlwaysLight'}
           />
         </div>
       </div>
@@ -92,7 +89,7 @@ const defaultProps: DefaultProps = {
   isActive: true,
   isDisabled: false,
   dataTestId: '',
-  size: SIZES.BASE,
+  size: SIZES.BASE
 };
 
 
