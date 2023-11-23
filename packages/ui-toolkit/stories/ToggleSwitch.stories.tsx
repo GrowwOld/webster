@@ -15,7 +15,7 @@ const Template: Story<ToggleSwitchProps> = (args) => {
 
 
   const onChange = () => {
-    setIsChecked(!isChecked);
+    setIsChecked(prevState => !prevState);
   };
 
   return (
