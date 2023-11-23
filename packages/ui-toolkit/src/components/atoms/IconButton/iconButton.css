@@ -1,0 +1,26 @@
+
+
+.ib31IconDefault {
+ width: fit-content;
+ height: fit-content;
+ border-radius: 50%;
+ padding: 6px;
+}
+
+
+.ib31IconSelected {
+ border-style: solid;
+ border-width: 2px;
+ padding: 4px;
+}
+
+.ib31IconDefault:hover {
+ background-color: var(--gray100);
+}
+
+
+.iconLoader {
+ border: 2px solid var(--gray900);
+ border-right-color: transparent;
+ margin: 6px;
+}

@@ -18,10 +18,17 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
+  height: 1.5rem;           
+  width: 2.5rem;
   position: relative;
   transition: background-color 0.3s;
 }
 
+.sw348reactSwitchButton{
+  height: 1.25rem;
+  width: 1.25rem;
+  filter: 'drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.15))';
+}
 .sw348reactSwitchLabel .sw348reactSwitchButton {
   content: '';
   position: absolute;
@@ -31,3 +38,6 @@
   /*same as width, height*/
   transition: all 0.3s;
 }
+
+
+/* 'backgroundTertiary sw348reactSwitchLabel' */
