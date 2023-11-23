@@ -16,7 +16,8 @@ const Template: Story<LoaderProps> = (args) => <Loader {...args} />;
 
 export const Circular = Template.bind({});
 Circular.args = {
-  loaderType: LOADER_TYPE.CIRCULAR
+  loaderType: LOADER_TYPE.CIRCULAR,
+  dimension: 'SMALL'
 };
 
 export const CircularBolt = Template.bind({});

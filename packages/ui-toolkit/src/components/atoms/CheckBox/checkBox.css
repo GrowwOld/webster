@@ -1,21 +1,30 @@
-.c11AlignCenter {
-  display: flex;
-  align-items: center;
-}
-
-.c11CLabel {
-  font-size: 14px;
-  color: var(--gray900);
-  margin-left: 12px;
-  letter-spacing: 0.3px;
-  -webkit-font-smoothing: auto;
-}
-
-.c11Pointer {
-  cursor: pointer;
+.c11Default {
+ width: fit-content;
+ height: fit-content;
+ gap: 8px;
 }
 
 .c11checkOnRight {
   flex-direction: row-reverse;
   justify-content: flex-end;
+}
+
+.c11SizeXSmall {
+ padding: 12px 8px;
+}
+
+.c11SizeSmall {
+ padding: 12px;
+}
+
+.c11SizeBase {
+ padding: 12px 16px;
+}
+
+.c11SizeLarge {
+ padding: 12px 20px;
+}
+
+.c11SizeXLarge {
+ padding: 12px 24px;
 }

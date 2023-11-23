@@ -1,56 +1,50 @@
 import React from 'react';
-import { Story } from "@storybook/react";
-import { action } from '@storybook/addon-actions';
+import { Story } from '@storybook/react';
 
 import { Props as ToggleSwitchProps } from '../src/components/atoms/ToggleSwitch/ToggleSwitch';
 import { ToggleSwitch } from '../src/components/atoms';
 
 export default {
   title: 'ToggleSwitch',
-  component: ToggleSwitch,
-  argTypes: {
-  }
+  component: ToggleSwitch
 };
 
+
 const Template: Story<ToggleSwitchProps> = (args) => {
-  const [checked, setChecked] = React.useState(false);
+  const [ isChecked, setIsChecked ] = React.useState(args.isActive);
+
+
   const onChange = () => {
-    setChecked(!checked);
-  }
+    setIsChecked(prevState => !prevState);
+  };
+
   return (
     <div className="valign-wrapper">
-      <ToggleSwitch {...args} isActive={checked} onChange={onChange} />
+      <ToggleSwitch {...args}
+        isActive={isChecked}
+        onChange={onChange}
+      />
     </div>
   );
-}
+};
 
 export const Default = Template.bind({});
 Default.args = {
-  width: 52,
-  height: 24,
+  size: 'Base',
   leftText: '',
   rightText: '',
-  inactiveBackgroundColor: 'var(--gray700)',
-  switchCircleColor: 'var(--white)',
-  activeBackgroundColor: 'var(--green500)'
-}
+  isActive: false,
+  isDisabled: false
+};
 
 export const WithText = Template.bind({});
 WithText.args = {
   ...Default.args,
   leftText: <div style={{ marginRight: 10 }}>Off</div>,
   rightText: <div style={{ marginLeft: 10 }}>On</div>
-}
+};
 
 export const SwitchCircle = Template.bind({});
 SwitchCircle.args = {
-  ...Default.args,
-  switchCircleColor: 'var(--red500)'
-}
-
-export const Custom = Template.bind({});
-Custom.args = {
-  ...Default.args,
-  inactiveBackgroundColor: 'var(--red500)',
-  activeBackgroundColor: 'var(--purple500)'
-}
+  ...Default.args
+};

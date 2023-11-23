@@ -1,0 +1,34 @@
+.pill12Pill {
+  width: fit-content;
+  padding: 8px 12px;
+  gap: 8px;
+  border-radius: 99px;
+}
+
+.pill12SelectedAccentPill:hover {
+  opacity: 0.9;
+}
+
+.pill12PillHover:hover {
+  background-color: var(--gray50);
+}
+
+.pill12SizeXSmall {
+ padding: 8px 12px;
+}
+
+.pill12SizeSmall {
+ padding: 8px 14px;
+}
+
+.pill12SizeBase {
+ padding: 8px 16px;
+}
+
+.pill12SizeLarge {
+ padding: 8px 20px;
+}
+
+.pill12SizeXLarge {
+ padding: 8px 24px;
+}

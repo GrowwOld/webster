@@ -20,27 +20,32 @@
 
 /* ========================================SIZES================================================ */
 
-.loader14Inner.loader14SMALL {
+.loader14Inner.loader14XSmall {
   width: 12px;
   height: 12px;
 }
 
-.loader14Inner.loader14MEDIUM {
-  width: 15px;
-  height: 15px;
+.loader14Inner.loader14Small {
+  width: 16px;
+  height: 16px;
 }
 
-.loader14Inner.loader14LARGE {
-  width: 18px;
-  height: 18px;
+.loader14Inner.loader14Base {
+  width: 20px;
+  height: 20px;
 }
 
-.loader14Inner.loader14MEDIUM_LARGE {
-  width: 26px;
-  height: 26px;
+.loader14Inner.loader14Large {
+  width: 24px;
+  height: 24px;
 }
 
-.loader14Inner.loader14EXTRA_LARGE {
+.loader14Inner.loader14XLarge {
+  width: 28px;
+  height: 28px;
+}
+
+.loader14Inner.loader14XXLarge {
   width: 32px;
   height: 32px;
 }
