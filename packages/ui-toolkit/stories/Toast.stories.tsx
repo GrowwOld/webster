@@ -53,28 +53,22 @@ const Template : Story = (_args) => {
       />
 
       <Button
-        backgroundColor="var(--yellow500)"
         buttonText="Toast Warn"
         onClick={() => activateToast('warn')}
       />
 
       <Button
-        backgroundColor="var(--red500)"
+        variant='Negative'
         buttonText="Toast Error"
         onClick={() => activateToast('error')}
       />
 
       <Button
         buttonText="Toast Info"
-        buttonType="Secondary"
+        variant="Secondary"
         onClick={() => activateToast('info')}
       />
 
-      <Button
-        backgroundColor="var(--purple500)"
-        buttonText="Toast Loading"
-        onClick={() => activateToast('loading')}
-      />
     </div>
   );
 };
