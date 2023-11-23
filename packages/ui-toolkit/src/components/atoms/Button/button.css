@@ -82,12 +82,7 @@
 }
 
 
-/* -- Disabled State -- */
 
-.btn96ButtonDisabled {
-  background-color: var(--gray50);
-  border: 1px solid var(--gray50);
-}
 
 /* Loader Classes */
 

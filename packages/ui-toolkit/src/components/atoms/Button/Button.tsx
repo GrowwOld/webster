@@ -5,7 +5,7 @@ import { ReactIconProps } from '@groww-tech/icon-store';
 
 import { VARIANTS, BUTTON_SIZES } from './Button.contants';
 import { Loader, LOADER_TYPE } from '../Loader';
-import { POSITION } from '../../../utils/constants';
+import { ICON_POSITION } from '../../../utils/constants';
 
 import './button.css';
 
@@ -139,8 +139,8 @@ const Button = (props: Props) => {
       size: getIconSize()
     };
 
-    if (position === POSITION.LEADING) return leadingIcon?.(buttonIconProps as ReactIconProps) || null;
-    if (position === POSITION.TRAILING) return trailingIcon?.(buttonIconProps as ReactIconProps) || null;
+    if (position === ICON_POSITION.LEADING) return leadingIcon?.(buttonIconProps as ReactIconProps) || null;
+    if (position === ICON_POSITION.TRAILING) return trailingIcon?.(buttonIconProps as ReactIconProps) || null;
   };
 
 
@@ -171,13 +171,13 @@ const Button = (props: Props) => {
             </div>
         }
         <>
-          {leadingIcon && getIconUI(POSITION.LEADING)}
+          {leadingIcon && getIconUI(ICON_POSITION.LEADING)}
 
           <span className={borderBottomClasses}>
             {buttonText}
           </span>
 
-          {trailingIcon && getIconUI(POSITION.TRAILING)}
+          {trailingIcon && getIconUI(ICON_POSITION.TRAILING)}
         </>
 
       </div>

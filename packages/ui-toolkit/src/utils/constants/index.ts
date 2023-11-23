@@ -83,7 +83,7 @@ export const SIZES = {
   XLARGE: 'XLarge'
 } as const;
 
-export const POSITION = {
+export const ICON_POSITION = {
   LEADING: 'Leading',
   TRAILING: 'Trailing'
 } as const;

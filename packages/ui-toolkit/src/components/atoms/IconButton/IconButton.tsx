@@ -5,6 +5,7 @@ import { ReactIconProps } from '@groww-tech/icon-store';
 
 import { SIZES } from '../../../utils/constants';
 import { Loader, LOADER_TYPE } from '../Loader';
+import { ICON_BUTTON_SIZE } from './iconButton.constants';
 
 import './iconButton.css';
 
@@ -69,7 +70,7 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size?: 'Small' | 'Base' | 'Large' | 'XLarge';
+  size?: ValueOf <typeof ICON_BUTTON_SIZE>;
   isSelected?: boolean;
   isDisabled?: boolean;
   isLoading?: boolean;

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CheckBox, CHECKBOX_DIRECTION } from '../../atoms/CheckBox';
+import { DIRECTION, SIZES } from '../../../utils/constants';
 
 import './checkBoxGroup.css';
 
@@ -45,11 +46,11 @@ type RequiredProps = {
 
 
 type CheckBox = {
-  size?: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge';
+  size?: ValueOf <typeof SIZES>;
   label?: string;
   value?: string;
   isDisabled?: boolean;
-  checkBoxDirection?: 'Left' | 'Right';
+  checkBoxDirection?: ValueOf <typeof DIRECTION>;
 };
 
 CheckBoxGroup.defaultProps = defaultProps;

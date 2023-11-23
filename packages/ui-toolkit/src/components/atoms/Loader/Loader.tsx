@@ -1,8 +1,9 @@
 import React from 'react';
 import cn from 'classnames';
 
-import './loader.css';
+import { LOADER_SIZE } from './loader.constants';
 
+import './loader.css';
 
 export const LOADER_TYPE = {
   CIRCULAR: 'circular',
@@ -135,8 +136,8 @@ export type DefaultProps = {
   loaderType: ValueOf<typeof LOADER_TYPE>;
   loaderClassName: string;
   active: boolean;
-  dimension: 'XSmall' | 'Small' | 'Base' | 'Large' | 'XLarge' | 'XXLarge' | 'BOLT_DEFAULT';
+  dimension: ValueOf<typeof LOADER_SIZE>;
   borderWidth: string | number;
-}
+};
 
 export default Loader;
