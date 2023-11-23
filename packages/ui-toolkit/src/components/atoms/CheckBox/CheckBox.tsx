@@ -100,7 +100,7 @@ const CheckBox = (props: Props) => {
 
 type DefaultProps = {
   size: ValueOf<typeof SIZES>;
-  label: string;
+  label: React.ReactNode;
   value: string;
   isChecked: boolean;
   isDisabled: boolean;
