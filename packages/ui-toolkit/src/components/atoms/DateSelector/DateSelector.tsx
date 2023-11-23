@@ -102,9 +102,7 @@ class DateSelector extends PureComponent<Props, State> {
         <Button
           buttonText={buttonText}
           onClick={this.confirmDate}
-          buttonType='Primary'
-          height={43}
-          width={270}
+          variant='Primary'
         />
       </div>
     );
