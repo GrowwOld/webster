@@ -1,1 +1,1 @@
-export { default as CheckBoxGroup, CHECKBOX_DIRECTION } from './CheckBoxGroup';
+export { default as CheckBoxGroup } from './CheckBoxGroup';

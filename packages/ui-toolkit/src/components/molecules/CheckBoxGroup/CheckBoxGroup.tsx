@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CheckBox, CHECKBOX_DIRECTION } from '../../atoms/CheckBox';
+import { CheckBox } from '../../atoms/CheckBox';
 import { DIRECTION, SIZES } from '../../../utils/constants';
 
 import './checkBoxGroup.css';
@@ -58,4 +58,3 @@ CheckBoxGroup.defaultProps = defaultProps;
 export type Props = DefaultProps & RequiredProps;
 
 export default React.memo(CheckBoxGroup);
-export { CHECKBOX_DIRECTION };

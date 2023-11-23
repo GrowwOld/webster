@@ -1,1 +1,1 @@
-export { default as RadioButton, RADIO_DIRECTION } from './RadioButton';
+export { default as RadioButton } from './RadioButton';

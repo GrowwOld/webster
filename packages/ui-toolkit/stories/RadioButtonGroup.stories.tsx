@@ -4,7 +4,6 @@ import { action } from '@storybook/addon-actions';
 
 import { Props as RadioButtonGroupProps } from '../src/components/molecules/RadioButtonGroup/RadioButtonGroup';
 import { RadioButtonGroup } from '../src/components/molecules';
-import { RADIO_DIRECTION } from '../src/components/atoms';
 
 export default {
   title: 'RadioButtonGroup',
@@ -47,7 +46,7 @@ Default.args = {
 export const Custom = Template.bind({});
 
 const switchArray = [
-  { label: "On", value: "ON", radioDirection: RADIO_DIRECTION.RIGHT },
+  { label: "On", value: "ON", radioDirection: 'Right' },
   { label: "Off", value: 'OFF', parentClassName: "bas11RadioParent" }
 ];
 

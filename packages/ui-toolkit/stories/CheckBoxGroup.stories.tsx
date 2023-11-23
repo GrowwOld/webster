@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story } from '@storybook/react';
 
 import { Props as CheckBoxGroupProps } from '../src/components/molecules/CheckBoxGroup/CheckBoxGroup';
-import { CheckBoxGroup, CHECKBOX_DIRECTION } from '../src/components/molecules';
+import { CheckBoxGroup } from '../src/components/molecules';
 
 export default {
   title: 'CheckBoxGroup',
@@ -58,28 +58,28 @@ const skillsArray = [
   {
     label: <span style={{ marginRight: '87px' }}>React</span>,
     value: 'REACT',
-    checkBoxDirection: CHECKBOX_DIRECTION.RIGHT
+    checkBoxDirection: 'Right'
   },
   {
     label: <span style={{ marginRight: '82px' }}>Spring</span>,
     value: 'SPRING',
-    checkBoxDirection: CHECKBOX_DIRECTION.RIGHT
+    checkBoxDirection: 'Right'
   },
   {
     label: <span style={{ marginRight: '73px' }}>Express</span>,
     value: 'EXPRESS',
-    checkBoxDirection: CHECKBOX_DIRECTION.RIGHT
+    checkBoxDirection: 'Right'
   },
   {
     label: <span style={{ marginRight: '8px' }}>Angular(disabled)</span>,
     value: 'ANGULAR',
-    checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
+    checkBoxDirection: 'Right',
     isDisabled: true
   },
   {
     label: <span style={{ marginRight: '78px' }}>Django</span>,
     value: 'DJANGO',
-    checkBoxDirection: CHECKBOX_DIRECTION.RIGHT,
+    checkBoxDirection: 'Right',
     activeColor: 'var(--red500)'
   }
 ];
