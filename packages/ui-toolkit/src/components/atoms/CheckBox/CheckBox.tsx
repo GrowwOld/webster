@@ -73,9 +73,12 @@ const CheckBox = (props: Props) => {
     </svg>
   );
 
-  const baseClasses = cn(`c11Default valign-wrapper c11Pointer c11Size${size}`, {
-    c11checkOnRight: DIRECTION.RIGHT
-  });
+  const baseClasses = cn(
+    `c11Default valign-wrapper c11Pointer c11Size${size}`,
+    {
+      c11checkOnRight: checkBoxDirection === DIRECTION.RIGHT
+    }
+  );
 
   const labelClasses = cn({
     bodySmall: size === SIZES.SMALL || size === SIZES.XSMALL,

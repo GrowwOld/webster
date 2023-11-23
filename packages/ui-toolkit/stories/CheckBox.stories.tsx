@@ -17,13 +17,20 @@ const Template: Story<CheckBoxProps> = (args) => <CheckBox {...args}/>;
 export const Checked = Template.bind({});
 Checked.args = {
   label: 'Check Actions',
-  handleOnClick: action('onCheckBoxClick')
+  handleOnClick: action('onCheckBoxClick'),
+  size: 'Base',
+  value: '',
+  isChecked: false,
+  isDisabled: false,
+  checkBoxDirection: 'Left',
+  dataTestId: ''
 };
 
 
 export const OnRight = Template.bind({});
 OnRight.args = {
+  ...Checked.args,
   label: <span style={{ marginRight: '8px' }}>Checkbox</span>,
-  checkBoxDirection: 'right',
+  checkBoxDirection: 'Right',
   handleOnClick: action('onCheckBoxClick')
 };

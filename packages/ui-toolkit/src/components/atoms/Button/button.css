@@ -58,6 +58,9 @@
 
 /* -- Tertairy Button -- */
 
+.btn96TertiaryButtonWithAccent:hover {
+  background-color: var(--green100);
+}
 
 .btn96TertiaryButtonBorder {
   border-style: dashed;

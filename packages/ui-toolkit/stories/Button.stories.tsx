@@ -83,7 +83,7 @@ FullWidth.args = {
 export const WithLeadingIcon = Template.bind({});
 WithLeadingIcon.args = {
   ...Primary.args,
-  leadingIcon: (iconProps: any) => {}
+  leadingIcon: (iconProps: any) => <ChevronRight {...iconProps} />,
 };
 
 export const WithTrailingIcon = Template.bind({});

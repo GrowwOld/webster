@@ -30,21 +30,22 @@ const Button = (props: Props) => {
   const primaryButtonClasses = cn(
     {
       contentOnColour: !isLoading && !isDisabled,
-      backgroundAccent: true,
-      btn96ButtonHover: !isDisabled
+      backgroundAccent: !isDisabled || (isLoading && isDisabled),
+      btn96ButtonHover: !isDisabled,
+      backgroundSecondary: isDisabled && !isLoading
     });
 
   const secondaryButtonClasses = cn({
     btn96SecondaryButtonWithoutAccent: !isAccent,
-    backgroundAccentSubtle: isAccent,
+    backgroundAccentSubtle: (isAccent && !isDisabled) || (isAccent && isDisabled && isLoading),
     contentDisabled: isDisabled,
-    borderPrimary: !isDisabled && !isAccent,
-    backgroundSecondary: isLoading
+    borderPrimary: !isAccent,
+    backgroundSecondary: isDisabled
   });
 
   const tertiaryButtonClasses = cn({
     btn96TertiaryButtonDisabled: isDisabled && !isLoading,
-    btn96TertiaryButtonWithAccent: isAccent && !isDisabled,
+    btn96TertiaryButtonWithAccent: isAccent && !isDisabled && !isLoading,
     btn96TertiaryButtonWithoutAccent: !isAccent && !isDisabled
   });
 
@@ -67,9 +68,9 @@ const Button = (props: Props) => {
     bodyBaseHeavy: size === BUTTON_SIZES.BASE,
     bodyLargeHeavy: size === BUTTON_SIZES.LARGE,
     bodyXLargeHeavy: size === BUTTON_SIZES.XLARGE,
-    contentDisabled: isDisabled && !isAccent,
+    contentDisabled: isDisabled,
     contentPrimary: !isAccent && !isDisabled,
-    contentAccent: isAccent
+    contentAccent: isAccent && !isDisabled
   });
 
 
@@ -83,9 +84,7 @@ const Button = (props: Props) => {
       btn86FullWidth: isFullWidth,
       btn96LoadingButton: isLoading,
       btn96CompactButton: variant === VARIANTS.TERTIARY && isCompact,
-      btn96ButtonLabel: variant !== VARIANTS.TERTIARY && !isDisabled,
-      btn96ButtonDisabled: variant !== VARIANTS.TERTIARY && isDisabled && !isLoading,
-      borderPrimary: isDisabled && !isAccent && variant !== VARIANTS.TERTIARY
+      btn96ButtonLabel: variant !== VARIANTS.TERTIARY && !isDisabled
     });
 
 
@@ -121,9 +120,9 @@ const Button = (props: Props) => {
   });
 
   const borderBottomClasses = cn({
-    btn96TertiaryButtonBorder: variant === VARIANTS.TERTIARY,
-    borderNeutral: variant === VARIANTS.TERTIARY && !isDisabled,
-    borderDisabled: variant === VARIANTS.TERTIARY && isDisabled
+    btn96TertiaryButtonBorder: variant === VARIANTS.TERTIARY && !isAccent,
+    borderNeutral: variant === VARIANTS.TERTIARY && !isDisabled && !isLoading && !isAccent,
+    borderDisabled: variant === VARIANTS.TERTIARY && isDisabled && !isLoading && !isAccent
   });
 
 
@@ -208,7 +207,7 @@ type DefaultProps = {
 };
 
 Button.defaultProps = {
-  size: 'Base',
+  size: BUTTON_SIZES.BASE,
   variant: VARIANTS.PRIMARY,
   isLoading: false,
   isAccent: false,
