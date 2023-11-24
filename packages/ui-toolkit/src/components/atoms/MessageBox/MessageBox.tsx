@@ -55,7 +55,7 @@ const MessageBox = (props: Props) => {
 
 
 type RequiredProps = {
-  content: string;
+  content: React.ReactNode;
 };
 
 
