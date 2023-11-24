@@ -86,6 +86,6 @@ Pill.defaultProps = {
   isAccent: true,
   leadingIcon: null,
   trailingIcon: null
-};
+} as DefaultProps;
 
 export default React.memo(Pill);
