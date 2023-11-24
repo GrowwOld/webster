@@ -83,7 +83,7 @@ Pill.defaultProps = {
   onClick: () => {},
   isSelected: false,
   isOutlined: true,
-  isAccented: true,
+  isAccent: true,
   leadingIcon: null,
   trailingIcon: null
 };
