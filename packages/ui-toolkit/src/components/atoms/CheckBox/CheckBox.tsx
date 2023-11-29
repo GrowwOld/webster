@@ -19,6 +19,7 @@ const CheckBox = (props: Props) => {
   } = props;
 
   const activeColor = isDisabled ? 'var(--gray400)' : 'var(--green500)';
+  const activeTextClass = isDisabled ? 'contentDisabled' : 'contentPrimary';
 
 
   const checkBoxClick = (
@@ -80,7 +81,7 @@ const CheckBox = (props: Props) => {
     }
   );
 
-  const labelClasses = cn({
+  const labelClasses = cn(activeTextClass, {
     bodySmall: size === SIZES.SMALL || size === SIZES.XSMALL,
     bodyBase: size === SIZES.BASE,
     bodyLarge: size === SIZES.LARGE,
