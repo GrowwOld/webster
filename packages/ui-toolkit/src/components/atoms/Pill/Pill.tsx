@@ -83,9 +83,9 @@ Pill.defaultProps = {
   onClick: () => {},
   isSelected: false,
   isOutlined: true,
-  isAccented: false,
+  isAccent: true,
   leadingIcon: null,
   trailingIcon: null
-};
+} as DefaultProps;
 
 export default React.memo(Pill);

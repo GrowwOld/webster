@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
 
-import { VARIANTS, BUTTON_SIZES } from './Button.contants';
+import { VARIANTS, BUTTON_SIZES } from './Button.constants';
 import { Loader, LOADER_TYPE } from '../Loader';
 import { ICON_POSITION } from '../../../utils/constants';
 
