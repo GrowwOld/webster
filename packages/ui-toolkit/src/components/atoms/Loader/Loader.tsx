@@ -127,7 +127,7 @@ Loader.defaultProps = {
   loaderType: 'circular',
   loaderClassName: '',
   active: true,
-  dimension: 'BOLT_DEFAULT',
+  dimension: 'BoltDefault',
   borderWidth: '2px'
 };
 
