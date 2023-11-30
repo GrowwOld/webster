@@ -7,7 +7,5 @@
 
 .radioCo11BoxReverse {
   flex-direction: row-reverse;
-  justify-content: space-between;
   width: 100% !important;
-  justify-content: space-between;
 }
