@@ -1,6 +1,7 @@
-import { DIRECTION } from '../../../utils/constants';
+import { DIRECTION, SIZES } from '../../../utils/constants';
 
 export type RadioButtonType = {
+  size?: ValueOf<typeof SIZES>;
   value: string | number;
   label: React.ReactNode;
   labelClassName?: string;

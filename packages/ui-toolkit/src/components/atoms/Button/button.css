@@ -87,7 +87,7 @@
 /* Loader Classes */
 
 .btn96LoadingButton {
-  color: transparent;
+  color: transparent !important;
 }
 
 .btn96LoadingButton .btn96ParentDimension {

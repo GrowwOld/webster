@@ -19,6 +19,7 @@ const CheckBox = (props: Props) => {
   } = props;
 
   const activeColor = isDisabled ? 'var(--gray400)' : 'var(--green500)';
+  const inactiveColor = isDisabled ? 'var(--gray400)' : 'var(--gray700)';
   const activeTextClass = isDisabled ? 'contentDisabled' : 'contentPrimary';
 
 
@@ -44,7 +45,7 @@ const CheckBox = (props: Props) => {
       <path
         fill="transparent"
         fillRule="evenodd"
-        stroke={activeColor}
+        stroke={inactiveColor}
         d="M2.564.5c-.737 0-1.017.054-1.305.208a1.317 1.317 0 0 0-.551.551C.554 1.547.5 1.827.5 2.564v8.872c0 .737.054 1.017.208 1.305.128.239.312.423.551.551.288.154.568.208 1.305.208h8.872c.737 0 1.017-.054 1.305-.208.239-.128.423-.312.551-.551.154-.288.208-.568.208-1.305V2.564c0-.737-.054-1.017-.208-1.305a1.317 1.317 0 0 0-.551-.551C12.453.554 12.173.5 11.436.5H2.564z"
       />
     </svg>
@@ -75,7 +76,7 @@ const CheckBox = (props: Props) => {
   );
 
   const baseClasses = cn(
-    `c11Default valign-wrapper c11Pointer c11Size${size}`,
+    'c11Default valign-wrapper c11Pointer',
     {
       c11checkOnRight: checkBoxDirection === DIRECTION.RIGHT
     }
