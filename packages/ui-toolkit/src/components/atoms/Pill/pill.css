@@ -1,5 +1,6 @@
 .pill12Pill {
   width: fit-content;
+  min-width: fit-content;
   padding: 8px 12px;
   gap: 8px;
   border-radius: 99px;

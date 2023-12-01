@@ -32,6 +32,7 @@ const Pill = (props: Props) => {
 
   const baseClasses = cn('contentPrimary', 'absolute-center', 'cur-po', 'valign-wrapper', `pill12Size${size}`,
     {
+      borderPrimary: isOutlined && !isAccent && !isSelected,
       pill12Pill: true,
       pill12PillHover: !isSelected && !isAccent,
       borderNeutral: isSelected && !isAccent,

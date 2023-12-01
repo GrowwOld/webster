@@ -22,7 +22,7 @@ const RadioButton = (props: Props) => {
   const iconColor = isDisabled ? 'var(--gray400)' : 'var(--green500)';
 
   const baseClasses = cn('radioCo11Box valign-wrapper', {
-    radioCo11BoxReverse: radioDirection === DIRECTION.RIGHT
+    'radioCo11BoxReverse vspace-between': radioDirection === DIRECTION.RIGHT
   });
 
   const labelClasses = cn('contentPrimary radioLs2', {

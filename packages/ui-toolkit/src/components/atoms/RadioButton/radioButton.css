@@ -2,14 +2,10 @@
  gap: 8px;
  width: fit-content;
  height: fit-content;
+ justify-content: space-between;
 }
 
 .radioCo11BoxReverse {
   flex-direction: row-reverse;
-  justify-content: flex-end;
+  width: 100% !important;
 }
-
-.radioCo11Input { 
-  accent-color: var(--green500); 
-  color: blueviolet;
-} 
