@@ -63,8 +63,8 @@
 }
 
 .btn96TertiaryButtonBorder {
-  border-style: dashed;
-  border-width: 0 0 1px 0
+  border-style: dashed !important;
+  border-width: 0 0 1px 0 !important;
 }
 
 .btn96TertiaryButtonWithoutAccent:hover {
@@ -87,7 +87,7 @@
 /* Loader Classes */
 
 .btn96LoadingButton {
-  color: transparent;
+  color: transparent !important;
 }
 
 .btn96LoadingButton .btn96ParentDimension {
@@ -135,7 +135,7 @@
 .btn96BottomFixed {
   position: fixed;
   left: 0;
-  border-width: 1px 0 0 0;
+  border-width: 1px 0 0 0 !important;
   padding: 12px;
   width: 100%;
   z-index: 1000;

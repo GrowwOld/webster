@@ -79,8 +79,7 @@ const skillsArray = [
   {
     label: <span style={{ marginRight: '78px' }}>Django</span>,
     value: 'DJANGO',
-    checkBoxDirection: 'Right',
-    activeColor: 'var(--red500)'
+    checkBoxDirection: 'Right'
   }
 ];
 
