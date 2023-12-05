@@ -98,8 +98,12 @@
   position: absolute;
 }
 
+.btn96ButtonDisable {
+  background-color: var(--gray150);
+}
+
 .btn96PrimaryButtonLoader {
-  border: 2px solid var(--dangerouslySetPrimaryBg); /* the loader color will always bewhite in dark as well as in light theme */
+  border: 2px solid var(--white); /* the loader color will always be white in dark as well as in light theme */
   border-top-color: transparent;
 }
 
