@@ -1,7 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
 
-import '@groww-tech/mint-css/dist/index.css';
 import { SIZES } from '../../../utils/constants';
 
 import './toggleSwitch.css';
@@ -70,7 +69,7 @@ const ToggleSwitch = (props: Props) => {
           className={isDisabled ? 'backgroundTertiary sw348reactSwitchLabel' : isActive ? 'backgroundPositive sw348reactSwitchLabel' : 'backgroundTertiary sw348reactSwitchLabel'}
         >
           <div style={switchButtonStyle}
-            className={'sw348reactSwitchButton backgroundAlwaysLight'}
+            className={isDisabled ? 'sw348reactSwitchButton sw348DisabledSwitch' : 'sw348reactSwitchButton backgroundAlwaysLight'}
           />
         </div>
       </div>
