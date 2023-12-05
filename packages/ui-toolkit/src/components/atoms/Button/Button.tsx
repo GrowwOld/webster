@@ -32,7 +32,7 @@ const Button = (props: Props) => {
       contentOnColour: !isLoading && !isDisabled,
       backgroundAccent: !isDisabled || (isLoading && isDisabled),
       btn96ButtonHover: !isDisabled,
-      btn96Disabled: isDisabled && !isLoading
+      btn96ButtonDisable: isDisabled && !isLoading
     });
 
   const secondaryButtonClasses = cn({
@@ -40,7 +40,7 @@ const Button = (props: Props) => {
     backgroundAccentSubtle: (isAccent && !isDisabled) || (isAccent && isDisabled && isLoading),
     contentDisabled: isDisabled,
     borderPrimary: !isAccent,
-    btn96Disabled: isDisabled
+    btn96ButtonDisable: isDisabled
   });
 
   const tertiaryButtonClasses = cn({
@@ -53,14 +53,14 @@ const Button = (props: Props) => {
     backgroundPositive: !isDisabled || (isLoading && isDisabled),
     contentOnColour: !isLoading && !isDisabled,
     btn96ButtonHover: !isDisabled,
-    btn96Disabled: isDisabled && !isLoading
+    btn96ButtonDisable: isDisabled && !isLoading
   });
 
   const negativeButtonClasses = cn({
     backgroundNegative: !isDisabled || (isLoading && isDisabled),
     contentOnColour: !isLoading && !isDisabled,
     btn96ButtonHover: !isDisabled,
-    btn96Disabled: isDisabled && !isLoading
+    btn96ButtonDisable: isDisabled && !isLoading,
   });
 
   const fontClasses = cn({
@@ -159,7 +159,7 @@ const Button = (props: Props) => {
 
 
   return (
-    <div className={fixedToBottomClass}>
+    <div className={cn(fixedToBottomClass, 'btn96ParentClass')}>
       <div
         className={getButtonClasses(variant)}
         data-test-id={dataTestId.length ? dataTestId : null}

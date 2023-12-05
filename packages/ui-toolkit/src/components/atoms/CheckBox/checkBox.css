@@ -1,7 +1,6 @@
 .c11Default {
- width: fit-content;
- height: fit-content;
  gap: 8px;
+justify-content: flex-start;
 }
 
 .c11checkOnRight {

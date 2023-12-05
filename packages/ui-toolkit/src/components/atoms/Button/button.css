@@ -4,6 +4,10 @@
   cursor: default;
 }
 
+.btn96ParentClass {
+ display: inline-block;
+}
+
 .btn96DefaultClass:hover {
   opacity: 0.9;
 }
@@ -99,6 +103,10 @@
 
 .btn96LoaderContainer {
   position: absolute;
+}
+
+.btn96ButtonDisable {
+  background-color: var(--gray150);
 }
 
 .btn96PrimaryButtonLoader {
