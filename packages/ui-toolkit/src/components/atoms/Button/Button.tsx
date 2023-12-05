@@ -32,11 +32,7 @@ const Button = (props: Props) => {
       contentOnColour: !isLoading && !isDisabled,
       backgroundAccent: !isDisabled || (isLoading && isDisabled),
       btn96ButtonHover: !isDisabled,
-<<<<<<< HEAD
       btn96ButtonDisable: isDisabled && !isLoading
-=======
-      btn96Disabled: isDisabled && !isLoading
->>>>>>> fd7ef14559d67e5cea618a570ebce029468d4173
     });
 
   const secondaryButtonClasses = cn({
