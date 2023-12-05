@@ -53,6 +53,9 @@
   height: 100%;
 }
 
+.btn96Disabled {
+ background-color: var(--gray150);
+}
 
 /* -- Seconday Button -- */
 .btn96SecondaryButtonWithoutAccent:hover {
