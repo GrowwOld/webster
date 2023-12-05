@@ -1,6 +1,6 @@
 .c11Default {
  gap: 8px;
-justify-content: flex-start;
+ align-items: flex-start;
 }
 
 .c11checkOnRight {

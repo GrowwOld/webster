@@ -1,6 +1,6 @@
 .radioCo11Box {
  gap: 8px;
- justify-content: flex-start;
+ align-items: flex-start;
 }
 
 .radioCo11BoxReverse {
