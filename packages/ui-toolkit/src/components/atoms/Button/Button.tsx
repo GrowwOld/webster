@@ -159,7 +159,7 @@ const Button = (props: Props) => {
 
 
   return (
-    <div className={fixedToBottomClass}>
+    <div className={cn(fixedToBottomClass, 'btn96ParentClass')}>
       <div
         className={getButtonClasses(variant)}
         data-test-id={dataTestId.length ? dataTestId : null}

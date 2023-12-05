@@ -4,6 +4,10 @@
   cursor: default;
 }
 
+.btn96ParentClass {
+ display: inline-block;
+}
+
 .btn96DefaultClass:hover {
   opacity: 0.9;
 }
