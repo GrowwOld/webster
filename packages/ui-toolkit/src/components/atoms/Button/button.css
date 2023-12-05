@@ -49,6 +49,9 @@
   height: 100%;
 }
 
+.btn96Disabled {
+ background-color: var(--gray150);
+}
 
 /* -- Seconday Button -- */
 .btn96SecondaryButtonWithoutAccent:hover {
@@ -99,7 +102,7 @@
 }
 
 .btn96PrimaryButtonLoader {
-  border: 2px solid var(--dangerouslySetPrimaryBg); /* the loader color will always bewhite in dark as well as in light theme */
+  border: 2px solid var(--white); /* the loader color will always be white in dark as well as in light theme */
   border-top-color: transparent;
 }
 

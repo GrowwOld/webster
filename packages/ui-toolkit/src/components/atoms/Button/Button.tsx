@@ -32,7 +32,7 @@ const Button = (props: Props) => {
       contentOnColour: !isLoading && !isDisabled,
       backgroundAccent: !isDisabled || (isLoading && isDisabled),
       btn96ButtonHover: !isDisabled,
-      backgroundSecondary: isDisabled && !isLoading
+      btn96Disabled: isDisabled && !isLoading
     });
 
   const secondaryButtonClasses = cn({
@@ -40,7 +40,7 @@ const Button = (props: Props) => {
     backgroundAccentSubtle: (isAccent && !isDisabled) || (isAccent && isDisabled && isLoading),
     contentDisabled: isDisabled,
     borderPrimary: !isAccent,
-    backgroundSecondary: isDisabled
+    btn96Disabled: isDisabled
   });
 
   const tertiaryButtonClasses = cn({
@@ -53,14 +53,14 @@ const Button = (props: Props) => {
     backgroundPositive: !isDisabled || (isLoading && isDisabled),
     contentOnColour: !isLoading && !isDisabled,
     btn96ButtonHover: !isDisabled,
-    backgroundSecondary: isDisabled && !isLoading
+    btn96Disabled: isDisabled && !isLoading
   });
 
   const negativeButtonClasses = cn({
     backgroundNegative: !isDisabled || (isLoading && isDisabled),
     contentOnColour: !isLoading && !isDisabled,
     btn96ButtonHover: !isDisabled,
-    backgroundSecondary: isDisabled && !isLoading
+    btn96Disabled: isDisabled && !isLoading
   });
 
   const fontClasses = cn({
@@ -119,7 +119,8 @@ const Button = (props: Props) => {
 
   const fixedToBottomClass = cn({
     btn96BottomFixed: isFixToBottom,
-    borderPrimary: isFixToBottom
+    borderPrimary: isFixToBottom,
+    backgroundPrimary: isFixToBottom
   });
 
   const borderBottomClasses = cn({
