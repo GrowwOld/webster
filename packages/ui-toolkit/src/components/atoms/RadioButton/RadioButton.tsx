@@ -50,7 +50,7 @@ const RadioButton = (props: Props) => {
       data-test-id={dataTestId.length ? dataTestId : null}
       className={baseClasses}
     >
-      <div>
+      <div className='valign-wrapper'>
         {
           isSelected ? (
             <RadioButtonChecked
