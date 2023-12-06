@@ -40,7 +40,7 @@ const Button = (props: Props) => {
     backgroundAccentSubtle: (isAccent && !isDisabled) || (isAccent && isDisabled && isLoading),
     contentDisabled: isDisabled,
     borderPrimary: !isAccent,
-    btn96ButtonDisable: isDisabled
+    btn96ButtonDisable: isDisabled && !isLoading
   });
 
   const tertiaryButtonClasses = cn({
@@ -64,6 +64,8 @@ const Button = (props: Props) => {
   });
 
   const fontClasses = cn({
+    'cur-po': !isLoading && !isDisabled,
+    btn96LoaderCursor: isLoading || isDisabled,
     bodySmallHeavy: size === BUTTON_SIZES.SMALL,
     bodyBaseHeavy: size === BUTTON_SIZES.BASE,
     bodyLargeHeavy: size === BUTTON_SIZES.LARGE,
