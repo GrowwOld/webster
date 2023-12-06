@@ -76,7 +76,7 @@ const CheckBox = (props: Props) => {
   );
 
   const baseClasses = cn(
-    'c11Default flex c11Pointer',
+    'c11Default valign-wrapper c11Pointer',
     {
       'c11checkOnRight vspace-between': checkBoxDirection === DIRECTION.RIGHT
     }
