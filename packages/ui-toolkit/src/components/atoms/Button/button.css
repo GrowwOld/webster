@@ -1,7 +1,6 @@
 .btn96DefaultClass {
   border-radius: 8px;
   flex-shrink: 0;
-  cursor: default;
 }
 
 
@@ -148,4 +147,8 @@
   width: 100%;
   z-index: 1000;
   bottom: 0;
+}
+
+.btn96LoaderCursor {
+  cursor: default;
 }

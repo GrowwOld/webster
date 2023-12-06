@@ -47,6 +47,16 @@ const ToggleSwitch = (props: Props) => {
     'cur-po': !isDisabled
   });
 
+
+  const onToggleSwitch = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.ChangeEvent<HTMLInputElement>) => {
+    if (!isDisabled) {
+      onChange(e);
+
+    } else {
+      e.stopPropagation();
+    }
+  };
+
   return (
     <div className={baseClasses}>
       <div className={labelClasses}>
@@ -55,12 +65,12 @@ const ToggleSwitch = (props: Props) => {
       <div
         className='sw348reactSwitchDivision'
         data-test-id={dataTestId.length ? dataTestId : null}
-        onClick={(e) => onChange(e)}
+        onClick={(e) => onToggleSwitch(e)}
       >
         <input
           style={inputStyle}
           checked={isActive}
-          onChange={(e) => onChange(e)}
+          onChange={(e) => onToggleSwitch(e)}
           className="sw348reactSwitchCheckbox"
           id="reactSwitchId"
           type="checkbox"
