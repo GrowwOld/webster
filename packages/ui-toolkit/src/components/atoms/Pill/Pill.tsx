@@ -37,11 +37,10 @@ const Pill = (props: Props) => {
       borderPrimary: isOutlined && !isAccent && !isSelected,
       pill12Pill: true,
       pill12PillHover: !isSelected && !isAccent,
-      borderNeutral: isSelected && !isAccent,
+      'borderNeutral backgroundTertiary': isSelected && !isAccent,
       borderAccent: isAccent,
       pill12SelectedPill: !isAccent && isSelected,
       contentAccent: isAccent,
-      backgroundTertiary: isSelected && !isAccent,
       backgroundPositiveSubtle: isSelected && isAccent
     });
 
