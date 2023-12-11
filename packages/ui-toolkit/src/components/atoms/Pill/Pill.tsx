@@ -30,15 +30,13 @@ const Pill = (props: Props) => {
     size: 20
   };
 
-  const baseClasses = cn('contentPrimary', 'absolute-center', 'cur-po', 'valign-wrapper', `pill12Size${size}`,
+  const baseClasses = cn('pill12Pill', 'absolute-center', 'cur-po', 'valign-wrapper', `pill12Size${size}`,
     {
-      borderPrimary: isOutlined && !isAccent && !isSelected,
-      pill12Pill: true,
+      'backgroundPrimary borderPrimary': isOutlined && !isAccent && !isSelected,
+      contentPrimary: !isAccent,
       pill12PillHover: !isSelected && !isAccent,
-      borderNeutral: isSelected && !isAccent,
-      borderAccent: isAccent,
-      pill12SelectedPill: !isAccent && isSelected,
-      contentAccent: isAccent,
+      'borderNeutral backgroundTertiary': isSelected && !isAccent,
+      'borderAccent contentAccent': isAccent,
       backgroundPositiveSubtle: isSelected && isAccent
     });
 
