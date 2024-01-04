@@ -1,0 +1,37 @@
+.av91AvatarInitialContainer {
+  width: fit-content;
+  height: fit-content;
+}
+
+.av91AvatarRectangular {
+  border-radius: 8px;
+}
+
+.av91AvatarImageDisabled {
+  filter: grayscale(100%) opacity(50%);
+}
+
+.av91AvatarXSmall {
+  height: 24px;
+  width: 24px;
+}
+
+.av91AvatarSmall {
+  height: 32px;
+  width: 32px;
+}
+
+.av91AvatarBase {
+  height: 40px;
+  width: 40px;
+}
+
+.av91AvatarLarge {
+  height: 48px;
+  width: 48px;
+}
+
+.av91AvatarXLarge {
+  height: 56px;
+  width: 56px;
+}
