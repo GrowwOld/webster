@@ -1,27 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import cn from 'classnames';
 
 import './tabs.css';
 
 
+type TabMeta = {
+  left: number;
+  width: number;
+};
+
+
 const Tabs = (props: Props) => {
-  const {
-    onTabSelect,
-    activeTabIndexOnMount,
-    data,
-    showBottomBorder,
-    customStyleTab,
-    isHorizScrollable
-  } = props;
+  const { onTabSelect, defaultIndex, data, showBottomBorder, isFitted } = props;
 
-  const [ activeIndex, setActiveIndex ] = useState(activeTabIndexOnMount);
-
-  const { width, left } = getActiveTabDimensions(data, activeIndex);
+  const [ activeIndex, setActiveIndex ] = useState(defaultIndex);
+  const tabsRef = useRef<HTMLDivElement | null>(null);
+  const [ tabsMeta, setTabsMeta ] = useState<TabMeta[]>([]);
 
   useEffect(() => {
-    setActiveIndex(props.activeTabIndexOnMount);
-  }, [ props.activeTabIndexOnMount ]);
+    setActiveIndex(props.defaultIndex);
+  }, [ props.defaultIndex ]);
+
+  useEffect(() => {
+    const computeDimensions = () => {
+      if (!tabsRef.current) return;
+
+      const tabsMetadata: TabMeta[] = [];
+
+      for (let i = 0; i < tabsRef.current.childElementCount; i++) {
+        const element = tabsRef.current.children[i] as HTMLElement;
+
+        tabsMetadata.push({
+          width: element.offsetWidth,
+          left: element.offsetLeft
+        });
+      }
+
+      setTabsMeta(tabsMetadata);
+    };
+
+    computeDimensions();
+
+    window.addEventListener('load', computeDimensions);
+    return () => {
+      window.removeEventListener('load', computeDimensions);
+    };
+  }, [ isFitted ]);
 
 
   const onTabClick = (index: number) => {
@@ -32,113 +57,78 @@ const Tabs = (props: Props) => {
     onTabSelect(index);
   };
 
+  const tabClasses = cn('tabs8Tab', {
+    borderPrimary: showBottomBorder
+  });
+
+  const tabItemClasses = cn('tabs8TabItem cur-po headingXSmall');
+
+  const tabParentClasses = cn('valign-wrapper tabs8Parent', {
+    flex: isFitted
+  });
 
   return (
-    <div className={cn('tabs8Container', { 'borderPrimary bottomBorderOnly': showBottomBorder, 'tabs8PageWidth20Mgn': isHorizScrollable })}>
-      {
-        ((typeof width === 'number' ? width : parseInt(width)) > 0) &&
-        <div className="tabs8Line mfSelected"
-          style={{ width, left }}
-        />
-      }
-
-      <div className="valign-wrapper tabs8Parent">
+    <div className={tabClasses}>
+      <div className={tabParentClasses}
+        ref={tabsRef}
+        role="tablist"
+      >
         {
           data.map((item, key) => {
             return (
-              <div
-                className={`${customStyleTab} ${key === activeIndex && 'tabs8TextActive'}`}
+              <button
+                className={
+                  cn(tabItemClasses, {
+                    contentSecondary: key !== activeIndex,
+                    contentPrimary: key === activeIndex,
+                    tabs8TabItemFlex1: isFitted
+                  })
+                }
+                aria-selected={key === activeIndex}
+                role="tab"
                 title={item.description}
                 onClick={onTabClick.bind(null, key)}
-                style={item.style}
                 key={key}
               >
                 {item.name}
-              </div>
+              </button>
             );
           })
         }
       </div>
+      {
+        tabsMeta[activeIndex] && <span className="tabs8Line"
+          style={{ width: tabsMeta[activeIndex].width, left: tabsMeta[activeIndex].left }}
+        />
+      }
     </div>
   );
 };
 
-
-const getActiveTabDimensions = (data: Tab[], activeIndex: number) => {
-  let left = 0;
-  let width:number|string = 0;
-
-  const activeTab = data[activeIndex];
-
-  if (activeTab && activeTab.hasOwnProperty('width') && activeTab.hasOwnProperty('left')) {
-    width = activeTab.width || 0;
-    left = activeTab.left || 0;
-
-    return {
-      'width': width,
-      'left': left
-    };
-
-  } else {
-    if (typeof document !== 'undefined') {
-      const prevActiveElement = document?.getElementsByClassName('tabs8TextActive') as HTMLCollectionOf<HTMLElement>;
-
-      if (prevActiveElement && prevActiveElement.length) {
-        const currentActiveElement = prevActiveElement[0]?.parentElement?.children[activeIndex] as HTMLElement;
-
-        return {
-          'width': currentActiveElement?.offsetWidth,
-          'left': currentActiveElement?.offsetLeft
-        };
-
-      } else {
-        return {
-          'width': width,
-          'left': left
-        };
-      }
-
-    } else {
-      return {
-        'width': 0,
-        'left': 0
-      };
-    }
-  }
-
-};
-
-
 const defaultProps: DefaultProps = {
   showBottomBorder: true,
-  activeTabIndexOnMount: 0,
-  customStyleTab: 'tabs8Text',
-  isHorizScrollable: false
+  defaultIndex: 0,
+  isFitted: false
 };
 
 
 type DefaultProps = {
   showBottomBorder: boolean;
-  activeTabIndexOnMount: number;
-  customStyleTab: string;
-  isHorizScrollable: boolean;
-}
+  defaultIndex: number;
+  isFitted: boolean;
+};
 
 
 type RequiredProps = {
   data: Tab[];
   onTabSelect: (index: number) => void;
-}
+};
 
 
 type Tab = {
   description?: string;
-  name: React.ReactNode;
-  style?: React.CSSProperties;
-  width?: number | string;
-  left?: number;
-}
-
+  name: string;
+};
 
 Tabs.defaultProps = defaultProps;
 
