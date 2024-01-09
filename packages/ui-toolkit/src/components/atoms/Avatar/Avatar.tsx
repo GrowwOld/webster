@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { AccountBalance } from '@groww-tech/icon-store/mi';
 
-import { SIZES } from '../../../utils/constants';
-import { AVATAR_SHAPE } from './avatar.constants';
+import { AVATAR_SHAPES, AVATAR_SIZES } from './avatar.constants';
 
 import './avatar.css';
 
@@ -61,19 +60,19 @@ const Avatar = (props: Props) => {
 
   const getAvatarSize = () => {
     switch (size) {
-      case SIZES.XSMALL:
+      case AVATAR_SIZES.XSMALL:
         return 24;
 
-      case SIZES.SMALL:
+      case AVATAR_SIZES.SMALL:
         return 32;
 
-      case SIZES.BASE:
+      case AVATAR_SIZES.BASE:
         return 40;
 
-      case SIZES.LARGE:
+      case AVATAR_SIZES.LARGE:
         return 48;
 
-      case SIZES.XLARGE:
+      case AVATAR_SIZES.XLARGE:
         return 56;
 
       default:
@@ -88,13 +87,13 @@ const Avatar = (props: Props) => {
   const avatarInitialClasses = cn('av91AvatarInitialContainer absolute-center circle');
 
   const avatarImgClasses = cn({
-    circle: shape === AVATAR_SHAPE.CIRCULAR,
-    av91AvatarRectangular: shape === AVATAR_SHAPE.RECTANGULAR,
+    circle: shape === AVATAR_SHAPES.CIRCULAR,
+    av91AvatarRectangular: shape === AVATAR_SHAPES.RECTANGULAR,
     av91AvatarImageDisabled: isDisabled
   });
 
   const avatarIconContainerClasses = cn('av91AvatarInitialContainer absolute-center', {
-    av91AvatarRectangular: shape === AVATAR_SHAPE.RECTANGULAR,
+    av91AvatarRectangular: shape === AVATAR_SHAPES.RECTANGULAR,
     backgroundTertiary: !isDisabled,
     backgroundSecondary: isDisabled
   });
@@ -110,10 +109,10 @@ const Avatar = (props: Props) => {
   });
 
   const fontClasses = cn({
-    bodySmallHeavy: size === SIZES.XSMALL || size === SIZES.SMALL,
-    bodyBaseHeavy: size === SIZES.BASE,
-    bodyLargeHeavy: size === SIZES.LARGE,
-    bodyXLargeHeavy: size === SIZES.XLARGE,
+    bodySmallHeavy: size === AVATAR_SIZES.XSMALL || size === AVATAR_SIZES.SMALL,
+    bodyBaseHeavy: size === AVATAR_SIZES.BASE,
+    bodyLargeHeavy: size === AVATAR_SIZES.LARGE,
+    bodyXLargeHeavy: size === AVATAR_SIZES.XLARGE,
     contentPositive: !isDisabled,
     contentDisabled: isDisabled
   });
@@ -140,7 +139,7 @@ const Avatar = (props: Props) => {
     height={avatarSize}
     width={avatarSize}
   />;
-  const avatarDisabled = shape === AVATAR_SHAPE.RECTANGULAR ? avatarIcon : avatarInitial;
+  const avatarDisabled = shape === AVATAR_SHAPES.RECTANGULAR ? avatarIcon : avatarInitial;
 
   switch (status) {
     case 'loading':
@@ -168,8 +167,8 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size: ValueOf<typeof SIZES>;
-  shape: ValueOf<typeof AVATAR_SHAPE>;
+  size: ValueOf<typeof AVATAR_SIZES>;
+  shape: ValueOf<typeof AVATAR_SHAPES>;
   isDisabled: boolean;
 };
 
@@ -177,8 +176,8 @@ export type Props = RequiredProps & DefaultProps & Partial<HTMLImageElement>;
 
 Avatar.defaultProps = {
   isDisabled: false,
-  size: 'Base',
-  shape: 'Circular'
+  size: AVATAR_SIZES.BASE,
+  shape: AVATAR_SHAPES.CIRCULAR
 } as DefaultProps;
 
 export default Avatar;
