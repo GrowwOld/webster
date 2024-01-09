@@ -3,8 +3,7 @@ import cn from 'classnames';
 
 import { ReactIconProps } from '@groww-tech/icon-store';
 
-import { SIZES } from '../../../utils/constants';
-import { ICON_VIEW_SIZE } from './iconView.constants';
+import { ICON_VIEW_SIZES } from './iconView.constants';
 
 import './iconView.css';
 
@@ -14,16 +13,16 @@ export default function IconView(props: Props) {
 
   const getIconSize = () => {
     switch (size) {
-      case SIZES.SMALL:
+      case ICON_VIEW_SIZES.SMALL:
         return 16;
 
-      case SIZES.BASE:
+      case ICON_VIEW_SIZES.BASE:
         return 20;
 
-      case SIZES.LARGE:
+      case ICON_VIEW_SIZES.LARGE:
         return 24;
 
-      case SIZES.XLARGE:
+      case ICON_VIEW_SIZES.XLARGE:
         return 28;
 
       default:
@@ -50,12 +49,12 @@ type RequiredProps = {
 
 
 type DefaultProps = {
-  size?: ValueOf<typeof ICON_VIEW_SIZE>;
+  size?: ValueOf<typeof ICON_VIEW_SIZES>;
   isContained?: boolean;
 };
 
 IconView.defaultProps = {
-  size: SIZES.BASE,
+  size: ICON_VIEW_SIZES.BASE,
   isContained: false
 };
 
