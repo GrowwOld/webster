@@ -38,6 +38,7 @@ export type _NumberInputProps = {
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   PrefixComponent?: () => React.ReactNode;
   SuffixComponent?: () => React.ReactNode;
+  disableScroll?: boolean;
 };
 
 export default NumberInput;
