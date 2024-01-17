@@ -39,6 +39,13 @@ class Select extends React.PureComponent<Props> {
   }
 
 
+  componentWillUnmount() {
+    //@ts-ignore
+    this.optionsRefArr.forEach(ref => (ref.current = null));
+    this.optionsRefArr = [];
+  }
+
+
   render() {
     const { data: options } = this.props;
 
