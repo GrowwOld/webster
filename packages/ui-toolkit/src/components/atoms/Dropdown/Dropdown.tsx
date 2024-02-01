@@ -29,7 +29,7 @@ class Dropdown extends React.PureComponent<Props, State> {
   componentWillUnmount() {
     document.removeEventListener('click', this._onWindowClick);
     document.removeEventListener('touchstart', this._onWindowClick);
-    document.removeEventListener('keyup', this._onKeyDownHandler);
+    document.removeEventListener('keydown', this._onKeyDownHandler);
   }
 
 
