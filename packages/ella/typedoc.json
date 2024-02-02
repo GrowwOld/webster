@@ -5,7 +5,8 @@
     "./src/general/index.ts",
     "./src/jsx/index.tsx",
     "./src/number/index.ts",
-    "./src/string/index.ts"
+    "./src/string/index.ts",
+    "./src/utils/index.ts"
   ],
   "out": "docs"
 }

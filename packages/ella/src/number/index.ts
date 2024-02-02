@@ -5,6 +5,7 @@
 import { isEmpty } from '../general';
 
 export { NumberFormatter } from './NumberFormatter';
+export type { NumberConfig } from './NumberFormatter';
 
 /**
  * This method can be used to add commas as per Indian system to any valid number of type string or number.
@@ -107,7 +108,7 @@ export function isValidMobileNumber(mobNumber: number | string) {
  * ```
  */
 export function convertPaisaToRupee(value: number | string) {
-   return parseFloat(value as string) / 100;
+  return parseFloat(value as string) / 100;
 }
 
 /**
