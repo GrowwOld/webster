@@ -19,11 +19,7 @@ class ProgressBar extends React.PureComponent<Props> {
   render() {
     const { isCircular } = this.props;
 
-    return (
-      <Waypoint onEnter={this.animateProgressBar}>
-        <div>{isCircular ? this.getCircularProgressBar() : this.getLinearProgressBar()}</div>
-      </Waypoint>
-    );
+    return <Waypoint onEnter={this.animateProgressBar}>{isCircular ? this.getCircularProgressBar() : this.getLinearProgressBar()}</Waypoint>;
   }
 
 
@@ -105,7 +101,7 @@ class ProgressBar extends React.PureComponent<Props> {
           text && (
             <text x="50%"
               y="50%"
-              fill='currentColor'
+              fill="currentColor"
               dominantBaseline="middle"
               textAnchor="middle"
               className={`pb65MainTxt ${textClass}`}
