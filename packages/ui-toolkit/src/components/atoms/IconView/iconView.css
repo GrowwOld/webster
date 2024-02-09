@@ -1,0 +1,20 @@
+.iv98IconContainer {
+  width: fit-content;
+  height: fit-content;
+}
+
+.iv98Small {
+  padding: 8px;
+}
+
+.iv98Base {
+  padding: 10px;
+}
+
+.iv98Large {
+  padding: 12px;
+}
+
+.iv98XLarge {
+  padding: 14px;
+}

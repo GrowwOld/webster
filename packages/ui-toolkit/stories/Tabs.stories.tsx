@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Story } from "@storybook/react";
+import React from 'react';
+import { Story } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import { Props as TabsProps } from '../src/components/atoms/Tabs/Tabs';
@@ -8,44 +8,38 @@ import { Tabs } from '../src/components/atoms';
 export default {
   title: 'Tabs',
   component: Tabs,
-  argTypes: {
-  }
+  argTypes: {}
 };
 
-const Template: Story<TabsProps> = (args) => <Tabs {...args} />
+
+const Template: Story<TabsProps> = (args) => <Tabs {...args} />;
 
 export const Default = Template.bind({});
 
-const WALLETS_TABS = [
+const data = [
   {
-    width: 168,
-    left: 10,
-    name: (
-      <div style={{ padding: "10px 60px" }}
-        className="bodyBaseHeavy"
-      >
-        DEPOSIT
-      </div>
-    )
+    name: 'Option 1'
   },
   {
-    width: 208,
-    left: 180,
-    name: (
-      <div
-        style={{ padding: "10px 60px" }}
-        className="bodyBaseHeavy"
-      >
-        WITHDRAW
-      </div>
-    )
+    name: 'Option 2'
+  },
+  {
+    name: 'Option 3'
+  },
+  {
+    name: 'Option 4'
   }
-]
+];
 
 Default.args = {
-  data: WALLETS_TABS,
+  data,
   showBottomBorder: true,
-  customStyleTab: "",
-  onTabSelect: action('onSelect')
-}
+  onTabSelect: (index) => console.log(data.at(index)),
+  isFitted: false
+};
 
+export const Fitted = Template.bind({});
+Fitted.args = {
+  ...Default.args,
+  isFitted: true
+};

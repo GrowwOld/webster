@@ -31,3 +31,6 @@ export * from './NumberInput';
 export * from './InputField';
 export * from './NumberPicker';
 export * from './IconButton';
+export * from './Avatar';
+export * from './IconView';
+export * from './Divider';
