@@ -79,10 +79,10 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
   let restPropsUpdated = { ...rest };
 
 
-  const onFocus = (e: any) => { preventNumberInputWheelChangeOnFocus(e, preventDefaultEventBehaviour); };
+  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => { preventNumberInputWheelChangeOnFocus(e, preventDefaultEventBehaviour); };
 
 
-  const onBlur = (e: any) => { preventNumberInputWheelChangeOnBlur(e, preventDefaultEventBehaviour); };
+  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => { preventNumberInputWheelChangeOnBlur(e, preventDefaultEventBehaviour); };
 
 
   if (disableScroll) {
