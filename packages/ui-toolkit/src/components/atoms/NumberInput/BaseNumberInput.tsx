@@ -1,10 +1,9 @@
 import React from 'react';
+
 import { KEYBOARD_EVENTS } from '../../../utils/constant';
-
+import { preventDefaultEventBehaviour, preventNumberInputWheelChangeOnBlur, preventNumberInputWheelChangeOnFocus } from './helpers';
 import { NumberInputProps } from './NumberInput';
-
 import { Container, Input } from './styles';
-
 
 const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((props, ref) => {
   const {
@@ -19,7 +18,7 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
     disableDecimal = false,
     onKeyDown = () => { }
   } = props;
-  const { size, ...rest } = props;
+  const { size, disableScroll = true, ...rest } = props;
 
   const numberValue = Number(value);
 
@@ -77,6 +76,24 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
     }
   };
 
+  let restPropsUpdated = { ...rest };
+
+
+  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => { preventNumberInputWheelChangeOnFocus(e, preventDefaultEventBehaviour); };
+
+
+  const onBlur = (e: React.FocusEvent<HTMLInputElement>) => { preventNumberInputWheelChangeOnBlur(e, preventDefaultEventBehaviour); };
+
+
+  if (disableScroll) {
+    restPropsUpdated = {
+      ...restPropsUpdated,
+      onFocus,
+      onBlur
+    };
+  }
+
+
   return (
     <Container variant={props.variant}>
       {PrefixComponent && <span>{PrefixComponent()} </span>}
@@ -86,7 +103,7 @@ const BaseNumberInput = React.forwardRef<HTMLInputElement, NumberInputProps>((pr
         min={min}
         onKeyDown={_onKeyDown}
         type="number"
-        {...rest}
+        {...restPropsUpdated}
         onChange={_onChange}
         ref={ref}
       />
