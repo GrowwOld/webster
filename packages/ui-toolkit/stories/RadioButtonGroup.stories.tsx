@@ -27,7 +27,8 @@ const Template: Story<RadioButtonGroupProps> = (args) => {
 
   return (
     <div className="valign-wrapper">
-      <RadioButtonGroup {...args}
+      <RadioButtonGroup
+        {...args}
         selected={value}
         onSelect={onSelect}
       />
