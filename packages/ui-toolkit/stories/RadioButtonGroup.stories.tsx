@@ -38,9 +38,9 @@ const Template: Story<RadioButtonGroupProps> = (args) => {
 export const Default = Template.bind({});
 
 const genderArray = [
-  { label: 'Male', value: 'MALE' },
+  { label: 'Male', value: 'MALE', size: 'Base', radioDirection: 'Left' },
   { label: 'Female', value: 'FEMALE', parentClassName: 'bas11RadioParent' },
-  { label: 'Other', value: 'NA', parentClassName: 'bas11RadioParent' }
+  { label: 'Other', value: 'NA', labelClassName: 'bas11RadioLabelParent' }
 ];
 
 Default.args = {
