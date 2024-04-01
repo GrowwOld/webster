@@ -40,8 +40,8 @@ export const Default = Template.bind({});
 
 const genderArray = [
   { label: 'Male', value: 'MALE', size: 'Base', radioDirection: 'Left' },
-  { label: 'Female', value: 'FEMALE', parentClassName: 'bas11RadioParent' },
-  { label: 'Other', value: 'NA', labelClassName: 'bas11RadioLabelParent' }
+  { label: 'Female', value: 'FEMALE' },
+  { label: 'Other', value: 'NA' }
 ];
 
 Default.args = {
@@ -53,7 +53,7 @@ export const Custom = Template.bind({});
 
 const switchArray = [
   { label: 'On', value: 'ON', radioDirection: 'Right' },
-  { label: 'Off', value: 'OFF', parentClassName: 'bas11RadioParent' }
+  { label: 'Off', value: 'OFF' }
 ];
 
 Custom.args = {
