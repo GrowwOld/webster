@@ -23,27 +23,15 @@ const RadioButtonGroup = (props: Props) => {
     >
       {
         radioButtons.map((item: RadioButtonType, index: number) => {
-          const {
-            value,
-            parentClassName,
-            label,
-            size,
-            labelClassName,
-            radioDirection
-          } = item;
 
           return (
-            <div
-              key={`${value}${index}`}
-              className={parentClassName}
-            >
+            <div key={`${item.value}${index}`}>
               <RadioButton
                 isSelected={selected === item.value}
                 onSelect={() => onSelect(item.value)}
-                label={label}
-                size={size}
-                labelClassName={labelClassName}
-                radioDirection={radioDirection}
+                label={item.label}
+                size={item.size}
+                radioDirection={item.radioDirection}
                 dataTestId= {dataTestId ? index + '-' + dataTestId + '-radio-button' : ''}
               />
             </div>
