@@ -13,7 +13,7 @@ describe('Local Storage Tests', () => {
  *
  */
 
-  it('Add Data to LS', () => {
+  it('Add Data to LS for setDataToStorage', () => {
     const key = 'storageLibTest';
     const value = key;
     let testResult = false;
@@ -26,6 +26,16 @@ describe('Local Storage Tests', () => {
       } catch {
         testResult = false;
       }
+    }
+
+    expect(testResult).toBe(true);
+  });
+  it('Add Data to LS setDataToStorageStrict', () => {
+    const key = 'storageLibTest';
+    const value = key;
+    let testResult = false;
+
+    if (!storage.errorInStorage()) {
       try {
         storage.setDataToStorageStrict(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
         testResult = true;
@@ -47,30 +57,39 @@ describe('Local Storage Tests', () => {
  *
  */
 
-  it('Get Data from LS', () => {
-    const key1 = 'storageLibTest1';
-    const key2 = 'storageLibTest2';
-    const value1 = key1;
-    const value2 = key2;
+  it('Get Data from LS setDataToStorage', () => {
+    const key = 'storageLibTest';
+    const value = key;
     let testResult = false;
 
     if (!storage.errorInStorage()) {
       try {
-        storage.setDataToStorage(key1, value1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
-        const result = storage.getDataFromStorage(key1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+        storage.setDataToStorage(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        const result = storage.getDataFromStorage(key, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
 
-        if (result === value1) {
+        if (result === value) {
           testResult = true;
         }
 
       } catch {
         testResult = false;
       }
-      try {
-        storage.setDataToStorageStrict(key2, value2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
-        const result = storage.getDataFromStorage(key2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+    }
 
-        if (result === value2) {
+
+    expect(testResult).toBe(true);
+  });
+  it('Get Data from LS setDataToStorageStrict', () => {
+    const key = 'storageLibTest';
+    const value = key;
+    let testResult = false;
+
+    if (!storage.errorInStorage()) {
+      try {
+        storage.setDataToStorageStrict(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        const result = storage.getDataFromStorage(key, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+
+        if (result === value) {
           testResult = true;
         }
 
