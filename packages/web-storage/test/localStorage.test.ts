@@ -95,16 +95,31 @@ describe('Local Storage Tests', () => {
  */
 
   it('Remove Key from LS', () => {
-    const key = 'storageLibTest';
-    const value = key;
+    const key1 = 'storageLibTest1';
+    const key2 = 'storageLibTest2';
+    const value1 = key1;
+    const value2 = key2;
     let testResult = false;
 
     if (!storage.errorInStorage()) {
       try {
-        storage.setDataToStorage(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
-        storage.clearKeyFromStorage(key, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+        storage.setDataToStorage(key1, value1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        storage.clearKeyFromStorage(key1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
 
-        const result = storage.getDataFromStorage(key, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+        const result = storage.getDataFromStorage(key1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+
+        if (!result) {
+          testResult = true;
+        }
+
+      } catch {
+        testResult = false;
+      }
+      try {
+        storage.setDataToStorageStrict(key2, value2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        storage.clearKeyFromStorage(key2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+
+        const result = storage.getDataFromStorage(key2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
 
         if (!result) {
           testResult = true;
