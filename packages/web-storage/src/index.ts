@@ -124,6 +124,35 @@ export function setDataToStorage(key : string, data : any, storageType: string, 
     localStorageInstance.set(bucketKey, data, expiresInMin);
   }
 }
+export function setDataToStorageStrict(key : string, data : any, storageType: string, expiresInMin = DEFAULT_STORAGE_EXPIRY_TIME, bucket = BUCKETS.OTHERS) {
+  if (checkForErrors() || !localStorageInstance.supported()) {
+    return '';
+  }
+
+  // we dont allow more than 14 days of storage for others bucket. If more than 14 days is stored, we make it to 14 days.
+  if ((expiresInMin > MAXIMUM_EXPIRY_LIMIT) && (bucket === BUCKETS.OTHERS)) {
+    expiresInMin = MAXIMUM_EXPIRY_LIMIT;
+  }
+
+  const bucketKey = getFullKeyForItem(key, bucket);
+
+  const expiresInDay = ((expiresInMin / 60) / 24);
+
+
+  if (STORAGE_TYPE.COOKIE === storageType) {
+    cookie.set(key, data, { expires: expiresInDay, path: '/', secure: true, sameSite:'Strict' });
+
+  } else if (STORAGE_TYPE.SESSION_STORAGE === storageType) {
+    sessionStorageInstance.set(key, data);
+
+  } else if (STORAGE_TYPE.LOCAL_COOKIE_STORAGE === storageType) {
+    localStorageInstance.set(bucketKey, data, expiresInMin);
+    cookie.set(key, data, { expires: expiresInDay, path: '/', secure: true, sameSite:'Strict' });
+
+  } else {
+    localStorageInstance.set(bucketKey, data, expiresInMin);
+  }
+}
 
 /**
  * Clear Particular Key from Storage
