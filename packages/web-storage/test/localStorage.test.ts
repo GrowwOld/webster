@@ -26,6 +26,13 @@ describe('Local Storage Tests', () => {
       } catch {
         testResult = false;
       }
+      try {
+        storage.setDataToStorageStrict(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        testResult = true;
+
+      } catch {
+        testResult = false;
+      }
     }
 
     expect(testResult).toBe(true);
@@ -41,16 +48,29 @@ describe('Local Storage Tests', () => {
  */
 
   it('Get Data from LS', () => {
-    const key = 'storageLibTest';
-    const value = key;
+    const key1 = 'storageLibTest1';
+    const key2 = 'storageLibTest2';
+    const value1 = key1;
+    const value2 = key2;
     let testResult = false;
 
     if (!storage.errorInStorage()) {
       try {
-        storage.setDataToStorage(key, value, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
-        const result = storage.getDataFromStorage(key, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+        storage.setDataToStorage(key1, value1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        const result = storage.getDataFromStorage(key1, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
 
-        if (result === value) {
+        if (result === value1) {
+          testResult = true;
+        }
+
+      } catch {
+        testResult = false;
+      }
+      try {
+        storage.setDataToStorageStrict(key2, value2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE, 10);
+        const result = storage.getDataFromStorage(key2, storage.STORAGE_TYPE_AVAILABLE.LOCAL_STORAGE);
+
+        if (result === value2) {
           testResult = true;
         }
 
