@@ -19,5 +19,5 @@
 .headingLarge {
   font-size: var(--font-size-20);
   font-weight: var(--font-weight-medium);
-  line-height: 1.25rem;
+  line-height: 2rem;
 }
