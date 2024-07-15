@@ -1,12 +1,10 @@
 .pb65LinearMain {
   border-radius: 5;
-  background-color: var(--gray150);
   height: 10px;
 }
 
 .pb65CircleMain {
   stroke-linecap: round;
-  stroke: var(--gray150);
   fill: none;
 }
 
@@ -27,7 +25,6 @@
 }
 
 .pb65MainTxt {
-  text-anchor: middle;
   font-size: 16px;
 }
 

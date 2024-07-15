@@ -6,7 +6,6 @@ import { getIntegerRandomNoBetweenTwoNo } from '../../../utils/helper';
 import './progressBar.css';
 
 class ProgressBar extends React.PureComponent<Props> {
-
   progressbarId = '';
 
 
@@ -20,29 +19,12 @@ class ProgressBar extends React.PureComponent<Props> {
   render() {
     const { isCircular } = this.props;
 
-    return (
-      <Waypoint onEnter={this.animateProgressBar}>
-        <div>
-          {
-            isCircular ? this.getCircularProgressBar() : this.getLinearProgressBar()
-          }
-        </div>
-
-      </Waypoint>
-    );
+    return <Waypoint onEnter={this.animateProgressBar}>{isCircular ? this.getCircularProgressBar() : this.getLinearProgressBar()}</Waypoint>;
   }
 
 
   getLinearProgressBar = () => {
-    const {
-      color,
-      backgroundColor,
-      containerThickness,
-      completedValue,
-      size,
-      fillerThickness,
-      borderRadius
-    } = this.props;
+    const { color, backgroundColor, containerThickness, completedValue, size, fillerThickness, borderRadius } = this.props;
 
     const containerStyle = {
       width: size,
@@ -55,36 +37,23 @@ class ProgressBar extends React.PureComponent<Props> {
       height: fillerThickness,
       backgroundColor: color,
       borderRadius: borderRadius
-
     };
 
     return (
-      <div
-        className="pb65LinearMain valign-wrapper fullWidth"
+      <div className="pb65LinearMain valign-wrapper fullWidth"
         style={containerStyle}
       >
-        <div
-          id={this.progressbarId}
+        <div id={this.progressbarId}
           className="pb65LinearFiller"
           style={fillerStyle}
-        >
-        </div>
+        ></div>
       </div>
     );
-  }
+  };
 
 
   getCircularProgressBar = () => {
-    const {
-      color,
-      backgroundColor,
-      containerThickness,
-      completedValue,
-      size,
-      fillerThickness,
-      text,
-      addTextClass
-    } = this.props;
+    const { color, backgroundColor, containerThickness, completedValue, size, fillerThickness, text, addTextClass } = this.props;
 
     const textClass = addTextClass ? addTextClass : '';
 
@@ -96,7 +65,7 @@ class ProgressBar extends React.PureComponent<Props> {
 
     const dashArray = radius * Math.PI * 2;
 
-    const dashOffset = dashArray - (dashArray * completedValue / 100);
+    const dashOffset = dashArray - (dashArray * completedValue) / 100;
 
     const fillerStyle = {
       strokeDasharray: dashArray,
@@ -106,13 +75,11 @@ class ProgressBar extends React.PureComponent<Props> {
     };
 
     return (
-      <svg
-        width={sqSize}
+      <svg width={sqSize}
         height={sqSize}
         viewBox={viewBox}
       >
-        <circle
-          className="pb65CircleMain"
+        <circle className="pb65CircleMain"
           cx={sqSize / 2}
           cy={sqSize / 2}
           r={radius}
@@ -131,20 +98,21 @@ class ProgressBar extends React.PureComponent<Props> {
         />
 
         {
-          text &&
-          <text
-            x="50%"
-            y="50%"
-            className={`${textClass} pb65MainTxt`}
-          >
-            {text}
-          </text>
+          text && (
+            <text x="50%"
+              y="50%"
+              fill="currentColor"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              className={`pb65MainTxt ${textClass}`}
+            >
+              {text}
+            </text>
+          )
         }
       </svg>
-
     );
-
-  }
+  };
 
 
   animateProgressBar = () => {
@@ -153,7 +121,7 @@ class ProgressBar extends React.PureComponent<Props> {
     if (elem) {
       elem.style.display = 'block';
     }
-  }
+  };
 
 
   public static defaultProps: DefaultProps = {
@@ -165,7 +133,7 @@ class ProgressBar extends React.PureComponent<Props> {
     text: '',
     addTextClass: '',
     size: ''
-  }
+  };
 }
 
 
@@ -190,7 +158,7 @@ type DefaultProps = {
   text styling allowed - Note: The text is added using and <svg> <text> element and doesn't support the normal class styling
   please use fill instead of color and equivalent styling for <text> element
   */
-}
+};
 
 
 type RequiredProps = {
@@ -199,7 +167,7 @@ type RequiredProps = {
   /*percentage of the filled amount*/
   completedValue: number;
   name: string;
-}
+};
 
 export type Props = DefaultProps & RequiredProps;
 
