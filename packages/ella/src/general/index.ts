@@ -2,18 +2,18 @@
  * @module General
  */
 
-import { dispatchCustomEvent } from '../dom';
-import { CUSTOM_EVENTS } from '../utils/constants';
+import { dispatchCustomEvent } from "../dom";
+import { CUSTOM_EVENTS } from "../utils/constants";
 import {
   GenericArguments,
   GenericFunction,
   MultiLevelObject,
   SingleLevelObject,
-  TabsData
-} from '../utils/types';
+  TabsData,
+} from "../utils/types";
 
-export { default as cloneDeep } from 'lodash.clonedeep';
-export { default as isEqual } from 'lodash.isequal';
+export { default as cloneDeep } from "lodash.clonedeep";
+export { default as isEqual } from "lodash.isequal";
 
 /**
  * This method can be used to check if the variable is empty or not. Returns true if it is empty else false.
@@ -29,32 +29,30 @@ export { default as isEqual } from 'lodash.isequal';
  */
 export function isEmpty(data: any) {
   try {
-    if (data === null || data === undefined || typeof data === 'undefined') {
+    if (data === null || data === undefined || typeof data === "undefined") {
       return true;
     }
 
     const dataType = typeof data;
 
     switch (dataType) {
-
-      case 'string':
-        if (data.trim() === '' || data === 'null' || data === null) {
+      case "string":
+        if (data.trim() === "" || data === "null") {
           return true;
         }
 
         return false;
 
-      case 'object':
-        const keys = Object.keys(data);
-        const len = keys.length;
-
-        if (len <= 0) {
-          return true;
+      case "object":
+        if (Array.isArray(data)) {
+          return data.length <= 0;
+        } else if (data instanceof Set || data instanceof Map) {
+          return data.size <= 0;
+        } else {
+          return Object.keys(data).length <= 0;
         }
 
-        return false;
-
-      case 'number':
+      case "number":
         return false;
 
       default:
@@ -65,21 +63,18 @@ export function isEmpty(data: any) {
 
         return false;
     }
-
   } catch (e) {
-
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'isEmpty',
+      function: "isEmpty",
       params: {
-        data
+        data,
       },
-      error: e
+      error: e,
     });
 
     return true;
   }
 }
-
 
 /**
  * This method returns an array of given size filled with provided value
@@ -96,7 +91,6 @@ export function getFilledArray(arraySize: number, value: string | number) {
   return new Array(arraySize).fill(value);
 }
 
-
 /**
  * This method returns the index of the selected tab
  *
@@ -111,26 +105,29 @@ export function getFilledArray(arraySize: number, value: string | number) {
  * getSelectedTabIndex(tabsArrayOfObject,'mutual-funds') // 1
  * ```
  */
-export function getSelectedTabIndex(tabs: TabsData[], selectedTabName: string): number {
-  let defaultIndex = 0;
-
+export function getSelectedTabIndex(
+  tabs: TabsData[],
+  selectedTabName: string
+): number {
   try {
-    if (selectedTabName) {
-      tabs.map((tab, index) => {
-        if (tab.searchId === selectedTabName) {
-          defaultIndex = index;
-        }
-      });
+    if (!Array.isArray(tabs)) {
+      throw new Error("Invalid tabs input");
     }
 
-    return defaultIndex;
+    if (selectedTabName) {
+      const foundIndex = tabs.findIndex(
+        (tab) => tab.searchId === selectedTabName
+      );
 
+      return foundIndex !== -1 ? foundIndex : 0;
+    }
+
+    return 0;
   } catch (e) {
-    console.error('Unable to return the selected tab index');
-    return defaultIndex;
+    console.error("Unable to return the selected tab index");
+    return 0;
   }
 }
-
 
 /**
  * This function can download a file on user's machine either directly by a url or a blob object.
@@ -175,59 +172,71 @@ export function getSelectedTabIndex(tabs: TabsData[], selectedTabName: string): 
  * ```
  *
  */
-export function downloadFile(downloadConfig: { file: File | null; type: string; fileName: string; downloadMethod: string; fileExtension: string; fileUrl: string | null }) {
-
+export function downloadFile(downloadConfig: {
+  file: File | null;
+  type: string;
+  fileName: string;
+  downloadMethod: string;
+  fileExtension: string;
+  fileUrl: string | null;
+}) {
   const DOWNLOAD_FILE_METHOD = {
-    BLOB: 'blob',
-    URL: 'url'
+    BLOB: "blob",
+    URL: "url",
   };
 
-  const { file = null, type, fileName, downloadMethod = DOWNLOAD_FILE_METHOD.URL, fileExtension, fileUrl } = downloadConfig;
-
+  const {
+    file = null,
+    type,
+    fileName,
+    downloadMethod = DOWNLOAD_FILE_METHOD.URL,
+    fileExtension,
+    fileUrl,
+  } = downloadConfig;
 
   const createFileUrlFromBlob = (file: File | null, type: string) => {
     if (file) {
       // It is necessary to create a new blob object with mime-type explicitly set
       // otherwise only Chrome works like it should
-      const newBlob = new Blob([ file ], { type });
+      const newBlob = new Blob([file], { type });
 
       // For other browsers:
       // Create a link pointing to the ObjectURL containing the blob.
       const fileURL = (window.URL || window.webkitURL).createObjectURL(newBlob);
 
       return fileURL;
-
     } else {
-      throw new Error('file/blob is null');
+      throw new Error("file/blob is null");
     }
   };
 
-
-  const downloadFileFromUrl = (fileUrl: string | null, fileName: string, extension: string) => {
+  const downloadFileFromUrl = (
+    fileUrl: string | null,
+    fileName: string,
+    extension: string
+  ) => {
     if (fileUrl) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
 
       link.href = fileUrl;
       link.download = `${fileName}.${extension}`;
-      link.target = '_blank';
+      link.target = "_blank";
 
       document.body.appendChild(link);
       link.click();
 
-      setTimeout(function() {
+      setTimeout(function () {
         document.body.removeChild(link);
         window.URL.revokeObjectURL(fileUrl);
       }, 10);
-
     } else {
-      throw new Error('fileUrl is empty');
+      throw new Error("fileUrl is empty");
     }
   };
 
-
   try {
-    if (typeof window === 'undefined') {
-      throw new Error('window is undefined');
+    if (typeof window === "undefined") {
+      throw new Error("window is undefined");
     }
 
     switch (downloadMethod) {
@@ -241,13 +250,14 @@ export function downloadFile(downloadConfig: { file: File | null; type: string; 
         downloadFileFromUrl(fileUrl, fileName, fileExtension);
 
         break;
-    }
 
+      default:
+        throw new Error("Invalid download method");
+    }
   } catch (err) {
-    console.error('File download failed - ', err);
+    console.error("File download failed - ", err);
   }
 }
-
 
 /**
  * This method sorts an Object with key value pairs on the basis of the values. (Check examples for better understanding)
@@ -271,20 +281,22 @@ export function downloadFile(downloadConfig: { file: File | null; type: string; 
  * // { yellow: 1, blue: [ 'I', 'am', 'blue' ], red: 5, green: { i: 'i', am: 'am', green: 'green' }, pink: 8 }
  * ```
  */
-export function sortObjectByValue(obj: SingleLevelObject, isDescending?: boolean) {
+export function sortObjectByValue(
+  obj: SingleLevelObject,
+  isDescending?: boolean
+) {
   try {
     const sortable = [];
 
     for (const key in obj) {
-      sortable.push([ key, obj[key] ]);
+      sortable.push([key, obj[key]]);
     }
 
-    sortable.sort(function(a, b) {
+    sortable.sort(function (a, b) {
       if (isDescending) {
-        return (b[1] < a[1] ? -1 : (b[1] > a[1] ? 1 : 0));
-
+        return b[1] < a[1] ? -1 : b[1] > a[1] ? 1 : 0;
       } else {
-        return (a[1] < b[1] ? -1 : (a[1] > b[1] ? 1 : 0));
+        return a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0;
       }
     });
 
@@ -295,13 +307,11 @@ export function sortObjectByValue(obj: SingleLevelObject, isDescending?: boolean
     }
 
     return orderedList;
-
   } catch (error) {
-    console.error('Error in sorting object, original object returned', error);
+    console.error("Error in sorting object, original object returned", error);
     return obj;
   }
 }
-
 
 /*
  * Returns the value at given path from the source object. If path is not found then default value is returned.
@@ -324,16 +334,17 @@ export function sortObjectByValue(obj: SingleLevelObject, isDescending?: boolean
  * getData(obj, 'a.b.[2]', null) // 23
  * ```
  */
-export function getData(obj: any, path: string, def: null | unknown = null): any {
-
-  function replaceAll(originalString:string, search:string, replace:string) {
+export function getData(
+  obj: any,
+  path: string,
+  def: null | unknown = null
+): any {
+  function replaceAll(originalString: string, search: string, replace: string) {
     return originalString?.split(search)?.join(replace);
   }
 
-
   const sanitzePath = (currPath: string) => {
-
-    const stringsToReplace = [ '[', ']', '..' ];
+    const stringsToReplace = ["[", "]", ".."];
 
     // 'a.[0].b.c' => 'a.0.b.c'
     const currPathString = String(currPath);
@@ -341,42 +352,44 @@ export function getData(obj: any, path: string, def: null | unknown = null): any
     let sanitizedPath = currPathString;
 
     for (const index in stringsToReplace) {
-      sanitizedPath = replaceAll(sanitizedPath, stringsToReplace[index], '.');
+      sanitizedPath = replaceAll(sanitizedPath, stringsToReplace[index], ".");
     }
 
-    const isLastIndexDot = sanitizedPath.lastIndexOf('.') === sanitizedPath.length - 1;
+    const isLastIndexDot =
+      sanitizedPath.lastIndexOf(".") === sanitizedPath.length - 1;
 
-    sanitizedPath = sanitizedPath.slice(0, isLastIndexDot ? sanitizedPath.lastIndexOf('.') : sanitizedPath.length);
+    sanitizedPath = sanitizedPath.slice(
+      0,
+      isLastIndexDot ? sanitizedPath.lastIndexOf(".") : sanitizedPath.length
+    );
 
     return sanitizedPath;
   };
 
   try {
-    const newPathArray = String(sanitzePath(path)).split('.');
+    const newPathArray = String(sanitzePath(path)).split(".");
 
     for (const path of newPathArray) {
       obj = obj?.[path] as any;
     }
 
-    return typeof obj === 'undefined' ? def : obj;
-
+    return typeof obj === "undefined" ? def : obj;
   } catch (e) {
-    console.error('Error while using getData', e);
+    console.error("Error while using getData", e);
 
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'getData',
+      function: "getData",
       params: {
         obj,
         path,
-        def
+        def,
       },
-      error: e
+      error: e,
     });
 
     return def;
   }
 }
-
 
 /**
  * This method is used to parse an object into entries. Works exactly like Object.entries.
@@ -397,17 +410,20 @@ export function getData(obj: any, path: string, def: null | unknown = null): any
  */
 export function getObjectEntries(obj: any) {
   try {
+    if (typeof obj !== "object" || obj === null) {
+      console.error("Input is not an object");
+      return [];
+    }
+
     const keys = Object.keys(obj);
 
-    return keys.map(key => ([ key, obj[key] ]));
-
+    return keys.map((key) => [key, obj[key]]);
   } catch (error) {
-    console.error('There was problem while creating object entries', error);
+    console.error("There was problem while creating object entries", error);
 
     throw error;
   }
 }
-
 
 /**
  * This method searches for an object inside an array of objects based on the object key and expected value then returns its index.
@@ -437,7 +453,11 @@ export function getObjectEntries(obj: any) {
  * getIndexByMatchingObjectValue<number>(dummy, 'address.pincode', 6); // -1
  * ```
  */
-export function getIndexByMatchingObjectValue<MatchValueType>(searchArr: MultiLevelObject[], matchKey: string, matchValue: MatchValueType) {
+export function getIndexByMatchingObjectValue<MatchValueType>(
+  searchArr: MultiLevelObject[],
+  matchKey: string,
+  matchValue: MatchValueType
+) {
   try {
     for (let i = 0; i < searchArr.length; i++) {
       const obj = searchArr[i];
@@ -448,14 +468,12 @@ export function getIndexByMatchingObjectValue<MatchValueType>(searchArr: MultiLe
     }
 
     return -1;
-
   } catch (error) {
-    console.error('Error while find index by matching object value', error);
+    console.error("Error while find index by matching object value", error);
 
     throw error;
   }
 }
-
 
 /**
  * This method returns the path from the url. By default it returns the last path i.e last slash part from the URL.
@@ -471,14 +489,17 @@ export function getIndexByMatchingObjectValue<MatchValueType>(searchArr: MultiLe
  * ```
  *
  */
-export function getPathVariableFromUrlIndex(url: string, indexFromLast: number = 0) {
+export function getPathVariableFromUrlIndex(
+  url: string,
+  indexFromLast: number = 0
+) {
   try {
-    const keys = [ ...url.split('/') ];
+    const keys = [...url.split("/")];
 
     if (keys.length > indexFromLast) {
       let searchId = keys?.[keys?.length - 1 - indexFromLast];
 
-      const queryParamIndex = searchId?.indexOf('?');
+      const queryParamIndex = searchId?.indexOf("?");
 
       if (queryParamIndex >= 0) {
         searchId = searchId.substring(0, queryParamIndex);
@@ -486,23 +507,21 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
 
       return searchId;
     }
-
   } catch (error) {
-    console.error('Unable to get path variable - ', error);
+    console.error("Unable to get path variable - ", error);
 
     dispatchCustomEvent(CUSTOM_EVENTS.TRACK_LOG, {
-      function: 'getPathVariableFromUrlIndex',
+      function: "getPathVariableFromUrlIndex",
       params: {
         url,
-        indexFromLast
+        indexFromLast,
       },
-      error
+      error,
     });
 
-    return '';
+    return "";
   }
 }
-
 
 /**
  * This method is used to forcefully delay a function and cancel all intermediate redundant calls made within the span of delay.
@@ -556,9 +575,12 @@ export function getPathVariableFromUrlIndex(url: string, indexFromLast: number =
  * the returned callback will have a property named "cancel" to cancel the recurring debounce
  *
  */
-export function debounce(func: GenericFunction, delay: number = 200, leading: boolean = false) {
+export function debounce(
+  func: GenericFunction,
+  delay: number = 200,
+  leading: boolean = false
+) {
   let timeout: ReturnType<typeof setTimeout>;
-
 
   const debouncedFunction = (...args: GenericArguments) => {
     if (!timeout && leading) {
@@ -576,7 +598,6 @@ export function debounce(func: GenericFunction, delay: number = 200, leading: bo
 
   return debouncedFunction;
 }
-
 
 /**
  *
@@ -612,9 +633,8 @@ export function debounce(func: GenericFunction, delay: number = 200, leading: bo
  * this function is specifically designed to handle asynchronous functions
  *
  */
-export function asyncThrottle(callback:GenericFunction, intervalInMs: number) {
+export function asyncThrottle(callback: GenericFunction, intervalInMs: number) {
   let lastRun = 0;
-
 
   const throttled = async (...args: GenericArguments) => {
     const currentWait = lastRun + intervalInMs - Date.now();
@@ -623,10 +643,9 @@ export function asyncThrottle(callback:GenericFunction, intervalInMs: number) {
     if (shouldRun) {
       lastRun = Date.now();
       return await callback(args);
-
     } else {
-      return await new Promise(function(resolve) {
-        setTimeout(function() {
+      return await new Promise(function (resolve) {
+        setTimeout(function () {
           resolve(throttled(args));
         }, currentWait);
       });
@@ -635,7 +654,6 @@ export function asyncThrottle(callback:GenericFunction, intervalInMs: number) {
 
   return throttled;
 }
-
 
 /**
  * This method is like `uniq` except that it accepts `iteratee` which is
@@ -660,10 +678,13 @@ export function uniqBy(arr: GenericFunction, iteratee: GenericFunction) {
       return [];
     }
 
-    const cb = typeof iteratee === 'function' ? iteratee : (o: GenericFunction) => o[iteratee];
+    const cb =
+      typeof iteratee === "function"
+        ? iteratee
+        : (o: GenericFunction) => o[iteratee];
 
     const pickedObjects = arr
-      .filter(item => item)
+      .filter((item) => item)
       .reduce((map, item) => {
         const key = cb(item);
 
@@ -675,15 +696,13 @@ export function uniqBy(arr: GenericFunction, iteratee: GenericFunction) {
       }, new Map())
       .values();
 
-    return [ ...pickedObjects ];
-
+    return [...pickedObjects];
   } catch (error) {
     console.error(error);
 
     throw error;
   }
 }
-
 
 /**
  * Removes values from array using function as predicate. Returns removed values.
@@ -709,7 +728,10 @@ export function uniqBy(arr: GenericFunction, iteratee: GenericFunction) {
  * ```
  *
  */
-export function remove<T>(array: T[], predicate: (elem: T, index: number, list: T[]) => boolean): T[] {
+export function remove<T>(
+  array: T[],
+  predicate: (elem: T, index: number, list: T[]) => boolean
+): T[] {
   try {
     const len = array.length;
 
@@ -717,28 +739,21 @@ export function remove<T>(array: T[], predicate: (elem: T, index: number, list: 
     const removedValues = [];
 
     for (let counter = 0; counter < len; counter++) {
-
       if (predicate(array[counter], counter, array)) {
-
         idsToRemove.push(counter - idsToRemove.length);
         removedValues.push(array[counter]);
-
       }
-
     }
 
-    idsToRemove.forEach(id => array.splice(id, 1));
+    idsToRemove.forEach((id) => array.splice(id, 1));
 
     return removedValues;
-
   } catch (e) {
-
     console.error(e);
 
     throw e;
   }
 }
-
 
 /**
  * Returns new object with copied all properties without the ones specified.
@@ -753,11 +768,13 @@ export function remove<T>(array: T[], predicate: (elem: T, index: number, list: 
  *
  * @returns {MultiLevelObject} - new object without given properties
  */
-export function omit(object: MultiLevelObject | null, props: string[]): MultiLevelObject | null {
-
+export function omit(
+  object: MultiLevelObject | null,
+  props: string[]
+): MultiLevelObject | null {
   try {
     // if empty, or not type of object, return empty object
-    if (isEmpty(object) || (typeof object !== 'object')) {
+    if (isEmpty(object) || typeof object !== "object") {
       return {};
     }
 
@@ -766,21 +783,17 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
     const result = {};
 
     for (const key in object) {
-
       if (!useProps.includes(key)) {
         (result as MultiLevelObject)[key] = object[key];
       }
-
     }
 
     return result;
-
   } catch (e) {
     console.error(e);
     return object;
   }
 }
-
 
 /**
  * Returns object or array by parsing the string passed based on the parsed type
@@ -795,22 +808,24 @@ export function omit(object: MultiLevelObject | null, props: string[]): MultiLev
  *
  * @returns {Object | Array} - parsed object or array from the string passed
  */
-export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Object | [] = []) => {
+export const getEntityFiltersFromJSONString = (
+  filter: string,
+  defaultValue: Object | [] = []
+) => {
   try {
     const parsedFilters = JSON.parse(filter);
-    const isObject = typeof parsedFilters === 'object' && parsedFilters !== null;
+    const isObject =
+      typeof parsedFilters === "object" && parsedFilters !== null;
 
     if (isObject || Array.isArray(parsedFilters)) {
       return parsedFilters;
     }
 
     return defaultValue;
-
   } catch (e) {
     return defaultValue;
   }
 };
-
 
 /**
  * This method is a wrapper over JSON.parse which catches any exceptions if comes
@@ -827,15 +842,17 @@ export const getEntityFiltersFromJSONString = (filter: string, defaultValue:Obje
  *
  * @returns {Object | Array} - parsed object or array from the string passed
  */
-export const parseJSON = (parameter: string, fallback = '', reviver?: (this: any, key: string, value: any) => any) => {
+export const parseJSON = (
+  parameter: string,
+  fallback = "",
+  reviver?: (this: any, key: string, value: any) => any
+) => {
   try {
     return JSON.parse(parameter, reviver);
-
   } catch (exception) {
     return fallback;
   }
 };
-
 
 /*
  * Strictly check if all values in an object is 0.
@@ -861,17 +878,15 @@ export const parseJSON = (parameter: string, fallback = '', reviver?: (this: any
  */
 export const isAllObjectValuesZero = (obj: object) => {
   try {
-    if (obj === null || typeof obj === 'undefined') {
+    if (obj === null || typeof obj === "undefined") {
       return true;
     }
 
-    return Object.values(obj).every(val => val === 0);
-
+    return Object.values(obj).every((val) => val === 0);
   } catch (e) {
-    console.error('Failed with: ', e);
+    console.error("Failed with: ", e);
   }
 };
-
 
 /**
  * Returns object by removing all the null values from an object or a deeply nested object also without mutating the current object
@@ -901,23 +916,19 @@ export const isAllObjectValuesZero = (obj: object) => {
  * @returns { Object } - Returns a new object without null values
  */
 export function removeNullProperties(obj: MultiLevelObject) {
-
   try {
     const newObj: MultiLevelObject = {};
 
-    getObjectEntries(obj).forEach(([ key, value ]) => {
+    getObjectEntries(obj).forEach(([key, value]) => {
       if (value === Object(value)) {
         newObj[key] = removeNullProperties(value);
-
       } else if (value != null) {
         newObj[key] = obj[key];
       }
     });
 
     return newObj;
-
   } catch (error) {
-
     console.error(error);
 
     throw error;
