@@ -2916,11 +2916,33 @@ packages:
       react-helmet: 6.1.0(react@16.12.0)
     dev: false
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  /@groww-tech/icon-store@1.4.1(react-dom@16.14.0)(react@16.14.0):
+=======
   /@groww-tech/icon-store@1.4.1(react-dom@16.12.0)(react@16.12.0):
+>>>>>>> develop
+=======
+  /@groww-tech/icon-store@1.4.1(react-dom@16.12.0)(react@16.12.0):
+>>>>>>> a0bbf9d015ff156235b5747590e2ffceba5702ad
     resolution: {integrity: sha512-woALP51PnK8emtJBNk1kkEF5YC8P3CHsU0oeayWSU7fkgcQc7Qh/8CH2+ufKRgf+cNA/tgpCBWacuRUg/8R6Bg==}
     peerDependencies:
       react: ^16.12.0 || ^17.0.0
       react-dom: ^16.12.0 || ^17.0.0
+<<<<<<< HEAD
+<<<<<<< HEAD
+    dependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+    dev: false
+
+  /@humanwhocodes/config-array@0.5.0:
+    resolution: {integrity: sha512-FagtKFz74XrTl7y6HCzQpwDfXP0yhxe9lHLD1UZxjvZIcbyRz8zTFF/yYNfSfzU414eDwZ1SrO0Qvtyf+wFMQg==}
+    engines: {node: '>=10.10.0'}
+=======
+>>>>>>> develop
+=======
+>>>>>>> a0bbf9d015ff156235b5747590e2ffceba5702ad
     dependencies:
       react: 16.12.0
       react-dom: 16.12.0(react@16.12.0)
