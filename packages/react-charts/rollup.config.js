@@ -16,7 +16,6 @@ const commonConfig = {
     commonjs(),
     postcss({
       plugins: [ postcssImport(), postcssUrl({ url: 'inline' }) ],
-      extract: true,
       extract: 'index.css',
       extensions: [ '.css' ]
     }),
