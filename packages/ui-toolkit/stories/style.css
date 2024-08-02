@@ -90,3 +90,39 @@
   cursor: pointer;
   border: 2px solid var(--gray900);
 }
+
+/* Slider */
+
+.scalc101MainContainer .sliderTrack {
+  height: 8px;
+  position: relative;
+  background: var(--green500);
+  border-radius: 5px;
+  margin: 16px 0;
+}
+
+.scalc101MainContainer .sliderThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: none;
+  background: var(--gray50);
+  border: 2px solid var(--green500);
+  /* This is required, In min code we still dont have this so visually wrong values might appear up! */
+  /* transform: translateX(-50%); */
+  cursor: pointer;
+}
+
+.scalc101MainContainer .sliderTrack.sliderTrack-1 {
+  background: var(--gray150);
+}
+
+.scalc101MainContainer .sliderMark {
+  height: 12px;
+  width: 4px;
+  border-radius: 20px;
+  position: absolute;
+  background-color: var(--gray150);
+  /* Should be moved and handled inside the original mark */
+  transform: translateX(425%);
+}
